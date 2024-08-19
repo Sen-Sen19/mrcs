@@ -41,12 +41,13 @@
           <div class="row">
             <div class="col-sm-3">
               <label>Part Name</label>
-              <select id="part_name_dropdown" name="part_name" class="form-control" autocomplete="off">
+              <select id="part_name_dropdown" name="part_name" class="form-control" autocomplete="off" disabled>
               </select>
             </div>
             <div class="col-sm-3">
               <label>Quantity(m)</label>
-              <input type="number" id="part_name_quantity" name="quantity" class="form-control" autocomplete="off">
+              <input type="number" id="part_name_quantity" name="quantity" class="form-control" autocomplete="off"
+                disabled>
             </div>
             <div class="col-sm-3">
               <label>Time Start</label>
@@ -56,7 +57,7 @@
                     <button type="button" class="start-button input-group-text"
                       style="background-color: #20c997; border-color: #20c997; color: white;">Start</button>
                   </div>
-                  <input type="text" id="start_time" name="time_start" class="form-control" autocomplete="off" readonly>
+                  <input type="text" id="start_time" name="time_start" class="form-control" autocomplete="off" disabled>
                 </div>
               </div>
             </div>
@@ -68,7 +69,7 @@
                     <button type="button" class="end-button input-group-text"
                       style="background-color: #ff7371; border-color: #ff7371; color: white;">End</button>
                   </div>
-                  <input type="text" id="end_time" name="time_end" class="form-control" autocomplete="off" readonly>
+                  <input type="text" id="end_time" name="time_end" class="form-control" autocomplete="off" disabled>
                 </div>
               </div>
             </div>
@@ -76,21 +77,21 @@
           <div class="row">
             <div class="col-sm-3">
               <label>Inspected By</label>
-              <input type="text" id="inspected_by" name="inspected_by" class="form-control" autocomplete="off" readonly>
+              <input type="text" id="inspected_by" name="inspected_by" class="form-control" autocomplete="off" disabled>
             </div>
             <div class="col-sm-3">
               <label>Shift</label>
-              <input type="text" id="shift_select" name="shift" class="form-control" autocomplete="off" readonly>
+              <input type="text" id="shift_select" name="shift" class="form-control" autocomplete="off" disabled>
             </div>
             <div class="col-sm-3">
               <label>Inspection Date</label>
               <input type="text" id="inspection_date" name="inspection_date" class="form-control" autocomplete="off"
-                readonly>
+                disabled>
             </div>
             <div class="col-sm-3">
               <label>Total Mins</label>
               <input type="text" id="total_mins" class="form-control" name="total_mins" autocomplete="off"
-                style="margin-bottom: 30px;" readonly>
+                style="margin-bottom: 30px;" disabled>
             </div>
           </div>
           <div class="horizontal-rule" style="width: 100%; height: 1px; background-color: #20c997;"></div>
@@ -100,7 +101,7 @@
           <div class="row mb-4">
             <div class="col-sm-3">
               <label>Outside Appearance</label>
-              <select id="outside_appearance" class="form-control" name="outside_appearance">
+              <select id="outside_appearance" class="form-control" name="outside_appearance" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -108,7 +109,7 @@
             </div>
             <div class="col-sm-3">
               <label>Slit Condition</label>
-              <select id="slit_condition" class="form-control" name="slit_condition">
+              <select id="slit_condition" class="form-control" name="slit_condition" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -117,7 +118,7 @@
             </div>
             <div class="col-sm-3">
               <label>Inside Appearance</label>
-              <select id="inside_appearance" class="form-control" name="inside_appearance">
+              <select id="inside_appearance" class="form-control" name="inside_appearance" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -125,7 +126,7 @@
             </div>
             <div class="col-sm-3">
               <label>Color</label>
-              <select id="color_select" class="form-control" name="color">
+              <select id="color_select" class="form-control" name="color" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -147,10 +148,10 @@
                   <div class="d-flex align-items-center">
                     <label for="tolerance-plus" class="mr-2">+</label>
                     <input type="text" id="tolerance-minus" class="form-control"
-                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" readonly
+                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" disabled
                       name="i_tolerance_minus"> <label for="tolerance-minus" class="mr-2">-</label>
                     <input type="text" id="tolerance-plus" class="form-control" style="min-width: 105px;"
-                      autocomplete="off" readonly name="i_tolerance_plus">
+                      autocomplete="off" disabled name="i_tolerance_plus">
                   </div>
                 </div>
               </div>
@@ -160,24 +161,25 @@
                   <div class="d-flex align-items-left">
                     <label for="i-diamin"></label>
                     <input type="text" id="i-diameter-min" class="mr-3 form-control" style="min-width: 115px;"
-                      autocomplete="off" readonly name="i_dia_min">
+                      autocomplete="off" disabled name="i_dia_min">
                     <label for="i-diamax"></label>
                     <input type="text" id="i-diameter-max" class="form-control" style="min-width: 115px;"
-                      autocomplete="off" readonly name="i_dia_max">
+                      autocomplete="off" disabled name="i_dia_max">
                   </div>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="inside-start">Start</label>
-                  <input type="number" id="inside-start" class="form-control" name="i_diameter_start"
-                    autocomplete="off">
+                  <input type="number" id="inside-start" class="form-control" name="i_diameter_start" autocomplete="off"
+                    disabled>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="inside-end">End</label>
-                  <input type="number" id="inside-end" class="form-control" name="i_diameter_end" autocomplete="off">
+                  <input type="number" id="inside-end" class="form-control" name="i_diameter_end" autocomplete="off"
+                    disabled>
                 </div>
               </div>
             </div>
@@ -193,11 +195,11 @@
                   <div class="d-flex align-items-center">
                     <label for="tolerance-plus" class="mr-2">+</label>
                     <input type="number" id="o-tolerance-minus" class="form-control"
-                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" readonly
+                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" disabled
                       name="o_tolerance_minus"> <label for="tolerance-minus" class="mr-2">-</label>
 
                     <input type="number" id="o-tolerance-plus" class="form-control" style="min-width: 105px;"
-                      autocomplete="off" readonly name="o_tolerance_plus">
+                      autocomplete="off" disabled name="o_tolerance_plus">
                   </div>
                 </div>
               </div>
@@ -207,10 +209,10 @@
                   <div class="d-flex align-items-left">
                     <label for="o-diamin"></label>
                     <input type="number" id="o-diameter-min" class="mr-3 form-control" style="min-width: 115px;"
-                      autocomplete="off" readonly name="o_dia_min">
+                      autocomplete="off" disabled name="o_dia_min">
                     <label for="o-diamax"></label>
                     <input type="number" id="o-diameter-max" class="form-control" style="min-width: 115px;"
-                      autocomplete="off" readonly name="o_dia_max">
+                      autocomplete="off" disabled name="o_dia_max">
                   </div>
                 </div>
               </div>
@@ -218,13 +220,14 @@
                 <div class="form-group">
                   <label for="outside-start">Start</label>
                   <input type="number" id="outside-start" class="form-control" name="o_diameter_start"
-                    autocomplete="off">
+                    autocomplete="off" disabled>
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label for="outside-end">End</label>
-                  <input type="number" id="outside-end" class="form-control" name="o_diameter_end" autocomplete="off">
+                  <input type="number" id="outside-end" class="form-control" name="o_diameter_end" autocomplete="off"
+                    disabled>
                 </div>
               </div>
             </div>
@@ -240,26 +243,26 @@
                   <div class="d-flex align-items-center">
                     <label for="tolerance-plus" class="mr-2">+</label>
                     <input type="number" id="w-tolerance-plus" class="form-control"
-                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" readonly
+                      style="min-width: 105px; margin-right: 10px;" autocomplete="off" disabled
                       name="o_tolerance_minus"> <label for="tolerance-minus" class="mr-2">-</label>
                     <input type="number" id="w-tolerance-minus" class="form-control" style="min-width: 105px;"
-                      autocomplete="off" readonly>
+                      autocomplete="off" disabled>
                   </div>
                 </div>
               </div>
               <div class="col-2">
                 <label for="w-tolerance-plus">Min</label>
-                <input type="text" id="w-min" class="form-control" style="min-width: 70px; autocomplete=" off" readonly
+                <input type="text" id="w-min" class="form-control" style="min-width: 70px; autocomplete=" off" disabled
                   name="w_tolerance_minus">
               </div>
               <div class="col-2">
                 <label for="w-tolerance-minus">Avg</label>
                 <input type="text" id="w-value" class="form-control" style="min-width: 70px;" autocomplete="off"
-                  readonly name="w_tolerance_plus">
+                  disabled name="w_tolerance_plus">
               </div>
               <div class="col-2">
                 <label for="w-tolerance-minus">Max</label>
-                <input type="text" id="w-max" class="form-control" style="min-width: 70px;" autocomplete="off" readonly
+                <input type="text" id="w-max" class="form-control" style="min-width: 70px;" autocomplete="off" disabled
                   name="w_tolerance_plus">
               </div>
             </div>
@@ -271,7 +274,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q1</span>
                     </div>
-                    <input type="number" id="q1_start" class="form-control" autocomplete="off" name="q1_start">
+                    <input type="number" id="q1_start" class="form-control" autocomplete="off" name="q1_start" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -279,7 +282,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q2</span>
                     </div>
-                    <input type="number" id="q2_start" class="form-control" autocomplete="off" name="q2_start">
+                    <input type="number" id="q2_start" class="form-control" autocomplete="off" name="q2_start" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -287,7 +290,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q3</span>
                     </div>
-                    <input type="number" id="q3_start" class="form-control" autocomplete="off" name="q3_start">
+                    <input type="number" id="q3_start" class="form-control" autocomplete="off" name="q3_start" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -295,7 +298,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q4</span>
                     </div>
-                    <input type="number" id="q4_start" class="form-control" autocomplete="off" name="q4_start">
+                    <input type="number" id="q4_start" class="form-control" autocomplete="off" name="q4_start" disabled>
                   </div>
                 </div>
               </div>
@@ -306,7 +309,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q1</span>
                     </div>
-                    <input type="number" id="q1_middle" class="form-control" autocomplete="off" name="q1_middle">
+                    <input type="number" id="q1_middle" class="form-control" autocomplete="off" name="q1_middle"
+                      disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -314,7 +318,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q2</span>
                     </div>
-                    <input type="number" id="q2_middle" class="form-control" autocomplete="off" name="q2_middle">
+                    <input type="number" id="q2_middle" class="form-control" autocomplete="off" name="q2_middle"
+                      disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -322,7 +327,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q3</span>
                     </div>
-                    <input type="number" id="q3_middle" class="form-control" autocomplete="off" name="q3_middle">
+                    <input type="number" id="q3_middle" class="form-control" autocomplete="off" name="q3_middle"
+                      disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -330,7 +336,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q4</span>
                     </div>
-                    <input type="number" id="q4_middle" class="form-control" autocomplete="off" name="q4_middle">
+                    <input type="number" id="q4_middle" class="form-control" autocomplete="off" name="q4_middle"
+                      disabled>
                   </div>
                 </div>
               </div>
@@ -341,7 +348,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q1</span>
                     </div>
-                    <input type="number" id="q1_end" class="form-control" autocomplete="off" name="q1_end">
+                    <input type="number" id="q1_end" class="form-control" autocomplete="off" name="q1_end" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -349,7 +356,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q2</span>
                     </div>
-                    <input type="number" id="q2_end" class="form-control" autocomplete="off" name="q2_end">
+                    <input type="number" id="q2_end" class="form-control" autocomplete="off" name="q2_end" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -357,7 +364,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q3</span>
                     </div>
-                    <input type="number" id="q3_end" class="form-control" autocomplete="off" name="q3_end">
+                    <input type="number" id="q3_end" class="form-control" autocomplete="off" name="q3_end" disabled>
                   </div>
                 </div>
                 <div class="form-group">
@@ -365,7 +372,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-light">Q4</span>
                     </div>
-                    <input type="number" id="q4_end" class="form-control" autocomplete="off" name="q4_end">
+                    <input type="number" id="q4_end" class="form-control" autocomplete="off" name="q4_end" disabled>
                   </div>
                 </div>
               </div>
@@ -378,11 +385,11 @@
             <div class="row">
               <div class="col-6">
                 <label for="inside-start">Serial No.</label>
-                <input type="text" id="serial_no" class="form-control" name="serial_no" autocomplete="off">
+                <input type="text" id="serial_no" class="form-control" name="serial_no" autocomplete="off" disabled>
               </div>
               <div class="col-6">
                 <label for="inside-end">Lot No.</label>
-                <input type="text" id="lot_no" class="form-control" name="lot_no" autocomplete="off">
+                <input type="text" id="lot_no" class="form-control" name="lot_no" autocomplete="off" disabled>
               </div>
             </div>
           </div>
@@ -393,7 +400,7 @@
           <div class="row mb-3">
             <div class="col-3">
               <label>Using Round Bar</label>
-              <select id="using_round_bar" class="form-control" name="using_round_bar">
+              <select id="using_round_bar" class="form-control" name="using_round_bar" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -402,7 +409,7 @@
             </div>
             <div class="col-3">
               <label>Using Bare Hands</label>
-              <select id="using_bare_hands" class="form-control" name="using_bare_hands">
+              <select id="using_bare_hands" class="form-control" name="using_bare_hands" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -411,7 +418,7 @@
             </div>
             <div class="col-3">
               <label>Appearance Judgment</label>
-              <select id="appearance_judgment" class="form-control" name="appearance_judgement">
+              <select id="appearance_judgment" class="form-control" name="appearance_judgement" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -419,7 +426,7 @@
             </div>
             <div class="col-3">
               <label>Dimension Judgment</label>
-              <select id="dimension_judgment" class="form-control" name="dimension_judgement">
+              <select id="dimension_judgment" class="form-control" name="dimension_judgement" disabled>
                 <option value="" selected disabled>Choose...</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -431,7 +438,8 @@
               <form id="defectForm" onsubmit="return handleFormSubmit(event)">
                 <label>Defect type</label>
                 <div id="defect-container">
-                  <select id="defect_type" class="form-control" name="defect_type" onchange="handleDefectTypeChange()">
+                  <select id="defect_type" class="form-control" name="defect_type" onchange="handleDefectTypeChange()"
+                    disabled>
                     <option value="" selected disabled>Choose...</option>
                     <option value="N/A">N/A</option>
                     <option value="Round crest">Round crest</option>
@@ -466,15 +474,15 @@
             </div>
             <div class="col-3">
               <label for="ng_quantity">NG Quantity</label>
-              <input type="number" id="ng_quantity" class="form-control" name="ng_quantity" autocomplete="off">
+              <input type="number" id="ng_quantity" class="form-control" name="ng_quantity" autocomplete="off" disabled>
             </div>
             <div class="col-3">
               <label for="confirm_by">Confirm By</label>
-              <input type="text" id="confirm_by" class="form-control" name="confirm_by" autocomplete="off">
+              <input type="text" id="confirm_by" class="form-control" name="confirm_by" autocomplete="off" disabled>
             </div>
             <div class="col-3">
               <label for="remarks">Remarks</label>
-              <input type="text" id="remarks" class="form-control" name="remarks" autocomplete="off">
+              <input type="text" id="remarks" class="form-control" name="remarks" autocomplete="off" disabled>
             </div>
           </div>
           <div id="notice" style="display: none;"></div>
@@ -490,146 +498,8 @@
 </div>
 
 </form>
+
 <script>
-  document.getElementById('part_name_dropdown').addEventListener('change', function () {
-    const partName = this.value;
-    const disabledValues = [
-      'VO10X0.5(B)', 'VO10X1(B)', 'VO12X0.5(B)', 'VO12X1(B)',
-      'VO14X0.5(B)', 'VO14X1(B)', 'VO16X0.6(B)', 'VO16X1(B)',
-      'VO18X0.6(B)', 'VO18X1(B)', 'VO20X0.6(B)', 'VO20X1(B)',
-      'VO22X1(B)', 'VO24X1(B)', 'VO4X0.5(B)', 'VO4X1(B)',
-      'VO6X0.5(B)', 'VO6X1(B)', 'VO8X0.5(B)', 'VO8X1(B)'
-    ];
-
-    const slitCondition = document.getElementById('slit_condition');
-    const usingRoundBar = document.getElementById('using_round_bar');
-    const usingBareHands = document.getElementById('using_bare_hands');
-    const oDiameterStart = document.getElementById('outside-start');
-    const oDiameterEnd = document.getElementById('outside-end');
-    const oDiameterMin = document.getElementById('o-diameter-min');
-    const oDiameterMax = document.getElementById('o-diameter-max');
-
-
-    if (disabledValues.includes(partName)) {
-
-      slitCondition.disabled = true;
-      usingRoundBar.disabled = true;
-      usingBareHands.disabled = true;
-      slitCondition.value = 'N/A';
-      usingRoundBar.value = 'N/A';
-      usingBareHands.value = 'N/A';
-
-
-      oDiameterStart.readOnly = true;
-      oDiameterEnd.readOnly = true;
-      oDiameterStart.value = 'N/A';
-      oDiameterEnd.value = 'N/A';
-      oDiameterMin.value = 'N/A';
-      oDiameterMax.value = 'N/A';
-    } else {
-
-      slitCondition.disabled = false;
-      usingRoundBar.disabled = false;
-      usingBareHands.disabled = false;
-      oDiameterStart.readOnly = false;
-      oDiameterEnd.readOnly = false;
-      slitCondition.value = '';
-      usingRoundBar.value = '';
-      usingBareHands.value = '';
-      oDiameterStart.value = '';
-      oDiameterEnd.value = '';
-      oDiameterMin.value = '';
-      oDiameterMax.value = '';
-    }
-  });
-  function handleRadioChange() {
-    const spRadio = document.getElementById('sp');
-    const mpRadio = document.getElementById('mp');
-    const epRadio = document.getElementById('ep');
-    const serialNoInput = document.getElementById('serial_no');
-    const lotNoInput = document.getElementById('lot_no');
-    const q1Middle = document.getElementById('q1_middle');
-    const q2Middle = document.getElementById('q2_middle');
-    const q3Middle = document.getElementById('q3_middle');
-    const q4Middle = document.getElementById('q4_middle');
-
-    if (spRadio.checked) {
-
-      serialNoInput.value = 'N/A';
-      lotNoInput.value = 'N/A';
-      serialNoInput.readOnly = true;
-      lotNoInput.readOnly = true;
-
-
-      q1Middle.disabled = false;
-      q2Middle.disabled = false;
-      q3Middle.disabled = false;
-      q4Middle.disabled = false;
-    }
-
-    else if (epRadio.checked) {
-
-      serialNoInput.value = 'N/A';
-      lotNoInput.value = 'N/A';
-      serialNoInput.readOnly = true;
-      lotNoInput.readOnly = true;
-
-
-
-      q1Middle.value = 'N/A';
-      q2Middle.value = 'N/A';
-      q3Middle.value = 'N/A';
-      q4Middle.value = 'N/A';
-      q1Middle.disabled = true;
-      q2Middle.disabled = true;
-      q3Middle.disabled = true;
-      q4Middle.disabled = true;
-    }
-
-
-
-
-
-
-
-
-    else if (mpRadio.checked) {
-      // For MP
-      serialNoInput.value = '';
-      lotNoInput.value = '';
-      serialNoInput.readOnly = false;
-      lotNoInput.readOnly = false;
-
-
-      q1Middle.value = 'N/A';
-      q2Middle.value = 'N/A';
-      q3Middle.value = 'N/A';
-      q4Middle.value = 'N/A';
-      q1Middle.disabled = true;
-      q2Middle.disabled = true;
-      q3Middle.disabled = true;
-      q4Middle.disabled = true;
-    } else {
-
-      serialNoInput.value = '';
-      lotNoInput.value = '';
-      serialNoInput.readOnly = false;
-      lotNoInput.readOnly = false;
-
-
-      q1Middle.value = '';
-      q2Middle.value = '';
-      q3Middle.value = '';
-      q4Middle.value = '';
-      q1Middle.disabled = false;
-      q2Middle.disabled = false;
-      q3Middle.disabled = false;
-      q4Middle.disabled = false;
-    }
-  }
-
-  document.getElementById('sp').addEventListener('change', handleRadioChange);
-  document.getElementById('mp').addEventListener('change', handleRadioChange);
-  document.getElementById('ep').addEventListener('change', handleRadioChange);
+  
 
 </script>

@@ -20,6 +20,147 @@ if (isset($_SESSION['username'])) {
 
 <script>
 
+$(document).ready(function () {
+    $("#part_name_dropdown, #part_name_quantity, #outside_appearance, #slit_condition, #inside_appearance, #color_select, #inside-start, #inside-end, #outside-start, #outside-end, #q1_start, #q2_start, #q3_start, #q4_start, #q1_middle, #q2_middle, #q3_middle, #q4_midlle, #q1_end, #q2_end, #q3_end, #q4_end, #serial_no, #lot_no, #using_round_bar, #using_bare_hands, #appearance_judgment, #dimension_judgment, #defect_type, #ng_quantity, #confirm_by, #remarks").prop('disabled', true);
+
+    $("input[name='processType']").change(function () {
+      if ($(this).val() === "SP") {
+        $("#serial_no").prop('disabled', true).val('N/A');
+        $("#lot_no").prop('disabled', true).val('N/A');
+        $("#part_name_dropdown").prop('disabled', false).val('');
+        $("#part_name_quantity").prop('disabled', false).val('');
+        $("#outside_appearance").prop('disabled', false).val('');
+        $("#slit_condition").prop('disabled', false).val('');
+        $("#inside_appearance").prop('disabled', false).val('');
+        $("#color_select").prop('disabled', false).val('');
+        $("#inside-start").prop('disabled', false).val('');
+        $("#inside-end").prop('disabled', false).val('');
+        $("#outside-start").prop('disabled', false).val('');
+        $("#outside-end").prop('disabled', false).val('');
+        $("#q1_start").prop('disabled', true).val('0');
+        $("#q2_start").prop('disabled', true).val('0');
+        $("#q3_start").prop('disabled', true).val('0');
+        $("#q4_start").prop('disabled', true).val('0');
+        $("#q1_middle").prop('disabled', false).val('');
+        $("#q2_middle").prop('disabled', false).val('');
+        $("#q3_middle").prop('disabled', false).val('');
+        $("#q4_middle").prop('disabled', false).val('');
+        $("#q1_end").prop('disabled', false).val('');
+        $("#q2_end").prop('disabled', false).val('');
+        $("#q3_end").prop('disabled', false).val('');
+        $("#q4_end").prop('disabled', false).val('');
+        $("#using_round_bar").prop('disabled', false).val('');
+        $("#using_bare_hands").prop('disabled', false).val('');
+        $("#appearance_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#defect_type").prop('disabled', false).val('');
+        $("#ng_quantity").prop('disabled', false).val('');
+        $("#confirm_by").prop('disabled', false).val('');
+        $("#remarks").prop('disabled', false).val('');
+      }
+      else if ($(this).val() === "MP") {
+        $("#serial_no").prop('disabled', false).val('');
+        $("#lot_no").prop('disabled', false).val('');
+        $("#part_name_dropdown").prop('disabled', false).val('');
+        $("#part_name_quantity").prop('disabled', false).val('');
+        $("#outside_appearance").prop('disabled', false).val('');
+        $("#slit_condition").prop('disabled', false).val('');
+        $("#inside_appearance").prop('disabled', false).val('');
+        $("#color_select").prop('disabled', false).val('');
+        $("#inside-start").prop('disabled', false).val('');
+        $("#inside-end").prop('disabled', false).val('');
+        $("#outside-start").prop('disabled', false).val('');
+        $("#outside-end").prop('disabled', false).val('');
+        $("#q1_start").prop('disabled', true).val('0');
+        $("#q2_start").prop('disabled', true).val('0');
+        $("#q3_start").prop('disabled', true).val('0');
+        $("#q4_start").prop('disabled', true).val('0');
+        $("#q1_middle").prop('disabled', true).val('0');
+        $("#q2_middle").prop('disabled', true).val('0');
+        $("#q3_middle").prop('disabled', true).val('0');
+        $("#q4_middle").prop('disabled', true).val('0');
+        $("#q1_end").prop('disabled', false).val('');
+        $("#q2_end").prop('disabled', false).val('');
+        $("#q3_end").prop('disabled', false).val('');
+        $("#q4_end").prop('disabled', false).val('');
+        $("#using_round_bar").prop('disabled', false).val('');
+        $("#using_bare_hands").prop('disabled', false).val('');
+        $("#appearance_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#defect_type").prop('disabled', false).val('');
+        $("#ng_quantity").prop('disabled', false).val('');
+        $("#confirm_by").prop('disabled', false).val('');
+        $("#remarks").prop('disabled', false).val('');
+      }
+      else if ($(this).val() === "EP") {
+        $("#serial_no").prop('disabled', true).val('N/A');
+        $("#lot_no").prop('disabled', true).val('N/A');
+        $("#part_name_dropdown").prop('disabled', false).val('');
+        $("#part_name_quantity").prop('disabled', false).val('');
+        $("#outside_appearance").prop('disabled', false).val('');
+        $("#slit_condition").prop('disabled', false).val('');
+        $("#inside_appearance").prop('disabled', false).val('');
+        $("#color_select").prop('disabled', false).val('');
+        $("#inside-start").prop('disabled', false).val('');
+        $("#inside-end").prop('disabled', false).val('');
+        $("#outside-start").prop('disabled', false).val('');
+        $("#outside-end").prop('disabled', false).val('');
+        $("#q1_start").prop('disabled', false).val('0');
+        $("#q2_start").prop('disabled', false).val('0');
+        $("#q3_start").prop('disabled', false).val('0');
+        $("#q4_start").prop('disabled', false).val('0');
+        $("#q1_middle").prop('disabled', true).val('0');
+        $("#q2_middle").prop('disabled', true).val('0');
+        $("#q3_middle").prop('disabled', true).val('0');
+        $("#q4_middle").prop('disabled', true).val('0');
+        $("#q1_end").prop('disabled', false).val('');
+        $("#q2_end").prop('disabled', false).val('');
+        $("#q3_end").prop('disabled', false).val('');
+        $("#q4_end").prop('disabled', false).val('');
+        $("#using_round_bar").prop('disabled', false).val('');
+        $("#using_bare_hands").prop('disabled', false).val('');
+        $("#appearance_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#dimension_judgment").prop('disabled', false).val('');
+        $("#defect_type").prop('disabled', false).val('');
+        $("#ng_quantity").prop('disabled', false).val('');
+        $("#confirm_by").prop('disabled', false).val('');
+        $("#remarks").prop('disabled', false).val('');
+      }
+      else {
+
+
+        // $("input[name='na_white_tag_defect']").change(function () {
+        //   var isNA = $(this).is(":checked");
+
+        //   var repairFieldIds = ["repair_start_mc", "na_repair_start", "repair_end_mc", "na_repair_end", "time_consumed_mc", "na_time_consumed", "manhour_cost_mc", "na_manhour_cost", "quantity_mc", "na_quantity", "unit_cost_mc", "na_unit_cost", "material_cost_mc", "na_material_cost", "defect_category_mc", "occurrence_process_mc", "parts_removed_mc", "portion_treatment"];
+
+        //   $.each(repairFieldIds, function (index, fieldId) {
+        //     var $field = $("#" + fieldId);
+        //     $field.prop('disabled', isNA);
+
+        //     // Set value to 'N/A' and background color to gray if the field is disabled
+        //     if (isNA) {
+        //       if ($field.attr('type') === 'time') {
+        //         // Convert to text input temporarily
+        //         $field.attr('type', 'text');
+        //       }
+        //       $field.val('N/A').css('background-color', '#D3D3D3');
+        //     } else {
+        //       // Convert back to time input
+        //       if ($field.attr('type') === 'text') {
+        //         $field.attr('type', 'time');
+        //       }
+        //       $field.val('').css('background-color', '#FFF');
+        //     }
+        //   });
+        // });
+      }
+    });
+  });
+
 // --------------------------------modal open------------------------
 document.getElementById("openModalBtn").addEventListener("click", function() {
      
