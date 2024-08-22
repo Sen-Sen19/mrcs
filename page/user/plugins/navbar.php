@@ -11,27 +11,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 
-$serverName = "172.25.116.188";
-$username = "sa";
-$password = "SystemGroup@2022";
-$database = "tube_inspection_db";
-try {
-
-  $conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
- 
-  $stmt = $conn->prepare("SELECT * FROM sp_cotdb");
-  $stmt->execute();
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  foreach ($result as $row) {
- 
-  }
-
-} catch (PDOException $e) {
-  echo 'Error: ' . $e->getMessage(); 
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +19,9 @@ try {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tube Inspection</title>
+  <title>MRCS</title>
 
-  <link rel="icon" href="../../dist/img/tir-logo.png" type="image/x-icon" />
+  <link rel="icon" href="../../dist/img/machine.png" type="image/x-icon" />
   
   <link rel="stylesheet" href="../../dist/css/font.min.css">
 
@@ -113,7 +92,7 @@ try {
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="../../dist/img/tir-logo.png" alt="logo" height="60" width="60">
+      <img class="animation__shake" src="../../dist/img/machine.png" alt="logo" height="60" width="60">
       <noscript>
         <br>
         <span>We are facing <strong>Script</strong> issues. Kindly enable <strong>JavaScript</strong>!!!</span>
@@ -122,7 +101,8 @@ try {
       </noscript>
     </div>
 
-    <nav class="main-header navbar navbar-expand navbar-teal navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-light" style="background-color: #4D85FF;">
+
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color:white;"><i

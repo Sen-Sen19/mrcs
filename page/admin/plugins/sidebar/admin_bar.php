@@ -11,7 +11,7 @@
   <!-- Brand Logo -->
   <a href="admin.php" class="brand-link">
     <img src="../../dist/img/tir-logo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">&ensp;TUBE | INSPECTION</span>
+    <span class="brand-text font-weight-light">&ensp;Shipment Control</span>
   </a>
 
   <!-- Sidebar -->
