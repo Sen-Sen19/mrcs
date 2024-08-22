@@ -58,42 +58,177 @@ $(document).ready(function () {
         $("#ng_quantity").prop('disabled', false).val('');
         $("#confirm_by").prop('disabled', false).val('');
         $("#remarks").prop('disabled', false).val('');
+           
+    $("#part_name_dropdown").on("change", function() {
+        var partNameValue = $(this).val();
+        if (
+    partNameValue === "VO10X0.5(B)" || 
+    partNameValue === "VO10X1(B)" || 
+    partNameValue === "VO12X0.5(B)" || 
+    partNameValue === "VO12X1(B)" || 
+    partNameValue === "VO14X0.5(B)" || 
+    partNameValue === "VO14X1(B)" || 
+    partNameValue === "VO16X0.6(B)" || 
+    partNameValue === "VO16X1(B)" || 
+    partNameValue === "VO18X0.6(B)" || 
+    partNameValue === "VO18X1(B)" || 
+    partNameValue === "VO20X0.6(B)" || 
+    partNameValue === "VO20X1(B)" || 
+    partNameValue === "VO22X1(B)" || 
+    partNameValue === "VO24X1(B)" || 
+    partNameValue === "VO4X0.5(B)" || 
+    partNameValue === "VO4X1(B)" || 
+    partNameValue === "VO6X0.5(B)" || 
+    partNameValue === "VO6X1(B)" || 
+    partNameValue === "VO8X0.5(B)" || 
+    partNameValue === "VO8X1(B)"   
+) { 
+            $("#slit_condition").prop('disabled', true).val('N/A');
+            $("#q1_start").prop('disabled', false).val('');
+            $("#q2_start").prop('disabled', false).val('');
+            $("#q3_start").prop('disabled', false).val('');
+            $("#q4_start").prop('disabled', false).val('');
+            $("#q1_middle").prop('disabled', true).val('0');
+            $("#q2_middle").prop('disabled', true).val('0');
+            $("#q3_middle").prop('disabled', true).val('0');
+            $("#q4_middle").prop('disabled', true).val('0');
+            $("#outside-start").prop('disabled', true).val('0');
+            $("#outside-end").prop('disabled', true).val('0');
+            $("#using_round_bar").prop('disabled', true).val('N/A');
+            $("#using_bare_hands").prop('disabled', true).val('N/A');
+
+            
+
+        } else {
+            $("#slit_condition").prop('disabled', false).val('');
+            $("#q1_start").prop('disabled', true).val('0');
+            $("#q2_start").prop('disabled', true).val('0');
+            $("#q3_start").prop('disabled', true).val('0');
+            $("#q4_start").prop('disabled', true).val('0');
+            $("#q1_middle").prop('disabled', false).val('');
+            $("#q2_middle").prop('disabled', false).val('');
+            $("#q3_middle").prop('disabled', false).val('');
+            $("#q4_middle").prop('disabled', false).val('');
+            $("#outside-start").prop('disabled', false).val('');
+            $("#outside-end").prop('disabled', false).val('');
+            $("#using_round_bar").prop('disabled', false).val('');
+            $("#using_bare_hands").prop('disabled', false).val('');
+        }
+    });
+
+    
+    $("#part_name_dropdown").trigger("change");
+
       }
+
+
+
+      
       else if ($(this).val() === "MP") {
-        $("#serial_no").prop('disabled', false).val('');
-        $("#lot_no").prop('disabled', false).val('');
-        $("#part_name_dropdown").prop('disabled', false).val('');
-        $("#part_name_quantity").prop('disabled', false).val('');
-        $("#outside_appearance").prop('disabled', false).val('');
-        $("#slit_condition").prop('disabled', false).val('');
-        $("#inside_appearance").prop('disabled', false).val('');
-        $("#color_select").prop('disabled', false).val('');
-        $("#inside-start").prop('disabled', false).val('');
-        $("#inside-end").prop('disabled', false).val('');
-        $("#outside-start").prop('disabled', false).val('');
-        $("#outside-end").prop('disabled', false).val('');
-        $("#q1_start").prop('disabled', true).val('0');
-        $("#q2_start").prop('disabled', true).val('0');
-        $("#q3_start").prop('disabled', true).val('0');
-        $("#q4_start").prop('disabled', true).val('0');
-        $("#q1_middle").prop('disabled', true).val('0');
-        $("#q2_middle").prop('disabled', true).val('0');
-        $("#q3_middle").prop('disabled', true).val('0');
-        $("#q4_middle").prop('disabled', true).val('0');
-        $("#q1_end").prop('disabled', false).val('');
-        $("#q2_end").prop('disabled', false).val('');
-        $("#q3_end").prop('disabled', false).val('');
-        $("#q4_end").prop('disabled', false).val('');
-        $("#using_round_bar").prop('disabled', false).val('');
-        $("#using_bare_hands").prop('disabled', false).val('');
-        $("#appearance_judgment").prop('disabled', false).val('');
-        $("#dimension_judgment").prop('disabled', false).val('');
-        $("#dimension_judgment").prop('disabled', false).val('');
-        $("#defect_type").prop('disabled', false).val('');
-        $("#ng_quantity").prop('disabled', false).val('');
-        $("#confirm_by").prop('disabled', false).val('');
-        $("#remarks").prop('disabled', false).val('');
-      }
+    // Enable all other fields as before
+    $("#serial_no").prop('disabled', false).val('');
+    $("#lot_no").prop('disabled', false).val('');
+    $("#part_name_dropdown").prop('disabled', false).val('');
+    $("#part_name_quantity").prop('disabled', false).val('');
+    $("#outside_appearance").prop('disabled', false).val('');
+    $("#slit_condition").prop('disabled', false).val('');
+    $("#inside_appearance").prop('disabled', false).val('');
+    $("#color_select").prop('disabled', false).val('');
+    $("#inside-start").prop('disabled', false).val('');
+    $("#inside-end").prop('disabled', false).val('');
+    $("#outside-start").prop('disabled', false).val('');
+    $("#outside-end").prop('disabled', false).val('');
+
+    // Disable q1_start to q4_middle fields
+    $("#q1_start").prop('disabled', true).val('0');
+    $("#q2_start").prop('disabled', true).val('0');
+    $("#q3_start").prop('disabled', true).val('0');
+    $("#q4_start").prop('disabled', true).val('0');
+    $("#q1_middle").prop('disabled', true).val('0');
+    $("#q2_middle").prop('disabled', true).val('0');
+    $("#q3_middle").prop('disabled', true).val('0');
+    $("#q4_middle").prop('disabled', true).val('0');
+
+    // Enable q1_end to q4_end fields
+    $("#q1_end").prop('disabled', false).val('');
+    $("#q2_end").prop('disabled', false).val('');
+    $("#q3_end").prop('disabled', false).val('');
+    $("#q4_end").prop('disabled', false).val('');
+
+    // Enable the rest of the fields
+    $("#using_round_bar").prop('disabled', false).val('');
+    $("#using_bare_hands").prop('disabled', false).val('');
+    $("#appearance_judgment").prop('disabled', false).val('');
+    $("#dimension_judgment").prop('disabled', false).val('');
+    $("#defect_type").prop('disabled', false).val('');
+    $("#ng_quantity").prop('disabled', false).val('');
+    $("#confirm_by").prop('disabled', false).val('');
+    $("#remarks").prop('disabled', false).val('');
+
+   
+    $("#part_name_dropdown").on("change", function() {
+    var partNameValue = $(this).val();
+
+    // Condition for the first set of part names
+    if (
+        partNameValue === "VO10X0.5(B)" || 
+        partNameValue === "VO10X1(B)" || 
+        partNameValue === "VO12X0.5(B)" || 
+        partNameValue === "VO12X1(B)" || 
+        partNameValue === "VO14X0.5(B)" || 
+        partNameValue === "VO14X1(B)" || 
+        partNameValue === "VO16X0.6(B)" || 
+        partNameValue === "VO16X1(B)" || 
+        partNameValue === "VO18X0.6(B)" || 
+        partNameValue === "VO18X1(B)" || 
+        partNameValue === "VO20X0.6(B)" || 
+        partNameValue === "VO20X1(B)" || 
+        partNameValue === "VO22X1(B)" || 
+        partNameValue === "VO24X1(B)" || 
+        partNameValue === "VO4X0.5(B)" || 
+        partNameValue === "VO4X1(B)" || 
+        partNameValue === "VO6X0.5(B)" || 
+        partNameValue === "VO6X1(B)" || 
+        partNameValue === "VO8X0.5(B)" || 
+        partNameValue === "VO8X1(B)"
+    ) { 
+        // Actions specific to the first condition
+        $("#slit_condition").prop('disabled', true).val('N/A');
+        $("#q1_start, #q2_start, #q3_start, #q4_start").prop('disabled', false).val('');
+        $("#q1_middle, #q2_middle, #q3_middle, #q4_middle").prop('disabled', true).val('0');
+        $("#outside-start, #outside-end").prop('disabled', true).val('0');
+        $("#using_round_bar, #using_bare_hands").prop('disabled', true).val('N/A');
+    } 
+    // Condition for the second set of part names
+    else if (
+        partNameValue === "NCOT13-NC" || 
+        partNameValue === "RCOT13" || 
+        partNameValue === "NCOT13" || 
+        partNameValue === "NCOT15" || 
+        partNameValue === "RCOT15" || 
+        partNameValue === "NCOT19" || 
+        partNameValue === "RCOT19"
+    ) { 
+        // Actions specific to the second condition
+        $("#q1_start, #q2_start, #q3_start, #q4_start").prop('disabled', false).val('');
+    } 
+    // Default actions when none of the conditions match
+    else {
+        $("#slit_condition").prop('disabled', false).val('N/A');
+        $("#q1_start, #q2_start, #q3_start, #q4_start").prop('disabled', true).val('0');
+        $("#q1_middle, #q2_middle, #q3_middle, #q4_middle").prop('disabled', false).val('');
+        $("#outside-start, #outside-end").prop('disabled', false).val('');
+        $("#using_round_bar, #using_bare_hands").prop('disabled', false).val('');
+    }
+});
+
+// Optionally, you can call the change event once manually during page load, if needed
+$(document).ready(function() {
+    $("#part_name_dropdown").trigger("change");
+});
+
+}
+
       else if ($(this).val() === "EP") {
         $("#serial_no").prop('disabled', true).val('N/A');
         $("#lot_no").prop('disabled', true).val('N/A');
@@ -128,35 +263,70 @@ $(document).ready(function () {
         $("#ng_quantity").prop('disabled', false).val('');
         $("#confirm_by").prop('disabled', false).val('');
         $("#remarks").prop('disabled', false).val('');
+        $("#part_name_dropdown").on("change", function() {
+        var partNameValue = $(this).val();
+        if (
+    partNameValue === "VO10X0.5(B)" || 
+    partNameValue === "VO10X1(B)" || 
+    partNameValue === "VO12X0.5(B)" || 
+    partNameValue === "VO12X1(B)" || 
+    partNameValue === "VO14X0.5(B)" || 
+    partNameValue === "VO14X1(B)" || 
+    partNameValue === "VO16X0.6(B)" || 
+    partNameValue === "VO16X1(B)" || 
+    partNameValue === "VO18X0.6(B)" || 
+    partNameValue === "VO18X1(B)" || 
+    partNameValue === "VO20X0.6(B)" || 
+    partNameValue === "VO20X1(B)" || 
+    partNameValue === "VO22X1(B)" || 
+    partNameValue === "VO24X1(B)" || 
+    partNameValue === "VO4X0.5(B)" || 
+    partNameValue === "VO4X1(B)" || 
+    partNameValue === "VO6X0.5(B)" || 
+    partNameValue === "VO6X1(B)" || 
+    partNameValue === "VO8X0.5(B)" || 
+    partNameValue === "VO8X1(B)"   
+) { 
+            $("#slit_condition").prop('disabled', true).val('N/A');
+            $("#q1_start").prop('disabled', false).val('');
+            $("#q2_start").prop('disabled', false).val('');
+            $("#q3_start").prop('disabled', false).val('');
+            $("#q4_start").prop('disabled', false).val('');
+            $("#q1_middle").prop('disabled', true).val('0');
+            $("#q2_middle").prop('disabled', true).val('0');
+            $("#q3_middle").prop('disabled', true).val('0');
+            $("#q4_middle").prop('disabled', true).val('0');
+            $("#outside-start").prop('disabled', true).val('0');
+            $("#outside-end").prop('disabled', true).val('0');
+            $("#using_round_bar").prop('disabled', true).val('N/A');
+            $("#using_bare_hands").prop('disabled', true).val('N/A');
+
+            
+
+        } else {
+            $("#slit_condition").prop('disabled', false).val('');
+            $("#q1_start").prop('disabled', true).val('0');
+            $("#q2_start").prop('disabled', true).val('0');
+            $("#q3_start").prop('disabled', true).val('0');
+            $("#q4_start").prop('disabled', true).val('0');
+            $("#q1_middle").prop('disabled', false).val('');
+            $("#q2_middle").prop('disabled', false).val('');
+            $("#q3_middle").prop('disabled', false).val('');
+            $("#q4_middle").prop('disabled', false).val('');
+            $("#outside-start").prop('disabled', false).val('');
+            $("#outside-end").prop('disabled', false).val('');
+            $("#using_round_bar").prop('disabled', false).val('');
+            $("#using_bare_hands").prop('disabled', false).val('');
+        }
+    });
+
+    
+    $("#part_name_dropdown").trigger("change");
+
       }
       else {
 
 
-        // $("input[name='na_white_tag_defect']").change(function () {
-        //   var isNA = $(this).is(":checked");
-
-        //   var repairFieldIds = ["repair_start_mc", "na_repair_start", "repair_end_mc", "na_repair_end", "time_consumed_mc", "na_time_consumed", "manhour_cost_mc", "na_manhour_cost", "quantity_mc", "na_quantity", "unit_cost_mc", "na_unit_cost", "material_cost_mc", "na_material_cost", "defect_category_mc", "occurrence_process_mc", "parts_removed_mc", "portion_treatment"];
-
-        //   $.each(repairFieldIds, function (index, fieldId) {
-        //     var $field = $("#" + fieldId);
-        //     $field.prop('disabled', isNA);
-
-        //     // Set value to 'N/A' and background color to gray if the field is disabled
-        //     if (isNA) {
-        //       if ($field.attr('type') === 'time') {
-        //         // Convert to text input temporarily
-        //         $field.attr('type', 'text');
-        //       }
-        //       $field.val('N/A').css('background-color', '#D3D3D3');
-        //     } else {
-        //       // Convert back to time input
-        //       if ($field.attr('type') === 'text') {
-        //         $field.attr('type', 'time');
-        //       }
-        //       $field.val('').css('background-color', '#FFF');
-        //     }
-        //   });
-        // });
       }
     });
   });
@@ -603,7 +773,7 @@ function saveData() {
         });
 
         setTimeout(function() {
-            window.location.reload();
+            // window.location.reload();
         }, 1600);
     })
     .catch(error => {
