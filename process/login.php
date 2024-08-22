@@ -1,5 +1,5 @@
 <?php
-session_name("tube_inspection");
+session_name("mrcs");
 session_start();
 
 include 'conn3.php';
@@ -39,7 +39,7 @@ if (isset($_POST['Login'])) {
 if (isset($_POST['Logout'])) {
     session_unset();
     session_destroy();
-    header('location: /tube_inspection/');
+    header('location: /mrcs/');
     exit;
 }
 ?>
