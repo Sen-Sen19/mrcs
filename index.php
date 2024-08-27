@@ -19,7 +19,7 @@ if (isset($_SESSION['username'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MRCS</title>
 
-  <link rel="icon" href="dist/img/shipment.png" type="image/x-icon" />
+  <link rel="icon" href="dist/img/machine.png" type="image/x-icon" />
 
   <link rel="stylesheet" href="dist/css/font.min.css">
 
@@ -35,10 +35,7 @@ if (isset($_SESSION['username'])) {
       background-position: center;
     }
 
-    .login-box {
-      margin-top: 10%;
-    }
-
+   
     .card {
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
       border-radius: 10px;
@@ -56,9 +53,8 @@ if (isset($_SESSION['username'])) {
     <div class="login-logo">
     <img src="dist/img/machine.png" style="height:150px; margin-top: 30px;">
 
-      <h2><b>Machine Requirments<br>Computation System</b></h2>
+      <h2><b>Machine Requirements<br>Computation System</b></h2>
     </div>
-    <!-- /.login-logo -->
 
       <div class="card-body login-card-body">
    
@@ -96,9 +92,7 @@ if (isset($_SESSION['username'])) {
           </div>
           <div class="row">
             <div class="col">
-              <center>
-                <a href="page/viewer/">Go Back to Home Page</a>
-              </center>
+             
             </div>
           </div>
         </form>

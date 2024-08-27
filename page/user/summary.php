@@ -79,9 +79,9 @@
 
                                 <div class="col-6 col-sm-3 ">
                                     <label
-                                        style="font-weight: normal; margin-bottom:4%; padding: 0; color:  #000; font-weight: bold; visibility:hidden">Export</label>
+                                        style="font-weight: normal; margin-bottom:4%; padding: 0; color:  #000; font-weight: bold; visibility:hidden ">Export</label>
                                     <button class="btn btn-primary btn-block btn-sm" id="exportBtn"
-                                        onclick="exportCSV()">
+                                        onclick="exportCSV()" style="background-color:#525252 ;border-color: #525252;">
                                         <i class="fas fa-file-download"></i> Export
                                     </button>
                                 </div>

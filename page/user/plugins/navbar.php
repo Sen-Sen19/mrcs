@@ -22,18 +22,17 @@ if (!isset($_SESSION['username'])) {
   <title>MRCS</title>
 
   <link rel="icon" href="../../dist/img/machine.png" type="image/x-icon" />
-  
+
   <link rel="stylesheet" href="../../dist/css/font.min.css">
 
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  
+
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  
+
   <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
   <link rel="stylesheet" href="../../plugins/sweetalert2/dist/sweetalert2.min.css">
   <style>
-
     .loader {
       border: 16px solid #f3f3f3;
       border-radius: 50%;
@@ -89,7 +88,6 @@ if (!isset($_SESSION['username'])) {
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../../dist/img/machine.png" alt="logo" height="60" width="60">
@@ -100,23 +98,18 @@ if (!isset($_SESSION['username'])) {
         <span>Call IT Personnel Immediately!!! They will fix it right away.</span>
       </noscript>
     </div>
-
-    <nav class="main-header navbar navbar-expand navbar-light" style="background-color: #4D85FF;">
-
+    <nav class="main-header navbar navbar-expand navbar-primary">      
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color:white;"><i
               class="fas fa-bars"></i></a>
         </li>
       </ul>
-
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button" style="color:white;">
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-
-      
       </ul>
     </nav>
