@@ -128,11 +128,6 @@ function handleFile(event) {
     reader.readAsArrayBuffer(file);
 }
 
-function parseDateString(dateString) {
-    const [day, month, year] = dateString.split('-').map(Number);
-    return (day && month && year) ? new Date(year, month - 1, day) : null;
-}
-
 function displayAllData() {
     const tableBody = document.getElementById('table_body');
     tableBody.innerHTML = '';
@@ -142,26 +137,66 @@ function displayAllData() {
     const headers = originalData[0];
     const convertedHeaders = headers.map(header => (typeof header === 'number' ? formatHeader(header) : header));
 
+    console.log('Headers:', convertedHeaders);
+
+    
+    let firstMonthStartIndex = -1;
+    let firstMonthEndIndex = -1;
+
+    
+    const datePattern = /^\d{2}-\d{2}-\d{4}$/;
+
+    convertedHeaders.forEach((header, index) => {
+        if (datePattern.test(header)) {
+            const [day, month] = header.split('-').map(Number);
+            if (month === 8 && firstMonthStartIndex === -1) { 
+                firstMonthStartIndex = index;
+            }
+            if (month === 8) {
+                firstMonthEndIndex = index;
+            }
+        } else if (firstMonthStartIndex !== -1) {
+            return;
+        }
+    });
+
+    console.log('First Month Start Index:', firstMonthStartIndex);
+    console.log('First Month End Index:', firstMonthEndIndex);
+
+    // Create header row
     const headerRow = document.createElement('tr');
-    convertedHeaders.forEach(header => {
+    convertedHeaders.forEach((header) => {
         const th = document.createElement('th');
         th.textContent = header;
         headerRow.appendChild(th);
     });
     headerRow.appendChild(document.createElement('th')).textContent = 'Total';
     headerRow.appendChild(document.createElement('th')).textContent = '1st Month';
-
+    headerRow.appendChild(document.createElement('th')).textContent = 'Max. Plan 1'; 
     tableBody.appendChild(headerRow);
 
+  
     const rows = originalData.slice(1);
     rows.forEach(row => {
         const tr = document.createElement('tr');
-        row.forEach(cell => {
+        row.forEach((cell, index) => {
             const td = document.createElement('td');
             td.textContent = cell;
+
+           
+            if (index >= firstMonthStartIndex && index <= firstMonthEndIndex) {
+              
+            }
+
             tr.appendChild(td);
         });
 
+    
+        const monthValues = row.slice(firstMonthStartIndex, firstMonthEndIndex + 1).map(cell => parseFloat(cell) || 0);
+        const highestValue = Math.max(...monthValues);
+        const highestIndex = monthValues.indexOf(highestValue) + firstMonthStartIndex;
+
+       
         const values = row.slice(5).map(cell => parseFloat(cell) || 0);
         const total = values.reduce((acc, value) => acc + value, 0);
 
@@ -170,10 +205,23 @@ function displayAllData() {
         totalCell.style.color = 'red';
         tr.appendChild(totalCell);
 
+       
+        const highestCell = document.createElement('td');
+        highestCell.textContent = highestValue.toFixed(2);
+        highestCell.style.color = 'blue'; // Set to blue
+        tr.appendChild(highestCell);
+
+       
+        const maxPlanCell = document.createElement('td');
+        if (highestIndex !== -1 && highestIndex < convertedHeaders.length) {
+            maxPlanCell.textContent = convertedHeaders[highestIndex];
+            maxPlanCell.style.color = 'green';
+        }
+        tr.appendChild(maxPlanCell);
+
         tableBody.appendChild(tr);
     });
 }
-
 function displayDataInRange(dateFrom, dateTo) {
     const tableBody = document.getElementById('table_body');
     tableBody.innerHTML = '';
@@ -185,12 +233,23 @@ function displayDataInRange(dateFrom, dateTo) {
 
     let startIndex = -1;
     let endIndex = -1;
+    let firstMonthStartIndex = -1;
+    let firstMonthEndIndex = -1;
 
+    
     convertedHeaders.forEach((header, index) => {
         const headerDate = parseDateString(header);
         if (headerDate) {
             if (headerDate >= dateFrom && startIndex === -1) startIndex = index;
             if (headerDate <= dateTo) endIndex = index;
+            
+          
+            if (firstMonthStartIndex === -1 && headerDate.getMonth() === dateFrom.getMonth() && headerDate.getFullYear() === dateFrom.getFullYear()) {
+                firstMonthStartIndex = index;
+            }
+            if (headerDate.getMonth() === dateTo.getMonth() && headerDate.getFullYear() === dateTo.getFullYear()) {
+                firstMonthEndIndex = index;
+            }
         }
     });
 
@@ -205,11 +264,13 @@ function displayDataInRange(dateFrom, dateTo) {
         th.textContent = header;
         headerRow.appendChild(th);
     });
-    convertedHeaders.slice(startIndex, endIndex + 1).forEach(header => {
+
+    convertedHeaders.slice(startIndex, endIndex + 1).forEach((header, index) => {
         const th = document.createElement('th');
         th.textContent = header;
         headerRow.appendChild(th);
     });
+
     headerRow.appendChild(document.createElement('th')).textContent = 'Total';
     headerRow.appendChild(document.createElement('th')).textContent = '1st Month';
     tableBody.appendChild(headerRow);
@@ -226,43 +287,46 @@ function displayDataInRange(dateFrom, dateTo) {
         const valuesInRange = row.slice(startIndex, endIndex + 1).map(cell => parseFloat(cell) || 0);
         const total = valuesInRange.reduce((acc, value) => acc + value, 0);
 
-        row.slice(startIndex, endIndex + 1).forEach(cell => {
+        row.slice(startIndex, endIndex + 1).forEach((cell, index) => {
             const td = document.createElement('td');
             td.textContent = cell;
+
+          
+            if (index + startIndex >= firstMonthStartIndex && index + startIndex <= firstMonthEndIndex) {
+                td.style.color = 'blue';
+            }
+
             tr.appendChild(td);
         });
+
 
         const totalCell = document.createElement('td');
         totalCell.textContent = total.toFixed(2);
         totalCell.style.color = 'red';
         tr.appendChild(totalCell);
 
+     
+        const monthValues = row.slice(firstMonthStartIndex, firstMonthEndIndex + 1).map(cell => parseFloat(cell) || 0);
+        const highestValue = Math.max(...monthValues);
+        const highestIndex = monthValues.indexOf(highestValue) + firstMonthStartIndex;
+
+        const highestCell = document.createElement('td');
+        highestCell.textContent = highestValue.toFixed(2);
+        highestCell.style.color = 'blue'; 
+        tr.appendChild(highestCell);
+
+       
+        
+        const maxPlanCell = document.createElement('td');
+        if (highestIndex !== -1 && highestIndex < convertedHeaders.length) {
+            maxPlanCell.textContent = convertedHeaders[highestIndex];
+            maxPlanCell.style.color = 'green'; 
+        }
+        tr.appendChild(maxPlanCell);
+
         tableBody.appendChild(tr);
     });
 }
-
-document.getElementById('generateBtn').addEventListener('click', () => {
-    const dateFrom = document.getElementById('date_from').value;
-    const dateTo = document.getElementById('date_to').value;
-
-    if (!dateFrom || !dateTo) {
-        alert('Please select both Date From and Date To.');
-        return;
-    }
-
-    const startDate = new Date(dateFrom);
-    const endDate = new Date(dateTo);
-
-    if (startDate > endDate) {
-        alert('Date From cannot be after Date To.');
-        return;
-    }
-
-    displayDataInRange(startDate, endDate);
-});
-
-
-displayAllData();
 
 function formatHeader(value) {
     if (typeof value === 'number') {
@@ -273,7 +337,7 @@ function formatHeader(value) {
 }
 
 function excelDateToJSDate(serial) {
-    const epoch = new Date(1899, 11, 30); // Excel's epoch date
+    const epoch = new Date(1899, 11, 30); 
     const date = new Date(epoch.getTime() + (serial * 24 * 60 * 60 * 1000));
     date.setDate(date.getDate() + 1);
     return date;
