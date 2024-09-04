@@ -6,7 +6,6 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <!-- Content can be added here if needed -->
                 </div>
             </div>
         </div>
@@ -30,10 +29,6 @@
                 </div>
                 <div class="card-body">
                     <div class="row mb-4">
-
-
-
-
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6 col-sm-2 ">
@@ -53,7 +48,8 @@
 
                                 <div class="col-6 col-sm-2 ">
                                     <label
-                                        style="font-weight: normal; margin-bottom:6%; padding: 0; color: #000; font-weight: bold;">Schedule Type</label>
+                                        style="font-weight: normal; margin-bottom:6%; padding: 0; color: #000; font-weight: bold;">Schedule
+                                        Type</label>
                                     <select id="shift_select" class="form-control" name="shift"
                                         style="height: 31px; font-size: 14px;">
                                         <option value="" selected disabled>Choose...</option>

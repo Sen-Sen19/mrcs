@@ -1,358 +1,299 @@
 <?php include 'plugins/navbar.php'; ?>
 <?php include 'plugins/sidebar/user_bar.php'; ?>
-
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <!-- Hidden file input -->
-                    <input type="file" id="fileUpload" class="form-control" accept=".xlsx, .xls"
-                        style="display: none;" />
+            <ul class="nav nav-tabs" id="excelTabs" role="tablist">
+                <li class="nav-item" style="width:200px;">
+                    <a class="nav-link active" id="file1-tab" data-toggle="tab" href="#file1" role="tab"
+                        aria-controls="file1" aria-selected="true">Plan Total</a>
+                </li>
+                <li class="nav-item" style="width:200px; margin-bottom 70px;">
+                    <a class="nav-link" id="file2-tab" data-toggle="tab" href="#file2" role="tab" aria-controls="file2"
+                        aria-selected="false">Plan 3 Months</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="excelTabContent">
+                <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <button id="importButton1" class="btn btn-primary mt-3"> <i class="fas fa-upload"></i>
+                                Import Plan Total</button>
+                            <input type="file" id="fileImport1" class="form-control" accept=".xlsx, .xls"
+                                style="display: none;" />
+
+                        </div>
+                    </div>
+                    <div class="card card-gray-dark card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Plan Total</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="accounts_table_res1" class="table-responsive"
+                                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                                <table id="header_table1"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover">
+                                    <thead style="text-align: center;">
+                                        <!-- Table Headers for File 1 -->
+                                    </thead>
+                                    <tbody id="table_body1" style="text-align: center; padding:20px;">
+                                        <!-- Table Body for File 1 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File 2 Tab Pane -->
+                <div class="tab-pane fade" id="file2" role="tabpanel" aria-labelledby="file2-tab">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <button id="importButton2" class="btn btn-primary mt-3"> <i class="fas fa-upload"></i>
+                                Import Plan 3 Months</button>
+                            <input type="file" id="fileImport2" class="form-control" accept=".xlsx, .xls"
+                                style="display: none;" />
+                        </div>
+                    </div>
+                    <div class="card card-gray-dark card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Plan 3 Months</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="accounts_table_res2" class="table-responsive"
+                                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                                <table id="header_table2"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover">
+                                    <thead style="text-align: center;">
+
+                                    </thead>
+                                    <tbody id="table_body2" style="text-align: center; padding:20px;">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="row mb-4">
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-primary w-100"
-                    style="height: 31px; font-size: 14px; background-color: #525252; border-color: #525252;"
-                    id="importButton">
-                    <i class="fas fa-file-import"></i>&nbsp; &nbsp;Import
-                </button>
-            </div>
-
-        </div>
-    </div>
-
-    <section class="content">
-        <div class="col-sm-12">
-            <div class="card card-gray-dark card-outline">
-                <div class="card-header">
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 col-sm-4">
-                            <label
-                                style="font-weight: normal; margin-bottom:6%; padding: 0; color: #000; font-weight: bold;">
-                                Date From
-                            </label>
-                            <input type="date" name="date_from" class="form-control form-control-sm" id="date_from">
-                        </div>
-                        <div class="col-6 col-sm-4">
-                            <label
-                                style="font-weight: normal;margin-bottom:6%; padding: 0; color: #000; font-weight: bold;">
-                                Date To
-                            </label>
-                            <input type="date" name="date_to" class="form-control form-control-sm" id="date_to">
-                        </div>
-                        <div class="col-6 col-sm-4">
-                            <label
-                                style="font-weight: normal;margin-bottom:6%; padding: 0; color: #000; font-weight: bold; visibility:hidden">
-                                Search
-                            </label>
-                            <button class="btn btn-primary btn-block btn-sm" id="generateBtn" style="background-color: #0F78DC; border-color: #0F78DC;" >
-                               Search
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="accounts_table_res" class="table-responsive"
-                        style="height: 50vh; overflow: auto; display: inline-block; margin-top: 20px; border-top: 1px solid gray; background-color: white; padding: 15px; border-radius: 10px;">
-                        <table id="header_table" class="table table-sm table-head-fixed text-nowrap table-hover">
-                            <thead style="text-align: center;">
-
-                            </thead>
-                            <tbody id="table_body" style="text-align: center; padding:20px;">
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col-sm-2 ml-auto text-right">
-                        <button type="button" class="btn btn-primary w-100" style="height: 31px; font-size: 14px; color:#fffff;background-color:#F4A261; border-color: #F4A261;">
-                            <i class="fas fa-calculator"></i>&nbsp; &nbsp;Calculate
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 </div>
 
 <script src="../../dist/js/xlsx.full.min.js"></script>
 <script>
-let parsedData = null;
-let originalData = null;
 
-document.getElementById('importButton').addEventListener('click', () => {
-    document.getElementById('fileUpload').click();
-});
+    document.addEventListener('DOMContentLoaded', function () {
 
-document.getElementById('fileUpload').addEventListener('change', handleFile);
+        document.getElementById('importButton1').addEventListener('click', function () {
+            document.getElementById('fileImport1').click();
+        });
 
-function handleFile(event) {
+        document.getElementById('importButton2').addEventListener('click', function () {
+            document.getElementById('fileImport2').click();
+        });
+
+
+        document.getElementById('fileImport1').addEventListener('change', function (e) {
+            handleFileUpload1(e);
+        });
+
+
+        document.getElementById('fileImport2').addEventListener('change', function (e) {
+            handleFileUpload2(e);
+        });
+    });
+    function handleFileUpload1(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+
+            if (jsonData.length === 0) return;
+
+            const headerRow = jsonData[0];
+            const monthColumns = headerRow.slice(1);
+
+
+            function getMaxAndDate(values, columns) {
+                const numericValues = values.map(value => {
+                    const num = parseFloat(value.replace(/,/g, ''));
+                    return isNaN(num) ? -Infinity : num;
+                });
+
+                const maxValue = Math.max(...numericValues);
+                const maxIndex = numericValues.indexOf(maxValue);
+                const maxDate = maxIndex !== -1 ? columns[maxIndex] : '';
+
+                return { maxDate, maxValue: maxValue === -Infinity ? '' : maxValue };
+            }
+
+
+            const formattedData = jsonData.map((row, rowIndex) => {
+                if (rowIndex === 0) {
+
+                    return [...row, '1st month', 'Max. Plan 1', '2nd month', 'Max. Plan 2', '3rd month', 'Max. Plan 3'];
+                }
+
+                const values = row.slice(1);
+
+                const maxValuesAndDates = [];
+                let startIndex = 0;
+                const monthLength = 31;
+
+                for (let month = 0; month < 3; month++) {
+                    const monthValues = values.slice(startIndex, startIndex + monthLength);
+                    const { maxDate, maxValue } = getMaxAndDate(monthValues, monthColumns.slice(startIndex, startIndex + monthLength));
+                    maxValuesAndDates.push(maxDate, maxValue);
+                    startIndex += monthLength;
+                }
+
+                const rowData = [...row, ...maxValuesAndDates];
+                return rowData;
+            });
+
+            renderUpload1(formattedData, 'table_body1');
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    function renderUpload1(data, tableBodyId) {
+        const tableBody = document.getElementById(tableBodyId);
+        tableBody.innerHTML = '';
+
+        data.forEach((row, rowIndex) => {
+            const tr = document.createElement('tr');
+
+            row.forEach((cell, cellIndex) => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+
+
+                if (rowIndex === 0) {
+                    td.style.fontWeight = 'bold';
+                }
+
+                tr.appendChild(td);
+            });
+
+            tableBody.appendChild(tr);
+        });
+    }
+
+
+    function handleFileUpload2(event) {
     const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = function (e) {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        parsedData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        originalData = [...parsedData];
-
-        Swal.fire({
-            title: 'Success!',
-            text: 'File uploaded successfully! Displaying all data.',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true
-        });
-
-        displayAllData();
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+        const formattedData = formatDates(jsonData);
+        console.log('Data successfully formatted for Import 2');
+        renderUpload2(formattedData, 'table_body2');
     };
     reader.readAsArrayBuffer(file);
 }
 
-function displayAllData() {
-    const tableBody = document.getElementById('table_body');
+function renderUpload2(data, tableBodyId) {
+    const tableBody = document.getElementById(tableBodyId);
     tableBody.innerHTML = '';
 
-    if (!originalData || originalData.length === 0) return;
+    // Assuming the last three columns are calculated or static values
+    const headers = ['Total', '1st Month', 'Max. Plan 1'];
 
-    const headers = originalData[0];
-    const convertedHeaders = headers.map(header => (typeof header === 'number' ? formatHeader(header) : header));
-
-    console.log('Headers:', convertedHeaders);
-
-    
-    let firstMonthStartIndex = -1;
-    let firstMonthEndIndex = -1;
-
-    
-    const datePattern = /^\d{2}-\d{2}-\d{4}$/;
-
-    convertedHeaders.forEach((header, index) => {
-        if (datePattern.test(header)) {
-            const [day, month] = header.split('-').map(Number);
-            if (month === 8 && firstMonthStartIndex === -1) { 
-                firstMonthStartIndex = index;
-            }
-            if (month === 8) {
-                firstMonthEndIndex = index;
-            }
-        } else if (firstMonthStartIndex !== -1) {
-            return;
-        }
-    });
-
-    console.log('First Month Start Index:', firstMonthStartIndex);
-    console.log('First Month End Index:', firstMonthEndIndex);
-
-    // Create header row
-    const headerRow = document.createElement('tr');
-    convertedHeaders.forEach((header) => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        headerRow.appendChild(th);
-    });
-    headerRow.appendChild(document.createElement('th')).textContent = 'Total';
-    headerRow.appendChild(document.createElement('th')).textContent = '1st Month';
-    headerRow.appendChild(document.createElement('th')).textContent = 'Max. Plan 1'; 
-    tableBody.appendChild(headerRow);
-
-  
-    const rows = originalData.slice(1);
-    rows.forEach(row => {
+    data.forEach((row, rowIndex) => {
         const tr = document.createElement('tr');
-        row.forEach((cell, index) => {
+
+        // Calculate the total starting from column 6
+        let total = 0;
+        if (rowIndex > 0) { // Skip header row
+            for (let i = 5; i < row.length; i++) {
+                total += parseFloat(row[i]) || 0; // Sum values, ignoring non-numeric entries
+            }
+        }
+
+        // Render each cell
+        row.forEach((cell, cellIndex) => {
             const td = document.createElement('td');
             td.textContent = cell;
 
-           
-            if (index >= firstMonthStartIndex && index <= firstMonthEndIndex) {
-              
+            // Make the first row (headers) bold
+            if (rowIndex === 0) {
+                td.style.fontWeight = 'bold';
             }
 
             tr.appendChild(td);
         });
 
-    
-        const monthValues = row.slice(firstMonthStartIndex, firstMonthEndIndex + 1).map(cell => parseFloat(cell) || 0);
-        const highestValue = Math.max(...monthValues);
-        const highestIndex = monthValues.indexOf(highestValue) + firstMonthStartIndex;
-
-       
-        const values = row.slice(5).map(cell => parseFloat(cell) || 0);
-        const total = values.reduce((acc, value) => acc + value, 0);
-
-        const totalCell = document.createElement('td');
-        totalCell.textContent = total.toFixed(2);
-        totalCell.style.color = 'red';
-        tr.appendChild(totalCell);
-
-       
-        const highestCell = document.createElement('td');
-        highestCell.textContent = highestValue.toFixed(2);
-        highestCell.style.color = 'blue'; // Set to blue
-        tr.appendChild(highestCell);
-
-       
-        const maxPlanCell = document.createElement('td');
-        if (highestIndex !== -1 && highestIndex < convertedHeaders.length) {
-            maxPlanCell.textContent = convertedHeaders[highestIndex];
-            maxPlanCell.style.color = 'green';
-        }
-        tr.appendChild(maxPlanCell);
-
-        tableBody.appendChild(tr);
-    });
-}
-function displayDataInRange(dateFrom, dateTo) {
-    const tableBody = document.getElementById('table_body');
-    tableBody.innerHTML = '';
-
-    if (!originalData || originalData.length === 0) return;
-
-    const headers = originalData[0];
-    const convertedHeaders = headers.map(header => (typeof header === 'number' ? formatHeader(header) : header));
-
-    let startIndex = -1;
-    let endIndex = -1;
-    let firstMonthStartIndex = -1;
-    let firstMonthEndIndex = -1;
-
-    
-    convertedHeaders.forEach((header, index) => {
-        const headerDate = parseDateString(header);
-        if (headerDate) {
-            if (headerDate >= dateFrom && startIndex === -1) startIndex = index;
-            if (headerDate <= dateTo) endIndex = index;
-            
-          
-            if (firstMonthStartIndex === -1 && headerDate.getMonth() === dateFrom.getMonth() && headerDate.getFullYear() === dateFrom.getFullYear()) {
-                firstMonthStartIndex = index;
-            }
-            if (headerDate.getMonth() === dateTo.getMonth() && headerDate.getFullYear() === dateTo.getFullYear()) {
-                firstMonthEndIndex = index;
-            }
-        }
-    });
-
-    if (startIndex === -1 || endIndex === -1) {
-        alert('No data found for the selected date range.');
-        return;
-    }
-
-    const headerRow = document.createElement('tr');
-    convertedHeaders.slice(0, 5).forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        headerRow.appendChild(th);
-    });
-
-    convertedHeaders.slice(startIndex, endIndex + 1).forEach((header, index) => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        headerRow.appendChild(th);
-    });
-
-    headerRow.appendChild(document.createElement('th')).textContent = 'Total';
-    headerRow.appendChild(document.createElement('th')).textContent = '1st Month';
-    tableBody.appendChild(headerRow);
-
-    const rows = originalData.slice(1);
-    rows.forEach(row => {
-        const tr = document.createElement('tr');
-        row.slice(0, 5).forEach(cell => {
+        // Add the additional columns, including the calculated total
+        headers.forEach((header, headerIndex) => {
             const td = document.createElement('td');
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
 
-        const valuesInRange = row.slice(startIndex, endIndex + 1).map(cell => parseFloat(cell) || 0);
-        const total = valuesInRange.reduce((acc, value) => acc + value, 0);
-
-        row.slice(startIndex, endIndex + 1).forEach((cell, index) => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-
-          
-            if (index + startIndex >= firstMonthStartIndex && index + startIndex <= firstMonthEndIndex) {
-                td.style.color = 'blue';
+            if (rowIndex === 0) {
+                td.style.fontWeight = 'bold';
+                td.textContent = header; // Set header names for the additional columns
+            } else {
+                if (headerIndex === 0) {
+                    td.textContent = total; // Display the calculated total in the 'Total' column
+                    td.style.color = 'red'; // Set text color to red for the 'Total' column
+                } else {
+                    td.textContent = ''; // Placeholder for '1st Month' and 'Max. Plan 1' columns
+                }
             }
 
             tr.appendChild(td);
         });
-
-
-        const totalCell = document.createElement('td');
-        totalCell.textContent = total.toFixed(2);
-        totalCell.style.color = 'red';
-        tr.appendChild(totalCell);
-
-     
-        const monthValues = row.slice(firstMonthStartIndex, firstMonthEndIndex + 1).map(cell => parseFloat(cell) || 0);
-        const highestValue = Math.max(...monthValues);
-        const highestIndex = monthValues.indexOf(highestValue) + firstMonthStartIndex;
-
-        const highestCell = document.createElement('td');
-        highestCell.textContent = highestValue.toFixed(2);
-        highestCell.style.color = 'blue'; 
-        tr.appendChild(highestCell);
-
-       
-        
-        const maxPlanCell = document.createElement('td');
-        if (highestIndex !== -1 && highestIndex < convertedHeaders.length) {
-            maxPlanCell.textContent = convertedHeaders[highestIndex];
-            maxPlanCell.style.color = 'green'; 
-        }
-        tr.appendChild(maxPlanCell);
 
         tableBody.appendChild(tr);
     });
 }
 
-function formatHeader(value) {
-    if (typeof value === 'number') {
-        const date = excelDateToJSDate(value);
-        return formatDate(date);
-    }
-    return value;
-}
 
-function excelDateToJSDate(serial) {
-    const epoch = new Date(1899, 11, 30); 
-    const date = new Date(epoch.getTime() + (serial * 24 * 60 * 60 * 1000));
-    date.setDate(date.getDate() + 1);
-    return date;
-}
 
-function formatDate(date) {
-    if (date instanceof Date && !isNaN(date)) {
-        const year = date.getFullYear();
-        const month = ('0' + (date.getMonth() + 1)).slice(-2);
-        const day = ('0' + date.getDate()).slice(-2);
-        return `${day}-${month}-${year}`;
+ 
+    function formatDates(data) {
+        return data.map(row => row.map(cell => {
+         
+            if (typeof cell === 'number') {
+             
+                const date = XLSX.SSF.parse_date_code(cell);
+                if (date) {
+
+                    return `${date.month}/${date.day}/${date.year}`;
+                }
+            }
+            return cell;
+        }));
     }
-    return '';
-}
+
 
 </script>
+
 
 <?php include 'plugins/footer.php'; ?>
