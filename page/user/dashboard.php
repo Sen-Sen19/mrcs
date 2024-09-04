@@ -18,7 +18,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <button id="importButton1" class="btn btn-primary mt-3"> <i class="fas fa-upload"></i>
-                                Import Plan Total</button>
+                                Import1</button>
                             <input type="file" id="fileImport1" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
 
@@ -58,7 +58,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <button id="importButton2" class="btn btn-primary mt-3"> <i class="fas fa-upload"></i>
-                                Import Plan 3 Months</button>
+                                Import2</button>
                             <input type="file" id="fileImport2" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
                         </div>
@@ -98,112 +98,28 @@
 
 <script src="../../dist/js/xlsx.full.min.js"></script>
 <script>
+let import1Data = null; // To store data from Import 1
+let firstMonthMap = new Map(); // To map first column values to 1st month data from Import 1
 
-    document.addEventListener('DOMContentLoaded', function () {
-
-        document.getElementById('importButton1').addEventListener('click', function () {
-            document.getElementById('fileImport1').click();
-        });
-
-        document.getElementById('importButton2').addEventListener('click', function () {
-            document.getElementById('fileImport2').click();
-        });
-
-
-        document.getElementById('fileImport1').addEventListener('change', function (e) {
-            handleFileUpload1(e);
-        });
-
-
-        document.getElementById('fileImport2').addEventListener('change', function (e) {
-            handleFileUpload2(e);
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('importButton1').addEventListener('click', function () {
+        document.getElementById('fileImport1').click();
     });
-    function handleFileUpload1(event) {
-        const file = event.target.files[0];
-        if (!file) return;
 
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
+    document.getElementById('importButton2').addEventListener('click', function () {
+        document.getElementById('fileImport2').click();
+    });
 
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+    document.getElementById('fileImport1').addEventListener('change', function (e) {
+        handleFileUpload1(e);
+    });
 
-            if (jsonData.length === 0) return;
+    document.getElementById('fileImport2').addEventListener('change', function (e) {
+        handleFileUpload2(e);
+    });
+});
 
-            const headerRow = jsonData[0];
-            const monthColumns = headerRow.slice(1);
-
-
-            function getMaxAndDate(values, columns) {
-                const numericValues = values.map(value => {
-                    const num = parseFloat(value.replace(/,/g, ''));
-                    return isNaN(num) ? -Infinity : num;
-                });
-
-                const maxValue = Math.max(...numericValues);
-                const maxIndex = numericValues.indexOf(maxValue);
-                const maxDate = maxIndex !== -1 ? columns[maxIndex] : '';
-
-                return { maxDate, maxValue: maxValue === -Infinity ? '' : maxValue };
-            }
-
-
-            const formattedData = jsonData.map((row, rowIndex) => {
-                if (rowIndex === 0) {
-
-                    return [...row, '1st month', 'Max. Plan 1', '2nd month', 'Max. Plan 2', '3rd month', 'Max. Plan 3'];
-                }
-
-                const values = row.slice(1);
-
-                const maxValuesAndDates = [];
-                let startIndex = 0;
-                const monthLength = 31;
-
-                for (let month = 0; month < 3; month++) {
-                    const monthValues = values.slice(startIndex, startIndex + monthLength);
-                    const { maxDate, maxValue } = getMaxAndDate(monthValues, monthColumns.slice(startIndex, startIndex + monthLength));
-                    maxValuesAndDates.push(maxDate, maxValue);
-                    startIndex += monthLength;
-                }
-
-                const rowData = [...row, ...maxValuesAndDates];
-                return rowData;
-            });
-
-            renderUpload1(formattedData, 'table_body1');
-        };
-        reader.readAsArrayBuffer(file);
-    }
-
-    function renderUpload1(data, tableBodyId) {
-        const tableBody = document.getElementById(tableBodyId);
-        tableBody.innerHTML = '';
-
-        data.forEach((row, rowIndex) => {
-            const tr = document.createElement('tr');
-
-            row.forEach((cell, cellIndex) => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-
-
-                if (rowIndex === 0) {
-                    td.style.fontWeight = 'bold';
-                }
-
-                tr.appendChild(td);
-            });
-
-            tableBody.appendChild(tr);
-        });
-    }
-
-
-    function handleFileUpload2(event) {
+function handleFileUpload1(event) {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -213,58 +129,67 @@
         const workbook = XLSX.read(data, { type: 'array' });
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-        const formattedData = formatDates(jsonData);
-        console.log('Data successfully formatted for Import 2');
-        renderUpload2(formattedData, 'table_body2');
+
+        if (jsonData.length === 0) return;
+
+        import1Data = jsonData;
+
+        const headerRow = jsonData[0];
+        const monthColumns = headerRow.slice(1);
+
+        function getMaxAndDate(values, columns) {
+            const numericValues = values.map(value => {
+                const num = parseFloat(value.replace(/,/g, ''));
+                return isNaN(num) ? -Infinity : num;
+            });
+
+            const maxValue = Math.max(...numericValues);
+            const maxIndex = numericValues.indexOf(maxValue);
+            const maxDate = maxIndex !== -1 ? columns[maxIndex] : '';
+
+            return { maxDate, maxValue: maxValue === -Infinity ? '' : maxValue };
+        }
+
+        const formattedData = jsonData.map((row, rowIndex) => {
+            if (rowIndex === 0) {
+                return [...row, '1st month', 'Max. Plan 1', '2nd month', 'Max. Plan 2', '3rd month', 'Max. Plan 3'];
+            }
+
+            const values = row.slice(1);
+            const maxValuesAndDates = [];
+            let startIndex = 0;
+            const monthLength = 31;
+
+            for (let month = 0; month < 3; month++) {
+                const monthValues = values.slice(startIndex, startIndex + monthLength);
+                const { maxDate, maxValue } = getMaxAndDate(monthValues, monthColumns.slice(startIndex, startIndex + monthLength));
+                maxValuesAndDates.push(maxDate, maxValue);
+                startIndex += monthLength;
+            }
+
+            // Save the 1st month value in the map using the first column as the key
+            firstMonthMap.set(row[0], maxValuesAndDates[1]); // 1st month value is at index 1 in maxValuesAndDates
+            return [...row, ...maxValuesAndDates];
+        });
+
+        renderUpload1(formattedData, 'table_body1');
     };
     reader.readAsArrayBuffer(file);
 }
 
-function renderUpload2(data, tableBodyId) {
+function renderUpload1(data, tableBodyId) {
     const tableBody = document.getElementById(tableBodyId);
     tableBody.innerHTML = '';
-
-    // Assuming the last three columns are calculated or static values
-    const headers = ['Total', '1st Month', 'Max. Plan 1'];
 
     data.forEach((row, rowIndex) => {
         const tr = document.createElement('tr');
 
-        // Calculate the total starting from column 6
-        let total = 0;
-        if (rowIndex > 0) { // Skip header row
-            for (let i = 5; i < row.length; i++) {
-                total += parseFloat(row[i]) || 0; // Sum values, ignoring non-numeric entries
-            }
-        }
-
-        // Render each cell
-        row.forEach((cell, cellIndex) => {
+        row.forEach((cell) => {
             const td = document.createElement('td');
             td.textContent = cell;
 
-            // Make the first row (headers) bold
             if (rowIndex === 0) {
                 td.style.fontWeight = 'bold';
-            }
-
-            tr.appendChild(td);
-        });
-
-        // Add the additional columns, including the calculated total
-        headers.forEach((header, headerIndex) => {
-            const td = document.createElement('td');
-
-            if (rowIndex === 0) {
-                td.style.fontWeight = 'bold';
-                td.textContent = header; // Set header names for the additional columns
-            } else {
-                if (headerIndex === 0) {
-                    td.textContent = total; // Display the calculated total in the 'Total' column
-                    td.style.color = 'red'; // Set text color to red for the 'Total' column
-                } else {
-                    td.textContent = ''; // Placeholder for '1st Month' and 'Max. Plan 1' columns
-                }
             }
 
             tr.appendChild(td);
@@ -274,24 +199,64 @@ function renderUpload2(data, tableBodyId) {
     });
 }
 
+function handleFileUpload2(event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
 
- 
-    function formatDates(data) {
-        return data.map(row => row.map(cell => {
-         
-            if (typeof cell === 'number') {
-             
-                const date = XLSX.SSF.parse_date_code(cell);
-                if (date) {
+        if (jsonData.length === 0) return;
 
-                    return `${date.month}/${date.day}/${date.year}`;
-                }
+        const formattedData = jsonData.map((row, rowIndex) => {
+            if (rowIndex === 0) {
+                // Add headers for new columns
+                return [...row, 'Total', '1st Month', 'Max Plan 1'];
             }
-            return cell;
-        }));
-    }
 
+            // Calculate the sum of values from the 6th column to the end
+            const valuesToSum = row.slice(5);
+            const totalValue = valuesToSum.reduce((sum, cell) => {
+                const num = parseFloat(cell.replace(/,/g, ''));
+                return !isNaN(num) ? sum + num : sum;
+            }, 0);
+
+            // Retrieve the matching 1st month value from Import 1 using the first column as the key
+            const firstMonthValue = firstMonthMap.get(row[0]) || ''; // Get the value or use empty string if not found
+
+            return [...row, totalValue, '', firstMonthValue]; // Set the firstMonthValue in the Max Plan 1 column
+        });
+
+        renderUpload2(formattedData, 'table_body2');
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+function renderUpload2(data, tableBodyId) {
+    const tableBody = document.getElementById(tableBodyId);
+    tableBody.innerHTML = '';
+
+    data.forEach((row, rowIndex) => {
+        const tr = document.createElement('tr');
+
+        row.forEach((cell) => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+
+            if (rowIndex === 0) {
+                td.style.fontWeight = 'bold';
+            }
+
+            tr.appendChild(td);
+        });
+
+        tableBody.appendChild(tr);
+    });
+}
 
 </script>
 
