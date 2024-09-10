@@ -3,7 +3,7 @@ session_name("mrcs");
 session_start();
 
 
-include 'conn3.php';
+include 'conn.php';
 
 if (isset($_POST['Login'])) {
     $username = $_POST['username'];
