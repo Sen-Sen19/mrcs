@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
 
   <style>
     body {
-      background-image: url('dist/img/background7.png');
+      background-image: url('dist/img/background2.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -117,3 +117,4 @@ if (isset($_SESSION['username'])) {
 
 </body>
 </html>
+

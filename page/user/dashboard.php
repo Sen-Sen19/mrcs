@@ -59,11 +59,12 @@
                                         <!-- Table Body for File 1 -->
                                     </tbody>
                                 </table>
-                                
+
                             </div>
-                            <div id="dataCount1" class="data-count" style="text-align: left; padding: 10px; font-size: 16px;">
-                    Data Count: 0
-                </div>
+                            <div id="dataCount1" class="data-count"
+                                style="text-align: left; padding: 10px; font-size: 16px;">
+                                Data Count: 0
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,9 +111,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="dataCount2" class="data-count" style="text-align: left; padding: 10px; font-size: 16px;">
-                    Data Count: 0
-                </div>
+                            <div id="dataCount2" class="data-count"
+                                style="text-align: left; padding: 10px; font-size: 16px;">
+                                Data Count: 0
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,13 +157,14 @@
 
                                     </thead>
                                     <tbody id="table_body3" style="text-align: center; padding:20px;">
-                                    
+
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="dataCount3" class="data-count" style="text-align: left; padding: 10px; font-size: 16px;">
-                    Data Count: 0
-                </div>
+                            <div id="dataCount3" class="data-count"
+                                style="text-align: left; padding: 10px; font-size: 16px;">
+                                Data Count: 0
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,33 +177,25 @@
 <script>
     let import1Data = null;
     let firstMonthMap = new Map();
-
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('importButton1').addEventListener('click', function () {
             document.getElementById('fileImport1').click();
         });
-
-        document.getElementById('importButton2').addEventListener('click', function () { 
+        document.getElementById('importButton2').addEventListener('click', function () {
             document.getElementById('fileImport2').click();
         });
         document.getElementById('importButton3').addEventListener('click', function () {
             document.getElementById('fileImport3').click();
         });
-
-
-
-
         document.getElementById('fileImport1').addEventListener('change', function (e) {
             handleFileUpload1(e);
         });
-
         document.getElementById('fileImport2').addEventListener('change', function (e) {
             handleFileUpload2(e);
         });
         document.getElementById('fileImport3').addEventListener('change', function (e) {
             handleFileUpload3(e);
         });
-
         document.getElementById('exportButton1').addEventListener('click', function () {
             exportToExcel('table_body1', 'Plan_Total');
         });
@@ -210,28 +205,20 @@
         document.getElementById('exportButton3').addEventListener('click', function () {
             exportToExcel('table_body3', 'Plan_from_PC');
         });
-      
     });
-
-
     function handleFileUpload1(event) {
         const file = event.target.files[0];
         if (!file) return;
-
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
             const workbook = XLSX.read(data, { type: 'array' });
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-
             if (jsonData.length === 0) return;
-
             import1Data = jsonData;
-
             const headerRow = jsonData[0];
             const monthColumns = headerRow.slice(1);
-
             function getMaxAndDate(values, columns) {
                 const numericValues = values.map(value => {
                     const num = parseFloat(value.replace(/,/g, ''));
@@ -240,131 +227,101 @@
                 const maxValue = Math.max(...numericValues);
                 const maxIndex = numericValues.indexOf(maxValue);
                 const maxDate = maxIndex !== -1 ? columns[maxIndex] : '';
-
                 return { maxDate, maxValue: maxValue === -Infinity ? '' : maxValue };
             }
-
             const formattedData = jsonData.map((row, rowIndex) => {
                 if (rowIndex === 0) {
                     return [...row, '1st month', 'Max. Plan 1', '2nd month', 'Max. Plan 2', '3rd month', 'Max. Plan 3'];
                 }
-
                 const values = row.slice(1);
                 const maxValuesAndDates = [];
                 let startIndex = 0;
                 const monthLength = 31;
-
                 for (let month = 0; month < 3; month++) {
                     const monthValues = values.slice(startIndex, startIndex + monthLength);
                     const { maxDate, maxValue } = getMaxAndDate(monthValues, monthColumns.slice(startIndex, startIndex + monthLength));
                     maxValuesAndDates.push(maxDate, maxValue);
                     startIndex += monthLength;
                 }
-
                 firstMonthMap.set(row[0], maxValuesAndDates[0]);
                 return [...row, ...maxValuesAndDates];
             });
-
             renderUpload1(formattedData, 'table_body1');
         };
         reader.readAsArrayBuffer(file);
-        
     }
-    
-
     function renderUpload1(data, tableBodyId) {
-    const tableBody = document.getElementById(tableBodyId);
-    tableBody.innerHTML = '';
+        const tableBody = document.getElementById(tableBodyId);
+        tableBody.innerHTML = '';
+        const headerRow = data[0];
+        const firstMonthIndex = headerRow.indexOf('1st month');
+        const secondMonthIndex = headerRow.indexOf('2nd month');
+        const thirdMonthIndex = headerRow.indexOf('3rd month');
+        const maxPlan1Index = headerRow.indexOf('Max. Plan 1');
+        const maxPlan2Index = headerRow.indexOf('Max. Plan 2');
+        const maxPlan3Index = headerRow.indexOf('Max. Plan 3');
+        data.forEach((row, rowIndex) => {
+            const tr = document.createElement('tr');
+            row.forEach((cell, cellIndex) => {
+                const td = document.createElement('td');
+                td.textContent = cell;
 
-    const headerRow = data[0];
-    const firstMonthIndex = headerRow.indexOf('1st month');
-    const secondMonthIndex = headerRow.indexOf('2nd month');
-    const thirdMonthIndex = headerRow.indexOf('3rd month');
-    const maxPlan1Index = headerRow.indexOf('Max. Plan 1');
-    const maxPlan2Index = headerRow.indexOf('Max. Plan 2');
-    const maxPlan3Index = headerRow.indexOf('Max. Plan 3');
-
-    data.forEach((row, rowIndex) => {
-        const tr = document.createElement('tr');
-
-        row.forEach((cell, cellIndex) => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-
-            if (rowIndex === 0) {
-                td.style.fontWeight = 'bold';
-            } else if (cellIndex === firstMonthIndex || cellIndex === maxPlan1Index) {
-                td.style.color = 'red';
-            } else if (cellIndex === secondMonthIndex || cellIndex === maxPlan2Index) {
-                td.style.color = 'blue';
-            } else if (cellIndex === thirdMonthIndex || cellIndex === maxPlan3Index) {
-                td.style.color = 'green';
-            }
-
-            tr.appendChild(td);
+                if (rowIndex === 0) {
+                    td.style.fontWeight = 'bold';
+                } else if (cellIndex === firstMonthIndex || cellIndex === maxPlan1Index) {
+                    td.style.color = 'red';
+                } else if (cellIndex === secondMonthIndex || cellIndex === maxPlan2Index) {
+                    td.style.color = 'blue';
+                } else if (cellIndex === thirdMonthIndex || cellIndex === maxPlan3Index) {
+                    td.style.color = 'green';
+                }
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
         });
-
-        tableBody.appendChild(tr);
-    });
-
-    // Update data count
-    const dataCountElement = document.getElementById('dataCount1');
-    if (dataCountElement) {
-        dataCountElement.textContent = `Data Count: ${data.length - 1}`; // Exclude header row
+        const dataCountElement = document.getElementById('dataCount1');
+        if (dataCountElement) {
+            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
+        }
     }
-}
-
-
     function handleFileUpload2(event) {
         const file = event.target.files[0];
         if (!file) return;
-
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
             const workbook = XLSX.read(data, { type: 'array' });
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-
             if (jsonData.length === 0) return;
-
             const headerRow = jsonData[0];
-
             const formattedData = jsonData.map((row, rowIndex) => {
                 if (rowIndex === 0) {
                     return [...row, 'Total', '1st Month', 'Max Plan 1'];
                 }
-
                 const valuesToSum = row.slice(5);
                 const totalValue = valuesToSum.reduce((sum, cell) => {
                     const num = parseFloat(cell.replace(/,/g, ''));
                     return !isNaN(num) ? sum + num : sum;
                 }, 0);
-
                 const firstMonthDate = firstMonthMap.get(row[0]) || '';
                 const dateColumnIndex = headerRow.indexOf(firstMonthDate);
                 const maxPlanValue = dateColumnIndex !== -1 ? row[dateColumnIndex] || '' : '';
-
                 return [...row, totalValue, maxPlanValue, firstMonthDate];
             });
-
             renderUpload2(formattedData, 'table_body2');
         };
         reader.readAsArrayBuffer(file);
     }
-
     function renderUpload2(data, tableBodyId) {
         const tableBody = document.getElementById(tableBodyId);
         tableBody.innerHTML = '';
-
         const headerRow = data[0];
         const totalIndex = headerRow.indexOf('Total');
         const firstMonthIndex = headerRow.indexOf('1st Month');
         const maxPlan1Index = headerRow.indexOf('Max Plan 1');
-
         data.forEach((row, rowIndex) => {
             const tr = document.createElement('tr');
-
             row.forEach((cell, cellIndex) => {
                 const td = document.createElement('td');
                 td.textContent = cell;
@@ -385,110 +342,181 @@
             tableBody.appendChild(tr);
         });
         const dataCountElement = document.getElementById('dataCount2');
-    if (dataCountElement) {
-        dataCountElement.textContent = `Data Count: ${data.length - 1}`; // Exclude header row
-    }
-
-
+        if (dataCountElement) {
+            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
+        }
     }
     function handleFileUpload3(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-
-        if (jsonData.length === 0) return;
-
-        // Separate header row from data rows
-        const header = jsonData[0];
-        const dataRows = jsonData.slice(1);
-
-        // Add "Max Plan 1" column header if it does not exist
-        if (!header.includes("Max Plan 1")) {
-            header.push("Max Plan 1");
-        }
-
-        // Filter out rows where column 11 is empty
-        const filteredData = dataRows.filter(row => {
-            return row[10] !== '' && row[10] !== undefined && row[10] !== null;
-        });
-
-        // Process the data to ensure empty cells in columns starting from the 23rd are set to 0
-        const processedData = filteredData.map(row => {
-            // Update columns starting from the 23rd column (index 22)
-            for (let i = 22; i < row.length; i++) {
-                if (row[i] === '' || row[i] === undefined || row[i] === null) {
-                    row[i] = 0;
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+            if (jsonData.length === 0) return;
+            const header = jsonData[0];
+            const dataRows = jsonData.slice(1);
+            if (!header.includes("Max Plan 1")) {
+                header.push("Max Plan 1");
+            }
+            const filteredData = dataRows.filter(row => {
+                return row[10] !== '' && row[10] !== undefined && row[10] !== null;
+            });
+            const processedData = filteredData.map(row => {
+                for (let i = 22; i < row.length; i++) {
+                    if (row[i] === '' || row[i] === undefined || row[i] === null) {
+                        row[i] = 0;
+                    }
                 }
-            }
+                const maxValue = Math.max(...row.slice(22));
+                row.push(maxValue);
+                return row;
+            });
+            const combinedData = {};
+            processedData.forEach(row => {
+                const product = row[10];
+                if (!combinedData[product]) {
+                    combinedData[product] = row.slice();
+                } else {
 
-            // Calculate the maximum value in the row
-            const maxValue = Math.max(...row.slice(22)); // Only consider columns from the 23rd onwards
-            row.push(maxValue); // Add max value to the end of the row
+                    for (let i = 11; i < row.length - 1; i++) {
+                        combinedData[product][i] += row[i];
+                    }
 
-            return row;
-        });
+                    combinedData[product][row.length - 1] = Math.max(
+                        combinedData[product][row.length - 1],
+                        row[row.length - 1]
+                    );
+                }
+            });
+            const finalData = Object.values(combinedData);
+            finalData.sort((a, b) => {
 
-        // Sort data alphabetically based on column 11
-        const sortedData = processedData.sort((a, b) => {
-            // Compare based on column 11 (index 10 in zero-based index)
-            if (a[10] < b[10]) return -1;
-            if (a[10] > b[10]) return 1;
-            return 0;
-        });
-
-        // Further filter out rows where the "Max Plan 1" column (last column) is 0 or empty
-        const finalData = sortedData.filter(row => {
-            return row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null;
-        });
-
-        // Add the header row back to the beginning of the final data
-        finalData.unshift(header);
-
-        // Render the updated data
-        renderUpload3(finalData, 'table_body3');
-    };
-    reader.readAsArrayBuffer(file);
-}
-
-function renderUpload3(data, tableBodyId) {
-    const tableBody = document.getElementById(tableBodyId);
-    tableBody.innerHTML = '';
-
-    data.forEach((row, rowIndex) => {
-        const tr = document.createElement('tr');
-
-        row.forEach((cell, cellIndex) => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-
-            // Apply bold styling to header row
-            if (rowIndex === 0) {
-                td.style.fontWeight = 'bold';
-            }
-
-            // Apply red font color to "Max Plan 1" column
-            if (rowIndex > 0 && cellIndex === row.length - 1) { // Only apply to data rows, last column
-                td.style.color = 'red';
-            }
-
-            tr.appendChild(td);
-        });
-
-        tableBody.appendChild(tr);
-    });
-
-    const dataCountElement = document.getElementById('dataCount3');
-    if (dataCountElement) {
-        dataCountElement.textContent = `Data Count: ${data.length - 1}`; // Exclude header row
+                if (a[10] < b[10]) return -1;
+                if (a[10] > b[10]) return 1;
+                return 0;
+            });
+            finalData.unshift(header);
+            renderUpload3(finalData, 'table_body3');
+        };
+        reader.readAsArrayBuffer(file);
     }
-}
+    function renderUpload3(data, tableBodyId) {
+        const tableBody = document.getElementById(tableBodyId);
+        tableBody.innerHTML = '';
 
+        data.forEach((row, rowIndex) => {
+            const tr = document.createElement('tr');
+
+            row.forEach((cell, cellIndex) => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+
+                if (rowIndex === 0) {
+                    td.style.fontWeight = 'bold';
+                }
+
+                if (rowIndex > 0 && cellIndex === row.length - 1) {
+                    td.style.color = 'red';
+                }
+
+                tr.appendChild(td);
+            });
+
+            tableBody.appendChild(tr);
+        });
+
+        const dataCountElement = document.getElementById('dataCount3');
+        if (dataCountElement) {
+            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
+        }
+    }
+    function handleFileUpload3(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+            if (jsonData.length === 0) return;
+            const header = jsonData[0];
+            const dataRows = jsonData.slice(1);
+            if (!header.includes("Max Plan 1")) {
+                header.push("Max Plan 1");
+            }
+            const filteredData = dataRows.filter(row => {
+                return row[10] !== '' && row[10] !== undefined && row[10] !== null;
+            });
+            const combinedDataMap = new Map();
+            filteredData.forEach(row => {
+                const productKey = row[10];
+                if (!combinedDataMap.has(productKey)) {
+                    combinedDataMap.set(productKey, row.slice());
+                } else {
+                    const existingRow = combinedDataMap.get(productKey);
+                    for (let i = 22; i < row.length; i++) {
+                        const currentValue = parseFloat(row[i]) || 0;
+                        existingRow[i] = (parseFloat(existingRow[i]) || 0) + currentValue;
+                    }
+                }
+            });
+            const combinedData = Array.from(combinedDataMap.values());
+            const processedData = combinedData.map(row => {
+                for (let i = 22; i < row.length; i++) {
+                    if (row[i] === '' || row[i] === undefined || row[i] === null) {
+                        row[i] = 0;
+                    }
+                }
+                const maxValue = Math.max(...row.slice(22));
+                row.push(maxValue);
+                return row;
+            });
+            const sortedData = processedData.sort((a, b) => {
+
+                if (a[10] < b[10]) return -1;
+                if (a[10] > b[10]) return 1;
+                return 0;
+            });
+            const finalData = sortedData.filter(row => {
+                return row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null;
+            });
+            finalData.unshift(header);
+            renderUpload3(finalData, 'table_body3');
+        };
+        reader.readAsArrayBuffer(file);
+    }
+    function renderUpload3(data, tableBodyId) {
+        const tableBody = document.getElementById(tableBodyId);
+        tableBody.innerHTML = '';
+        data.forEach((row, rowIndex) => {
+            const tr = document.createElement('tr');
+
+            row.forEach((cell, cellIndex) => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+
+                if (rowIndex === 0) {
+                    td.style.fontWeight = 'bold';
+                }
+
+                if (rowIndex > 0 && cellIndex === row.length - 1) {
+                    td.style.color = 'red';
+                }
+
+                tr.appendChild(td);
+            });
+
+            tableBody.appendChild(tr);
+        });
+        const dataCountElement = document.getElementById('dataCount3');
+        if (dataCountElement) {
+            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
+        }
+    }
     function exportToExcel(tableBodyId, fileName) {
         const tableBody = document.getElementById(tableBodyId);
         const rows = tableBody.querySelectorAll('tr');
@@ -498,16 +526,11 @@ function renderUpload3(data, tableBodyId) {
             const rowData = Array.from(cells).map(cell => cell.textContent);
             data.push(rowData);
         });
-
         const ws = XLSX.utils.aoa_to_sheet(data);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
         XLSX.writeFile(wb, `${fileName}.xlsx`);
     }
-
 </script>
-
-
-
 <?php include 'plugins/footer.php'; ?>
