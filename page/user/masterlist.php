@@ -4,105 +4,116 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-
+            <div class="tab-content" id="excelTabContent">
+                <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <button id="importButton1" class="btn btn-primary mt-3"
+                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
+                                <i class="fas fa-upload"></i> Import CSV
+                            </button>
+                            <input type="file" id="fileImport1" class="form-control" accept=".csv"
+                                style="display: none;" />
+                            <button id="exportButton1" class="btn btn-primary mt-3"
+                                style="background-color: #525252; border-color: #525252; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;margin-top: 50px !important;">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card card-gray-dark card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Masterlist</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="accounts_table_res1" class="table-responsive"
+                                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                                <table id="header_table1"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover">
+                                    <tbody id="table_body1" style="text-align: center; padding:20px;">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="dataCount1" class="data-count"
+                                style="text-align: left; padding: 10px; font-size: 16px;">
+                                Data Count: 0
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <section class="content">
-        <div class="col-sm-12">
-            <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-primary w-100" style="height: 31px; font-size: 14px; background-color:#F0D018 ;border-color: #F0D018; color:black;"> <i
-                                class="fas fa-file-import"></i>&nbsp; &nbsp;import</button>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-primary w-100" style="height: 31px; font-size: 14px;background-color:#525252 ;border-color: #525252;"> <i
-                                class="fas fa-file-export"></i>&nbsp; &nbsp;export</button>
-                    </div> 
-                </div>
-                <div
-                    style="background-color: #fffff; height: 5px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                </div>
-                <div style="background-color: #fffff; padding: 10px; border-radius: 0 0 10px 10px;">
-                    <h3 style="text-align: left; margin-top: 0px;">Shot Count Table</h3>
-                    <div id="accounts_table_res" class="table-responsive"
-                        style="height: 55vh; overflow: auto; display: inline-block; margin-top: 20px; border-top: 1px solid gray; background-color: white; padding: 15px; border-radius: 10px;">
-                        <table id="header_table" class="table table-sm table-head-fixed text-nowrap table-hover">
-                            <thead style="text-align: center;">
-                                <div class="row" style="margin-bottom: 20px;">
-
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Product No."
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Car Model Line No."
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Line No."
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-primary w-100"
-                                            style="height: 31px; font-size: 14px;"> <i
-                                                class="fas fa-search mr-2"></i>Search</button>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-danger w-100"
-                                            style="height: 31px; font-size: 14px;"> <i
-                                                class="fas fa-trash mr-2"></i>Delete</button>
-                                    </div>
-                                </div>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Product Number</th>
-                                    <th>Car Maker</th>
-                                    <th>Line No</th>
-                                    <th>Initial Secondary Process</th>
-                                    <th>Final Process</th>
-                                    <th>Poly Size</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table_body" style="text-align: center; padding:20px;">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="d-flex justify-content-sm-center mt-3">
-                        <button type="button" class="btn bg-gray-dark" id="btnLoadMore">Load more</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
+
 <script>
-    fetch('../../process/view_data.php')
+ document.getElementById('importButton1').addEventListener('click', function () {
+    document.getElementById('fileImport1').click();
+});
+
+document.getElementById('fileImport1').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const text = e.target.result;
+            const rows = text.split('\n').map(row => row.split(','));
+
+            // Remove the header row and send the data to the server
+            const data = rows.slice(1);
+            if (data.length > 0) {
+                saveToDatabase(data);
+            } else {
+                alert('No data found in the selected file.');
+            }
+        };
+        reader.onerror = function () {
+            alert('Error reading file. Please try again.');
+        };
+        reader.readAsText(file);
+    } else {
+        alert('Please select a file.');
+    }
+});
+
+function saveToDatabase(data) {
+    showLoadingIndicator(true); // Show loading
+    fetch('../../process/import_masterlist.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: data })
+    })
         .then(response => response.json())
-        .then(data => {
-            const tbody = document.getElementById('table_body');
-            tbody.innerHTML = '';
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-        <td>${row.ID}</td>
-          <td>${row.Product_No}</td>
-          <td>${row.Car_Maker}</td>
-          <td>${row.Line_No}</td>
-          <td>${row.Initial_Secondary_Process}</td>
-          <td>${row.Final_Process}</td>
-          <td>${row.Poly_Size}</td>
-        `;
-                tbody.appendChild(tr);
-            });
+        .then(result => {
+            alert(result.message);
+            // Refresh the data count or table if necessary
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error saving data. Please try again.');
+        })
+        .finally(() => {
+            showLoadingIndicator(false); // Hide loading
+        });
+}
+
+function showLoadingIndicator(show) {
+    // Implement this function to show/hide a loading spinner
+    if (show) {
+        // Display loading spinner
+    } else {
+        // Hide loading spinner
+    }
+}
 </script>
+
 <?php include 'plugins/footer.php'; ?>

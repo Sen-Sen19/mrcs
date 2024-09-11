@@ -325,7 +325,6 @@
             row.forEach((cell, cellIndex) => {
                 const td = document.createElement('td');
                 td.textContent = cell;
-
                 if (rowIndex === 0) {
                     td.style.fontWeight = 'bold';
                 } else if (cellIndex === totalIndex) {
