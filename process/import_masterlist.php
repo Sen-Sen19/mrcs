@@ -32,6 +32,7 @@ if (isset($data['data']) && !empty($data['data'])) {
         $circuit_qty = isset($row[7]) ? trim($row[7]) : '';
         $trd_nwpa_0_13= isset($row[8]) ? trim($row[8]) : '';
 
+        
         // Debugging: log values to check data extraction
         error_log("Base Product: $base_product");
         error_log("Car Model: $car_model");
