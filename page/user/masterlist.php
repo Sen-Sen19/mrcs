@@ -1,7 +1,23 @@
 <?php include 'plugins/navbar.php'; ?>
 <?php include 'plugins/sidebar/user_bar.php'; ?>
-
+<style>
+    #loadingSpinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1050;
+        /* Ensure it appears above other content */
+    }
+</style>
 <div class="content-wrapper">
+    <div id="loadingSpinner"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <img src="../../dist/img/1490.gif" alt="Loading..." style="width: 50px; height: 50px;">
+    </div>
+
+
+
     <div class="content-header">
         <div class="container-fluid">
             <div class="tab-content" id="excelTabContent">
@@ -14,6 +30,22 @@
                             </button>
                             <input type="file" id="fileImport1" class="form-control" accept=".csv"
                                 style="display: none;" />
+                            <button id="importButton2" class="btn btn-primary mt-3"
+                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
+                                <i class="fas fa-upload"></i> Unique Process
+                            </button>
+                            <input type="file" id="fileImport2" class="form-control" accept=".csv"
+                                style="display: none;" />
+                            <button id="importButton3" class="btn btn-primary mt-3"
+                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
+                                <i class="fas fa-upload"></i> Non-Machine Process
+                            </button>
+                            <input type="file" id="fileImport3" class="form-control" accept=".csv"
+                                style="display: none;" />
+
+
+
+
                             <button id="exportButton1" class="btn btn-primary mt-3"
                                 style="background-color: #525252; border-color: #525252; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;margin-top: 50px !important;">
                                 <i class="fas fa-download"></i> Export
@@ -52,68 +84,113 @@
         </div>
     </div>
 </div>
-
 <script>
- document.getElementById('importButton1').addEventListener('click', function () {
-    document.getElementById('fileImport1').click();
-});
+    document.getElementById('importButton1').addEventListener('click', function () {
+        document.getElementById('fileImport1').click();
+    });
 
-document.getElementById('fileImport1').addEventListener('change', function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const text = e.target.result;
-            const rows = text.split('\n').map(row => row.split(','));
+    document.getElementById('fileImport1').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('loadingSpinner').style.display = 'block'; // Show GIF
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const text = e.target.result;
+                const rows = text.split('\n').map(row => row.split(','));
 
-            // Remove the header row and send the data to the server
-            const data = rows.slice(1);
-            if (data.length > 0) {
-                saveToDatabase(data);
-            } else {
-                alert('No data found in the selected file.');
-            }
-        };
-        reader.onerror = function () {
-            alert('Error reading file. Please try again.');
-        };
-        reader.readAsText(file);
-    } else {
-        alert('Please select a file.');
-    }
-});
+                // Remove the header row and send the data to the server
+                const data = rows.slice(1);
+                if (data.length > 0) {
+                    saveFirstProcess(data);
+                } else {
+                    alert('No data found in the selected file.');
+                    document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+                }
+            };
+            reader.onerror = function () {
+                alert('Error reading file. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Please select a file.');
+        }
+    });
 
-function saveToDatabase(data) {
-    showLoadingIndicator(true); // Show loading
-    fetch('../../process/import_masterlist.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ data: data })
-    })
-        .then(response => response.json())
-        .then(result => {
-            alert(result.message);
-            // Refresh the data count or table if necessary
+    function saveFirstProcess(data) {
+        fetch('../../process/i_first_process.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: data })
         })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error saving data. Please try again.');
-        })
-        .finally(() => {
-            showLoadingIndicator(false); // Hide loading
-        });
-}
-
-function showLoadingIndicator(show) {
-    // Implement this function to show/hide a loading spinner
-    if (show) {
-        // Display loading spinner
-    } else {
-        // Hide loading spinner
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                // Refresh the data count or table if necessary
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving data. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            });
     }
-}
+
+    document.getElementById('importButton2').addEventListener('click', function () {
+        document.getElementById('fileImport2').click();
+    });
+
+    document.getElementById('fileImport2').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('loadingSpinner').style.display = 'block'; // Show GIF
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const text = e.target.result;
+                const rows = text.split('\n').map(row => row.split(','));
+
+                // Remove the header row and send the data to the server
+                const data = rows.slice(1);
+                if (data.length > 0) {
+                    saveUniqueProcess(data);
+                } else {
+                    alert('No data found in the selected file.');
+                    document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+                }
+            };
+            reader.onerror = function () {
+                alert('Error reading file. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Please select a file.');
+        }
+    });
+
+    function saveUniqueProcess(data) {
+        fetch('../../process/i_unique_process.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: data })
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                // Refresh the data count or table if necessary
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving data. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none'; // Hide GIF
+            });
+    }
+
 </script>
 
 <?php include 'plugins/footer.php'; ?>
