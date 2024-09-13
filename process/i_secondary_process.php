@@ -59,14 +59,51 @@ if (isset($data['data']) && !empty($data['data'])) {
         $twisting_primary_aluminum_wires_l_less_than_4500mm = isset($row[33]) ? trim($row[33]) : '';
         $twisting_primary_aluminum_wires_l_less_than_6000mm = isset($row[34]) ? trim($row[34]) : '';
         
+        $twisting_secondary_aluminum_wires_l_less_than_1500mm  = isset($row[35]) ? trim($row[35]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_3000mm = isset($row[36]) ? trim($row[36]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_4500mm = isset($row[37]) ? trim($row[37]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_6000mm = isset($row[38]) ? trim($row[38]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_7500mm = isset($row[39]) ? trim($row[39]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_9000mm = isset($row[40]) ? trim($row[40]) : '';
+        $manual_crimping_2tons_normal_single_crimp = isset($row[41]) ? trim($row[41]) : '';
+        $manual_crimping_2tons_normal_double_crimp = isset($row[42]) ? trim($row[42]) : '';
+        $manual_crimping_2tons_double_crimp_twisted = isset($row[43]) ? trim($row[43]) : '';
+        $manual_crimping_2tons_la_terminal = isset($row[44]) ? trim($row[44]) : '';
+        $manual_crimping_2tons_double_crimp_la_terminal = isset($row[45]) ? trim($row[45]) : '';
+        $manual_crimping_2tons_w_gomusen = isset($row[46]) ? trim($row[46]) : '';
+        $manual_crimping_4tons_double_crimp_twisted = isset($row[47]) ? trim($row[47]) : '';
+        $manual_crimping_4tons_normal_single_crimp = isset($row[48]) ? trim($row[48]) : '';
+        $manual_crimping_4tons_normal_double_crimp = isset($row[49]) ? trim($row[49]) : '';
+        $manual_crimping_4tons_la_terminal = isset($row[50]) ? trim($row[50]) : '';
+        $manual_crimping_4tons_double_crimp_la_terminal = isset($row[51]) ? trim($row[51]) : '';
+        $manual_crimping_4tons_w_gomusen = isset($row[52]) ? trim($row[52]) : '';
+        $manual_crimping_5tons = isset($row[53]) ? trim($row[53]) : '';
+        $intermediate_butt_welding_except_0_13_electrode_1 = isset($row[54]) ? trim($row[54]) : '';
+        $intermediate_butt_welding_except_0_13_electrode_2 = isset($row[55]) ? trim($row[55]) : '';
+        $intermediate_butt_welding_except_0_13_electrode_3 = isset($row[56]) ? trim($row[56]) : '';
+        $intermediate_butt_welding_except_0_13_electrode_4 = isset($row[57]) ? trim($row[57]) : '';
+        $intermediate_butt_welding_except_0_13_electrode_5 = isset($row[58]) ? trim($row[58]) : '';
+        $welding_at_head_except_0_13_electrode_1 = isset($row[59]) ? trim($row[59]) : '';
+        $welding_at_head_except_0_13_electrode_2 = isset($row[60]) ? trim($row[60]) : '';
+        $welding_at_head_except_0_13_electrode_3 = isset($row[61]) ? trim($row[61]) : '';
+        $welding_at_head_except_0_13_electrode_4 = isset($row[62]) ? trim($row[62]) : '';
+        $welding_at_head_except_0_13_electrode_5 = isset($row[63]) ? trim($row[63]) : '';
+        $intermediate_butt_welding_0_13_electrode_1 = isset($row[64]) ? trim($row[64]) : '';
+        $welding_at_head_0_13_electrode_1 = isset($row[65]) ? trim($row[65]) : '';
+        $intermediate_butt_welding_0_13_electrode_2 = isset($row[66]) ? trim($row[66]) : '';
+        $welding_at_head_0_13_electrode_2 = isset($row[67]) ? trim($row[67]) : '';
+        
         
 
         $sql = "
 MERGE secondary_process AS target
 USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-               ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-               ?, ?, ?, ?, ?))
+               ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?, ?, ?, ?))
 AS source (
     base_product, car_model, product, car_code, block, class, line_no, 
     circuit_qty, joint_crimping_2tons_ps_800_s_2, joint_crimping_2tons_ps_200_m_2, 
@@ -82,7 +119,39 @@ AS source (
     twisting_secondary_normal_wires_l_less_than_6000mm, twisting_secondary_normal_wires_l_less_than_7500mm,
     twisting_secondary_normal_wires_l_less_than_9000mm, twisting_primary_aluminum_wires_l_less_than_1500mm,
     twisting_primary_aluminum_wires_l_less_than_3000mm, twisting_primary_aluminum_wires_l_less_than_4500mm,
-    twisting_primary_aluminum_wires_l_less_than_6000mm
+    twisting_primary_aluminum_wires_l_less_than_6000mm, twisting_secondary_aluminum_wires_l_less_than_1500mm,
+twisting_secondary_aluminum_wires_l_less_than_3000mm,
+twisting_secondary_aluminum_wires_l_less_than_4500mm,
+twisting_secondary_aluminum_wires_l_less_than_6000mm,
+twisting_secondary_aluminum_wires_l_less_than_7500mm,
+twisting_secondary_aluminum_wires_l_less_than_9000mm,
+manual_crimping_2tons_normal_single_crimp,
+manual_crimping_2tons_normal_double_crimp,
+manual_crimping_2tons_double_crimp_twisted,
+manual_crimping_2tons_la_terminal,
+manual_crimping_2tons_double_crimp_la_terminal,
+manual_crimping_2tons_w_gomusen,
+manual_crimping_4tons_double_crimp_twisted,
+manual_crimping_4tons_normal_single_crimp,
+manual_crimping_4tons_normal_double_crimp,
+manual_crimping_4tons_la_terminal,
+manual_crimping_4tons_double_crimp_la_terminal,
+manual_crimping_4tons_w_gomusen,
+manual_crimping_5tons,
+intermediate_butt_welding_except_0_13_electrode_1,
+intermediate_butt_welding_except_0_13_electrode_2,
+intermediate_butt_welding_except_0_13_electrode_3,
+intermediate_butt_welding_except_0_13_electrode_4,
+intermediate_butt_welding_except_0_13_electrode_5,
+welding_at_head_except_0_13_electrode_1,
+welding_at_head_except_0_13_electrode_2,
+welding_at_head_except_0_13_electrode_3,
+welding_at_head_except_0_13_electrode_4,
+welding_at_head_except_0_13_electrode_5,
+intermediate_butt_welding_0_13_electrode_1,
+welding_at_head_0_13_electrode_1,
+intermediate_butt_welding_0_13_electrode_2,
+welding_at_head_0_13_electrode_2
 )
 ON target.car_model = source.car_model 
    AND target.product = source.product 
@@ -121,7 +190,42 @@ WHEN MATCHED THEN
         target.twisting_primary_aluminum_wires_l_less_than_1500mm = source.twisting_primary_aluminum_wires_l_less_than_1500mm,
         target.twisting_primary_aluminum_wires_l_less_than_3000mm = source.twisting_primary_aluminum_wires_l_less_than_3000mm,
         target.twisting_primary_aluminum_wires_l_less_than_4500mm = source.twisting_primary_aluminum_wires_l_less_than_4500mm,
-        target.twisting_primary_aluminum_wires_l_less_than_6000mm = source.twisting_primary_aluminum_wires_l_less_than_6000mm
+        target.twisting_primary_aluminum_wires_l_less_than_6000mm = source.twisting_primary_aluminum_wires_l_less_than_6000mm,
+
+        target.twisting_secondary_aluminum_wires_l_less_than_1500mm = source.twisting_secondary_aluminum_wires_l_less_than_1500mm,
+target.twisting_secondary_aluminum_wires_l_less_than_3000mm = source.twisting_secondary_aluminum_wires_l_less_than_3000mm,
+target.twisting_secondary_aluminum_wires_l_less_than_4500mm = source.twisting_secondary_aluminum_wires_l_less_than_4500mm,
+target.twisting_secondary_aluminum_wires_l_less_than_6000mm = source.twisting_secondary_aluminum_wires_l_less_than_6000mm,
+target.twisting_secondary_aluminum_wires_l_less_than_7500mm = source.twisting_secondary_aluminum_wires_l_less_than_7500mm,
+target.twisting_secondary_aluminum_wires_l_less_than_9000mm = source.twisting_secondary_aluminum_wires_l_less_than_9000mm,
+target.manual_crimping_2tons_normal_single_crimp = source.manual_crimping_2tons_normal_single_crimp,
+target.manual_crimping_2tons_normal_double_crimp = source.manual_crimping_2tons_normal_double_crimp,
+target.manual_crimping_2tons_double_crimp_twisted = source.manual_crimping_2tons_double_crimp_twisted,
+target.manual_crimping_2tons_la_terminal = source.manual_crimping_2tons_la_terminal,
+target.manual_crimping_2tons_double_crimp_la_terminal = source.manual_crimping_2tons_double_crimp_la_terminal,
+target.manual_crimping_2tons_w_gomusen = source.manual_crimping_2tons_w_gomusen,
+target.manual_crimping_4tons_double_crimp_twisted = source.manual_crimping_4tons_double_crimp_twisted,
+target.manual_crimping_4tons_normal_single_crimp = source.manual_crimping_4tons_normal_single_crimp,
+target.manual_crimping_4tons_normal_double_crimp = source.manual_crimping_4tons_normal_double_crimp,
+target.manual_crimping_4tons_la_terminal = source.manual_crimping_4tons_la_terminal,
+target.manual_crimping_4tons_double_crimp_la_terminal = source.manual_crimping_4tons_double_crimp_la_terminal,
+target.manual_crimping_4tons_w_gomusen = source.manual_crimping_4tons_w_gomusen,
+target.manual_crimping_5tons = source.manual_crimping_5tons,
+target.intermediate_butt_welding_except_0_13_electrode_1 = source.intermediate_butt_welding_except_0_13_electrode_1,
+target.intermediate_butt_welding_except_0_13_electrode_2 = source.intermediate_butt_welding_except_0_13_electrode_2,
+target.intermediate_butt_welding_except_0_13_electrode_3 = source.intermediate_butt_welding_except_0_13_electrode_3,
+target.intermediate_butt_welding_except_0_13_electrode_4 = source.intermediate_butt_welding_except_0_13_electrode_4,
+target.intermediate_butt_welding_except_0_13_electrode_5 = source.intermediate_butt_welding_except_0_13_electrode_5,
+target.welding_at_head_except_0_13_electrode_1 = source.welding_at_head_except_0_13_electrode_1,
+target.welding_at_head_except_0_13_electrode_2 = source.welding_at_head_except_0_13_electrode_2,
+target.welding_at_head_except_0_13_electrode_3 = source.welding_at_head_except_0_13_electrode_3,
+target.welding_at_head_except_0_13_electrode_4 = source.welding_at_head_except_0_13_electrode_4,
+target.welding_at_head_except_0_13_electrode_5 = source.welding_at_head_except_0_13_electrode_5,
+target.intermediate_butt_welding_0_13_electrode_1 = source.intermediate_butt_welding_0_13_electrode_1,
+target.welding_at_head_0_13_electrode_1 = source.welding_at_head_0_13_electrode_1,
+target.intermediate_butt_welding_0_13_electrode_2 = source.intermediate_butt_welding_0_13_electrode_2,
+target.welding_at_head_0_13_electrode_2 = source.welding_at_head_0_13_electrode_2
+
          
 
 WHEN NOT MATCHED THEN
@@ -139,7 +243,46 @@ WHEN NOT MATCHED THEN
     twisting_secondary_normal_wires_l_less_than_6000mm, twisting_secondary_normal_wires_l_less_than_7500mm,
     twisting_secondary_normal_wires_l_less_than_9000mm, twisting_primary_aluminum_wires_l_less_than_1500mm,
     twisting_primary_aluminum_wires_l_less_than_3000mm, twisting_primary_aluminum_wires_l_less_than_4500mm,
-    twisting_primary_aluminum_wires_l_less_than_6000mm)
+    twisting_primary_aluminum_wires_l_less_than_6000mm,
+    twisting_secondary_aluminum_wires_l_less_than_1500mm,
+twisting_secondary_aluminum_wires_l_less_than_3000mm,
+twisting_secondary_aluminum_wires_l_less_than_4500mm,
+twisting_secondary_aluminum_wires_l_less_than_6000mm,
+twisting_secondary_aluminum_wires_l_less_than_7500mm,
+twisting_secondary_aluminum_wires_l_less_than_9000mm,
+manual_crimping_2tons_normal_single_crimp,
+manual_crimping_2tons_normal_double_crimp,
+manual_crimping_2tons_double_crimp_twisted,
+manual_crimping_2tons_la_terminal,
+manual_crimping_2tons_double_crimp_la_terminal,
+manual_crimping_2tons_w_gomusen,
+manual_crimping_4tons_double_crimp_twisted,
+manual_crimping_4tons_normal_single_crimp,
+manual_crimping_4tons_normal_double_crimp,
+manual_crimping_4tons_la_terminal,
+manual_crimping_4tons_double_crimp_la_terminal,
+manual_crimping_4tons_w_gomusen,
+manual_crimping_5tons,
+intermediate_butt_welding_except_0_13_electrode_1,
+intermediate_butt_welding_except_0_13_electrode_2,
+intermediate_butt_welding_except_0_13_electrode_3,
+intermediate_butt_welding_except_0_13_electrode_4,
+intermediate_butt_welding_except_0_13_electrode_5,
+welding_at_head_except_0_13_electrode_1,
+welding_at_head_except_0_13_electrode_2,
+welding_at_head_except_0_13_electrode_3,
+welding_at_head_except_0_13_electrode_4,
+welding_at_head_except_0_13_electrode_5,
+intermediate_butt_welding_0_13_electrode_1,
+welding_at_head_0_13_electrode_1,
+intermediate_butt_welding_0_13_electrode_2,
+welding_at_head_0_13_electrode_2
+)
+
+
+
+
+
     VALUES (base_product, car_model, product, car_code, block, class, line_no, 
             circuit_qty, joint_crimping_2tons_ps_800_s_2, joint_crimping_2tons_ps_200_m_2, 
             joint_crimping_2tons_ps_017_ss_2, joint_crimping_2tons_ps_126_sst2, 
@@ -154,7 +297,40 @@ WHEN NOT MATCHED THEN
     twisting_secondary_normal_wires_l_less_than_6000mm, twisting_secondary_normal_wires_l_less_than_7500mm,
     twisting_secondary_normal_wires_l_less_than_9000mm, twisting_primary_aluminum_wires_l_less_than_1500mm,
     twisting_primary_aluminum_wires_l_less_than_3000mm, twisting_primary_aluminum_wires_l_less_than_4500mm,
-    twisting_primary_aluminum_wires_l_less_than_6000mm);
+    twisting_primary_aluminum_wires_l_less_than_6000mm,
+    twisting_secondary_aluminum_wires_l_less_than_1500mm,
+twisting_secondary_aluminum_wires_l_less_than_3000mm,
+twisting_secondary_aluminum_wires_l_less_than_4500mm,
+twisting_secondary_aluminum_wires_l_less_than_6000mm,
+twisting_secondary_aluminum_wires_l_less_than_7500mm,
+twisting_secondary_aluminum_wires_l_less_than_9000mm,
+manual_crimping_2tons_normal_single_crimp,
+manual_crimping_2tons_normal_double_crimp,
+manual_crimping_2tons_double_crimp_twisted,
+manual_crimping_2tons_la_terminal,
+manual_crimping_2tons_double_crimp_la_terminal,
+manual_crimping_2tons_w_gomusen,
+manual_crimping_4tons_double_crimp_twisted,
+manual_crimping_4tons_normal_single_crimp,
+manual_crimping_4tons_normal_double_crimp,
+manual_crimping_4tons_la_terminal,
+manual_crimping_4tons_double_crimp_la_terminal,
+manual_crimping_4tons_w_gomusen,
+manual_crimping_5tons,
+intermediate_butt_welding_except_0_13_electrode_1,
+intermediate_butt_welding_except_0_13_electrode_2,
+intermediate_butt_welding_except_0_13_electrode_3,
+intermediate_butt_welding_except_0_13_electrode_4,
+intermediate_butt_welding_except_0_13_electrode_5,
+welding_at_head_except_0_13_electrode_1,
+welding_at_head_except_0_13_electrode_2,
+welding_at_head_except_0_13_electrode_3,
+welding_at_head_except_0_13_electrode_4,
+welding_at_head_except_0_13_electrode_5,
+intermediate_butt_welding_0_13_electrode_1,
+welding_at_head_0_13_electrode_1,
+intermediate_butt_welding_0_13_electrode_2,
+welding_at_head_0_13_electrode_2);
 ";
 
 $params = [
@@ -173,7 +349,42 @@ $params = [
     $twisting_secondary_normal_wires_l_less_than_6000mm, $twisting_secondary_normal_wires_l_less_than_7500mm,
     $twisting_secondary_normal_wires_l_less_than_9000mm, $twisting_primary_aluminum_wires_l_less_than_1500mm,
     $twisting_primary_aluminum_wires_l_less_than_3000mm, $twisting_primary_aluminum_wires_l_less_than_4500mm,
-    $twisting_primary_aluminum_wires_l_less_than_6000mm
+    $twisting_primary_aluminum_wires_l_less_than_6000mm,
+    $twisting_secondary_aluminum_wires_l_less_than_1500mm,
+    $twisting_secondary_aluminum_wires_l_less_than_3000mm,
+    $twisting_secondary_aluminum_wires_l_less_than_4500mm,
+    $twisting_secondary_aluminum_wires_l_less_than_6000mm,
+    $twisting_secondary_aluminum_wires_l_less_than_7500mm,
+    $twisting_secondary_aluminum_wires_l_less_than_9000mm,
+    $manual_crimping_2tons_normal_single_crimp,
+    $manual_crimping_2tons_normal_double_crimp,
+    $manual_crimping_2tons_double_crimp_twisted,
+    $manual_crimping_2tons_la_terminal,
+    $manual_crimping_2tons_double_crimp_la_terminal,
+    $manual_crimping_2tons_w_gomusen,
+    $manual_crimping_4tons_double_crimp_twisted,
+    $manual_crimping_4tons_normal_single_crimp,
+    $manual_crimping_4tons_normal_double_crimp,
+    $manual_crimping_4tons_la_terminal,
+    $manual_crimping_4tons_double_crimp_la_terminal,
+    $manual_crimping_4tons_w_gomusen,
+    $manual_crimping_5tons,
+    $intermediate_butt_welding_except_0_13_electrode_1,
+    $intermediate_butt_welding_except_0_13_electrode_2,
+    $intermediate_butt_welding_except_0_13_electrode_3,
+    $intermediate_butt_welding_except_0_13_electrode_4,
+    $intermediate_butt_welding_except_0_13_electrode_5,
+    $welding_at_head_except_0_13_electrode_1,
+    $welding_at_head_except_0_13_electrode_2,
+    $welding_at_head_except_0_13_electrode_3,
+    $welding_at_head_except_0_13_electrode_4,
+    $welding_at_head_except_0_13_electrode_5,
+    $intermediate_butt_welding_0_13_electrode_1,
+    $welding_at_head_0_13_electrode_1,
+    $intermediate_butt_welding_0_13_electrode_2,
+    $welding_at_head_0_13_electrode_2
+    
+    
 ];
 
 $stmt = sqlsrv_query($conn, $sql, $params);
