@@ -70,10 +70,10 @@ if (isset($data['data']) && !empty($data['data'])) {
         $uv_iii_7 = isset($row[44]) ? trim($row[44]) : '';
         $uv_iii_8 = isset($row[45]) ? trim($row[45]) : '';
         $drainwire_tip = isset($row[46]) ? trim($row[46]) : '';
-        $arc_welding = isset($row[47]) ? trim($row[47]) : ''; // Corrected index
-        $c373a_yamaha = isset($row[48]) ? trim($row[48]) : ''; // Corrected index
-        $cocripper = isset($row[49]) ? trim($row[49]) : ''; // Corrected index
-        $quickstripping = isset($row[50]) ? trim($row[50]) : ''; // Corrected index
+        $arc_welding = isset($row[47]) ? trim($row[47]) : ''; 
+        $c373a_yamaha = isset($row[48]) ? trim($row[48]) : ''; 
+        $cocripper = isset($row[49]) ? trim($row[49]) : ''; 
+        $quickstripping = isset($row[50]) ? trim($row[50]) : ''; 
 
         $sql = "
         MERGE unique_process AS target
@@ -93,7 +93,7 @@ if (isset($data['data']) && !empty($data['data'])) {
                 target.joint_crimping_20tons_ps_115_2_3l_2 = source.joint_crimping_20tons_ps_115_2_3l_2,
                 target.ultrasonic_welding = source.ultrasonic_welding,
                 target.servo_press_crimping = source.servo_press_crimping,
-                               target.low_viscosity = source.low_viscosity,
+                target.low_viscosity = source.low_viscosity,
                 target.air_water_leak_test = source.air_water_leak_test,
                 target.heatshrink_low_viscosity = source.heatshrink_low_viscosity,
                 target.stmac_shieldwire_j12 = source.stmac_shieldwire_j12,
