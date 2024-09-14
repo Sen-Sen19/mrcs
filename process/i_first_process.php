@@ -22,7 +22,6 @@ if (isset($data['data']) && !empty($data['data'])) {
     });
 
     foreach ($rows as $row) {
-
         $base_product = isset($row[0]) ? trim($row[0]) : '';
         $car_model = isset($row[1]) ? trim($row[1]) : '';
         $product = isset($row[2]) ? trim($row[2]) : '';

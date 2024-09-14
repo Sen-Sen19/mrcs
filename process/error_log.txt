@@ -1,0 +1,13 @@
+Array
+(
+    [0] => Array
+        (
+            [0] => 22007
+            [SQLSTATE] => 22007
+            [1] => 241
+            [code] => 241
+            [2] => [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Conversion failed when converting date and/or time from character string.
+            [message] => [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Conversion failed when converting date and/or time from character string.
+        )
+
+)

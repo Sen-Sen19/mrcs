@@ -148,7 +148,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body">
+                     
+
                             <div id="accounts_table_res2" class="table-responsive"
                                 style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
                                 <table id="header_table2"
@@ -161,6 +162,12 @@
                                     </tbody>
                                 </table>
                             </div>
+                             <div class="card-body">
+    <div id="loading" style="display: none; text-align: center; margin-bottom: 20px;">
+        <img src="../../dist/img/1490.gif" alt="Loading..." style="max-width: 100px;">
+        <p style="margin-top: 10px; font-weight: bold;">Importing to the database. Please do not reload the page.</p>
+    </div>
+</div>
                             <div id="dataCount3" class="data-count"
                                 style="text-align: left; padding: 10px; font-size: 16px;">
                                 Data Count: 0
@@ -345,149 +352,147 @@
             dataCountElement.textContent = `Data Count: ${data.length - 1}`;
         }
     }
+  
     function handleFileUpload3(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-            if (jsonData.length === 0) return;
-            const header = jsonData[0];
-            const dataRows = jsonData.slice(1);
-            if (!header.includes("Max Plan 1")) {
-                header.push("Max Plan 1");
-            }
-            const filteredData = dataRows.filter(row => {
-                return row[10] !== '' && row[10] !== undefined && row[10] !== null;
-            });
-            const processedData = filteredData.map(row => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Show the loading GIF
+    document.getElementById('loading').style.display = 'block';
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+
+        if (jsonData.length === 0) {
+            document.getElementById('loading').style.display = 'none'; // Hide loading GIF
+            return;
+        }
+
+        const header = jsonData[0];
+        const dataRows = jsonData.slice(1);
+
+        if (!header.includes("Max Plan 1")) {
+            header.push("Max Plan 1");
+        }
+
+        const filteredData = dataRows.filter(row => row[10] !== '' && row[10] !== undefined && row[10] !== null);
+        const combinedDataMap = new Map();
+        filteredData.forEach(row => {
+            const productKey = row[10];
+            if (!combinedDataMap.has(productKey)) {
+                combinedDataMap.set(productKey, row.slice());
+            } else {
+                const existingRow = combinedDataMap.get(productKey);
                 for (let i = 22; i < row.length; i++) {
-                    if (row[i] === '' || row[i] === undefined || row[i] === null) {
-                        row[i] = 0;
-                    }
+                    const currentValue = parseFloat(row[i]) || 0;
+                    existingRow[i] = (parseFloat(existingRow[i]) || 0) + currentValue;
                 }
-                const maxValue = Math.max(...row.slice(22));
-                row.push(maxValue);
-                return row;
-            });
-            const combinedData = {};
-            processedData.forEach(row => {
-                const product = row[10];
-                if (!combinedData[product]) {
-                    combinedData[product] = row.slice();
-                } else {
-
-                    for (let i = 11; i < row.length - 1; i++) {
-                        combinedData[product][i] += row[i];
-                    }
-
-                    combinedData[product][row.length - 1] = Math.max(
-                        combinedData[product][row.length - 1],
-                        row[row.length - 1]
-                    );
-                }
-            });
-            const finalData = Object.values(combinedData);
-            finalData.sort((a, b) => {
-
-                if (a[10] < b[10]) return -1;
-                if (a[10] > b[10]) return 1;
-                return 0;
-            });
-            finalData.unshift(header);
-            renderUpload3(finalData, 'table_body3');
-        };
-        reader.readAsArrayBuffer(file);
-    }
-    function renderUpload3(data, tableBodyId) {
-        const tableBody = document.getElementById(tableBodyId);
-        tableBody.innerHTML = '';
-
-        data.forEach((row, rowIndex) => {
-            const tr = document.createElement('tr');
-
-            row.forEach((cell, cellIndex) => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-
-                if (rowIndex === 0) {
-                    td.style.fontWeight = 'bold';
-                }
-
-                if (rowIndex > 0 && cellIndex === row.length - 1) {
-                    td.style.color = 'red';
-                }
-
-                tr.appendChild(td);
-            });
-
-            tableBody.appendChild(tr);
+            }
         });
 
-        const dataCountElement = document.getElementById('dataCount3');
-        if (dataCountElement) {
-            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
-        }
-    }
-    function handleFileUpload3(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-            if (jsonData.length === 0) return;
-            const header = jsonData[0];
-            const dataRows = jsonData.slice(1);
-            if (!header.includes("Max Plan 1")) {
-                header.push("Max Plan 1");
+        const combinedData = Array.from(combinedDataMap.values());
+        const processedData = combinedData.map(row => {
+            for (let i = 22; i < row.length; i++) {
+                if (row[i] === '' || row[i] === undefined || row[i] === null) {
+                    row[i] = 0;
+                }
             }
-            const filteredData = dataRows.filter(row => {
-                return row[10] !== '' && row[10] !== undefined && row[10] !== null;
-            });
-            const combinedDataMap = new Map();
-            filteredData.forEach(row => {
-                const productKey = row[10];
-                if (!combinedDataMap.has(productKey)) {
-                    combinedDataMap.set(productKey, row.slice());
-                } else {
-                    const existingRow = combinedDataMap.get(productKey);
-                    for (let i = 22; i < row.length; i++) {
-                        const currentValue = parseFloat(row[i]) || 0;
-                        existingRow[i] = (parseFloat(existingRow[i]) || 0) + currentValue;
-                    }
-                }
-            });
-            const combinedData = Array.from(combinedDataMap.values());
-            const processedData = combinedData.map(row => {
-                for (let i = 22; i < row.length; i++) {
-                    if (row[i] === '' || row[i] === undefined || row[i] === null) {
-                        row[i] = 0;
-                    }
-                }
-                const maxValue = Math.max(...row.slice(22));
-                row.push(maxValue);
-                return row;
-            });
-            const sortedData = processedData.sort((a, b) => {
+            const maxValue = Math.max(...row.slice(22));
+            row.push(maxValue);
+            return row;
+        });
 
-                if (a[10] < b[10]) return -1;
-                if (a[10] > b[10]) return 1;
-                return 0;
+        const sortedData = processedData.sort((a, b) => {
+            if (a[10] < b[10]) return -1;
+            if (a[10] > b[10]) return 1;
+            return 0;
+        });
+
+        const finalData = sortedData.filter(row => row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null);
+        finalData.unshift(header);
+        renderUpload3(finalData, 'table_body3');
+
+        // Prepare data for saving
+        const dataToSave = [];
+        const dates = header.slice(22); // Dynamic dates
+
+        for (let i = 1; i < finalData.length; i++) {
+            const row = finalData[i];
+            const baseProduct = row[10];
+            const maxPlan = row[row.length - 1]; // Max Plan value
+
+            dates.forEach((date, index) => {
+                const value = parseFloat(row[22 + index]) || 0;
+                if (value !== 0 || maxPlan !== 0) {
+                    dataToSave.push({
+                        base_product: baseProduct,
+                        date: date,
+                        value: value,
+                        max_plan: maxPlan
+                    });
+                }
             });
-            const finalData = sortedData.filter(row => {
-                return row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null;
-            });
-            finalData.unshift(header);
-            renderUpload3(finalData, 'table_body3');
-        };
-        reader.readAsArrayBuffer(file);
+        }
+
+        console.log('Data to save:', dataToSave); // Debugging: Check data to be sent
+
+        // Send the data to the server
+        fetch('../../process/save_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSave)
+        })
+        .then(response => response.text())
+        .then(result => {
+            console.log('Server response:', result); // Handle success
+        })
+        .catch(error => {
+            console.error('Error:', error); // Handle error
+        })
+        .finally(() => {
+            // Hide the loading GIF after data is rendered
+            document.getElementById('loading').style.display = 'none';
+        });
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+
+function renderUpload3(data, tableBodyId) {
+    const tableBody = document.getElementById(tableBodyId);
+    tableBody.innerHTML = '';
+    data.forEach((row, rowIndex) => {
+        const tr = document.createElement('tr');
+
+        row.forEach((cell, cellIndex) => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+
+            if (rowIndex === 0) {
+                td.style.fontWeight = 'bold';
+            }
+
+            if (rowIndex > 0 && cellIndex === row.length - 1) {
+                td.style.color = 'red';
+            }
+
+            tr.appendChild(td);
+        });
+
+        tableBody.appendChild(tr);
+    });
+    const dataCountElement = document.getElementById('dataCount3');
+    if (dataCountElement) {
+        dataCountElement.textContent = `Data Count: ${data.length - 1}`;
     }
+}
+
     function renderUpload3(data, tableBodyId) {
         const tableBody = document.getElementById(tableBodyId);
         tableBody.innerHTML = '';

@@ -29,7 +29,7 @@ if (isset($data['data']) && !empty($data['data'])) {
         $car_code = isset($row[3]) ? trim($row[3]) : '';
         $block = isset($row[4]) ? trim($row[4]) : '';
         $class = isset($row[5]) ? trim($row[5]) : '';
-        $line_no = isset($row[6]) ? trim($row[6]) : '';
+        $line_no = isset($row[6]) ? trim($row[6])  : '';
         $circuit_qty = isset($row[7]) ? trim($row[7]) : '';
         $joint_crimping_2tons_ps_800_s_2 = isset($row[8]) ? trim($row[8]) : '';
         $joint_crimping_2tons_ps_200_m_2 = isset($row[9]) ? trim($row[9]) : '';
@@ -58,8 +58,7 @@ if (isset($data['data']) && !empty($data['data'])) {
         $twisting_primary_aluminum_wires_l_less_than_3000mm = isset($row[32]) ? trim($row[32]) : '';
         $twisting_primary_aluminum_wires_l_less_than_4500mm = isset($row[33]) ? trim($row[33]) : '';
         $twisting_primary_aluminum_wires_l_less_than_6000mm = isset($row[34]) ? trim($row[34]) : '';
-        
-        $twisting_secondary_aluminum_wires_l_less_than_1500mm  = isset($row[35]) ? trim($row[35]) : '';
+        $twisting_secondary_aluminum_wires_l_less_than_1500mm = isset($row[35]) ? trim($row[35]) : '';
         $twisting_secondary_aluminum_wires_l_less_than_3000mm = isset($row[36]) ? trim($row[36]) : '';
         $twisting_secondary_aluminum_wires_l_less_than_4500mm = isset($row[37]) ? trim($row[37]) : '';
         $twisting_secondary_aluminum_wires_l_less_than_6000mm = isset($row[38]) ? trim($row[38]) : '';
@@ -92,8 +91,8 @@ if (isset($data['data']) && !empty($data['data'])) {
         $welding_at_head_0_13_electrode_1 = isset($row[65]) ? trim($row[65]) : '';
         $intermediate_butt_welding_0_13_electrode_2 = isset($row[66]) ? trim($row[66]) : '';
         $welding_at_head_0_13_electrode_2 = isset($row[67]) ? trim($row[67]) : '';
-        
-        
+
+
 
         $sql = "
 MERGE secondary_process AS target
@@ -333,67 +332,86 @@ intermediate_butt_welding_0_13_electrode_2,
 welding_at_head_0_13_electrode_2);
 ";
 
-$params = [
-    $base_product, $car_model, $product, $car_code, $block, $class, $line_no, 
-    $circuit_qty, $joint_crimping_2tons_ps_800_s_2, $joint_crimping_2tons_ps_200_m_2, 
-    $joint_crimping_2tons_ps_017_ss_2, $joint_crimping_2tons_ps_126_sst2, 
-    $joint_crimping_4tons_ps_700_l_2, $joint_crimping_5tons_ps_150_ll, 
-    $manual_crimping_shieldwire_2t, $manual_crimping_shieldwire_4t, 
-    $joint_crimping_2tons_ps_800_s_2_sw, $joint_crimping_2tons_ps_126_sst2_sw, 
-    $joint_crimping_2tons_ps_017_ss_2_sw, $twisting_primary_normal_wires_l_less_than_1500mm,
-    $twisting_primary_normal_wires_l_less_than_3000mm, $twisting_primary_normal_wires_l_less_than_4500mm,
-    $twisting_primary_normal_wires_l_less_than_6000mm, $twisting_primary_normal_wires_l_less_than_7500mm,
-    $twisting_primary_normal_wires_l_less_than_9000mm,
-    $twisting_secondary_normal_wires_l_less_than_1500mm,
-    $twisting_secondary_normal_wires_l_less_than_3000mm, $twisting_secondary_normal_wires_l_less_than_4500mm,
-    $twisting_secondary_normal_wires_l_less_than_6000mm, $twisting_secondary_normal_wires_l_less_than_7500mm,
-    $twisting_secondary_normal_wires_l_less_than_9000mm, $twisting_primary_aluminum_wires_l_less_than_1500mm,
-    $twisting_primary_aluminum_wires_l_less_than_3000mm, $twisting_primary_aluminum_wires_l_less_than_4500mm,
-    $twisting_primary_aluminum_wires_l_less_than_6000mm,
-    $twisting_secondary_aluminum_wires_l_less_than_1500mm,
-    $twisting_secondary_aluminum_wires_l_less_than_3000mm,
-    $twisting_secondary_aluminum_wires_l_less_than_4500mm,
-    $twisting_secondary_aluminum_wires_l_less_than_6000mm,
-    $twisting_secondary_aluminum_wires_l_less_than_7500mm,
-    $twisting_secondary_aluminum_wires_l_less_than_9000mm,
-    $manual_crimping_2tons_normal_single_crimp,
-    $manual_crimping_2tons_normal_double_crimp,
-    $manual_crimping_2tons_double_crimp_twisted,
-    $manual_crimping_2tons_la_terminal,
-    $manual_crimping_2tons_double_crimp_la_terminal,
-    $manual_crimping_2tons_w_gomusen,
-    $manual_crimping_4tons_double_crimp_twisted,
-    $manual_crimping_4tons_normal_single_crimp,
-    $manual_crimping_4tons_normal_double_crimp,
-    $manual_crimping_4tons_la_terminal,
-    $manual_crimping_4tons_double_crimp_la_terminal,
-    $manual_crimping_4tons_w_gomusen,
-    $manual_crimping_5tons,
-    $intermediate_butt_welding_except_0_13_electrode_1,
-    $intermediate_butt_welding_except_0_13_electrode_2,
-    $intermediate_butt_welding_except_0_13_electrode_3,
-    $intermediate_butt_welding_except_0_13_electrode_4,
-    $intermediate_butt_welding_except_0_13_electrode_5,
-    $welding_at_head_except_0_13_electrode_1,
-    $welding_at_head_except_0_13_electrode_2,
-    $welding_at_head_except_0_13_electrode_3,
-    $welding_at_head_except_0_13_electrode_4,
-    $welding_at_head_except_0_13_electrode_5,
-    $intermediate_butt_welding_0_13_electrode_1,
-    $welding_at_head_0_13_electrode_1,
-    $intermediate_butt_welding_0_13_electrode_2,
-    $welding_at_head_0_13_electrode_2
-    
-    
-];
+        $params = [
+            $base_product,
+            $car_model,
+            $product,
+            $car_code,
+            $block,
+            $class,
+            $line_no,
+            $circuit_qty,
+            $joint_crimping_2tons_ps_800_s_2,
+            $joint_crimping_2tons_ps_200_m_2,
+            $joint_crimping_2tons_ps_017_ss_2,
+            $joint_crimping_2tons_ps_126_sst2,
+            $joint_crimping_4tons_ps_700_l_2,
+            $joint_crimping_5tons_ps_150_ll,
+            $manual_crimping_shieldwire_2t,
+            $manual_crimping_shieldwire_4t,
+            $joint_crimping_2tons_ps_800_s_2_sw,
+            $joint_crimping_2tons_ps_126_sst2_sw,
+            $joint_crimping_2tons_ps_017_ss_2_sw,
+            $twisting_primary_normal_wires_l_less_than_1500mm,
+            $twisting_primary_normal_wires_l_less_than_3000mm,
+            $twisting_primary_normal_wires_l_less_than_4500mm,
+            $twisting_primary_normal_wires_l_less_than_6000mm,
+            $twisting_primary_normal_wires_l_less_than_7500mm,
+            $twisting_primary_normal_wires_l_less_than_9000mm,
+            $twisting_secondary_normal_wires_l_less_than_1500mm,
+            $twisting_secondary_normal_wires_l_less_than_3000mm,
+            $twisting_secondary_normal_wires_l_less_than_4500mm,
+            $twisting_secondary_normal_wires_l_less_than_6000mm,
+            $twisting_secondary_normal_wires_l_less_than_7500mm,
+            $twisting_secondary_normal_wires_l_less_than_9000mm,
+            $twisting_primary_aluminum_wires_l_less_than_1500mm,
+            $twisting_primary_aluminum_wires_l_less_than_3000mm,
+            $twisting_primary_aluminum_wires_l_less_than_4500mm,
+            $twisting_primary_aluminum_wires_l_less_than_6000mm,
+            $twisting_secondary_aluminum_wires_l_less_than_1500mm,
+            $twisting_secondary_aluminum_wires_l_less_than_3000mm,
+            $twisting_secondary_aluminum_wires_l_less_than_4500mm,
+            $twisting_secondary_aluminum_wires_l_less_than_6000mm,
+            $twisting_secondary_aluminum_wires_l_less_than_7500mm,
+            $twisting_secondary_aluminum_wires_l_less_than_9000mm,
+            $manual_crimping_2tons_normal_single_crimp,
+            $manual_crimping_2tons_normal_double_crimp,
+            $manual_crimping_2tons_double_crimp_twisted,
+            $manual_crimping_2tons_la_terminal,
+            $manual_crimping_2tons_double_crimp_la_terminal,
+            $manual_crimping_2tons_w_gomusen,
+            $manual_crimping_4tons_double_crimp_twisted,
+            $manual_crimping_4tons_normal_single_crimp,
+            $manual_crimping_4tons_normal_double_crimp,
+            $manual_crimping_4tons_la_terminal,
+            $manual_crimping_4tons_double_crimp_la_terminal,
+            $manual_crimping_4tons_w_gomusen,
+            $manual_crimping_5tons,
+            $intermediate_butt_welding_except_0_13_electrode_1,
+            $intermediate_butt_welding_except_0_13_electrode_2,
+            $intermediate_butt_welding_except_0_13_electrode_3,
+            $intermediate_butt_welding_except_0_13_electrode_4,
+            $intermediate_butt_welding_except_0_13_electrode_5,
+            $welding_at_head_except_0_13_electrode_1,
+            $welding_at_head_except_0_13_electrode_2,
+            $welding_at_head_except_0_13_electrode_3,
+            $welding_at_head_except_0_13_electrode_4,
+            $welding_at_head_except_0_13_electrode_5,
+            $intermediate_butt_welding_0_13_electrode_1,
+            $welding_at_head_0_13_electrode_1,
+            $intermediate_butt_welding_0_13_electrode_2,
+            $welding_at_head_0_13_electrode_2
 
-$stmt = sqlsrv_query($conn, $sql, $params);
 
-if ($stmt === false) {
-    $errors[] = 'Error executing query: ' . print_r(sqlsrv_errors(), true);
-} else {
-    $processedCount++;
-}
+        ];
+
+        $stmt = sqlsrv_query($conn, $sql, $params);
+
+        if ($stmt === false) {
+            $errors[] = 'Error executing query: ' . print_r(sqlsrv_errors(), true);
+        } else {
+            $processedCount++;
+        }
 
     }
 

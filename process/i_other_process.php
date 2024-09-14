@@ -54,33 +54,33 @@ if (isset($data['data']) && !empty($data['data'])) {
         $heat_shrink_welding = isset($row[28]) ? trim($row[28]) : '';
         $casting_c385_shieldwire = isset($row[29]) ? trim($row[29]) : '';
         $quick_stripping_927_auto = isset($row[30]) ? trim($row[30]) : '';
-$mira_quick_stripping = isset($row[31]) ? trim($row[31]) : '';
-$quick_stripping_311_manual = isset($row[32]) ? trim($row[32]) : '';
-$manual_heat_shrink_blower_sumitube = isset($row[33]) ? trim($row[33]) : '';
-$manual_taping_dispenser_sw = isset($row[34]) ? trim($row[34]) : '';
-$heat_shrink_joint_crimping_sw = isset($row[35]) ? trim($row[35]) : '';
-$casting_c373 = isset($row[36]) ? trim($row[36]) : '';
-$casting_c377 = isset($row[37]) ? trim($row[37]) : '';
-$casting_c371 = isset($row[38]) ? trim($row[38]) : '';
-$manual_heat_shrink_blower_battery = isset($row[39]) ? trim($row[39]) : '';
-$casting_c373_normal = isset($row[40]) ? trim($row[40]) : '';
-$casting_c371_normal = isset($row[41]) ? trim($row[41]) : '';
-$manual_2tons_bending = isset($row[42]) ? trim($row[42]) : '';
-$manual_5tons_battery = isset($row[43]) ? trim($row[43]) : '';
-$al_looping = isset($row[44]) ? trim($row[44]) : '';
-$soldering = isset($row[45]) ? trim($row[45]) : '';
-$waterproof_agent_injection = isset($row[46]) ? trim($row[46]) : '';
-$thermosetting = isset($row[47]) ? trim($row[47]) : '';
-$completion = isset($row[48]) ? trim($row[48]) : '';
-$picking_looping = isset($row[49]) ? trim($row[49]) : '';
-$welding_end = isset($row[50]) ? trim($row[50]) : '';
-$intermediate_welding = isset($row[51]) ? trim($row[51]) : '';
-$sam_set_a_b = isset($row[52]) ? trim($row[52]) : '';
-$sam_set_normal = isset($row[53]) ? trim($row[53]) : '';
-$total_circuit = isset($row[54]) ? trim($row[54]) : '';
-$new_airbag = isset($row[55]) ? trim($row[55]) : '';
+        $mira_quick_stripping = isset($row[31]) ? trim($row[31]) : '';
+        $quick_stripping_311_manual = isset($row[32]) ? trim($row[32]) : '';
+        $manual_heat_shrink_blower_sumitube = isset($row[33]) ? trim($row[33]) : '';
+        $manual_taping_dispenser_sw = isset($row[34]) ? trim($row[34]) : '';
+        $heat_shrink_joint_crimping_sw = isset($row[35]) ? trim($row[35]) : '';
+        $casting_c373 = isset($row[36]) ? trim($row[36]) : '';
+        $casting_c377 = isset($row[37]) ? trim($row[37]) : '';
+        $casting_c371 = isset($row[38]) ? trim($row[38]) : '';
+        $manual_heat_shrink_blower_battery = isset($row[39]) ? trim($row[39]) : '';
+        $casting_c373_normal = isset($row[40]) ? trim($row[40]) : '';
+        $casting_c371_normal = isset($row[41]) ? trim($row[41]) : '';
+        $manual_2tons_bending = isset($row[42]) ? trim($row[42]) : '';
+        $manual_5tons_battery = isset($row[43]) ? trim($row[43]) : '';
+        $al_looping = isset($row[44]) ? trim($row[44]) : '';
+        $soldering = isset($row[45]) ? trim($row[45]) : '';
+        $waterproof_agent_injection = isset($row[46]) ? trim($row[46]) : '';
+        $thermosetting = isset($row[47]) ? trim($row[47]) : '';
+        $completion = isset($row[48]) ? trim($row[48]) : '';
+        $picking_looping = isset($row[49]) ? trim($row[49]) : '';
+        $welding_end = isset($row[50]) ? trim($row[50]) : '';
+        $intermediate_welding = isset($row[51]) ? trim($row[51]) : '';
+        $sam_set_a_b = isset($row[52]) ? trim($row[52]) : '';
+        $sam_set_normal = isset($row[53]) ? trim($row[53]) : '';
+        $total_circuit = isset($row[54]) ? trim($row[54]) : '';
+        $new_airbag = isset($row[55]) ? trim($row[55]) : '';
 
-        
+
         $sql = "
         MERGE other_process AS target
         USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
@@ -96,31 +96,31 @@ $new_airbag = isset($row[55]) ? trim($row[55]) : '';
             intermediate_stripping_kb10, manual_taping_dispenser_8_0_5_0_8_0_8_0_ps_115_2_chfus_0_22_civus_0_22,
             joint_taping_11mm_ps_150_ll_2, joint_taping_12mm_ps_700_l_2_ps_200_m_2, 
             joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2,heat_shrink_joint_crimping, heat_shrink_la_terminal, manual_crimping_2tons_nsc_weld,intermediate_stripping_kb10_nsc_weld,joint_crimping_2tons_ps_017_ss_2_nsc_weld,joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2_nsc_weld,silicon_injection,welding_taping_13mm,heat_shrink_welding,casting_c385_shieldwire,quick_stripping_927_auto,
-mira_quick_stripping,
-quick_stripping_311_manual,
-manual_heat_shrink_blower_sumitube,
-manual_taping_dispenser_sw,
-heat_shrink_joint_crimping_sw,
-casting_c373,
-casting_c377,
-casting_c371,
-manual_heat_shrink_blower_battery,
-casting_c373_normal,
-casting_c371_normal,
-manual_2tons_bending,
-manual_5tons_battery,
-al_looping,
-soldering,
-waterproof_agent_injection,
-thermosetting,
-completion,
-picking_looping,
-welding_end,
-intermediate_welding,
-sam_set_a_b,
-sam_set_normal,
-total_circuit,
-new_airbag
+            mira_quick_stripping,
+            quick_stripping_311_manual,
+            manual_heat_shrink_blower_sumitube,
+            manual_taping_dispenser_sw,
+            heat_shrink_joint_crimping_sw,
+            casting_c373,
+            casting_c377,
+            casting_c371,
+            manual_heat_shrink_blower_battery,
+            casting_c373_normal,
+            casting_c371_normal,
+            manual_2tons_bending,
+            manual_5tons_battery,
+            al_looping,
+            soldering,
+            waterproof_agent_injection,
+            thermosetting,
+            completion,
+            picking_looping,
+            welding_end,
+            intermediate_welding,
+            sam_set_a_b,
+            sam_set_normal,
+            total_circuit,
+            new_airbag
 )
         ON target.car_model = source.car_model 
            AND target.product = source.product 
@@ -155,31 +155,31 @@ new_airbag
                 target.heat_shrink_welding = source.heat_shrink_welding,
                 target.casting_c385_shieldwire = source.casting_c385_shieldwire,
                 target.quick_stripping_927_auto = source.quick_stripping_927_auto,
-target.mira_quick_stripping = source.mira_quick_stripping,
-target.quick_stripping_311_manual = source.quick_stripping_311_manual,
-target.manual_heat_shrink_blower_sumitube = source.manual_heat_shrink_blower_sumitube,
-target.manual_taping_dispenser_sw = source.manual_taping_dispenser_sw,
-target.heat_shrink_joint_crimping_sw = source.heat_shrink_joint_crimping_sw,
-target.casting_c373 = source.casting_c373,
-target.casting_c377 = source.casting_c377,
-target.casting_c371 = source.casting_c371,
-target.manual_heat_shrink_blower_battery = source.manual_heat_shrink_blower_battery,
-target.casting_c373_normal = source.casting_c373_normal,
-target.casting_c371_normal = source.casting_c371_normal,
-target.manual_2tons_bending = source.manual_2tons_bending,
-target.manual_5tons_battery = source.manual_5tons_battery,
-target.al_looping = source.al_looping,
-target.soldering = source.soldering,
-target.waterproof_agent_injection = source.waterproof_agent_injection,
-target.thermosetting = source.thermosetting,
-target.completion = source.completion,
-target.picking_looping = source.picking_looping,
-target.welding_end = source.welding_end,
-target.intermediate_welding = source.intermediate_welding,
-target.sam_set_a_b = source.sam_set_a_b,
-target.sam_set_normal = source.sam_set_normal,
-target.total_circuit = source.total_circuit,
-target.new_airbag = source.new_airbag
+                target.mira_quick_stripping = source.mira_quick_stripping,
+                target.quick_stripping_311_manual = source.quick_stripping_311_manual,
+                target.manual_heat_shrink_blower_sumitube = source.manual_heat_shrink_blower_sumitube,
+                target.manual_taping_dispenser_sw = source.manual_taping_dispenser_sw,
+                target.heat_shrink_joint_crimping_sw = source.heat_shrink_joint_crimping_sw,
+                target.casting_c373 = source.casting_c373,
+                target.casting_c377 = source.casting_c377,
+                target.casting_c371 = source.casting_c371,
+                target.manual_heat_shrink_blower_battery = source.manual_heat_shrink_blower_battery,
+                target.casting_c373_normal = source.casting_c373_normal,
+                target.casting_c371_normal = source.casting_c371_normal,
+                target.manual_2tons_bending = source.manual_2tons_bending,
+                target.manual_5tons_battery = source.manual_5tons_battery,
+                target.al_looping = source.al_looping,
+                target.soldering = source.soldering,
+                target.waterproof_agent_injection = source.waterproof_agent_injection,
+                target.thermosetting = source.thermosetting,
+                target.completion = source.completion,
+                target.picking_looping = source.picking_looping,
+                target.welding_end = source.welding_end,
+                target.intermediate_welding = source.intermediate_welding,
+                target.sam_set_a_b = source.sam_set_a_b,
+                target.sam_set_normal = source.sam_set_normal,
+                target.total_circuit = source.total_circuit,
+                target.new_airbag = source.new_airbag
 
 
 
@@ -222,35 +222,35 @@ new_airbag)
                 source.joint_taping_11mm_ps_150_ll_2, source.joint_taping_12mm_ps_700_l_2_ps_200_m_2, 
                 source.joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2,heat_shrink_joint_crimping, heat_shrink_la_terminal, manual_crimping_2tons_nsc_weld,intermediate_stripping_kb10_nsc_weld,joint_crimping_2tons_ps_017_ss_2_nsc_weld,joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2_nsc_weld,silicon_injection,welding_taping_13mm,heat_shrink_welding,casting_c385_shieldwire,
                 source.quick_stripping_927_auto,
-source.mira_quick_stripping,
-source.quick_stripping_311_manual,
-source.manual_heat_shrink_blower_sumitube,
-source.manual_taping_dispenser_sw,
-source.heat_shrink_joint_crimping_sw,
-source.casting_c373,
-source.casting_c377,
-source.casting_c371,
-source.manual_heat_shrink_blower_battery,
-source.casting_c373_normal,
-source.casting_c371_normal,
-source.manual_2tons_bending,
-source.manual_5tons_battery,
-source.al_looping,
-source.soldering,
-source.waterproof_agent_injection,
-source.thermosetting,
-source.completion,
-source.picking_looping,
-source.welding_end,
-source.intermediate_welding,
-source.sam_set_a_b,
-source.sam_set_normal,
-source.total_circuit,
-source.new_airbag
+                source.mira_quick_stripping,
+                source.quick_stripping_311_manual,
+                source.manual_heat_shrink_blower_sumitube,
+                source.manual_taping_dispenser_sw,
+                source.heat_shrink_joint_crimping_sw,
+                source.casting_c373,
+                source.casting_c377,
+                source.casting_c371,
+                source.manual_heat_shrink_blower_battery,
+                source.casting_c373_normal,
+                source.casting_c371_normal,
+                source.manual_2tons_bending,
+                source.manual_5tons_battery,
+                source.al_looping,
+                source.soldering,
+                source.waterproof_agent_injection,
+                source.thermosetting,
+                source.completion,
+                source.picking_looping,
+                source.welding_end,
+                source.intermediate_welding,
+                source.sam_set_a_b,
+                source.sam_set_normal,
+                source.total_circuit,
+                source.new_airbag
 
 );
         ";
-        
+
         $params = [
             $base_product,
             $car_model,
@@ -283,41 +283,41 @@ source.new_airbag
             $heat_shrink_welding,
             $casting_c385_shieldwire,
             $quick_stripping_927_auto,
-$mira_quick_stripping,
-$quick_stripping_311_manual,
-$manual_heat_shrink_blower_sumitube,
-$manual_taping_dispenser_sw,
-$heat_shrink_joint_crimping_sw,
-$casting_c373,
-$casting_c377,
-$casting_c371,
-$manual_heat_shrink_blower_battery,
-$casting_c373_normal,
-$casting_c371_normal,
-$manual_2tons_bending,
-$manual_5tons_battery,
-$al_looping,
-$soldering,
-$waterproof_agent_injection,
-$thermosetting,
-$completion,
-$picking_looping,
-$welding_end,
-$intermediate_welding,
-$sam_set_a_b,
-$sam_set_normal,
-$total_circuit,
-$new_airbag
+            $mira_quick_stripping,
+            $quick_stripping_311_manual,
+            $manual_heat_shrink_blower_sumitube,
+            $manual_taping_dispenser_sw,
+            $heat_shrink_joint_crimping_sw,
+            $casting_c373,
+            $casting_c377,
+            $casting_c371,
+            $manual_heat_shrink_blower_battery,
+            $casting_c373_normal,
+            $casting_c371_normal,
+            $manual_2tons_bending,
+            $manual_5tons_battery,
+            $al_looping,
+            $soldering,
+            $waterproof_agent_injection,
+            $thermosetting,
+            $completion,
+            $picking_looping,
+            $welding_end,
+            $intermediate_welding,
+            $sam_set_a_b,
+            $sam_set_normal,
+            $total_circuit,
+            $new_airbag
 
         ];
-        
+
         $stmt = sqlsrv_query($conn, $sql, $params);
         if ($stmt === false) {
             $errors[] = 'Error executing statement: ' . print_r(sqlsrv_errors(), true);
         } else {
             $processedCount++;
         }
-        
+
     }
 
     if (empty($errors)) {
@@ -333,4 +333,3 @@ $new_airbag
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
-

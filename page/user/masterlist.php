@@ -61,6 +61,14 @@
                             <input type="file" id="fileImport5" class="form-control" accept=".csv"
                                 style="display: none;" />
 
+                                 <!--Secondary Process Button -->
+                            <button id="importButton6" class="btn btn-primary mt-3"
+                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
+                                <i class="fas fa-upload"></i> Update
+                            </button>
+                            <input type="file" id="fileImport6" class="form-control" accept=".csv"
+                                style="display: none;" />
+
                             <!-- Export Button -->
                             <button id="exportButton1" class="btn btn-primary mt-3"
                                 style="background-color: #525252; border-color: #525252; color: white; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
@@ -350,6 +358,59 @@
 
     function saveOtherProcess(data) {
         fetch('../../process/i_other_process.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: data })
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                document.getElementById('loadingSpinner').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving data. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none';
+            });
+    }
+
+     // ------------------------------- Update masterlist process --------------------------------------
+     document.getElementById('importButton6').addEventListener('click', function () {
+        document.getElementById('fileImport6').click();
+    });
+
+    document.getElementById('fileImport6').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const text = e.target.result;
+                const rows = text.split('\n').map(row => row.split(','));
+
+
+                const data = rows.slice(1);
+                if (data.length > 0) {
+                    saveMasterlist(data);
+                } else {
+                    alert('No data found in the selected file.');
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                }
+            };
+            reader.onerror = function () {
+                alert('Error reading file. Please try again.');
+                document.getElementById('loadingSpinner').style.display = 'none';
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Please select a file.');
+        }
+    });
+
+    function saveMasterlist(data) {
+        fetch('../../process/i_masterlist.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
