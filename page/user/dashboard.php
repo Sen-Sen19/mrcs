@@ -164,8 +164,8 @@
                             </div>
                              <div class="card-body">
     <div id="loading" style="display: none; text-align: center; margin-bottom: 20px;">
-        <img src="../../dist/img/1490.gif" alt="Loading..." style="max-width: 100px;">
-        <p style="margin-top: 10px; font-weight: bold;">Importing to the database. Please do not reload the page.</p>
+        <img src="../../dist/img/6.gif" alt="Loading..." style="max-width: 100px;">
+        <p style="margin-top: 10px;">Importing to the database. Please do not reload the page.</p>
     </div>
 </div>
                             <div id="dataCount3" class="data-count"
