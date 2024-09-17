@@ -17,8 +17,105 @@
 
     <div class="content-header">
         <div class="container-fluid">
+            <!-- Tab Navigation -->
+            <ul class="nav nav-tabs" id="excelTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="file1-tab" data-toggle="tab" href="#file1" role="tab"
+                        aria-controls="file1" aria-selected="true"style="width:200px; margin-bottom:70px;">Masterlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="newTab-tab" data-toggle="tab" href="#newTab" role="tab"
+                        aria-controls="newTab" aria-selected="false" style="width:200px;">Update</a>
+                </li>
+            </ul>
+
             <div class="tab-content" id="excelTabContent">
+                <!-- File 1 Tab Pane (now empty) -->
+                
+
+
+
+
+
+
                 <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
+    <div class="card card-gray-dark card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Masterlist</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Loading Indicator -->
+            
+            <!-- Table Container -->
+            <div id="accounts_table_res1" class="table-responsive"
+                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                <table id="header_table1" class="table table-sm table-head-fixed text-nowrap table-hover">
+                    <thead style="text-align: center;">
+                        <tr>
+                            <!-- Table Headers -->
+                            <th>Base Product</th>
+                            <th>Car Model</th>
+                            <th>Product</th>
+                            <th>Car Code</th>
+                            <th>Block</th>
+                            <th>Class</th>
+                            <th>Line No</th>
+                            <th>Circuit Qty</th>
+                            <th>2</th>
+                            <th>Circuit Qty</th>
+                            <th>TRD NWPA 0 13</th>
+
+
+ 
+
+                        </tr>
+                        
+                    </thead>
+                    <tbody id="table_body1" style="text-align: center; padding:20px;">
+                        <!-- Table Body for File 1 -->
+                    </tbody>
+                    
+                </table>
+                <div id="loading" class="text-center" style="display: none;">
+                <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                <p>Loading data, please wait...</p>
+            </div>
+            </div>
+            <div id="dataCount1" class="data-count"
+                style="text-align: left; padding: 10px; font-size: 16px;">
+                Data Count: 0
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- New Tab Pane (moved content here) -->
+                <div class="tab-pane fade" id="newTab" role="tabpanel" aria-labelledby="newTab-tab">
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <!-- First Process Button -->
@@ -45,7 +142,7 @@
                             <input type="file" id="fileImport3" class="form-control" accept=".csv"
                                 style="display: none;" />
 
-                            <!--Secondary Process Button -->
+                            <!-- Secondary Process Button -->
                             <button id="importButton4" class="btn btn-primary mt-3"
                                 style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
                                 <i class="fas fa-upload"></i> Secondary Process
@@ -53,7 +150,7 @@
                             <input type="file" id="fileImport4" class="form-control" accept=".csv"
                                 style="display: none;" />
 
-                            <!--Secondary Process Button -->
+                            <!-- Other Process Button -->
                             <button id="importButton5" class="btn btn-primary mt-3"
                                 style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
                                 <i class="fas fa-upload"></i> Other Process
@@ -61,7 +158,7 @@
                             <input type="file" id="fileImport5" class="form-control" accept=".csv"
                                 style="display: none;" />
 
-                                 <!--Secondary Process Button -->
+                            <!-- Update Button -->
                             <button id="importButton6" class="btn btn-primary mt-3"
                                 style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
                                 <i class="fas fa-upload"></i> Update
@@ -428,6 +525,55 @@
                 document.getElementById('loadingSpinner').style.display = 'none';
             });
     }
+// ---------------------------display data-----------------------------------
+let page = 1;
+const loading = document.getElementById('loading');
+const tableBody = document.getElementById('table_body1');
+const dataCount = document.getElementById('dataCount1');
+
+function fetchData(page) {
+    loading.style.display = 'block';
+
+    fetch(`../../process/combine.php?page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+            let rows = '';
+            data.forEach(row => {
+                rows += `<tr>`;
+                rows += `<td>${row.base_product || ''}</td>`;
+                rows += `<td>${row.car_model || ''}</td>`;
+                rows += `<td>${row.product || ''}</td>`;
+                rows += `<td>${row.car_code || ''}</td>`;
+                rows += `<td>${row.block || ''}</td>`;
+                rows += `<td>${row.class || ''}</td>`;
+                rows += `<td>${row.line_no || ''}</td>`;
+                rows += `<td>${row.circuit_qty || ''}</td>`;
+                rows += `<td>${row.trd_nwpa_0_13 || ''}</td>`;
+                rows += `</tr>`;
+            });
+
+            // Append new rows to the table
+            tableBody.innerHTML += rows;
+            dataCount.textContent = `Data Count: ${tableBody.getElementsByTagName('tr').length}`;
+
+            loading.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            loading.style.display = 'none';
+        });
+}
+
+document.getElementById('accounts_table_res1').addEventListener('scroll', function() {
+    if (this.scrollTop + this.clientHeight >= this.scrollHeight - 10) {
+        page++;
+        fetchData(page);  // Fetch more data
+    }
+});
+
+// Initial fetch
+fetchData(page);
+
 </script>
 
 <?php include 'plugins/footer.php'; ?>

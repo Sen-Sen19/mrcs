@@ -3,15 +3,15 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
-            
+
             <div class="tab-content" id="excelTabContent">
                 <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                        <button id="importButton1" class="btn btn-primary mt-3"
-        style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
-    <i class="fas fa-upload"></i> Import Plan Total
-</button>
+                            <button id="importButton1" class="btn btn-primary mt-3"
+                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px; margin-top: 50px !important;">
+                                <i class="fas fa-upload"></i> Import Plan Total
+                            </button>
 
 
                             <input type="file" id="fileImport1" class="form-control" accept=".xlsx, .xls"
@@ -40,43 +40,43 @@
                                 <table id="header_table1"
                                     class="table table-sm table-head-fixed text-nowrap table-hover">
                                     <thead style="text-align: center;">
-                                <div class="row" style="margin-bottom: 20px;">
+                                        <div class="row" style="margin-bottom: 20px;">
 
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Product No."
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" placeholder="Product No."
+                                                    style="height: 31px; font-size: 14px;" />
+                                            </div>
 
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Car Model"
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" placeholder="Car Model"
+                                                    style="height: 31px; font-size: 14px;" />
+                                            </div>
 
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" placeholder="Line No."
-                                            style="height: 31px; font-size: 14px;" />
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-primary w-100"
-                                            style="height: 31px; font-size: 14px;"> <i
-                                                class="fas fa-search mr-2"></i>Search</button>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-danger w-100"
-                                            style="height: 31px; font-size: 14px;"> <i
-                                                class="fas fa-trash mr-2"></i>Delete</button>
-                                    </div>
-                                </div>
-                                <tr>
-                                    <!-- <th>ID</th>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" placeholder="Line No."
+                                                    style="height: 31px; font-size: 14px;" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button type="button" class="btn btn-primary w-100"
+                                                    style="height: 31px; font-size: 14px;"> <i
+                                                        class="fas fa-search mr-2"></i>Search</button>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button type="button" class="btn btn-danger w-100"
+                                                    style="height: 31px; font-size: 14px;"> <i
+                                                        class="fas fa-trash mr-2"></i>Delete</button>
+                                            </div>
+                                        </div>
+                                        <tr>
+                                            <!-- <th>ID</th>
                                     <th>Product Number</th>
                                     <th>Car Maker</th>
                                     <th>Line No</th>
                                     <th>Initial Secondary Process</th>
                                     <th>Final Process</th>
                                     <th>Poly Size</th> -->
-                                </tr>
-                            </thead>
+                                        </tr>
+                                    </thead>
                                     <tbody id="table_body1" style="text-align: center; padding:20px;">
                                         <!-- Table Body for File 1 -->
                                     </tbody>
@@ -99,7 +99,7 @@
     fetch('../../process/view_data.php')
         .then(response => response.json())
         .then(data => {
-            const tbody = document.getElementById('header_table1'); 
+            const tbody = document.getElementById('header_table1');
             tbody.innerHTML = '';
             data.forEach(row => {
                 const tr = document.createElement('tr');
