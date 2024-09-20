@@ -1,3 +1,8 @@
+ENLARGED TERMINAL CHECK ALUMINUM
+UV III 5
+32107-30A-A00
+mm vanessa
+
 ---------------------------------------------------------1------------------------------------------------------
 base_product
 car_model
@@ -150,7 +155,6 @@ twisting_primary_normal_wires_l_less_than_4500mm
 twisting_primary_normal_wires_l_less_than_6000mm
 twisting_primary_normal_wires_l_less_than_7500mm
 twisting_primary_normal_wires_l_less_than_9000mm
-
 twisting_secondary_normal_wires_l_less_than_1500mm
 twisting_secondary_normal_wires_l_less_than_3000mm
 twisting_secondary_normal_wires_l_less_than_4500mm
@@ -161,9 +165,6 @@ twisting_primary_aluminum_wires_l_less_than_1500mm
 twisting_primary_aluminum_wires_l_less_than_3000mm
 twisting_primary_aluminum_wires_l_less_than_4500mm
 twisting_primary_aluminum_wires_l_less_than_6000mm
-
-
-
 twisting_secondary_aluminum_wires_l_less_than_1500mm
 twisting_secondary_aluminum_wires_l_less_than_3000mm
 twisting_secondary_aluminum_wires_l_less_than_4500mm
@@ -219,8 +220,6 @@ manual_taping_dispenser_8_0_5_0_8_0_8_0_ps_115_2_chfus_0_22_civus_0_22
 joint_taping_11mm_ps_150_ll_2
 joint_taping_12mm_ps_700_l_2_ps_200_m_2
 joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2
-
-
 heat_shrink_joint_crimping,
 heat_shrink_la_terminal,
 manual_crimping_2tons_nsc_weld,
@@ -231,8 +230,6 @@ silicon_injection,
 welding_taping_13mm,
 heat_shrink_welding,
 casting_c385_shieldwire
-
-
 quick_stripping_927_auto
 mira_quick_stripping
 quick_stripping_311_manual

@@ -35,7 +35,7 @@
     <div id="loadingSpinner"
         style="display: none; background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);">
         <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
-        <p style="margin-top: 10px;">Importing to the database. Please do not reload the page.</p>
+        <p style="margin-top: 10px;">Please wait. Do not reload the page</p>
     </div>
 
 
