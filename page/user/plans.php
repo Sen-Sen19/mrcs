@@ -103,9 +103,10 @@
                                 style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
                                 <table id="header_table2"
                                     class="table table-sm table-head-fixed text-nowrap table-hover">
-                                    <thead style="text-align: center;">
-
+                                    <thead style="text-align: center;" id="table_header">
+                                        <!-- Dynamic header will be injected here -->
                                     </thead>
+
                                     <tbody id="table_body2" style="text-align: center; padding:20px;">
 
                                     </tbody>
@@ -120,6 +121,12 @@
                 </div>
 
 
+
+
+
+
+
+
                 <div class="tab-pane fade" id="file3" role="tabpanel" aria-labelledby="file3-tab">
                     <div class="row mb-2">
                         <div class="col-sm-12">
@@ -127,14 +134,10 @@
                                 style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px;">
                                 <i class="fas fa-upload"></i> Plan From PC
                             </button>
-
-
                             <button id="deleteButton" class="btn btn-primary mt-3"
-    style="background-color: #e63019; border-color: #e63019; color: white; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px;">
-    <i class="fas fa-trash" style="color: white;"></i> Empty
-</button>
-
-
+                                style="background-color: #e63019; border-color: #e63019; color: white; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px;">
+                                <i class="fas fa-trash" style="color: white;"></i> Empty
+                            </button>
                             <input type="file" id="fileImport3" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
                             <button id="exportButton3" class="btn btn-primary mt-3"
@@ -155,8 +158,6 @@
                                 </button>
                             </div>
                         </div>
-
-
                         <div id="accounts_table_res2" class="table-responsive"
                             style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
                             <table id="header_table2" class="table table-sm table-head-fixed text-nowrap table-hover">
@@ -175,18 +176,32 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <div id="loading2" style="display: none; text-align: center; margin-bottom: 20px;">
+                                <img src="../../dist/img/6.gif" alt="Loading..." style="max-width: 100px;">
+                                <p style="margin-top: 10px;">Loading. Please wait.
+                                </p>
+                            </div>
+                        </div>
                         <div id="dataCount3" class="data-count"
                             style="text-align: left; padding: 10px; font-size: 16px;">
                             Data Count: 0
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
 </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../dist/js/xlsx.full.min.js"></script>
 <script>
     let import1Data = null;
@@ -348,7 +363,6 @@
                 } else if (cellIndex === maxPlan1Index) {
                     td.style.color = 'green';
                 }
-
                 tr.appendChild(td);
             });
 
@@ -359,7 +373,6 @@
             dataCountElement.textContent = `Data Count: ${data.length - 1}`;
         }
     }
-
     function handleFileUpload3(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -421,7 +434,9 @@
 
             const finalData = sortedData.filter(row => row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null);
             finalData.unshift(header);
-            renderUpload3(finalData, 'table_body3');
+
+            // Commented out to prevent displaying data
+            // renderUpload3(finalData, 'table_body3');
 
             // Prepare data for saving
             const dataToSave = [];
@@ -429,17 +444,61 @@
 
             for (let i = 1; i < finalData.length; i++) {
                 const row = finalData[i];
-                const baseProduct = row[10];
+
+                // Extracting new fields based on their column indices
+                const manufacturingLocationCode = row[0]; // Column 1
+                const customerManufacturerCode = row[1]; // Column 2
+                const shippingLocation = row[2]; // Column 3
+                const vehicleType = row[3]; // Column 4
+                const vehicleTypeName = row[4]; // Column 5
+                const whType = row[5]; // Column 6
+                const whTypeName = row[6]; // Column 7
+                const assyGroupName = row[7]; // Column 8
+                const item = row[8]; // Column 9
+                const basicItemNumber = row[9]; // Column 10
+                const internalItemNumber = row[10]; // Column 12
+                const line = row[12]; // Column 13
+                const polySize = row[13]; // Column 15
+                const capacity = row[14]; // Column 16
+                const productCategory = row[15]; // Column 17
+                const productionGrp = row[16]; // Column 18
+                const section = row[17]; // Column 19
+                const circuit = row[18]; // Column 20
+                const initialProcess = row[19]; // Column 21
+                const secondaryProcess = row[20]; // Column 22
+                const laterProcess = row[21];
                 const maxPlan = row[row.length - 1]; // Max Plan value
+                const category = row[15];
 
                 dates.forEach((date, index) => {
                     const value = parseFloat(row[22 + index]) || 0;
                     if (value !== 0 || maxPlan !== 0) {
                         dataToSave.push({
-                            base_product: baseProduct,
+                            base_product: row[10],
                             date: date,
                             value: value,
-                            max_plan: maxPlan
+                            max_plan: maxPlan,
+                            manufacturing_location: manufacturingLocationCode,
+                            customer_manufacturer: customerManufacturerCode,
+                            shipping_location: shippingLocation,
+                            vehicle_type: vehicleType,
+                            vehicle_type_name: vehicleTypeName,
+                            wh_type: whType,
+                            wh_type_name: whTypeName,
+                            assy_group_name: assyGroupName,
+                            item: item,
+                            basic_item_number: basicItemNumber,
+                            internal_item_number: internalItemNumber,
+                            line: line,
+                            poly_size: polySize,
+                            capacity: capacity,  // Now it should be defined
+                            product_category: productCategory,
+                            production_grp: productionGrp,
+                            section: section,
+                            circuit: circuit,
+                            initial_process: initialProcess,
+                            secondary_process: secondaryProcess,
+                            later_process: laterProcess
                         });
                     }
                 });
@@ -463,7 +522,7 @@
                     console.error('Error:', error); // Handle error
                 })
                 .finally(() => {
-                    // Hide the loading GIF after data is rendered
+                    // Hide the loading GIF after data is processed
                     document.getElementById('loading').style.display = 'none';
                 });
         };
@@ -471,6 +530,7 @@
         reader.readAsArrayBuffer(file);
     }
 
+
     function renderUpload3(data, tableBodyId) {
         const tableBody = document.getElementById(tableBodyId);
         tableBody.innerHTML = '';
@@ -480,7 +540,7 @@
             row.forEach((cell, cellIndex) => {
                 const td = document.createElement('td');
                 td.textContent = cell;
-
+                f
                 if (rowIndex === 0) {
                     td.style.fontWeight = 'bold';
                 }
@@ -500,34 +560,7 @@
         }
     }
 
-    function renderUpload3(data, tableBodyId) {
-        const tableBody = document.getElementById(tableBodyId);
-        tableBody.innerHTML = '';
-        data.forEach((row, rowIndex) => {
-            const tr = document.createElement('tr');
 
-            row.forEach((cell, cellIndex) => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-
-                if (rowIndex === 0) {
-                    td.style.fontWeight = 'bold';
-                }
-
-                if (rowIndex > 0 && cellIndex === row.length - 1) {
-                    td.style.color = 'red';
-                }
-
-                tr.appendChild(td);
-            });
-
-            tableBody.appendChild(tr);
-        });
-        const dataCountElement = document.getElementById('dataCount3');
-        if (dataCountElement) {
-            dataCountElement.textContent = `Data Count: ${data.length - 1}`;
-        }
-    }
     function exportToExcel(tableBodyId, fileName) {
         const tableBody = document.getElementById(tableBodyId);
         const rows = tableBody.querySelectorAll('tr');
@@ -544,44 +577,199 @@
         XLSX.writeFile(wb, `${fileName}.xlsx`);
     }
 
-    document.getElementById('deleteButton').addEventListener('click', function() {
-    // SweetAlert confirmation dialog
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, empty it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-        
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '../../process/empty_table.php', true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-             
-                    Swal.fire({
-                        title: 'Success!',
-                        text: xhr.responseText,
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                } else {
-                 
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'An error occurred while emptying the table.',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            };
-            xhr.send();
-        }
+    document.getElementById('deleteButton').addEventListener('click', function () {
+        // SweetAlert confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, empty it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '../../process/empty_table.php', true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+
+                        Swal.fire({
+                            title: 'Success!',
+                            text: xhr.responseText,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload(); // Reload the page
+                            }
+                        });
+
+                    } else {
+
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred while emptying the table.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                };
+                xhr.send();
+            }
+        });
     });
-});
-    
+    $(document).ready(function () {
+        // Function to load data into the table
+
+
+    });
+    function loadData() {
+        // Show the loading indicator
+        $('#loading2').show();
+
+        $.ajax({
+            url: '../../process/fetch_data.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                console.log('Response:', response); // Log the full response
+
+                var tableBody = $('#table_body3');
+                var header = $('#header_table2 thead');
+                tableBody.empty();
+                header.empty();
+
+                var aggregatedData = {};
+                var uniqueDates = new Set();
+
+                $.each(response, function (index, item) {
+                    var key = item.base_product + "|" + item.manufacturing_location;
+
+                    // Log the date and value for debugging
+                    console.log(`Date: ${item.date}, Value: ${item.value}`);
+
+                    const formattedDate = new Date(item.date).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    });
+
+                    if (!aggregatedData[key]) {
+                        aggregatedData[key] = {
+                            base_product: item.base_product,
+                            manufacturing_location: item.manufacturing_location,
+                            customer_manufacturer: item.customer_manufacturer,
+                            shipping_location: item.shipping_location,
+                            vehicle_type: item.vehicle_type,
+                            vehicle_type_name: item.vehicle_type_name,
+                            wh_type: item.wh_type,
+                            wh_type_name: item.wh_type_name,
+                            assy_group_name: item.assy_group_name,
+                            item: item.item,
+                            internal_item_number: item.internal_item_number,
+                            line: item.line,
+                            poly_size: item.poly_size,
+                            capacity: item.capacity,
+                            product_category: item.product_category,
+                            production_grp: item.production_grp,
+                            section: item.section,
+                            circuit: item.circuit,
+                            initial_process: item.initial_process,
+                            secondary_process: item.secondary_process,
+                            later_process: item.later_process,
+                            dates: {},
+                            max_plan: item.max_plan
+                        };
+                    }
+
+                    aggregatedData[key].dates[formattedDate] = item.value;
+                    uniqueDates.add(formattedDate);
+                });
+
+                header.append('<tr><th>Base Product</th><th>Manufacturing Location</th><th>Customer Manufacturer</th><th>Shipping Location</th><th>Vehicle Type</th><th>Vehicle Type Name</th><th>WH Type</th><th>WH Type Name</th><th>Assy Group Name</th><th>Item</th><th>Internal Item Number</th><th>Line</th><th>Poly Size</th><th>Capacity</th><th>Product Category</th><th>Production Group</th><th>Section</th><th>Circuit</th><th>Initial Process</th><th>Secondary Process</th><th>Later Process</th></tr>');
+
+                uniqueDates.forEach(date => {
+                    header.find('tr').append(`<th>${date}</th>`);
+                });
+
+                header.find('tr').append('<th>Max Plan</th>');
+
+                $.each(aggregatedData, function (key, item) {
+                    var dateColumns = "";
+
+                    uniqueDates.forEach(date => {
+                        dateColumns += `<td>${item.dates[date] || 0.00}</td>`;
+                    });
+
+                    tableBody.append(
+                        `<tr>
+                        <td>${item.base_product}</td>
+                        <td>${item.manufacturing_location}</td>
+                        <td>${item.customer_manufacturer}</td>
+                        <td>${item.shipping_location}</td>
+                        <td>${item.vehicle_type}</td>
+                        <td>${item.vehicle_type_name}</td>
+                        <td>${item.wh_type}</td>
+                        <td>${item.wh_type_name}</td>
+                        <td>${item.assy_group_name}</td>
+                        <td>${item.item}</td>
+                        <td>${item.internal_item_number}</td>
+                        <td>${item.line}</td>
+                        <td>${item.poly_size}</td>
+                        <td>${item.capacity}</td>
+                        <td>${item.product_category}</td>
+                        <td>${item.production_grp}</td>
+                        <td>${item.section}</td>
+                        <td>${item.circuit}</td>
+                        <td>${item.initial_process}</td>
+                        <td>${item.secondary_process}</td>
+                        <td>${item.later_process}</td>
+                        ${dateColumns}
+                        <td style="color: red;">${item.max_plan}</td>
+                    </tr>`
+                    );
+                });
+
+                $('#dataCount3').text('Data Count: ' + Object.keys(aggregatedData).length);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching data:', error);
+                console.log('Response text:', xhr.responseText); // Log response text for debugging
+            },
+            complete: function () {
+                // Hide the loading indicator after processing
+                $('#loading2').hide();
+            }
+        });
+    }
+
+    // Load data when the page is ready
+    $(document).ready(function () {
+        loadData();
+    });
+    const importButton = document.getElementById('importButton3');
+
+    // Check for data on page load
+    fetch('../../process/data_check.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.dataExists) {
+                importButton.disabled = true;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal("Error", "An error occurred while checking data: " + error.message, "error");
+        });
+
+
 </script>
-<?php include 'plugins/footer.php'; ?>
+
+<?php include 'plugins/footer.php'; ?>v

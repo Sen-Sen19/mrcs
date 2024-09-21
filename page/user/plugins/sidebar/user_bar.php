@@ -36,8 +36,8 @@
 
 
         <li class="nav-item">
-          <a href="summary.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/summary.php") ? 'active' : '' ?>">
+          <a href="plans.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plans.php") ? 'active' : '' ?>">
             <img src="../../dist/img/summary.png" alt="Pagination Icon" class="nav-icon"
               style="width: 20px; height: 20px;">
             <p>Plans</p>
@@ -53,6 +53,16 @@
             <p>Masterlist</p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="computation.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/computation.php") ? 'active' : '' ?>">
+            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
+              style="width: 20px; height: 20px;">
+            <p>Computation</p>
+          </a>
+        </li>
+
 
         <?php include 'logout.php'; ?>
       </ul>
