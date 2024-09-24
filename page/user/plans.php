@@ -149,10 +149,20 @@
                             </button>
                             <input type="file" id="fileImport3" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
-                            <button id="exportButton3" class="btn btn-primary mt-3"
+
+
+                            <button id="update_masterlist" class="btn btn-primary mt-3"
+                                style="background-color: #40bd0e; border-color: #40bd0e; color: white; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px;">
+                                <i class="fas fa-wrench"></i> Update Masterlist
+                            </button>
+
+
+
+
+                            <!-- <button id="exportButton3" class="btn btn-primary mt-3"
                                 style="background-color: #525252; border-color: #525252; color: white; margin-right: 20px; width: 100%; max-width: 200px; margin-bottom: 30px;">
                                 <i class="fas fa-download"></i>
-                                Export</button>
+                                Export</button> -->
                         </div>
                     </div>
                     <div class="card card-gray-dark card-outline">
@@ -236,7 +246,7 @@
                                 <thead style="text-align: center;">
 
                                 </thead>
-                              
+
 
                                 </tbody>
                             </table>
@@ -279,6 +289,43 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../dist/js/xlsx.full.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#update_masterlist').on('click', function () {
+            // Show SweetAlert confirmation dialog
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Update Masterlist? This action can be undone, but it may require significant effort!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, update it!",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Proceed with the AJAX request if confirmed
+                    $.ajax({
+                        url: '../../process/update_masterlist.php', // Replace with the path to your PHP script
+                        method: 'POST',
+                        data: {
+                            action: 'update_masterlist' // Optional: to specify the action
+                        },
+                        success: function (response) {
+                            Swal.fire("Updated!", "Masterlist updated successfully!", "success");
+                            window.location.href = 'masterlist.php'; // Adjust path if necessary
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire("Error!", "Error updating masterlist: " + error, "error");
+                        }
+                    });
+                } else {
+                    Swal.fire("Cancelled", "Update has been cancelled.", "error");
+                }
+            });
+        });
+    });
 
+
+</script>
 <?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/js/plan_js.php'; ?>

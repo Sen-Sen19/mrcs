@@ -23,7 +23,7 @@ if (isset($data['data']) && !empty($data['data'])) {
 
     foreach ($rows as $row) {
 
-        $base_product = isset($row[0]) ? trim($row[0]) : '';
+        $base_product = isset($row[2]) ? trim($row[2]) : '';
         $car_model = isset($row[1]) ? trim($row[1]) : '';
         $product = isset($row[2]) ? trim($row[2]) : '';
         $car_code = isset($row[3]) ? trim($row[3]) : '';
@@ -31,8 +31,8 @@ if (isset($data['data']) && !empty($data['data'])) {
         $class = isset($row[5]) ? trim($row[5]) : '';
         $line_no = isset($row[6]) ? trim($row[6]) : '';
         $circuit_qty = isset($row[7]) ? trim($row[7]) : '';
-        
-        
+
+
         $sql = "
         MERGE m_masterlist AS target
         USING (VALUES (?, ?, ?, ?, ?, ?, ?,?))
@@ -52,19 +52,25 @@ if (isset($data['data']) && !empty($data['data'])) {
             INSERT (base_product, car_model, product, car_code, block, class, line_no, circuit_qty)
             VALUES (source.base_product, source.car_model, source.product, source.car_code, source.block, source.class, source.line_no, source.circuit_qty);
         ";
-        
+
         $params = [
-            $base_product, $car_model, $product, $car_code, $block, $class, 
-            $line_no, $circuit_qty
+            $base_product,
+            $car_model,
+            $product,
+            $car_code,
+            $block,
+            $class,
+            $line_no,
+            $circuit_qty
         ];
-        
+
         $stmt = sqlsrv_query($conn, $sql, $params);
         if ($stmt === false) {
             $errors[] = 'Error executing statement: ' . print_r(sqlsrv_errors(), true);
         } else {
             $processedCount++;
         }
-        
+
     }
 
     if (empty($errors)) {
@@ -80,4 +86,3 @@ if (isset($data['data']) && !empty($data['data'])) {
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
-

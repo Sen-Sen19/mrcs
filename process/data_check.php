@@ -16,7 +16,6 @@ if ($conn === false) {
     exit;
 }
 
-// Check if there's data in the plan_from_pc table
 $sql = "SELECT COUNT(*) AS count FROM plan_from_pc";
 $query = sqlsrv_query($conn, $sql);
 if ($query === false) {
@@ -27,10 +26,8 @@ if ($query === false) {
 $row = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
 $dataExists = $row['count'] > 0;
 
-// Close the connection
 sqlsrv_free_stmt($query);
 sqlsrv_close($conn);
 
-// Return JSON response
 echo json_encode(array("dataExists" => $dataExists));
 ?>

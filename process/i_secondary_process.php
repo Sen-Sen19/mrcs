@@ -23,7 +23,7 @@ if (isset($data['data']) && !empty($data['data'])) {
 
     foreach ($rows as $row) {
         // Extract and trim values
-        $base_product = isset($row[0]) ? trim($row[0]) : '';
+        $base_product = isset($row[2]) ? trim($row[2]) : '';
         $car_model = isset($row[1]) ? trim($row[1]) : '';
         $product = isset($row[2]) ? trim($row[2]) : '';
         $car_code = isset($row[3]) ? trim($row[3]) : '';
@@ -188,7 +188,7 @@ WHEN MATCHED THEN
         target.twisting_primary_aluminum_wires_l_less_than_1500mm = source.twisting_primary_aluminum_wires_l_less_than_1500mm,
         target.twisting_primary_aluminum_wires_l_less_than_3000mm = source.twisting_primary_aluminum_wires_l_less_than_3000mm,
         target.twisting_primary_aluminum_wires_l_less_than_4500mm = source.twisting_primary_aluminum_wires_l_less_than_4500mm,
-        target.twisting_primbry_aluminum_wires_l_less_than_6000mm = source.twisting_primary_aluminum_wires_l_less_than_6000mm,
+        target.twisting_primary_aluminum_wires_l_less_than_6000mm = source.twisting_primary_aluminum_wires_l_less_than_6000mm,
         target.twisting_secondary_aluminum_wires_l_less_than_1500mm = source.twisting_secondary_aluminum_wires_l_less_than_1500mm,
         target.twisting_secondary_aluminum_wires_l_less_than_3000mm = source.twisting_secondary_aluminum_wires_l_less_than_3000mm,
         target.twisting_secondary_aluminum_wires_l_less_than_4500mm = source.twisting_secondary_aluminum_wires_l_less_than_4500mm,

@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 include 'conn.php';
 
 $input = file_get_contents('php://input');
@@ -23,7 +21,7 @@ if (isset($data['data']) && !empty($data['data'])) {
 
     foreach ($rows as $row) {
 
-        $base_product = isset($row[0]) ? trim($row[0]) : '';
+        $base_product = isset($row[2]) ? trim($row[2]) : '';
         $car_model = isset($row[1]) ? trim($row[1]) : '';
         $product = isset($row[2]) ? trim($row[2]) : '';
         $car_code = isset($row[3]) ? trim($row[3]) : '';
@@ -40,7 +38,7 @@ if (isset($data['data']) && !empty($data['data'])) {
         $shikakari_handler = isset($row[14]) ? trim($row[14]) : '';
         $black_taping = isset($row[15]) ? trim($row[15]) : '';
         $components_insertion = isset($row[16]) ? trim($row[16]) : '';
-        
+
         $sql = "
         MERGE non_machine_process AS target
         USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
@@ -69,21 +67,34 @@ if (isset($data['data']) && !empty($data['data'])) {
             INSERT (base_product, car_model, product, car_code, block, class, line_no, circuit_qty, airbag_housing, cap_insertion, shieldwire_taping, gomusen_insertion, point_marking, looping, shikakari_handler, black_taping, components_insertion)
             VALUES (source.base_product, source.car_model, source.product, source.car_code, source.block, source.class, source.line_no, source.circuit_qty, source.airbag_housing, source.cap_insertion, source.shieldwire_taping, source.gomusen_insertion, source.point_marking, source.looping, source.shikakari_handler, source.black_taping, source.components_insertion);
         ";
-        
+
         $params = [
-            $base_product, $car_model, $product, $car_code, $block, $class, 
-            $line_no, $circuit_qty, $airbag_housing, $cap_insertion, 
-            $shieldwire_taping, $gomusen_insertion, $point_marking, 
-            $looping, $shikakari_handler, $black_taping, $components_insertion
+            $base_product,
+            $car_model,
+            $product,
+            $car_code,
+            $block,
+            $class,
+            $line_no,
+            $circuit_qty,
+            $airbag_housing,
+            $cap_insertion,
+            $shieldwire_taping,
+            $gomusen_insertion,
+            $point_marking,
+            $looping,
+            $shikakari_handler,
+            $black_taping,
+            $components_insertion
         ];
-        
+
         $stmt = sqlsrv_query($conn, $sql, $params);
         if ($stmt === false) {
             $errors[] = 'Error executing statement: ' . print_r(sqlsrv_errors(), true);
         } else {
             $processedCount++;
         }
-        
+
     }
 
     if (empty($errors)) {
@@ -99,4 +110,3 @@ if (isset($data['data']) && !empty($data['data'])) {
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
-
