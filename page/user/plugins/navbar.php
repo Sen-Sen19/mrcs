@@ -83,6 +83,36 @@ if (!isset($_SESSION['username'])) {
         transform: rotate(1080deg);
       }
     }
+    #loadingSpinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1050;
+        text-align: center;
+
+    }
+
+    #loadingSpinner img {
+        display: block;
+        margin: 0 auto;
+
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    .highlight-row {
+        background-color: #ffff99;
+
+        border: 2px solid #ffd700;
+
+    }
   </style>
 </head>
 

@@ -305,7 +305,7 @@ DROP TABLE #MaxPlans;
 
     ";
 
-    // Execute the query
+   
     $stmt = sqlsrv_query($conn, $sql);
 
     if ($stmt === false) {
@@ -314,7 +314,6 @@ DROP TABLE #MaxPlans;
         echo "Masterlist updated successfully!";
     }
 
-    // Free the statement and close the connection
     sqlsrv_free_stmt($stmt);
     sqlsrv_close($conn);
 }

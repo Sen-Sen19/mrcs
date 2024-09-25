@@ -290,40 +290,7 @@
 <script src="../../dist/js/xlsx.full.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('#update_masterlist').on('click', function () {
-            // Show SweetAlert confirmation dialog
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Update Masterlist? This action can be undone, but it may require significant effort!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, update it!",
-                cancelButtonText: "Cancel"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Proceed with the AJAX request if confirmed
-                    $.ajax({
-                        url: '../../process/update_masterlist.php', // Replace with the path to your PHP script
-                        method: 'POST',
-                        data: {
-                            action: 'update_masterlist' // Optional: to specify the action
-                        },
-                        success: function (response) {
-                            Swal.fire("Updated!", "Masterlist updated successfully!", "success");
-                            window.location.href = 'masterlist.php'; // Adjust path if necessary
-                        },
-                        error: function (xhr, status, error) {
-                            Swal.fire("Error!", "Error updating masterlist: " + error, "error");
-                        }
-                    });
-                } else {
-                    Swal.fire("Cancelled", "Update has been cancelled.", "error");
-                }
-            });
-        });
-    });
+  
 
 
 </script>

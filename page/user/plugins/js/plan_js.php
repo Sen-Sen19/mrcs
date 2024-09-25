@@ -172,7 +172,7 @@
         const file = event.target.files[0];
         if (!file) return;
 
-        // Show the loading GIF
+
         document.getElementById('loading').style.display = 'block';
 
         const reader = new FileReader();
@@ -183,7 +183,7 @@
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
 
             if (jsonData.length === 0) {
-                document.getElementById('loading').style.display = 'none'; // Hide loading GIF
+                document.getElementById('loading').style.display = 'none'; 
                 return;
             }
 
@@ -230,39 +230,38 @@
             const finalData = sortedData.filter(row => row[row.length - 1] !== 0 && row[row.length - 1] !== '' && row[row.length - 1] !== undefined && row[row.length - 1] !== null);
             finalData.unshift(header);
 
-            // Commented out to prevent displaying data
-            // renderUpload3(finalData, 'table_body3');
 
-            // Prepare data for saving
+
+           
             const dataToSave = [];
-            const dates = header.slice(22); // Dynamic dates
+            const dates = header.slice(22); 
 
             for (let i = 1; i < finalData.length; i++) {
                 const row = finalData[i];
 
-                // Extracting new fields based on their column indices
-                const manufacturingLocationCode = row[0]; // Column 1
-                const customerManufacturerCode = row[1]; // Column 2
-                const shippingLocation = row[2]; // Column 3
-                const vehicleType = row[3]; // Column 4
-                const vehicleTypeName = row[4]; // Column 5
-                const whType = row[5]; // Column 6
-                const whTypeName = row[6]; // Column 7
-                const assyGroupName = row[7]; // Column 8
-                const item = row[8]; // Column 9
-                const basicItemNumber = row[9]; // Column 10
-                const internalItemNumber = row[10]; // Column 12
-                const line = row[12]; // Column 13
-                const polySize = row[13]; // Column 15
-                const capacity = row[14]; // Column 16
-                const productCategory = row[15]; // Column 17
-                const productionGrp = row[16]; // Column 18
-                const section = row[17]; // Column 19
-                const circuit = row[18]; // Column 20
-                const initialProcess = row[19]; // Column 21
-                const secondaryProcess = row[20]; // Column 22
+      
+                const manufacturingLocationCode = row[0]; 
+                const customerManufacturerCode = row[1]; 
+                const shippingLocation = row[2];
+                const vehicleType = row[3];
+                const vehicleTypeName = row[4]; 
+                const whType = row[5];
+                const whTypeName = row[6];
+                const assyGroupName = row[7]; 
+                const item = row[8]; 
+                const basicItemNumber = row[9]; 
+                const internalItemNumber = row[10]; 
+                const line = row[12]; 
+                const polySize = row[13];
+                const capacity = row[14];
+                const productCategory = row[15]; 
+                const productionGrp = row[16];
+                const section = row[17]; 
+                const circuit = row[18]; 
+                const initialProcess = row[19]; 
+                const secondaryProcess = row[20]; 
                 const laterProcess = row[21];
-                const maxPlan = row[row.length - 1]; // Max Plan value
+                const maxPlan = row[row.length - 1]; 
                 const category = row[15];
 
                 dates.forEach((date, index) => {
@@ -286,7 +285,7 @@
                             internal_item_number: internalItemNumber,
                             line: line,
                             poly_size: polySize,
-                            capacity: capacity,  // Now it should be defined
+                            capacity: capacity,  
                             product_category: productCategory,
                             production_grp: productionGrp,
                             section: section,
@@ -299,9 +298,9 @@
                 });
             }
 
-            console.log('Data to save:', dataToSave); // Debugging: Check data to be sent
+            console.log('Data to save:', dataToSave);
 
-            // Send the data to the server
+            
             fetch('../../process/save_data.php', {
                 method: 'POST',
                 headers: {
@@ -311,13 +310,13 @@
             })
                 .then(response => response.text())
                 .then(result => {
-                    console.log('Server response:', result); // Handle success
+                    console.log('Server response:', result); 
                 })
                 .catch(error => {
-                    console.error('Error:', error); // Handle error
+                    console.error('Error:', error); 
                 })
                 .finally(() => {
-                    // Hide the loading GIF after data is processed
+               
                     document.getElementById('loading').style.display = 'none';
                 });
         };
@@ -373,7 +372,7 @@
     }
 
     document.getElementById('deleteButton').addEventListener('click', function () {
-        // SweetAlert confirmation dialog
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -397,7 +396,7 @@
                             confirmButtonText: 'OK'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.reload(); // Reload the page
+                                location.reload();
                             }
                         });
 
@@ -422,9 +421,8 @@
     });
 
 
-
+// ------------------------------ Display Data to table -----------------------------------------
     function loadData() {
-        // Show the loading indicator
         $('#loading2').show();
 
         $.ajax({
@@ -486,7 +484,7 @@
                     uniqueDates.add(formattedDate);
                 });
 
-                // Convert Set to Array and sort it
+           
                 uniqueDates = Array.from(uniqueDates).sort((a, b) => new Date(a) - new Date(b));
 
                 header.append('<tr><th>Base Product</th><th>Manufacturing Location</th><th>Customer Manufacturer</th><th>Shipping Location</th><th>Vehicle Type</th><th>Vehicle Type Name</th><th>WH Type</th><th>WH Type Name</th><th>Assy Group Name</th><th>Item</th><th>Internal Item Number</th><th>Line</th><th>Poly Size</th><th>Capacity</th><th>Product Category</th><th>Production Group</th><th>Section</th><th>Circuit</th><th>Initial Process</th><th>Secondary Process</th><th>Later Process</th></tr>');
@@ -537,22 +535,22 @@
             },
             error: function (xhr, status, error) {
                 console.error('Error fetching data:', error);
-                console.log('Response text:', xhr.responseText); // Log response text for debugging
+                console.log('Response text:', xhr.responseText); 
             },
             complete: function () {
-                // Hide the loading indicator after processing
+
                 $('#loading2').hide();
             }
         });
     }
 
-    // Load data when the page is ready
+
     $(document).ready(function () {
         loadData();
     });
     const importButton = document.getElementById('importButton3');
 
-    // Check for data on page load
+    
     fetch('../../process/data_check.php')
         .then(response => {
             if (!response.ok) {
@@ -569,5 +567,51 @@
             console.error('Error:', error);
             swal("Error", "An error occurred while checking data: " + error.message, "error");
         });
+
+
+
+
+
+
+
+// --------------------------------Update Masterlist-----------------------------------
+$(document).ready(function () {
+        $('#update_masterlist').on('click', function () {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Update Masterlist? This action can be undone, but it may require significant effort!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, update it!",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                 
+                    $.ajax({
+                        url: '../../process/update_masterlist.php', 
+                        method: 'POST',
+                        data: {
+                            action: 'update_masterlist' 
+                        },
+                        success: function (response) {
+                            Swal.fire("Updated!", "Masterlist updated successfully!", "success");
+                            window.location.href = 'masterlist.php'; 
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire("Error!", "Error updating masterlist: " + error, "error");
+                        }
+                    });
+                } else {
+                    Swal.fire("Cancelled", "Update has been cancelled.", "error");
+                }
+            });
+        });
+    });
+
+
+
+
+
 
 </script>

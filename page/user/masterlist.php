@@ -1,38 +1,6 @@
 <?php include 'plugins/navbar.php'; ?>
 <?php include 'plugins/sidebar/user_bar.php'; ?>
-<style>
-    #loadingSpinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1050;
-        text-align: center;
-        /* Centers content inside the div */
-    }
-
-    #loadingSpinner img {
-        display: block;
-        margin: 0 auto;
-        /* Ensures the image is centered horizontally */
-    }
-
-    .modal-content {
-        padding: 20px;
-    }
-
-    .modal-header {
-        border-bottom: none;
-    }
-
-    .highlight-row {
-        background-color: #ffff99;
-        /* Light yellow background for highlighting */
-        border: 2px solid #ffd700;
-        /* Gold border to make it stand out */
-    }
-</style>
-
+<?php include '../../process/table_operation.php'; ?>
 
 <div class="content-wrapper">
     <div id="loadingSpinner"
@@ -54,59 +22,89 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
+
+
                 <div class="modal-body">
-                    <div class="row mb-2 justify-content-center">
-                        <div class="col-sm-12 text-center">
-                            <!-- First Process Button -->
-                            <button id="importButton1" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> First Process
-                            </button>
-                            <input type="file" id="fileImport1" class="form-control" accept=".csv"
-                                style="display: none;" />
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
 
-                            <!-- Unique Process Button -->
-                            <button id="importButton2" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> Unique Process
-                            </button>
-                            <input type="file" id="fileImport2" class="form-control" accept=".csv"
-                                style="display: none;" />
 
-                            <!-- Non-Machine Process Button -->
-                            <button id="importButton3" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> Non-Machine Process
-                            </button>
-                            <input type="file" id="fileImport3" class="form-control" accept=".csv"
-                                style="display: none;" />
+                            <div class="col-md-4 mt-3">
+                                <button id="addButton" class="btn btn-success btn-block" data-toggle="modal"
+                                    data-target="#myModal"> <i class="fas fa-plus"></i> &nbsp; Add</button>
+                            </div>
+                            <!-- First Row of Buttons -->
+                            <div class="d-flex flex-wrap justify-content-center mb-4">
+                                <button id="importButton1" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px; margin-right: 10px;">
+                                    <i class="fas fa-upload"></i> First Process
+                                </button>
+                                <input type="file" id="fileImport1" class="form-control" accept=".csv"
+                                    style="display: none;" />
 
-                            <!-- Secondary Process Button -->
-                            <button id="importButton4" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> Secondary Process
-                            </button>
-                            <input type="file" id="fileImport4" class="form-control" accept=".csv"
-                                style="display: none;" />
+                                <button id="importButton2" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px;">
+                                    <i class="fas fa-upload"></i> Unique Process
+                                </button>
+                                <input type="file" id="fileImport2" class="form-control" accept=".csv"
+                                    style="display: none;" />
+                            </div>
+                            
 
-                            <!-- Other Process Button -->
-                            <button id="importButton5" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> Other Process
-                            </button>
-                            <input type="file" id="fileImport5" class="form-control" accept=".csv"
-                                style="display: none;" />
+                            <!-- Second Row of Buttons -->
+                            <div class="d-flex flex-wrap justify-content-center mb-4">
+                                <button id="importButton3" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px; margin-right: 10px;">
+                                    <i class="fas fa-upload"></i> Non-Machine Process
+                                </button>
+                                <input type="file" id="fileImport3" class="form-control" accept=".csv"
+                                    style="display: none;" />
 
-                            <!-- Update Button -->
-                            <button id="importButton6" class="btn btn-primary mt-3"
-                                style="background-color: #F0D018; border-color: #F0D018; color: black; margin: 10px; width: 200px;">
-                                <i class="fas fa-upload"></i> Update
-                            </button>
-                            <input type="file" id="fileImport6" class="form-control" accept=".csv"
-                                style="display: none;" />
+                                <button id="importButton4" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px;">
+                                    <i class="fas fa-upload"></i> Secondary Process
+                                </button>
+                                <input type="file" id="fileImport4" class="form-control" accept=".csv"
+                                    style="display: none;" />
+                            </div>
+
+                            <!-- Third Row of Buttons -->
+                            <div class="d-flex flex-wrap justify-content-center mb-4">
+                                <button id="importButton5" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px; margin-right: 10px;">
+                                    <i class="fas fa-upload"></i> Other Process
+                                </button>
+                                <input type="file" id="fileImport5" class="form-control" accept=".csv"
+                                    style="display: none;" />
+
+                                <button id="importButton6" class="btn btn-primary mt-3"
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px;">
+                                    <i class="fas fa-upload"></i> Update
+                                </button>
+                                <input type="file" id="fileImport6" class="form-control" accept=".csv"
+                                    style="display: none;" />
+                            </div>
+`
+
+
+                            <div class="row" id="existingButtons">
+                                <?php foreach ($tables as $table): ?>
+                                    <div class="col-md-4 mt-3">
+                                        <button class="btn btn-warning btn-block"
+                                            onclick="openOptionsModal('<?php echo htmlspecialchars($table['display_name']); ?>', '<?php echo htmlspecialchars($table['table_name']); ?>')">
+                                            <?php echo htmlspecialchars($table['display_name']); ?>
+                                        </button>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
@@ -134,21 +132,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#updateModal"
-                        style="background-color: #F0D018; border-color: #F0D018; color: black; width: 200px; margin-bottom: 50px; margin-top: 50px;">
-                    <i class="fas fa-upload"></i> Update
-                </button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 
 
 
@@ -184,207 +167,7 @@
                                 <th>BLOCK</th>
                                 <th>CLASS</th>
                                 <th>LINE NO</th>
-                                <th>CIRCUIT QTY</th>
-                                <th>TRD NWPA 0 13</th>
-                                <th>TRD NWPA BELOW 2 0 EXCEPT 0 13</th>
-                                <th>TRD NWPA 2 0 3 0</th>
-                                <th>TRD WPA 0 13</th>
-                                <th>TRD WPA BELOW 2 0 EXCEPT 0 13</th>
-                                <th>TRD WPA 2 0 3 0</th>
-                                <th>TR327</th>
-                                <th>TR328</th>
-                                <th>TRD ALUMINUM NWPA 2 0</th>
-                                <th>TRD ALUMINUM NWPA BELOW 2 0</th>
-                                <th>TRD ALUMINUM WPA 2 0</th>
-                                <th>TRD ALUMINUM WPA BELOW 2 0</th>
-                                <th>ALUMINUM DIMENSION CHECK ALUMINUM TERMINAL INSPECTION</th>
-                                <th>ALUMINUM VISUAL INSPECTION</th>
-                                <th>ALUMINUM COATING UV II</th>
-                                <th>ALUMINUM IMAGE INSPECTION</th>
-                                <th>ALUMINUM UV III</th>
-                                <th>TRD ALPHA ALUMINUM NWPA</th>
-                                <th>TRD ALPHA ALUMINUM WPA</th>
-                                <th>ALUMINUM VISUAL INSPECTION FOR ALPHA</th>
-                                <th>ENLARGED TERMINAL CHECK FOR ALPHA</th>
-                                <th>AIR WATER LEAK TEST</th>
-                                <th>SAM SUB NO AIRBAG</th>
-                                <th>SAM SUB NO NORMAL</th>
-                                <th>JAM AUTO CRIMPING AND TWISTING</th>
-                                <th>TRD ALPHA ALUMINUM 5 0 ABOVE</th>
-                                <th>POINT MARKING NSC</th>
-                                <th>POINT MARKING SAM</th>
-                                <th>ENLARGED TERMINAL CHECK ALUMINUM</th>
-                                <th>NSC 1</th>
-                                <th>NSC 2</th>
-                                <th>NSC 3</th>
-                                <th>NSC 4</th>
-                                <th>NSC 5</th>
-                                <th>NSC 6</th>
-                                <th>NSC 7</th>
-                                <th>NSC 8</th>
-                                <th>NSC 9</th>
-                                <th>NSC 10</th>
-                                <th>JOINT CRIMPING 20TONS PS 115 2 3L 2</th>
-                                <th>ULTRASONIC WELDING</th>
-                                <th>SERVO PRESS CRIMPING</th>
-                                <th>LOW VISCOSITY</th>
-                                <th>AIR WATER LEAK TEST</th>
-                                <th>HEATSHRINK LOW VISCOSITY</th>
-                                <th>STMAC SHIELDWIRE J12</th>
-                                <th>HIROSE SHEATH STRIPPING 927R</th>
-                                <th>HIROSE UNISTRIP</th>
-                                <th>HIROSE ACETATE TAPING</th>
-                                <th>HIROSE MANUAL CRIMPING 2 TONS</th>
-                                <th>HIROSE COPPER TAPING</th>
-                                <th>HIROSE HGT17AP CRIMPING</th>
-                                <th>STMAC ALUMINUM</th>
-                                <th>MANUAL CRIMPING 20TONS</th>
-                                <th>DIP SOLDERING BATTERY</th>
-                                <th>ULTRASONIC DIP SOLDERING ALUMINUM</th>
-                                <th>LA MOLDING</th>
-                                <th>PRESSURE WELDING SUN VISOR</th>
-                                <th>PRESSURE WELDING DOME LAMP</th>
-                                <th>CASTING C377A</th>
-                                <th>COAXSTRIP 6580</th>
-                                <th>MANUAL CRIMPING 2T FERRULE</th>
-                                <th>FERRULE AUTO CRIMPING</th>
-                                <th>ENLARGE TERMINAL INSPECTION</th>
-                                <th>WATERPROOF PAD PRESS</th>
-                                <th>PARTS INSERTION</th>
-                                <th>BRAIDED WIRE FOLDING</th>
-                                <th>OUTSIDE FERRULE INSERTION</th>
-                                <th>JOINT CRIMPING 2T</th>
-                                <th>WELDING AT HEAD</th>
-                                <th>WELDING TAPING</th>
-                                <th>UV III 1</th>
-                                <th>UV III 2</th>
-                                <th>UV III 4</th>
-                                <th>UV III 5</th>
-                                <th>UV III 7</th>
-                                <th>UV III 8</th>
-                                <th>DRAINWIRE TIP</th>
-                                <th>ARC WELDING</th>
-                                <th>C373A YAMAHA</th>
-                                <th>COCRIPPER</th>
-                                <th>QUICKSTRIPPING</th>
-                                <th>AIRBAG HOUSING</th>
-                                <th>CAP INSERTION</th>
-                                <th>SHIELDWIRE TAPING</th>
-                                <th>GOMUSEN INSERTION</th>
-                                <th>POINT MARKING</th>
-                                <th>LOOPING</th>
-                                <th>SHIKAKARI HANDLER</th>
-                                <th>BLACK TAPING</th>
-                                <th>COMPONENTS INSERTION</th>
-                                <th>JOINT CRIMPING 2TONS PS 800 S 2</th>
-                                <th>JOINT CRIMPING 2TONS PS 200 M 2</th>
-                                <th>JOINT CRIMPING 2TONS PS 017 SS 2</th>
-                                <th>JOINT CRIMPING 2TONS PS 126 SST2</th>
-                                <th>JOINT CRIMPING 4TONS PS 700 L 2</th>
-                                <th>JOINT CRIMPING 5TONS PS 150 LL</th>
-                                <th>MANUAL CRIMPING SHIELDWIRE 2T</th>
-                                <th>MANUAL CRIMPING SHIELDWIRE 4T</th>
-                                <th>JOINT CRIMPING 2TONS PS 800 S 2 SW</th>
-                                <th>JOINT CRIMPING 2TONS PS 126 SST2 SW</th>
-                                <th>JOINT CRIMPING 2TONS PS 017 SS 2 SW</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 1500MM</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 3000MM</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 4500MM</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 6000MM</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 7500MM</th>
-                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 9000MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 1500MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 3000MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 4500MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 6000MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 7500MM</th>
-                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 9000MM</th>
-                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 1500MM</th>
-                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 3000MM</th>
-                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 4500MM</th>
-                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 6000MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 1500MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 3000MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 4500MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 6000MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 7500MM</th>
-                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 9000MM</th>
-                                <th>MANUAL CRIMPING 2TONS NORMAL SINGLE CRIMP</th>
-                                <th>MANUAL CRIMPING 2TONS NORMAL DOUBLE CRIMP</th>
-                                <th>MANUAL CRIMPING 2TONS DOUBLE CRIMP TWISTED</th>
-                                <th>MANUAL CRIMPING 2TONS LA TERMINAL</th>
-                                <th>MANUAL CRIMPING 2TONS DOUBLE CRIMP LA TERMINAL</th>
-                                <th>MANUAL CRIMPING 2TONS W GOMUSEN</th>
-                                <th>MANUAL CRIMPING 4TONS DOUBLE CRIMP TWISTED</th>
-                                <th>MANUAL CRIMPING 4TONS NORMAL SINGLE CRIMP</th>
-                                <th>MANUAL CRIMPING 4TONS NORMAL DOUBLE CRIMP</th>
-                                <th>MANUAL CRIMPING 4TONS LA TERMINAL</th>
-                                <th>MANUAL CRIMPING 4TONS DOUBLE CRIMP LA TERMINAL</th>
-                                <th>MANUAL CRIMPING 4TONS W GOMUSEN</th>
-                                <th>MANUAL CRIMPING 5TONS</th>
-                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 1</th>
-                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 2</th>
-                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 3</th>
-                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 4</th>
-                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 5</th>
-                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 1</th>
-                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 2</th>
-                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 3</th>
-                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 4</th>
-                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 5</th>
-                                <th>INTERMEDIATE BUTT WELDING 0 13 ELECTRODE 1</th>
-                                <th>WELDING AT HEAD 0 13 ELECTRODE 1</th>
-                                <th>INTERMEDIATE BUTT WELDING 0 13 ELECTRODE 2</th>
-                                <th>WELDING AT HEAD 0 13 ELECTRODE 2</th>
-                                <th>V TYPE TWISTING</th>
-                                <th>MANUAL CRIMPING 2TONS TO BE JOINT ON SW</th>
-                                <th>AIRBAG</th>
-                                <th>A B SUB PC</th>
-                                <th>INTERMEDIATE RIPPING UAS MANUAL NF F</th>
-                                <th>MANUAL CRIMPING 4TONS NF F</th>
-                                <th>INTERMEDIATE RIPPING UAS JOINT</th>
-                                <th>INTERMEDIATE STRIPPING KB10</th>
-                                <th>MANUAL TAPING DISPENSER 8 0 5 0 8 0 8 0 PS 115 2 CHFUS 0 22 CIVUS 0 22
-                                </th>
-                                <th>JOINT TAPING 11MM PS 150 LL 2</th>
-                                <th>JOINT TAPING 12MM PS 700 L 2 PS 200 M 2</th>
-                                <th>JOINT TAPING 13MM PS 800 S 2 PS 017 SS 2 PS 126 2 SST2</th>
-                                <th>HEAT SHRINK JOINT CRIMPING</th>
-                                <th>HEAT SHRINK LA TERMINAL</th>
-                                <th>MANUAL CRIMPING 2TONS NSC WELD</th>
-                                <th>INTERMEDIATE STRIPPING KB10 NSC WELD</th>
-                                <th>JOINT CRIMPING 2TONS PS 017 SS 2 NSC WELD</th>
-                                <th>JOINT TAPING 13MM PS 800 S 2 PS 017 SS 2 PS 126 2 SST2 NSC WELD</th>
-                                <th>SILICON INJECTION</th>
-                                <th>WELDING TAPING 13MM</th>
-                                <th>HEAT SHRINK WELDING</th>
-                                <th>CASTING C385 SHIELDWIRE</th>
-                                <th>QUICK STRIPPING 927 AUTO</th>
-                                <th>MIRA QUICK STRIPPING</th>
-                                <th>QUICK STRIPPING 311 MANUAL</th>
-                                <th>MANUAL HEAT SHRINK BLOWER SUMITUBE</th>
-                                <th>MANUAL TAPING DISPENSER SW</th>
-                                <th>HEAT SHRINK JOINT CRIMPING SW</th>
-                                <th>CASTING C373</th>
-                                <th>CASTING C377</th>
-                                <th>CASTING C371</th>
-                                <th>MANUAL HEAT SHRINK BLOWER BATTERY</th>
-                                <th>CASTING C373 NORMAL</th>
-                                <th>CASTING C371 NORMAL</th>
-                                <th>MANUAL 2TONS BENDING</th>
-                                <th>MANUAL 5TONS BATTERY</th>
-                                <th>AL LOOPING</th>
-                                <th>SOLDERING</th>
-                                <th>WATERPROOF AGENT INJECTION</th>
-                                <th>THERMOSETTING</th>
-                                <th>COMPLETION</th>
-                                <th>PICKING LOOPING</th>
-                                <th>WELDING END</th>
-                                <th>INTERMEDIATE WELDING</th>
-                                <th>SAM SET A B</th>
-                                <th>SAM SET NORMAL</th>
-                                <th>TOTAL CIRCUIT</th>
-                                <th>NEW AIRBAG</th>
+
 
 
 
@@ -410,772 +193,205 @@
 </div>
 </div>
 </div>
+
+
+
+<!-- Modal for input -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Table</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="table_name">Table Name</label>
+                        <input type="text" class="form-control" id="table_name" name="table_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="display_name">Display Name</label>
+                        <input type="text" class="form-control" id="display_name" name="display_name" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for options -->
+<div class="modal fade" id="optionsModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="optionsModalLabel">Choose an Option</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <button id="importFileBtn" class="btn btn-warning btn-block">Import File</button>
+                <button id="addColumnBtn" class="btn btn-primary btn-block">Add Column</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for importing CSV -->
+<div class="modal fade" id="importCsvModal" tabindex="-1" role="dialog" aria-labelledby="importCsvModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importCsvModalLabel">Import CSV</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="import_csv.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" name="table_name" id="import_table_name">
+                    <div class="form-group">
+                        <label for="csv_file">Choose CSV File</label>
+                        <input type="file" class="form-control" id="csv_file" name="csv_file" accept=".csv" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
+    let selectedTableName = '';
 
-    document.getElementById('searchButton').addEventListener('click', function () {
-        var baseProduct = document.getElementById('searchBaseProduct').value;
-        var rowCount = 0; // Initialize row count
+    function openOptionsModal(displayName, tableName) {
+        selectedTableName = tableName;
+        $('#optionsModal').modal('show');
+    }
 
-        // Show loading spinner
-        document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('importFileBtn').addEventListener('click', function () {
 
-        // Make AJAX request to search.php
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '../../process/search.php?base_product=' + encodeURIComponent(baseProduct), true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Hide loading spinner
-                document.getElementById('loadingSpinner').style.display = 'none';
+    });
 
-                var response = JSON.parse(xhr.responseText);
-                var tableBody = document.getElementById('table_body1');
+    document.getElementById('addColumnBtn').addEventListener('click', function () {
+        const columnName = prompt('Enter the name for the new column:');
+        if (columnName) {
+            addColumnToTable(columnName, selectedTableName);
+        } else {
+            alert('Column name cannot be empty!');
+        }
+    });
 
-                // Clear previous table data
-                tableBody.innerHTML = '';
+    function addColumnToTable(columnName, tableName) {
+        console.log('Attempting to add column:', columnName, 'to table:', tableName);
 
-                if (response.message) {
-                    // Show no results message
-                    var noResultsRow = document.createElement('tr');
-                    var noResultsCell = document.createElement('td');
-                    noResultsCell.colSpan = 21; // Adjust based on number of columns
-                    noResultsCell.textContent = response.message;
-                    noResultsRow.appendChild(noResultsCell);
-                    tableBody.appendChild(noResultsRow);
-                } else {
-                    // Create a single row for combined results
-                    var tr = document.createElement('tr');
-                    tr.classList.add('highlight-row'); // Add highlight class
+        if (typeof $ === "undefined") {
+            alert('jQuery is not loaded');
+            return;
+        }
 
-                    // Add row count to the first column
-                    var countTd = document.createElement('td');
-                    countTd.textContent = ++rowCount; // Increment and set count
-                    tr.appendChild(countTd);
+        $.ajax({
+            url: '../../process/add_column.php',
+            type: 'POST',
+            data: {
+                column_name: columnName,
+                table_name: tableName
+            },
+            success: function (response) {
+                console.log('AJAX response:', response);
+                try {
 
-                    // Add combined result cells
-                    for (var key in response) {
-                        var td = document.createElement('td');
-                        td.textContent = response[key];
-                        tr.appendChild(td);
+                    const data = typeof response === 'string' ? JSON.parse(response) : response;
+
+                    if (data.success) {
+                        alert('Column added successfully!');
+                    } else {
+                        alert('Error adding column: ' + data.message);
                     }
-                    tableBody.appendChild(tr);
-
-                    // Update data count
-                    document.getElementById('dataCount1').textContent = 'Data Count: ' + rowCount; // Show the row count
+                } catch (e) {
+                    alert('Response parsing error: ' + e.message);
                 }
+            },
+            error: function (xhr, status, error) {
+                alert('AJAX error: ' + error);
             }
-        };
-        xhr.send();
-    });
+        });
+    }
+    document.getElementById('importFileBtn').addEventListener('click', function () {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.csv';
+
+        fileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('csv_file', file);
+                formData.append('table_name', selectedTableName);
 
 
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Function to close the modal
-        function closeModal() {
-            const modalElement = document.getElementById('updateModal');
-            const modalInstance = bootstrap.Modal.getInstance(modalElement);
-            if (modalInstance) {
-                modalInstance.hide();
-            } else {
-
-                const modal = new bootstrap.Modal(modalElement);
-                modal.hide();
+                $.ajax({
+                    url: '../../process/import_csv.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log('AJAX response:', response);
+                        try {
+                            const data = typeof response === 'string' ? JSON.parse(response) : response;
+                            if (data.success) {
+                                alert('File imported successfully!');
+                            } else {
+                                alert('Error importing file: ' + data.message);
+                            }
+                        } catch (e) {
+                            alert('Response parsing error: ' + e.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('AJAX error: ' + error);
+                    }
+                });
             }
-        }
+        });
 
-        document.getElementById('importButton1').addEventListener('click', closeModal);
-        document.getElementById('importButton2').addEventListener('click', closeModal);
-        document.getElementById('importButton3').addEventListener('click', closeModal);
-        document.getElementById('importButton4').addEventListener('click', closeModal);
-        document.getElementById('importButton5').addEventListener('click', closeModal);
-        document.getElementById('importButton6').addEventListener('click', closeModal);
+        fileInput.click();
     });
-
-    // ------------------------------- first process --------------------------------------
-    document.getElementById('importButton1').addEventListener('click', function () {
-        document.getElementById('fileImport1').click();
-    });
-
-    document.getElementById('fileImport1').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveFirstProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveFirstProcess(data) {
-        fetch('../../process/i_first_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-
-
-    // ------------------------------- unique process --------------------------------------
-    document.getElementById('importButton2').addEventListener('click', function () {
-        document.getElementById('fileImport2').click();
-    });
-
-    document.getElementById('fileImport2').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveUniqueProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveUniqueProcess(data) {
-        fetch('../../process/i_unique_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-    // ------------------------------- non-machine process --------------------------------------
-    document.getElementById('importButton3').addEventListener('click', function () {
-        document.getElementById('fileImport3').click();
-    });
-
-    document.getElementById('fileImport3').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveNonMachineProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveNonMachineProcess(data) {
-        fetch('../../process/i_non_machine_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-
-    // ------------------------------- Secondary process --------------------------------------
-    document.getElementById('importButton4').addEventListener('click', function () {
-        document.getElementById('fileImport4').click();
-    });
-
-    document.getElementById('fileImport4').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveSecondaryProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveSecondaryProcess(data) {
-        fetch('../../process/i_secondary_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-
-    // ------------------------------- Other process --------------------------------------
-    document.getElementById('importButton5').addEventListener('click', function () {
-        document.getElementById('fileImport5').click();
-    });
-
-    document.getElementById('fileImport5').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveOtherProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveOtherProcess(data) {
-        fetch('../../process/i_other_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-
-    // ------------------------------- Update masterlist process --------------------------------------
-    document.getElementById('importButton6').addEventListener('click', function () {
-        document.getElementById('fileImport6').click();
-    });
-
-    document.getElementById('fileImport6').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
-
-
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveMasterlist(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
-
-    function saveMasterlist(data) {
-        fetch('../../process/i_masterlist.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload(); // Reload the page when user clicks 'OK'
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
-    // ---------------------------display data-----------------------------------
-    let page = 1;
-    let rowCount = 0;  // Counter to keep track of row IDs
-    const loading = document.getElementById('loading');
-    const tableBody = document.getElementById('table_body1');
-    const dataCount = document.getElementById('dataCount1');
-
-    function fetchData(page) {
-        loading.style.display = 'block';
-
-        fetch(`../../process/combine.php?page=${page}`)
-            .then(response => response.json())
-            .then(data => {
-                let rows = '';
-                data.data.forEach(row => {
-                    rows += `<tr>`;
-                    rows += `<td>${++rowCount}</td>`;  // Add ID column
-
-                    // Use 0 if the data is null or empty
-                    rows += `<td>${row.base_product || '0'}</td>`;
-                    rows += `<td>${row.car_model || '0'}</td>`;
-                    rows += `<td>${row.product || '0'}</td>`;
-                    rows += `<td>${row.car_code || 'N/A'}</td>`;
-                    rows += `<td>${row.block || 'N/A'}</td>`;
-                    rows += `<td>${row.class || 'N/A'}</td>`;
-                    rows += `<td>${row.line_no || 'N/A'}</td>`;
-                    rows += `<td>${row.circuit_qty || 'N/A'}</td>`;
-
-                    rows += `<td>${row.trd_nwpa_0_13 || '0'}</td>`;
-                    rows += `<td>${row.trd_nwpa_below_2_0_except_0_13 || '0'}</td>`;
-                    rows += `<td>${row.trd_nwpa_2_0_3_0 || '0'}</td>`;
-                    rows += `<td>${row.trd_wpa_0_13 || '0'}</td>`;
-                    rows += `<td>${row.trd_wpa_below_2_0_except_0_13 || '0'}</td>`;
-                    rows += `<td>${row.trd_wpa_2_0_3_0 || '0'}</td>`;
-                    rows += `<td>${row.tr327 || '0'}</td>`;
-                    rows += `<td>${row.tr328 || '0'}</td>`;
-                    rows += `<td>${row.trd_aluminum_nwpa_2_0 || '0'}</td>`;
-                    rows += `<td>${row.trd_aluminum_nwpa_below_2_0 || '0'}</td>`;
-                    rows += `<td>${row.trd_aluminum_wpa_2_0 || '0'}</td>`;
-                    rows += `<td>${row.trd_aluminum_wpa_below_2_0 || '0'}</td>`;
-                    rows += `<td>${row.aluminum_dimension_check_aluminum_terminal_inspection || '0'}</td>`;
-                    rows += `<td>${row.aluminum_visual_inspection || '0'}</td>`;
-                    rows += `<td>${row.aluminum_coating_uv_ii || '0'}</td>`;
-                    rows += `<td>${row.aluminum_image_inspection || '0'}</td>`;
-                    rows += `<td>${row.aluminum_uv_iii || '0'}</td>`;
-                    rows += `<td>${row.trd_alpha_aluminum_nwpa || '0'}</td>`;
-                    rows += `<td>${row.trd_alpha_aluminum_wpa || '0'}</td>`;
-                    rows += `<td>${row.aluminum_visual_inspection_for_alpha || '0'}</td>`;
-                    rows += `<td>${row.enlarged_terminal_check_for_alpha || '0'}</td>`;
-                    rows += `<td>${row.air_water_leak_test || '0'}</td>`;
-                    rows += `<td>${row.sam_sub_no_airbag || '0'}</td>`;
-                    rows += `<td>${row.sam_sub_no_normal || '0'}</td>`;
-                    rows += `<td>${row.jam_auto_crimping_and_twisting || '0'}</td>`;
-                    rows += `<td>${row.trd_alpha_aluminum_5_0_above || '0'}</td>`;
-                    rows += `<td>${row.point_marking_nsc || '0'}</td>`;
-                    rows += `<td>${row.point_marking_sam || '0'}</td>`;
-                    rows += `<td>${row.enlarged_terminal_check_aluminum || '0'}</td>`;
-                    rows += `<td>${row.nsc_1 || '0'}</td>`;
-                    rows += `<td>${row.nsc_2 || '0'}</td>`;
-                    rows += `<td>${row.nsc_3 || '0'}</td>`;
-                    rows += `<td>${row.nsc_4 || '0'}</td>`;
-                    rows += `<td>${row.nsc_5 || '0'}</td>`;
-                    rows += `<td>${row.nsc_6 || '0'}</td>`;
-                    rows += `<td>${row.nsc_7 || '0'}</td>`;
-                    rows += `<td>${row.nsc_8 || '0'}</td>`;
-                    rows += `<td>${row.nsc_9 || '0'}</td>`;
-                    rows += `<td>${row.nsc_10 || '0'}</td>`;
-
-                    rows += `<td>${row.joint_crimping_20tons_ps_115_2_3l_2 || '0'}</td>`;
-                    rows += `<td>${row.ultrasonic_welding || '0'}</td>`;
-                    rows += `<td>${row.servo_press_crimping || '0'}</td>`;
-                    rows += `<td>${row.low_viscosity || '0'}</td>`;
-                    rows += `<td>${row.air_water_leak_test || '0'}</td>`;
-                    rows += `<td>${row.heatshrink_low_viscosity || '0'}</td>`;
-                    rows += `<td>${row.stmac_shieldwire_j12 || '0'}</td>`;
-                    rows += `<td>${row.hirose_sheath_stripping_927r || '0'}</td>`;
-                    rows += `<td>${row.hirose_unistrip || '0'}</td>`;
-                    rows += `<td>${row.hirose_acetate_taping || '0'}</td>`;
-                    rows += `<td>${row.hirose_manual_crimping_2_tons || '0'}</td>`;
-                    rows += `<td>${row.hirose_copper_taping || '0'}</td>`;
-                    rows += `<td>${row.hirose_hgt17ap_crimping || '0'}</td>`;
-                    rows += `<td>${row.stmac_aluminum || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_20tons || '0'}</td>`;
-                    rows += `<td>${row.dip_soldering_battery || '0'}</td>`;
-                    rows += `<td>${row.ultrasonic_dip_soldering_aluminum || '0'}</td>`;
-                    rows += `<td>${row.la_molding || '0'}</td>`;
-                    rows += `<td>${row.pressure_welding_sun_visor || '0'}</td>`;
-                    rows += `<td>${row.pressure_welding_dome_lamp || '0'}</td>`;
-                    rows += `<td>${row.casting_c377a || '0'}</td>`;
-                    rows += `<td>${row.coaxstrip_6580 || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2t_ferrule || '0'}</td>`;
-                    rows += `<td>${row.ferrule_auto_crimping || '0'}</td>`;
-                    rows += `<td>${row.enlarge_terminal_inspection || '0'}</td>`;
-                    rows += `<td>${row.waterproof_pad_press || '0'}</td>`;
-                    rows += `<td>${row.parts_insertion || '0'}</td>`;
-                    rows += `<td>${row.braided_wire_folding || '0'}</td>`;
-                    rows += `<td>${row.outside_ferrule_insertion || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2t || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head || '0'}</td>`;
-                    rows += `<td>${row.welding_taping || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_1 || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_2 || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_4 || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_5 || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_7 || '0'}</td>`;
-                    rows += `<td>${row.uv_iii_8 || '0'}</td>`;
-                    rows += `<td>${row.drainwire_tip || '0'}</td>`;
-                    rows += `<td>${row.arc_welding || '0'}</td>`;
-                    rows += `<td>${row.c373a_yamaha || '0'}</td>`;
-                    rows += `<td>${row.cocripper || '0'}</td>`;
-                    rows += `<td>${row.quickstripping || '0'}</td>`;
-
-                    rows += `<td>${row.airbag_housing || '0'}</td>`;
-                    rows += `<td>${row.cap_insertion || '0'}</td>`;
-                    rows += `<td>${row.shieldwire_taping || '0'}</td>`;
-                    rows += `<td>${row.gomusen_insertion || '0'}</td>`;
-                    rows += `<td>${row.point_marking || '0'}</td>`;
-                    rows += `<td>${row.looping || '0'}</td>`;
-                    rows += `<td>${row.shikakari_handler || '0'}</td>`;
-                    rows += `<td>${row.black_taping || '0'}</td>`;
-                    rows += `<td>${row.components_insertion || '0'}</td>`;
-
-
-                    rows += `<td>${row.joint_crimping_2tons_ps_800_s_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_200_m_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_017_ss_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_126_sst2 || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_4tons_ps_700_l_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_5tons_ps_150_ll || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_shieldwire_2t || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_shieldwire_4t || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_800_s_2_sw || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_126_sst2_sw || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_017_ss_2_sw || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_1500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_3000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_4500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_6000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_7500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_normal_wires_l_less_than_9000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_1500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_3000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_4500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_6000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_7500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_normal_wires_l_less_than_9000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_aluminum_wires_l_less_than_1500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_aluminum_wires_l_less_than_3000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_aluminum_wires_l_less_than_4500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_primary_aluminum_wires_l_less_than_6000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_1500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_3000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_4500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_6000mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_7500mm || '0'}</td>`;
-                    rows += `<td>${row.twisting_secondary_aluminum_wires_l_less_than_9000mm || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_normal_single_crimp || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_normal_double_crimp || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_double_crimp_twisted || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_la_terminal || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_double_crimp_la_terminal || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_w_gomusen || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_double_crimp_twisted || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_normal_single_crimp || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_normal_double_crimp || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_la_terminal || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_double_crimp_la_terminal || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_w_gomusen || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_5tons || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_except_0_13_electrode_1 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_except_0_13_electrode_2 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_except_0_13_electrode_3 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_except_0_13_electrode_4 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_except_0_13_electrode_5 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_except_0_13_electrode_1 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_except_0_13_electrode_2 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_except_0_13_electrode_3 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_except_0_13_electrode_4 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_except_0_13_electrode_5 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_0_13_electrode_1 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_0_13_electrode_1 || '0'}</td>`;
-                    rows += `<td>${row.intermediate_butt_welding_0_13_electrode_2 || '0'}</td>`;
-                    rows += `<td>${row.welding_at_head_0_13_electrode_2 || '0'}</td>`;
-
-                    rows += `<td>${row.v_type_twisting || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_to_be_joint_on_sw || '0'}</td>`;
-                    rows += `<td>${row.airbag || '0'}</td>`;
-                    rows += `<td>${row.a_b_sub_pc || '0'}</td>`;
-                    rows += `<td>${row.intermediate_ripping_uas_manual_nf_f || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_4tons_nf_f || '0'}</td>`;
-                    rows += `<td>${row.intermediate_ripping_uas_joint || '0'}</td>`;
-                    rows += `<td>${row.intermediate_stripping_kb10 || '0'}</td>`;
-                    rows += `<td>${row.manual_taping_dispenser_8_0_5_0_8_0_8_0_ps_115_2_chfus_0_22_civus_0_22 || '0'}</td>`;
-                    rows += `<td>${row.joint_taping_11mm_ps_150_ll_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_taping_12mm_ps_700_l_2_ps_200_m_2 || '0'}</td>`;
-                    rows += `<td>${row.joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2 || '0'}</td>`;
-                    rows += `<td>${row.heat_shrink_joint_crimping || '0'}</td>`;
-                    rows += `<td>${row.heat_shrink_la_terminal || '0'}</td>`;
-                    rows += `<td>${row.manual_crimping_2tons_nsc_weld || '0'}</td>`;
-                    rows += `<td>${row.intermediate_stripping_kb10_nsc_weld || '0'}</td>`;
-                    rows += `<td>${row.joint_crimping_2tons_ps_017_ss_2_nsc_weld || '0'}</td>`;
-                    rows += `<td>${row.joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2_nsc_weld || '0'}</td>`;
-                    rows += `<td>${row.silicon_injection || '0'}</td>`;
-                    rows += `<td>${row.welding_taping_13mm || '0'}</td>`;
-                    rows += `<td>${row.heat_shrink_welding || '0'}</td>`;
-                    rows += `<td>${row.casting_c385_shieldwire || '0'}</td>`;
-                    rows += `<td>${row.quick_stripping_927_auto || '0'}</td>`;
-                    rows += `<td>${row.mira_quick_stripping || '0'}</td>`;
-                    rows += `<td>${row.quick_stripping_311_manual || '0'}</td>`;
-                    rows += `<td>${row.manual_heat_shrink_blower_sumitube || '0'}</td>`;
-                    rows += `<td>${row.manual_taping_dispenser_sw || '0'}</td>`;
-                    rows += `<td>${row.heat_shrink_joint_crimping_sw || '0'}</td>`;
-                    rows += `<td>${row.casting_c373 || '0'}</td>`;
-                    rows += `<td>${row.casting_c377 || '0'}</td>`;
-                    rows += `<td>${row.casting_c371 || '0'}</td>`;
-                    rows += `<td>${row.manual_heat_shrink_blower_battery || '0'}</td>`;
-                    rows += `<td>${row.casting_c373_normal || '0'}</td>`;
-                    rows += `<td>${row.casting_c371_normal || '0'}</td>`;
-                    rows += `<td>${row.manual_2tons_bending || '0'}</td>`;
-                    rows += `<td>${row.manual_5tons_battery || '0'}</td>`;
-                    rows += `<td>${row.al_looping || '0'}</td>`;
-                    rows += `<td>${row.soldering || '0'}</td>`;
-                    rows += `<td>${row.waterproof_agent_injection || '0'}</td>`;
-                    rows += `<td>${row.thermosetting || '0'}</td>`;
-                    rows += `<td>${row.completion || '0'}</td>`;
-                    rows += `<td>${row.picking_looping || '0'}</td>`;
-                    rows += `<td>${row.welding_end || '0'}</td>`;
-                    rows += `<td>${row.intermediate_welding || '0'}</td>`;
-                    rows += `<td>${row.sam_set_a_b || '0'}</td>`;
-                    rows += `<td>${row.sam_set_normal || '0'}</td>`;
-                    rows += `<td>${row.total_circuit || '0'}</td>`;
-                    rows += `<td>${row.new_airbag || '0'}</td>`;
-
-
-                    rows += `</tr>`;
-                });
-
-                // Append new rows to the table
-                tableBody.innerHTML += rows;
-                dataCount.textContent = `Data Count: ${Math.floor(data.totalRecords / 2)}`;
-
-                loading.style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                loading.style.display = 'none';
-            });
-    }
-
-    document.getElementById('accounts_table_res1').addEventListener('scroll', function () {
-        if (this.scrollTop + this.clientHeight >= this.scrollHeight - 10) {
-            page++;
-            fetchData(page);
-        }
-    });
-
-    fetchData(page);
-
 
 </script>
-
+<?php include 'plugins/js/masterlist_js.php'; ?>
 <?php include 'plugins/footer.php'; ?>
