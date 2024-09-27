@@ -63,6 +63,209 @@
                                 <th>PRODUCT</th>
                                 <th>CAR CODE</th>
                                 <th>BLOCK</th>
+                                <th>CLASS</th>
+                                <th>LINE NO</th>
+                                <th>CIRCUIT QTY</th>
+                                <th>TRD NWPA 0 13</th>
+                                <th>TRD NWPA BELOW 2 0 EXCEPT 0 13</th>
+                                <th>TRD NWPA 2 0 3 0</th>
+                                <th>TRD WPA 0 13</th>
+                                <th>TRD WPA BELOW 2 0 EXCEPT 0 13</th>
+                                <th>TRD WPA 2 0 3 0</th>
+                                <th>TR327</th>
+                                <th>TR328</th>
+                                <th>TRD ALUMINUM NWPA 2 0</th>
+                                <th>TRD ALUMINUM NWPA BELOW 2 0</th>
+                                <th>TRD ALUMINUM WPA 2 0</th>
+                                <th>TRD ALUMINUM WPA BELOW 2 0</th>
+                                <th>ALUMINUM DIMENSION CHECK ALUMINUM TERMINAL INSPECTION</th>
+                                <th>ALUMINUM VISUAL INSPECTION</th>
+                                <th>ALUMINUM COATING UV II</th>
+                                <th>ALUMINUM IMAGE INSPECTION</th>
+                                <th>ALUMINUM UV III</th>
+                                <th>TRD ALPHA ALUMINUM NWPA</th>
+                                <th>TRD ALPHA ALUMINUM WPA</th>
+                                <th>ALUMINUM VISUAL INSPECTION FOR ALPHA</th>
+                                <th>ENLARGED TERMINAL CHECK FOR ALPHA</th>
+                                <th>AIR WATER LEAK TEST</th>
+                                <th>SAM SUB NO AIRBAG</th>
+                                <th>SAM SUB NO NORMAL</th>
+                                <th>JAM AUTO CRIMPING AND TWISTING</th>
+                                <th>TRD ALPHA ALUMINUM 5 0 ABOVE</th>
+                                <th>POINT MARKING NSC</th>
+                                <th>POINT MARKING SAM</th>
+                                <th>ENLARGED TERMINAL CHECK ALUMINUM</th>
+                                <th>NSC 1</th>
+                                <th>NSC 2</th>
+                                <th>NSC 3</th>
+                                <th>NSC 4</th>
+                                <th>NSC 5</th>
+                                <th>NSC 6</th>
+                                <th>NSC 7</th>
+                                <th>NSC 8</th>
+                                <th>NSC 9</th>
+                                <th>NSC 10</th>
+                                <th>JOINT CRIMPING 20TONS PS 115 2 3L 2</th>
+                                <th>ULTRASONIC WELDING</th>
+                                <th>SERVO PRESS CRIMPING</th>
+                                <th>LOW VISCOSITY</th>
+                                <th>AIR WATER LEAK TEST</th>
+                                <th>HEATSHRINK LOW VISCOSITY</th>
+                                <th>STMAC SHIELDWIRE J12</th>
+                                <th>HIROSE SHEATH STRIPPING 927R</th>
+                                <th>HIROSE UNISTRIP</th>
+                                <th>HIROSE ACETATE TAPING</th>
+                                <th>HIROSE MANUAL CRIMPING 2 TONS</th>
+                                <th>HIROSE COPPER TAPING</th>
+                                <th>HIROSE HGT17AP CRIMPING</th>
+                                <th>STMAC ALUMINUM</th>
+                                <th>MANUAL CRIMPING 20TONS</th>
+                                <th>DIP SOLDERING BATTERY</th>
+                                <th>ULTRASONIC DIP SOLDERING ALUMINUM</th>
+                                <th>LA MOLDING</th>
+                                <th>PRESSURE WELDING SUN VISOR</th>
+                                <th>PRESSURE WELDING DOME LAMP</th>
+                                <th>CASTING C377A</th>
+                                <th>COAXSTRIP 6580</th>
+                                <th>MANUAL CRIMPING 2T FERRULE</th>
+                                <th>FERRULE AUTO CRIMPING</th>
+                                <th>ENLARGE TERMINAL INSPECTION</th>
+                                <th>WATERPROOF PAD PRESS</th>
+                                <th>PARTS INSERTION</th>
+                                <th>BRAIDED WIRE FOLDING</th>
+                                <th>OUTSIDE FERRULE INSERTION</th>
+                                <th>JOINT CRIMPING 2T</th>
+                                <th>WELDING AT HEAD</th>
+                                <th>WELDING TAPING</th>
+                                <th>UV III 1</th>
+                                <th>UV III 2</th>
+                                <th>UV III 4</th>
+                                <th>UV III 5</th>
+                                <th>UV III 7</th>
+                                <th>UV III 8</th>
+                                <th>DRAINWIRE TIP</th>
+                                <th>ARC WELDING</th>
+                                <th>C373A YAMAHA</th>
+                                <th>COCRIPPER</th>
+                                <th>QUICKSTRIPPING</th>
+                                <th>AIRBAG HOUSING</th>
+                                <th>CAP INSERTION</th>
+                                <th>SHIELDWIRE TAPING</th>
+                                <th>GOMUSEN INSERTION</th>
+                                <th>POINT MARKING</th>
+                                <th>LOOPING</th>
+                                <th>SHIKAKARI HANDLER</th>
+                                <th>BLACK TAPING</th>
+                                <th>COMPONENTS INSERTION</th>
+                                <th>JOINT CRIMPING 2TONS PS 800 S 2</th>
+                                <th>JOINT CRIMPING 2TONS PS 200 M 2</th>
+                                <th>JOINT CRIMPING 2TONS PS 017 SS 2</th>
+                                <th>JOINT CRIMPING 2TONS PS 126 SST2</th>
+                                <th>JOINT CRIMPING 4TONS PS 700 L 2</th>
+                                <th>JOINT CRIMPING 5TONS PS 150 LL</th>
+                                <th>MANUAL CRIMPING SHIELDWIRE 2T</th>
+                                <th>MANUAL CRIMPING SHIELDWIRE 4T</th>
+                                <th>JOINT CRIMPING 2TONS PS 800 S 2 SW</th>
+                                <th>JOINT CRIMPING 2TONS PS 126 SST2 SW</th>
+                                <th>JOINT CRIMPING 2TONS PS 017 SS 2 SW</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 1500MM</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 3000MM</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 4500MM</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 6000MM</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 7500MM</th>
+                                <th>TWISTING PRIMARY NORMAL WIRES L LESS THAN 9000MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 1500MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 3000MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 4500MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 6000MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 7500MM</th>
+                                <th>TWISTING SECONDARY NORMAL WIRES L LESS THAN 9000MM</th>
+                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 1500MM</th>
+                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 3000MM</th>
+                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 4500MM</th>
+                                <th>TWISTING PRIMARY ALUMINUM WIRES L LESS THAN 6000MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 1500MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 3000MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 4500MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 6000MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 7500MM</th>
+                                <th>TWISTING SECONDARY ALUMINUM WIRES L LESS THAN 9000MM</th>
+                                <th>MANUAL CRIMPING 2TONS NORMAL SINGLE CRIMP</th>
+                                <th>MANUAL CRIMPING 2TONS NORMAL DOUBLE CRIMP</th>
+                                <th>MANUAL CRIMPING 2TONS DOUBLE CRIMP TWISTED</th>
+                                <th>MANUAL CRIMPING 2TONS LA TERMINAL</th>
+                                <th>MANUAL CRIMPING 2TONS DOUBLE CRIMP LA TERMINAL</th>
+                                <th>MANUAL CRIMPING 2TONS W GOMUSEN</th>
+                                <th>MANUAL CRIMPING 4TONS DOUBLE CRIMP TWISTED</th>
+                                <th>MANUAL CRIMPING 4TONS NORMAL SINGLE CRIMP</th>
+                                <th>MANUAL CRIMPING 4TONS NORMAL DOUBLE CRIMP</th>
+                                <th>MANUAL CRIMPING 4TONS LA TERMINAL</th>
+                                <th>MANUAL CRIMPING 4TONS DOUBLE CRIMP LA TERMINAL</th>
+                                <th>MANUAL CRIMPING 4TONS W GOMUSEN</th>
+                                <th>MANUAL CRIMPING 5TONS</th>
+                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 1</th>
+                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 2</th>
+                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 3</th>
+                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 4</th>
+                                <th>INTERMEDIATE BUTT WELDING EXCEPT 0 13 ELECTRODE 5</th>
+                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 1</th>
+                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 2</th>
+                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 3</th>
+                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 4</th>
+                                <th>WELDING AT HEAD EXCEPT 0 13 ELECTRODE 5</th>
+                                <th>INTERMEDIATE BUTT WELDING 0 13 ELECTRODE 1</th>
+                                <th>WELDING AT HEAD 0 13 ELECTRODE 1</th>
+                                <th>INTERMEDIATE BUTT WELDING 0 13 ELECTRODE 2</th>
+                                <th>WELDING AT HEAD 0 13 ELECTRODE 2</th>
+                                <th>V TYPE TWISTING</th>
+                                <th>MANUAL CRIMPING 2TONS TO BE JOINT ON SW</th>
+                                <th>AIRBAG</th>
+                                <th>A B SUB PC</th>
+                                <th>INTERMEDIATE RIPPING UAS MANUAL NF F</th>
+                                <th>MANUAL CRIMPING 4TONS NF F</th>
+                                <th>INTERMEDIATE RIPPING UAS JOINT</th>
+                                <th>INTERMEDIATE STRIPPING KB10</th>
+                                <th>MANUAL TAPING DISPENSER 8 0 5 0 8 0 8 0 PS 115 2 CHFUS 0 22 CIVUS 0 22
+                                </th>
+                                <th>JOINT TAPING 11MM PS 150 LL 2</th>
+                                <th>JOINT TAPING 12MM PS 700 L 2 PS 200 M 2</th>
+                                <th>JOINT TAPING 13MM PS 800 S 2 PS 017 SS 2 PS 126 2 SST2</th>
+                                <th>HEAT SHRINK JOINT CRIMPING</th>
+                                <th>HEAT SHRINK LA TERMINAL</th>
+                                <th>MANUAL CRIMPING 2TONS NSC WELD</th>
+                                <th>INTERMEDIATE STRIPPING KB10 NSC WELD</th>
+                                <th>JOINT CRIMPING 2TONS PS 017 SS 2 NSC WELD</th>
+                                <th>JOINT TAPING 13MM PS 800 S 2 PS 017 SS 2 PS 126 2 SST2 NSC WELD</th>
+                                <th>SILICON INJECTION</th>
+                                <th>WELDING TAPING 13MM</th>
+                                <th>HEAT SHRINK WELDING</th>
+                                <th>CASTING C385 SHIELDWIRE</th>
+                                <th>QUICK STRIPPING 927 AUTO</th>
+                                <th>MIRA QUICK STRIPPING</th>
+                                <th>QUICK STRIPPING 311 MANUAL</th>
+                                <th>MANUAL HEAT SHRINK BLOWER SUMITUBE</th>
+                                <th>MANUAL TAPING DISPENSER SW</th>
+                                <th>HEAT SHRINK JOINT CRIMPING SW</th>
+                                <th>CASTING C373</th>
+                                <th>CASTING C377</th>
+                                <th>CASTING C371</th>
+                                <th>MANUAL HEAT SHRINK BLOWER BATTERY</th>
+                                <th>CASTING C373 NORMAL</th>
+                                <th>CASTING C371 NORMAL</th>
+                                <th>MANUAL 2TONS BENDING</th>
+                                <th>MANUAL 5TONS BATTERY</th>
+                                <th>AL LOOPING</th>
+                                <th>SOLDERING</th>
+                                <th>WATERPROOF AGENT INJECTION</th>
+                                <th>THERMOSETTING</th>
+                                <th>COMPLETION</th>
+                                <th>PICKING LOOPING</th>
+                                <th>WELDING END</th>
+                                <th>INTERMEDIATE WELDING</th>
+                                <th>SAM SET A B</th>
+                                <th>SAM SET NORMAL</th>
+                                <th>TOTAL CIRCUIT</th>
+                                <th>NEW AIRBAG</th>
                             </tr>
                         </thead>
                         <tbody id="table_body1" style="text-align: center; padding:20px;"></tbody>
@@ -111,7 +314,7 @@
                             </div>
                             <div class="col-md-2 mt-3">
                                 <button id="importButton2" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 250px; margin-right:5px;">
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;;">
                                     <i class="fas fa-upload"></i> Unique Process
                                 </button>
                                 <input type="file" id="fileImport2" class="form-control" accept=".csv"
@@ -119,7 +322,7 @@
                             </div>
                             <div class="col-md-2 mt-3">
                                 <button id="importButton3" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 300px; margin-right: 10px;">
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
                                     <i class="fas fa-upload"></i> Non-Machine Process
                                 </button>
                                 <input type="file" id="fileImport3" class="form-control" accept=".csv"
@@ -127,7 +330,7 @@
                             </div>
                             <div class="col-md-2 mt-3">
                                 <button id="importButton4" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 300px;">
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
                                     <i class="fas fa-upload"></i> Secondary Process
                                 </button>
                                 <input type="file" id="fileImport4" class="form-control" accept=".csv"
@@ -135,7 +338,7 @@
                             </div>
                             <div class="col-md-2 mt-3">
                                 <button id="importButton5" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 300px; margin-right: 10px;">
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
                                     <i class="fas fa-upload"></i> Other Process
                                 </button>
                                 <input type="file" id="fileImport5" class="form-control" accept=".csv"
@@ -143,7 +346,7 @@
                             </div>
                             <div class="col-md-2 mt-3">
                                 <button id="importButton6" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 300px;">
+                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
                                     <i class="fas fa-upload"></i> Update
                                 </button>
                                 <input type="file" id="fileImport6" class="form-control" accept=".csv"
@@ -157,15 +360,17 @@
                         <p>Loading data, please wait...</p>
                     </div>
                     <div class="row" id="existingButtons">
-                        <?php foreach ($tables as $table): ?>
-                            <div class="col-md-2 mt-3">
-                                <button class="btn btn-warning btn-block"
-                                    onclick="openOptionsModal('<?php echo htmlspecialchars($table['display_name']); ?>', '<?php echo htmlspecialchars($table['table_name']); ?>')">
-                                    <?php echo htmlspecialchars($table['display_name']); ?>
-                                </button>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+    <?php foreach ($tables as $table): ?>
+        <div class="col-md-2 mt-3">
+            <button class="btn btn-warning btn-block mb-4" style="background-color: #F0D018; color: black;"
+                onclick="openOptionsModal('<?php echo htmlspecialchars($table['display_name']); ?>', '<?php echo htmlspecialchars($table['table_name']); ?>')">
+                <i class="fas fa-upload"></i> <?php echo htmlspecialchars($table['display_name']); ?>
+            </button>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
                 </div>
             </div>
         </div>
