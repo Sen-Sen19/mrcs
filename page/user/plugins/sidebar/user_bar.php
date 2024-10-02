@@ -38,7 +38,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
           <a href="dashboard.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/dashboard.php") ? 'active' : '' ?>">
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/dashboard.php") ? 'active' : '' ?>">
             <img src="../../dist/img/dashboard.png" alt="Pagination Icon" class="nav-icon"
               style="width: 20px; height: 20px;">
             <p>Dashboard</p>
@@ -48,7 +48,7 @@
 
         <li class="nav-item">
           <a href="plans.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plans.php") ? 'active' : '' ?>">
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plans.php") ? 'active' : '' ?>">
             <img src="../../dist/img/summary.png" alt="Pagination Icon" class="nav-icon"
               style="width: 20px; height: 20px;">
             <p>Plans</p>

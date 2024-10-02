@@ -11,17 +11,7 @@
         <p style="margin-top: 10px;">Please wait. Do not reload the page</p>
     </div>
 
-    <!-- Navigation for Tabs -->
-    <ul class="nav nav-tabs" id="excelTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="file1-tab" data-toggle="tab" href="#file1" role="tab" aria-controls="file1"
-                aria-selected="true">Masterlist</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="file2-tab" data-toggle="tab" href="#file2" role="tab" aria-controls="file2"
-                aria-selected="false">Update</a>
-        </li>
-    </ul>
+   
 
     <div class="tab-content" id="excelTabContent">
         <!-- First Tab Pane -->
@@ -280,82 +270,8 @@
             </div>
         </div>
 
-        <!-- Second Tab Pane -->
-        <div class="tab-pane fade" id="file2" role="tabpanel" aria-labelledby="file2-tab">
-            <div class="card card-gray-dark card-outline">
-                <div class="card-header">
-                    <h3 class="card-title">Additional Data</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-                <div id="accounts_table_res2" class="table-responsive"
-                    style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
-                    <table id="header_table2" class="table table-sm table-head-fixed text-nowrap table-hover">
-                        <div class="row" id="existingButtons">
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton1" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
-                                    <i class="fas fa-upload"></i> First Process
-                                </button>
-                                <input type="file" id="fileImport1" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton2" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;;">
-                                    <i class="fas fa-upload"></i> Unique Process
-                                </button>
-                                <input type="file" id="fileImport2" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton3" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
-                                    <i class="fas fa-upload"></i> Non-Machine Process
-                                </button>
-                                <input type="file" id="fileImport3" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton4" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
-                                    <i class="fas fa-upload"></i> Secondary Process
-                                </button>
-                                <input type="file" id="fileImport4" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton5" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
-                                    <i class="fas fa-upload"></i> Other Process
-                                </button>
-                                <input type="file" id="fileImport5" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <button id="importButton6" class="btn btn-primary"
-                                    style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-right:5px;">
-                                    <i class="fas fa-upload"></i> Update
-                                </button>
-                                <input type="file" id="fileImport6" class="form-control" accept=".csv"
-                                    style="display: none;" />
-                            </div>
-                        </div>
-                        <tbody id="table_body2" style="text-align: center; padding:20px;"></tbody>
-                    </table>
-                    <div id="loading2" class="text-center" style="display: none;">
-                        <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
-                        <p>Loading data, please wait...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
+        
     </div>
 </div>
 

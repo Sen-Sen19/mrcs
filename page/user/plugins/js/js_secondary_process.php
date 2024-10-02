@@ -237,7 +237,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
 
               
                 tableBody.innerHTML += rows;
-                dataCount.textContent = `Data Count: ${Math.floor(data.totalRecords / 2)}`;
+                dataCount.textContent = `Data Count: ${Math.floor(data.totalRecords)}`;
 
                 loading.style.display = 'none';
             })

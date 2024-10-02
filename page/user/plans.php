@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div id="accounts_table_res2" class="table-responsive"
-                            style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                            style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
                             <table id="header_table3" class="table table-sm table-head-fixed text-nowrap table-hover">
                                 <thead style="text-align: center;">
                                     <!-- Table Headers for Plan From PC -->
