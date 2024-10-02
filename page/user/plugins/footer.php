@@ -47,6 +47,7 @@ include '../../modals/logout_modal.php';
 
 <script src="../../dist/js/serialize.js"></script>
 
+
 </body>
 
 </html>

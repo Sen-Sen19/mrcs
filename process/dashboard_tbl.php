@@ -4,7 +4,8 @@ include 'conn.php'; // Include your connection script
 header('Content-Type: application/json');
 
 // Updated SQL query to include the `jph` field
-$query = "SELECT car_model, machine_inventory, total_shot, ot, lack_excess, machine_requirements, jph FROM dashboard_tbl";
+$query = "SELECT car_model, machine_inventory,working_time, total_shot, ot, lack_excess, machine_requirements, jph FROM dashboard_tbl";
+
 $stmt = sqlsrv_query($conn, $query);
 
 $data = array();
@@ -16,7 +17,7 @@ if ($stmt === false) {
 }
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    $data[] = $row;
+    $data[] = $row; 
 }
 
 echo json_encode($data);

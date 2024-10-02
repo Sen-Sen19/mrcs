@@ -569,7 +569,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
                     rows += `<td>${row.nsc_8 || '0'}</td>`;
                     rows += `<td>${row.nsc_9 || '0'}</td>`;
                     rows += `<td>${row.nsc_10 || '0'}</td>`;
-
+                    
                     rows += `<td>${row.joint_crimping_20tons_ps_115_2_3l_2 || '0'}</td>`;
                     rows += `<td>${row.ultrasonic_welding || '0'}</td>`;
                     rows += `<td>${row.servo_press_crimping || '0'}</td>`;

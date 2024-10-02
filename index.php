@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Page System</title>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -21,12 +24,19 @@
             display: flex;
             align-items: flex-start;
             padding: 20px;
+            overflow: hidden; /* Prevent page scrolling */
         }
 
         .main-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             width: 100%;
+        }
+
+        .grid-chart-container {
+            display: flex; /* Use flexbox to arrange grid and chart horizontally */
+            gap: 20px; /* Space between the grid and chart */
+            margin-bottom: 20px; /* Space below the grid-chart container */
         }
 
         .grid-container {
@@ -34,7 +44,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             max-width: 400px;
-            margin-right: 20px;
+            margin-right: 20px; /* Adjust margin if needed */
         }
 
         .data-section {
@@ -68,6 +78,25 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        #wrapper {
+            width: 60%; /* Set the width to 60% */
+            margin: 0; /* Remove margin to place in the left corner */
+            max-height: 300px; /* Set max height for the table wrapper */
+            overflow: auto; /* Allow scrolling for the table wrapper */
+        }
+
+        .gridjs-table {
+            width: 100%; /* Ensure the table takes full width */
+            border-collapse: collapse; /* Collapse borders for the header */
+        }
+
+        .gridjs-header {
+            position: sticky; /* Make the header sticky */
+            top: 0; /* Stick to the top */
+            background-color: white; /* Background for the header */
+            z-index: 10; /* Ensure the header is above the table content */
         }
 
         @media (max-width: 768px) {
@@ -106,10 +135,12 @@
                 height: 250px;
             }
         }
+
     </style>
 </head>
 <body>
-    <div class="main-container">
+<div class="main-container">
+    <div class="grid-chart-container">
         <div class="grid-container">
             <div id="dataCountContainer" class="data-section">
                 <h2>CAR MODEL</h2>
@@ -135,84 +166,126 @@
         <div id="chart"></div>
     </div>
 
-    <script>
-        window.onload = function() {
-            fetch('process/dashboard_tbl.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        document.getElementById('dataCount').innerText = 'Error';
-                        document.getElementById('dataAverage').innerText = 'Error';
-                        document.getElementById('dataJph').innerText = 'Error';
-                        document.getElementById('dataTotalShot').innerText = 'Error';
-                    } else {
-                        document.getElementById('dataCount').innerText = data.length;
+    <!-- Wrapper for Grid.js table positioned in the left corner -->
+    <div id="wrapper"></div> 
+</div>
 
-                        let totalMachineInventory = 0, machineInventoryCount = 0;
-                        let totalJph = 0, jphCount = 0;
-                        let totalShots = 0, shotsCount = 0;
+<script>
+    window.onload = function() {
+        fetch('process/dashboard_tbl.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('dataCount').innerText = 'Error';
+                    document.getElementById('dataAverage').innerText = 'Error';
+                    document.getElementById('dataJph').innerText = 'Error';
+                    document.getElementById('dataTotalShot').innerText = 'Error';
+                } else {
+                    document.getElementById('dataCount').innerText = data.length;
 
-                        const carModels = [];
-                        const machineRequirements = [];
+                    let totalMachineInventory = 0, machineInventoryCount = 0;
+                    let totalJph = 0, jphCount = 0;
+                    let totalShots = 0, shotsCount = 0;
 
-                        data.forEach(row => {
-                            if (row.machine_inventory) {
-                                totalMachineInventory += parseFloat(row.machine_inventory);
-                                machineInventoryCount++;
-                            }
+                    const carModels = [];
+                    const machineRequirements = [];
 
-                            if (row.jph) {
-                                totalJph += parseFloat(row.jph);
-                                jphCount++;
-                            }
+                    data.forEach(row => {
+                        if (row.machine_inventory) {
+                            totalMachineInventory += parseFloat(row.machine_inventory);
+                            machineInventoryCount++;
+                        }
 
-                            if (row.total_shot) {
-                                totalShots += parseFloat(row.total_shot);
-                                shotsCount++;
-                            }
+                        if (row.jph) {
+                            totalJph += parseFloat(row.jph);
+                            jphCount++;
+                        }
 
-                            if (row.car_model && row.machine_requirements) {
-                                carModels.push(row.car_model);
-                                machineRequirements.push(row.machine_requirements);
-                            }
-                        });
+                        if (row.total_shot) {
+                            totalShots += parseFloat(row.total_shot);
+                            shotsCount++;
+                        }
 
-                        let averageMachineInventory = machineInventoryCount > 0 ? (totalMachineInventory / machineInventoryCount).toFixed(2) : 'N/A';
-                        let averageJph = jphCount > 0 ? (totalJph / jphCount).toFixed(2) : 'N/A';
-                        let averageTotalShot = shotsCount > 0 ? (totalShots / shotsCount).toFixed(2) : 'N/A';
+                        if (row.car_model && row.machine_requirements) {
+                            carModels.push(row.car_model);
+                            machineRequirements.push(row.machine_requirements);
+                        }
+                    });
 
-                        document.getElementById('dataAverage').innerText = averageMachineInventory;
-                        document.getElementById('dataJph').innerText = averageJph;
-                        document.getElementById('dataTotalShot').innerText = averageTotalShot;
+                    let averageMachineInventory = machineInventoryCount > 0 ? (totalMachineInventory / machineInventoryCount).toFixed(2) : 'N/A';
+                    let averageJph = jphCount > 0 ? (totalJph / jphCount).toFixed(2) : 'N/A';
+                    let averageTotalShot = shotsCount > 0 ? (totalShots / shotsCount).toFixed(2) : 'N/A';
 
-                        const options = {
-                            chart: {
-                                type: 'bar',
-                                height: 300
-                            },
-                            series: [{
-                                name: 'Machine Requirements',
-                                data: machineRequirements
-                            }],
-                            xaxis: {
-                                categories: carModels,
-                                title: {
-                                    text: 'Car Models'
-                                }
-                            },
+                    document.getElementById('dataAverage').innerText = averageMachineInventory;
+                    document.getElementById('dataJph').innerText = averageJph;
+                    document.getElementById('dataTotalShot').innerText = averageTotalShot;
+
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: 300
+                        },
+                        series: [{
+                            name: 'Machine Requirements',
+                            data: machineRequirements
+                        }],
+                        xaxis: {
+                            categories: carModels,
                             title: {
-                                text: 'Car Models vs Machine Requirements'
+                                text: 'Car Models'
                             }
-                        };
+                        },
+                        title: {
+                            text: 'Car Models vs Machine Requirements'
+                        }
+                    };
 
-                        const chart = new ApexCharts(document.querySelector("#chart"), options);
-                        chart.render();
+                    const chart = new ApexCharts(document.querySelector("#chart"), options);
+                    chart.render();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+        // Fetch for Grid.js table data
+        fetch('process/dashboard_tbl.php')
+            .then(response => response.json())
+            .then(data => {
+                new gridjs.Grid({
+                    columns: [
+                        { name: 'Car Model', sort: true },
+                        { name: 'Machine Inventory', sort: true },
+                        { name: 'JPH', sort: true },
+                        { name: 'Working Time', sort: true },
+                        { name: 'Total Shot', sort: true },
+                        { name: 'OT', sort: true },
+                        { name: 'Lack/Excess', sort: true },
+                        { name: 'Machine Requirements', sort: true }
+                    ],
+                    data: data.map(row => [
+                        row.car_model,
+                        row.machine_inventory,
+                        row.jph,
+                        row.working_time,
+                        row.total_shot,
+                        row.ot,
+                        row.lack_excess,
+                        row.machine_requirements
+                    ]),
+                    sort: true, 
+                    pagination: false, 
+                    search: true, 
+                    className: {
+                        table: 'gridjs-table', 
+                        header: 'gridjs-header'
                     }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-    </script>
+                }).render(document.getElementById("wrapper"));
+            })
+            .catch(error => {
+                console.error('Error fetching table data:', error);
+            });
+    };
+</script>
 </body>
 </html>

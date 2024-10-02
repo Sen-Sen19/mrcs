@@ -2,6 +2,17 @@
   .nav-link.active .nav-icon {
     filter: brightness(0) invert(1);
   }
+  /* Sub-navigation active state styles */
+.sub-sidebar .nav-link.active {
+    background-color: white; /* White background */
+    color: blue;             /* Blue font color */
+}
+
+.sub-sidebar .nav-link.active:hover {
+    background-color: #f0f0f0; /* Optional: Light gray on hover */
+    color: #0043ff;           /* Optional: Darker blue on hover */
+}
+
 </style>
 <aside class="main-sidebar elevation-4 sidebar-light-primary" style="background-color:white;">
 
@@ -44,15 +55,63 @@
           </a>
         </li>
 
+      
+
+
+
 
         <li class="nav-item">
-          <a href="masterlist.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/masterlist.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/masterlist.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Masterlist</p>
-          </a>
+    <a href="masterlist.php"
+        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/masterlist.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/first_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/unique_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+        <img src="../../dist/img/masterlist.png" alt="Masterlist Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <p>Masterlist</p>
+    </a>
+    <ul class="sub-sidebar">
+        <li class="nav-item">
+            <a href="first_process.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/first_process.php") ? 'active' : '' ?>">
+                <p>First Process</p>
+            </a>
         </li>
+
+        <li class="nav-item">
+            <a href="unique_process.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/unique_process.php") ? 'active' : '' ?>">
+                <p>Unique Process</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="non_machine_process.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php") ? 'active' : '' ?>">
+                <p>Non-Machine Process</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="secondary_process.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php") ? 'active' : '' ?>">
+                <p>Secondary Process</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="other_process.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+                <p>Other Process</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
+
+
+
 
         <li class="nav-item">
           <a href="computation.php"

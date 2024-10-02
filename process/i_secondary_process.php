@@ -23,9 +23,9 @@ if (isset($data['data']) && !empty($data['data'])) {
 
     foreach ($rows as $row) {
         // Extract and trim values
-        $base_product = isset($row[2]) ? trim($row[2]) : '';
+        $product = isset($row[0]) ? trim($row[0]) : '';
         $car_model = isset($row[1]) ? trim($row[1]) : '';
-        $product = isset($row[2]) ? trim($row[2]) : '';
+        $base_product = isset($row[2]) ? trim($row[2]) : '';
         $car_code = isset($row[3]) ? trim($row[3]) : '';
         $block = isset($row[4]) ? trim($row[4]) : '';
         $class = isset($row[5]) ? trim($row[5]) : '';
