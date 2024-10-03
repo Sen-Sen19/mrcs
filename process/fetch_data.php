@@ -31,8 +31,8 @@ $sql = "SELECT
             [secondary_process], 
             [later_process], 
             CONVERT(varchar, [date], 120) AS [date], 
-            [value], 
-            [max_plan] 
+            [value]
+           
         FROM plan_from_pc";
 
 $stmt = sqlsrv_query($conn, $sql);

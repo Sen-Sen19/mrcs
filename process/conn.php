@@ -6,10 +6,9 @@ $connectionOptions = array(
     "PWD" => '#Sy$temGr0^p|115167'
 );
 
- 
 $conn = sqlsrv_connect($serverName, $connectionOptions);
 
 if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
+    die(print_r(sqlsrv_errors(), true)); // Show connection errors
 }
 ?>

@@ -17,8 +17,7 @@
     }
 
 
-// ------------------------------ Display Data to table -----------------------------------------
-function loadData(dateFrom, dateTo) {
+    function loadData(dateFrom, dateTo) {
     $('#loading2').show();
 
     $.ajax({
@@ -26,8 +25,7 @@ function loadData(dateFrom, dateTo) {
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-            console.log('Response:', response);
-
+        
             var tableBody = $('#table_body3');
             var header = $('#header_table3 thead');
             tableBody.empty();
@@ -76,8 +74,7 @@ function loadData(dateFrom, dateTo) {
                             initial_process: item.initial_process,
                             secondary_process: item.secondary_process,
                             later_process: item.later_process,
-                            dates: {},
-                            max_plan: item.max_plan
+                            dates: {}
                         };
                     }
 
@@ -85,19 +82,11 @@ function loadData(dateFrom, dateTo) {
                     uniqueDates.add(formattedDate);
 
                     // Log included base products
-                    if (!includedBaseProducts.includes(item.base_product)) {
-                        includedBaseProducts.push(item.base_product);
-                    }
-                } else {
-                    // Log excluded base products
-                    if (!excludedBaseProducts.includes(item.base_product)) {
-                        excludedBaseProducts.push(item.base_product);
-                    }
+                  
                 }
             });
 
-            console.log('Included Base Products:', includedBaseProducts);
-            console.log('Excluded Base Products:', excludedBaseProducts); 
+        
 
             uniqueDates = Array.from(uniqueDates).sort((a, b) => new Date(a) - new Date(b));
 
@@ -107,24 +96,16 @@ function loadData(dateFrom, dateTo) {
                 header.find('tr').append(`<th>${date}</th>`); // Corrected line
             });
 
-            header.find('tr').append('<th>Max Plan</th>');
-
             $.each(aggregatedData, function (key, item) {
                 var dateColumns = "";
-                var maxPlanValue = 0;  // Initialize max value for the row
 
                 // Loop through each date and generate the date columns
                 uniqueDates.forEach(date => {
-                    var value = item.dates[date] || 0.00;  // Get the value for the date or 0 if undefined
-                    dateColumns += `<td>${value}</td>`;
-                    
-                    // Check if this value is the highest so far
-                    if (value > maxPlanValue) {
-                        maxPlanValue = value;
-                    }
+                    var value = parseFloat(item.dates[date] || 0.00);  // Parse value as float or use 0 if undefined
+                    dateColumns += `<td>${value.toFixed(2)}</td>`;  // Ensure value is formatted to 2 decimal places
                 });
 
-                // Append the row with the calculated maxPlanValue
+                // Append the row without max plan value
                 tableBody.append(
                     `<tr>
                         <td>${item.base_product}</td>
@@ -149,7 +130,6 @@ function loadData(dateFrom, dateTo) {
                         <td>${item.secondary_process}</td>
                         <td>${item.later_process}</td>
                         ${dateColumns}
-                        <td style="color: red;">${maxPlanValue}</td>
                     </tr>`
                 );
             });
@@ -158,7 +138,8 @@ function loadData(dateFrom, dateTo) {
         },
         error: function (xhr, status, error) {
             console.error('Error fetching data:', error);
-            console.log('Response text:', xhr.responseText); 
+  
+        
         },
         complete: function () {
             $('#loading2').hide();
@@ -180,30 +161,161 @@ $('#searchButton').on('click', function () {
 
 $(document).ready(function () {
     loadData(); // Initial load without filters
+}); 
+// ---------------------------------render upload --------------------------------------
+let import1Data = null;
+let firstMonthMap = new Map();
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('importButton3').addEventListener('click', function () {
+        document.getElementById('fileImport3').click();
+    });
+    document.getElementById('fileImport3').addEventListener('change', function (e) {
+        handleFileUpload3(e);
+    });
 });
 
-    // fetch('../../process/data_check.php')
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         if (data.dataExists) {
-    //             importButton.disabled = true;
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //         swal("Error", "An error occurred while checking data: " + error.message, "error");
-    //     });
+function handleFileUpload3(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    document.getElementById('loading').style.display = 'block';
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+        
+        if (jsonData.length === 0) {
+            document.getElementById('loading').style.display = 'none';
+            return;
+        }
+        
+        const header = jsonData[0];
+        const dataRows = jsonData.slice(1);
+        const filteredData = dataRows.filter(row => row[10] !== '' && row[10] !== undefined && row[10] !== null);
+        const dataToSave = [];
+        const dates = header.slice(22);
+        
+        filteredData.forEach(row => {
+            const manufacturingLocationCode = row[0];
+            const customerManufacturerCode = row[1];
+            const shippingLocation = row[2];
+            const vehicleType = row[3];
+            const vehicleTypeName = row[4];
+            const whType = row[5];
+            const whTypeName = row[6];
+            const assyGroupName = row[7];
+            const item = row[8];
+            const basicItemNumber = row[9];
+            const internalItemNumber = row[10];
+            const line = row[12];
+            const polySize = row[13];
+            const capacity = row[14];
+            const productCategory = row[15];
+            const productionGrp = row[16];
+            const section = row[17];
+            const circuit = row[18];
+            const initialProcess = row[19];
+            const secondaryProcess = row[20];
+            const laterProcess = row[21];
 
+            dates.forEach((date, index) => {
+                const value = parseFloat(row[22 + index]) || 0;
+                if (value !== 0) {
+                    dataToSave.push({
+                        base_product: row[10],
+                        date: date,
+                        value: value,
+                        manufacturing_location: manufacturingLocationCode,
+                        customer_manufacturer: customerManufacturerCode,
+                        shipping_location: shippingLocation,
+                        vehicle_type: vehicleType,
+                        vehicle_type_name: vehicleTypeName,
+                        wh_type: whType,
+                        wh_type_name: whTypeName,
+                        assy_group_name: assyGroupName,
+                        item: item,
+                        basic_item_number: basicItemNumber,
+                        internal_item_number: internalItemNumber,
+                        line: line,
+                        poly_size: polySize,
+                        capacity: capacity,
+                        product_category: productCategory,
+                        production_grp: productionGrp,
+                        section: section,
+                        circuit: circuit,
+                        initial_process: initialProcess,
+                        secondary_process: secondaryProcess,
+                        later_process: laterProcess
+                    });
+                }
+            });
+        });
 
-// The rest of your existing code...
+        fetch('../../process/save_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSave)
+        })
+            .then(response => response.text())
+            .then(result => {
 
+            })
+            .catch(error => {
 
+            })
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+    };
+    reader.readAsArrayBuffer(file);
+}
 
+function renderUpload3(data, tableBodyId, selectedBaseProduct, selectedStartDate, selectedEndDate) {
+    const tableBody = document.getElementById(tableBodyId);
+    tableBody.innerHTML = '';
+    const dateRange = [];
+
+    // Generate date range array
+    for (let date = new Date(selectedStartDate); date <= new Date(selectedEndDate); date.setDate(date.getDate() + 1)) {
+        dateRange.push(date.toISOString().split('T')[0]);
+    }
+
+    // Filter data based on the selected base product and date range
+    const filteredData = data.filter(row => {
+        return (row.base_product === selectedBaseProduct) &&
+               (dateRange.includes(row.date));
+    });
+
+    // Create table rows based on filtered data
+    filteredData.forEach(row => {
+        const newRow = document.createElement('tr');
+        const dateCell = document.createElement('td');
+        dateCell.textContent = row.date;
+        newRow.appendChild(dateCell);
+
+        // Append other relevant cells based on your data structure
+        const valueCell = document.createElement('td');
+        valueCell.textContent = row.value.toFixed(2);
+        newRow.appendChild(valueCell);
+
+        // Add other cells as needed...
+
+        tableBody.appendChild(newRow);
+    });
+
+    // Optional: If no data is found, display a message
+    if (filteredData.length === 0) {
+        const noDataRow = document.createElement('tr');
+        const noDataCell = document.createElement('td');
+        noDataCell.colSpan = 2; // Adjust colspan based on your table structure
+        noDataCell.textContent = 'No data available for the selected filters.';
+        noDataRow.appendChild(noDataCell);
+        tableBody.appendChild(noDataRow);
+    }
+}
 
 
 // --------------------------------Update Masterlist-----------------------------------
@@ -240,7 +352,4 @@ $(document).ready(function () {
             });
         });
     });
-
-
-
 </script>
