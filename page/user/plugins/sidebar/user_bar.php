@@ -46,16 +46,49 @@
         </li>
 
 
+
+
+
+
+
+        
         <li class="nav-item">
-          <a href="plans.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plans.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/summary.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Plans</p>
-          </a>
+    <a href="plan_from_pc.php"
+        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_from_pc.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_total.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+        <img src="../../dist/img/summary.png" alt="Masterlist Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <p>Plan From PC</p>
+    </a>
+    <ul class="sub-sidebar">
+
+        <li class="nav-item">
+            <a href="plan_total.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_total.php") ? 'active' : '' ?>">
+                <p>Plan  Total</p>
+            </a>
         </li>
 
+        <li class="nav-item">
+            <a href="plan.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan.php") ? 'active' : '' ?>">
+                <p>Plan</p>
+            </a>
+        </li>
+
+    </ul>
+</li>
+
+
+
+
       
+
+
+
 
 
 
