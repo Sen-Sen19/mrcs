@@ -30,11 +30,25 @@ if (!empty($data)) {
                 vehicle_type, vehicle_type_name, wh_type, wh_type_name, assy_group_name, 
                 item, internal_item_number, line, poly_size, capacity, product_category, 
                 production_grp, section, circuit, initial_process, secondary_process, later_process, 
-                date, value) VALUES ";
+                date, value, car_model) VALUES ";
 
         $valuesArr = [];
         foreach ($chunk as $row) {
-            $valuesArr[] = "('" . implode("','", array_map('addslashes', $row)) . "')";
+            $baseProduct = addslashes($row['base_product']);
+            $internalItemNumber = addslashes($row['internal_item_number']);
+
+            // Query to get car_model from m_masterlist using base_product
+            $carModelSql = "SELECT car_model FROM m_masterlist 
+                            WHERE base_product = ?";
+            $params = [$baseProduct];
+            $carModelResult = sqlsrv_query($conn, $carModelSql, $params);
+            $carModelRow = sqlsrv_fetch_array($carModelResult, SQLSRV_FETCH_ASSOC);
+
+            // If car_model exists, use it; otherwise, set it to null
+            $carModel = $carModelRow['car_model'] ?? 'NULL';
+
+            // Prepare values for the insert query, ensuring to add the car_model
+            $valuesArr[] = "('" . implode("','", array_map('addslashes', $row)) . "','" . addslashes($carModel) . "')";
         }
 
         $sql .= implode(",", $valuesArr);
@@ -53,5 +67,7 @@ if (!empty($data)) {
 } else {
     echo json_encode(["status" => "error", "message" => "No data received"]);
 }
-error_log($sql); // This will log the SQL to your PHP error log
+
+// Log the last SQL statement executed
+error_log($sql);
 ?>

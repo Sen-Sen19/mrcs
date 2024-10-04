@@ -1,9 +1,13 @@
-<?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/user_bar.php'; ?>
+<?php
+include 'plugins/navbar.php';
+include 'plugins/sidebar/user_bar.php';
+
+
+
+?>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
-            
             <div class="tab-content" id="excelTabContent">
                 <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
                     <div class="row mb-2">
@@ -39,18 +43,22 @@
                                 <table id="header_table1"
                                     class="table table-sm table-head-fixed text-nowrap table-hover">
                                     <thead style="text-align: center;">
-                                        <!-- Table Headers for File 1 -->
+                                        <tr>
+                                            <th>Car Code</th>
+                                            <th>First Month</th>
+                                            <th>Max Plan 1</th>
+                                            <th>Second Month</th>
+                                            <th>Max Plan 2</th>
+                                            <th>Third Month</th>
+                                            <th>Max Plan 3</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="table_body1" style="text-align: center; padding:20px;">
-                                        <!-- Table Body for File 1 -->
+                                        <?php include '../../process/fetch_plan_total.php'; ?>
                                     </tbody>
                                 </table>
+                            </div>
 
-                            </div>
-                            <div id="dataCount1" class="data-count"
-                                style="text-align: left; padding: 10px; font-size: 16px;">
-                                Data Count: 0
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,28 +80,18 @@
                                 Export</button>
                         </div>
                     </div>
-                  
                 </div>
-
-
-
-
-
-
-
-
-            
             </div>
         </div>
     </div>
 </div>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../dist/js/xlsx.full.min.js"></script>
 <script>
-     let import1Data = null;
-     let firstMonthMap = new Map();
-     document.addEventListener('DOMContentLoaded', function () {
+    let import1Data = null;
+    let firstMonthMap = new Map();
+    document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('importButton1').addEventListener('click', function () {
             document.getElementById('fileImport1').click();
         });
@@ -145,20 +143,42 @@
                 firstMonthMap.set(row[0], maxValuesAndDates[0]);  // Store in the Map
                 return [...row, ...maxValuesAndDates];
             });
-            
-            // Remove the call to renderUpload1
-            // renderUpload1(formattedData, 'table_body1');
-            // Instead, you can handle `formattedData` as needed
-            console.log(formattedData);  // Example of further processing (e.g., logging to console)
+
+            console.log(formattedData);  
+
+            saveToDatabase(formattedData);
         };
         reader.readAsArrayBuffer(file);
     }
 
-    // Commenting out the render function since it's not needed anymore
-    // function renderUpload1(data, tableBodyId) {
-    //     // Code for rendering the data in a table
-    // }
+    
+    function saveToDatabase(formattedData) {
+        // Prepare the data to be sent
+        const dataToSend = formattedData.slice(1).map(row => ({
+            car_code: row[0],
+            first_month: row[row.length - 6] || "Null",
+            max_plan_1: row[row.length - 5] ? parseFloat(row[row.length - 5]) : 0, 
+            second_month: row[row.length - 4] || "Null",
+            max_plan_2: row[row.length - 3] ? parseFloat(row[row.length - 3]) : 0,
+            third_month: row[row.length - 2] || "Null", 
+            max_plan_3: row[row.length - 1] ? parseFloat(row[row.length - 1]) : 0 
+        }));
+
+
+        $.ajax({
+            url: '../../process/save_total_plan.php', // Change this to your PHP script path
+            type: 'POST',
+            data: { plans: dataToSend }, // Send the full data object
+            success: function (response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error saving data:', textStatus, errorThrown);
+            }
+        });
+    }
 </script>
+
 
 
 <?php include 'plugins/footer.php'; ?>
