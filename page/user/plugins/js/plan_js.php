@@ -352,4 +352,180 @@ $(document).ready(function () {
             });
         });
     });
+
+
+
+    // ----------------------------------- Disabled import button---------------------------
+    
+
+$(document).ready(function() {
+    // Function to check data in plan_from_pc table
+    function checkData() {
+        $.ajax({
+            url: '../../process/check_data.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // Enable or disable the save button based on the count
+                    if (response.count > 0) {
+                        $('#importButton3').prop('disabled', true); // Disable if data exists
+                    } else {
+                        $('#importButton3').prop('disabled', false); // Enable if no data
+                    }
+                } else {
+                    console.error("Error checking data: ", response.message);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
+            }
+        });
+    }
+
+    // Call the function on document ready
+    checkData();
+
+    $('#emptyPlan').click(function() {
+        // Show confirmation dialog using SweetAlert
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to empty the table?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, empty it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Make AJAX call to empty_plan.php
+                $.ajax({
+                    url: '../../process/empty_plan.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            Swal.fire(
+                                'Emptied!',
+                                response.message,
+                                'success'
+                            );
+                            checkData(); // Re-check data after emptying
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                response.message,
+                                'error'
+                            );
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
+                        Swal.fire(
+                            'Error!',
+                            'An error occurred while processing your request. ' + errorThrown,
+                            'error'
+                        );
+                    }
+                });
+            }
+        });
+    });
+});
+
+// ---------------------------------------save button --------------------------------------------------
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add event listener to save button
+        document.getElementById("saveButton").addEventListener("click", function () {
+            saveData();
+        });
+    });
+    function saveData() {
+    let table = document.querySelector('#accounts_table_res2 table'); // Corrected line
+    if (!table) {
+        alert('Table not found');
+        return;
+    }
+
+    let rows = table.getElementsByTagName('tbody')[0].rows;
+    let dataToSend = [];
+
+    // Loop through each row
+    for (let i = 0; i < rows.length; i++) {
+        let row = rows[i];
+        let baseData = [];
+
+        // Extract the static columns (first 21 columns)
+        for (let j = 0; j < 21; j++) {
+            baseData.push(row.cells[j].innerText.trim()); // Trim to remove extra spaces
+        }
+
+        // Extract the dynamic date columns and transform into rows
+        for (let j = 21; j < row.cells.length; j++) {
+            let dateValue = table.rows[0].cells[j].innerText.trim(); // Date from header row
+            let value = row.cells[j].innerText.trim(); // Value from the row's cell
+
+            // Log the date value for debugging
+            console.log('Date Value:', dateValue);
+
+            // Validate the date value
+            let date = new Date(dateValue);
+            if (isNaN(date.getTime())) { // Check if date is valid
+                alert('Invalid date format: ' + dateValue);
+                return;
+            }
+
+            // Convert date to YYYY-MM-DD format
+            let formattedDate = date.toISOString().split('T')[0];
+
+            // Push the base data + date + value into dataToSend array
+            dataToSend.push({
+                base_product: baseData[0],
+                manufacturing_location: baseData[1],
+                customer_manufacturer: baseData[2],
+                shipping_location: baseData[3],
+                vehicle_type: baseData[4],
+                vehicle_type_name: baseData[5],
+                wh_type: baseData[6],
+                wh_type_name: baseData[7],
+                assy_group_name: baseData[8],
+                item: baseData[9],
+                internal_item_number: baseData[10],
+                line: baseData[11],
+                poly_size: baseData[12],
+                capacity: baseData[13],
+                product_category: baseData[14],
+                production_grp: baseData[15],
+                section: baseData[16],
+                circuit: baseData[17],
+                initial_process: baseData[18],
+                secondary_process: baseData[19],
+                later_process: baseData[20],
+                date: formattedDate, // Use the formatted date
+                value: value
+            });
+        }
+    }
+
+    if (dataToSend.length === 0) {
+        alert('No data to save');
+        return;
+    }
+
+    // Send the data to PHP via AJAX
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../../process/save_plan_date.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            alert('Data saved successfully!');
+        } else {
+            alert('Error saving data! Status code: ' + xhr.status);
+        }
+    };
+    console.log('Total records to be saved:', dataToSend.length);
+    xhr.send(JSON.stringify(dataToSend));
+}
+
 </script>

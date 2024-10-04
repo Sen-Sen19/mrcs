@@ -8,17 +8,19 @@ $stmt = sqlsrv_query($conn, $sql);
 
 // Check if the query was successful
 if ($stmt === false) {
-    die(print_r(sqlsrv_errors(), true));
+    // Return error message as JSON
+    echo json_encode(array("status" => "error", "message" => "Database query failed: " . print_r(sqlsrv_errors(), true)));
+    exit; // Stop further execution
 }
 
 // Get the number of rows affected
 $rowsAffected = sqlsrv_rows_affected($stmt);
 
-// Return the number of deleted rows
+// Prepare the response
 if ($rowsAffected === false) {
-    echo "Error in retrieving number of deleted rows.";
+    echo json_encode(array("status" => "error", "message" => "Error in retrieving number of deleted rows."));
 } else {
-    echo $rowsAffected . " rows have been deleted.";
+    echo json_encode(array("status" => "success", "message" => $rowsAffected . " rows have been deleted."));
 }
 
 // Close the connection
