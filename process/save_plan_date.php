@@ -34,23 +34,53 @@ if (!empty($data)) {
 
         $valuesArr = [];
         foreach ($chunk as $row) {
+            // Extract each column value from $row and ensure it's properly escaped
             $baseProduct = addslashes($row['base_product']);
+            $manufacturingLocation = addslashes($row['manufacturing_location']);
+            $customerManufacturer = addslashes($row['customer_manufacturer']);
+            $shippingLocation = addslashes($row['shipping_location']);
+            $vehicleType = addslashes($row['vehicle_type']);
+            $vehicleTypeName = addslashes($row['vehicle_type_name']);
+            $whType = addslashes($row['wh_type']);
+            $whTypeName = addslashes($row['wh_type_name']);
+            $assyGroupName = addslashes($row['assy_group_name']);
+            $item = addslashes($row['item']);
             $internalItemNumber = addslashes($row['internal_item_number']);
+            $line = addslashes($row['line']);
+            $polySize = addslashes($row['poly_size']);
+            $capacity = addslashes($row['capacity']);
+            $productCategory = addslashes($row['product_category']);
+            $productionGrp = addslashes($row['production_grp']);
+            $section = addslashes($row['section']);
+            $circuit = addslashes($row['circuit']);
+            $initialProcess = addslashes($row['initial_process']);
+            $secondaryProcess = addslashes($row['secondary_process']);
+            $laterProcess = addslashes($row['later_process']);
+            $value = addslashes($row['value']);
+
+            // Use DateTime to add one day to the date field
+            $date = new DateTime($row['date']);
+            $date->modify('+1 day');
+            $formattedDate = $date->format('Y-m-d'); // Format date as 'YYYY-MM-DD'
 
             // Query to get car_model from m_masterlist using base_product
-            $carModelSql = "SELECT car_model FROM m_masterlist 
-                            WHERE base_product = ?";
+            $carModelSql = "SELECT car_model FROM m_masterlist WHERE base_product = ?";
             $params = [$baseProduct];
             $carModelResult = sqlsrv_query($conn, $carModelSql, $params);
             $carModelRow = sqlsrv_fetch_array($carModelResult, SQLSRV_FETCH_ASSOC);
 
             // If car_model exists, use it; otherwise, set it to null
-            $carModel = $carModelRow['car_model'] ?? 'NULL';
+            $carModel = isset($carModelRow['car_model']) ? addslashes($carModelRow['car_model']) : 'NULL';
 
-            // Prepare values for the insert query, ensuring to add the car_model
-            $valuesArr[] = "('" . implode("','", array_map('addslashes', $row)) . "','" . addslashes($carModel) . "')";
+            // Prepare values for the insert query, ensuring each value is mapped correctly to its column
+            $valuesArr[] = "('$baseProduct', '$manufacturingLocation', '$customerManufacturer', '$shippingLocation', 
+                            '$vehicleType', '$vehicleTypeName', '$whType', '$whTypeName', '$assyGroupName', 
+                            '$item', '$internalItemNumber', '$line', '$polySize', '$capacity', '$productCategory', 
+                            '$productionGrp', '$section', '$circuit', '$initialProcess', '$secondaryProcess', 
+                            '$laterProcess', '$formattedDate', '$value', '$carModel')";
         }
 
+        // Join all the values and append to the query
         $sql .= implode(",", $valuesArr);
 
         // Execute the insert query
@@ -68,6 +98,6 @@ if (!empty($data)) {
     echo json_encode(["status" => "error", "message" => "No data received"]);
 }
 
-// Log the last SQL statement executed
+// Log the last SQL statement executed for debugging
 error_log($sql);
 ?>

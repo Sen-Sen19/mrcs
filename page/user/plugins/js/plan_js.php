@@ -177,8 +177,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function handleFileUpload3(event) {
     const file = event.target.files[0];
     if (!file) return;
+
     document.getElementById('loading').style.display = 'block';
     const reader = new FileReader();
+    
     reader.onload = function (e) {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: 'array' });
@@ -190,87 +192,72 @@ function handleFileUpload3(event) {
             return;
         }
         
-        const header = jsonData[0];
-        const dataRows = jsonData.slice(1);
-        const filteredData = dataRows.filter(row => row[10] !== '' && row[10] !== undefined && row[10] !== null);
+        const header = jsonData[0]; // Extracting the header
+        const dataRows = jsonData.slice(1); // Extracting data rows
+        const filteredData = dataRows.filter(row => row[10] !== '' && row[10] !== undefined && row[10] !== null); // Filtering valid rows
         const dataToSave = [];
-        const dates = header.slice(22);
+        const dates = header.slice(22); // Assuming dates start from column 22
         
         filteredData.forEach(row => {
-            const manufacturingLocationCode = row[0];
-            const customerManufacturerCode = row[1];
-            const shippingLocation = row[2];
-            const vehicleType = row[3];
-            const vehicleTypeName = row[4];
-            const whType = row[5];
-            const whTypeName = row[6];
-            const assyGroupName = row[7];
-            const item = row[8];
-            const basicItemNumber = row[9];
-            const internalItemNumber = row[10];
-            const line = row[12];
-            const polySize = row[13];
-            const capacity = row[14];
-            const productCategory = row[15];
-            const productionGrp = row[16];
-            const section = row[17];
-            const circuit = row[18];
-            const initialProcess = row[19];
-            const secondaryProcess = row[20];
-            const laterProcess = row[21];
+            // Mapping each relevant column to its header
+            const entry = {
+                base_product: row[10],
+                manufacturing_location: row[0],
+                customer_manufacturer: row[1],
+                shipping_location: row[2],
+                vehicle_type: row[3],
+                vehicle_type_name: row[4],
+                wh_type: row[5],
+                wh_type_name: row[6],
+                assy_group_name: row[7],
+                item: row[8],
+                basic_item_number: row[9],
+                internal_item_number: row[10],
+                line: row[12],
+                poly_size: row[13],
+                capacity: row[14],
+                product_category: row[15],
+                production_grp: row[16],
+                section: row[17],
+                circuit: row[18],
+                initial_process: row[19],
+                secondary_process: row[20],
+                later_process: row[21]
+            };
 
+            // Loop through date columns and store the values
             dates.forEach((date, index) => {
-                const value = parseFloat(row[22 + index]) || 0;
+                const value = parseFloat(row[22 + index]) || 0; // Ensure value is a number
                 if (value !== 0) {
                     dataToSave.push({
-                        base_product: row[10],
-                        date: date,
-                        value: value,
-                        manufacturing_location: manufacturingLocationCode,
-                        customer_manufacturer: customerManufacturerCode,
-                        shipping_location: shippingLocation,
-                        vehicle_type: vehicleType,
-                        vehicle_type_name: vehicleTypeName,
-                        wh_type: whType,
-                        wh_type_name: whTypeName,
-                        assy_group_name: assyGroupName,
-                        item: item,
-                        basic_item_number: basicItemNumber,
-                        internal_item_number: internalItemNumber,
-                        line: line,
-                        poly_size: polySize,
-                        capacity: capacity,
-                        product_category: productCategory,
-                        production_grp: productionGrp,
-                        section: section,
-                        circuit: circuit,
-                        initial_process: initialProcess,
-                        secondary_process: secondaryProcess,
-                        later_process: laterProcess
+                        ...entry, // Spread the entry object
+                        date: date, // Add the date to the data
+                        value: value // Add the corresponding value
                     });
                 }
             });
         });
 
+        // Send data to the server
         fetch('../../process/save_data.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(dataToSave)
+            body: JSON.stringify(dataToSave) // Convert the data to JSON
         })
-            .then(response => response.text())
-            .then(result => {
-
-            })
-            .catch(error => {
-
-            })
-            .finally(() => {
-                document.getElementById('loading').style.display = 'none';
-            });
+        .then(response => response.text())
+        .then(result => {
+            console.log("Data saved successfully:", result);
+        })
+        .catch(error => {
+            console.error("Error saving data:", error);
+        })
+        .finally(() => {
+            document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+        });
     };
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(file); // Read the file as an ArrayBuffer
 }
 
 function renderUpload3(data, tableBodyId, selectedBaseProduct, selectedStartDate, selectedEndDate) {

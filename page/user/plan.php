@@ -13,7 +13,7 @@ include 'plugins/sidebar/user_bar.php';
                         <div class="col-sm-12">
                             <button id="importButton1" class="btn btn-primary mt-3"
                                 style="background-color: #F0D018; border-color: #F0D018; color: black; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
-                                <i class="fas fa-upload"></i> Import Plan
+                                <i class="fas fa-upload"></i> Extract Plan
                             </button>
                             <input type="file" id="fileImport1" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
@@ -37,7 +37,7 @@ include 'plugins/sidebar/user_bar.php';
                         </div>
                         <div class="card-body">
                             <div id="accounts_table_res1" class="table-responsive"
-                                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
+                                style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
                                 <?php include '../../process/fetch_plan.php'; // Include the pivot data ?>
                             </div>
                         </div>

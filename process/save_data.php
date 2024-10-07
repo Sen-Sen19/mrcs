@@ -8,10 +8,12 @@
 
 
 include 'conn.php'; 
-// Increase memory and upload limits
-ini_set('memory_limit', '1024M'); // Increase as needed
-ini_set('post_max_size', '500M');
-ini_set('upload_max_filesize', '500M');
+
+ini_set('memory_limit', '4096M'); 
+ini_set('post_max_size', '2000M'); 
+ini_set('upload_max_filesize', '2000M'); 
+
+
 
 function formatDate($date) {
     $d = DateTime::createFromFormat('Y-m-d', $date);

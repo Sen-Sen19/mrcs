@@ -1,8 +1,9 @@
 <?php
-ini_set('memory_limit', '1G'); // Increase memory limit
+ini_set('memory_limit', '2G'); 
+ini_set('post_max_size', '256M'); 
+ini_set('upload_max_filesize', '256M'); 
 
-include 'conn.php'; // Include your database connection file
-
+include 'conn.php'; 
 // Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
