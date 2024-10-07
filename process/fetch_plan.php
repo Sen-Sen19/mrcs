@@ -152,15 +152,14 @@ foreach ($data as $baseProduct => $rowData) {
               <td>{$masterlist['car_code']}</td>
               <td>{$masterlist['code']}</td>";
     } else {
-        // If no matching data, display base_product and line with empty cells
-        echo "<td colspan='4'></td>"; // Placeholder for car_model, main_product_no, car_code, and code
+
+        echo "<td colspan='4'></td>"; 
     }
 
-    // Always display base_product and line
     echo "<td>{$baseProduct}</td>
           <td>{$rowData['line']}</td>";
 
-    // Retrieve values for First Month, Second Month, and Third Month
+    
     $firstMonthValue = ''; 
     $secondMonthValue = '';
     $thirdMonthValue = '';
@@ -169,13 +168,12 @@ foreach ($data as $baseProduct => $rowData) {
     $maxPlan2Date = isset($matchingResults[$baseProduct]['second_month']) ? $matchingResults[$baseProduct]['second_month'] : '';
     $maxPlan3Date = isset($matchingResults[$baseProduct]['third_month']) ? $matchingResults[$baseProduct]['third_month'] : '';
 
-    // Check if Max Plan 1 date is in the dates array for First Month
+   
     if ($maxPlan1Date) {
-        $maxPlan1DateFormatted = date('Y-m-d', strtotime($maxPlan1Date)); // Convert to Y-m-d format
-        $firstMonthValue = isset($rowData[$maxPlan1DateFormatted]) ? $rowData[$maxPlan1DateFormatted] : ''; // Retrieve value from data array
+        $maxPlan1DateFormatted = date('Y-m-d', strtotime($maxPlan1Date)); 
+        $firstMonthValue = isset($rowData[$maxPlan1DateFormatted]) ? $rowData[$maxPlan1DateFormatted] : '';
     }
 
-    // Check if Max Plan 2 date is in the dates array for Second Month
     if ($maxPlan2Date) {
         $maxPlan2DateFormatted = date('Y-m-d', strtotime($maxPlan2Date)); // Convert to Y-m-d format
         $secondMonthValue = isset($rowData[$maxPlan2DateFormatted]) ? $rowData[$maxPlan2DateFormatted] : ''; // Retrieve value from data array
@@ -200,7 +198,7 @@ foreach ($data as $baseProduct => $rowData) {
     // Display the total value in red font color
     echo "<td style='color: red;'>" . ($total !== 0 ? $total : '') . "</td>";
 
-    // Display the Max Plan values and respective months with specified colors
+
     echo "<td style='color: blue;'>{$maxPlan1Date}</td>"; 
     echo "<td style='color: blue;'>{$firstMonthValue}</td>"; 
     echo "<td style='color: green;'>{$maxPlan2Date}</td>"; 
