@@ -38,7 +38,7 @@ include 'plugins/sidebar/user_bar.php';
                         <div class="card-body">
                             <div id="accounts_table_res1" class="table-responsive"
                                 style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
-                                <?php include '../../process/fetch_plan.php'; // Include the pivot data ?>
+                                <?php include '../../process/fetch_plan.php'; ?>
                             </div>
                         </div>
                     </div>

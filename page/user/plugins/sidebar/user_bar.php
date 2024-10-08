@@ -144,14 +144,24 @@
 
 
 
+<li class="nav-item">
+          <a href="total_shots.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/total_shots.php") ? 'active' : '' ?>">
+            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
+              style="width: 20px; height: 20px;">
+            <p>Total Shots</p>
+          </a>
+        </li>
+
+
 
 
         <li class="nav-item">
-          <a href="computation.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/computation.php") ? 'active' : '' ?>">
+          <a href="section1.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php") ? 'active' : '' ?>">
             <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
               style="width: 20px; height: 20px;">
-            <p>Computation</p>
+            <p>Section 1</p>
           </a>
         </li>
 
