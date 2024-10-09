@@ -31,7 +31,7 @@
                             <div id="accounts_table_res1" class="table-responsive"
                                 style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
                                 <table id="header_table1" class="table table-sm table-head-fixed text-nowrap table-hover" style="font-size: 16px;">
-                                    <thead style="text-align: center;">
+                                    <thead style="text-align: left;">
                                         <tr>
                                             <th>Car Model</th>
                                             <th>Process</th>
@@ -75,9 +75,9 @@ $(document).ready(function() {
                 let newRow = `<tr>
                                 <td>${row.car_model}</td>
                                 <td>${row.process}</td>
-                                <td>${row.value}</td>
-                                <td>${row.second_value}</td>
-                                <td>${row.third_value}</td>
+                                <td>${row.first_total_shots}</td>
+                                <td>${row.second_total_shots}</td>
+                                <td>${row.third_total_shots}</td>
                               </tr>`;
                 tableBody.append(newRow);
             });

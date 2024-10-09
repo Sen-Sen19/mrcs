@@ -165,6 +165,24 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="section2.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php") ? 'active' : '' ?>">
+            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
+              style="width: 20px; height: 20px;">
+            <p>Section 2</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="section3.php"
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php") ? 'active' : '' ?>">
+            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
+              style="width: 20px; height: 20px;">
+            <p>Section 3</p>
+          </a>
+        </li>
+
 
         <?php include 'logout.php'; ?>
       </ul>
