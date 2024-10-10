@@ -15,20 +15,34 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="totalShots-tab" data-toggle="tab" href="#file1" role="tab" aria-controls="file1" aria-selected="true">Total Shots</a>
+                        <a class="nav-link active" id="totalShots-tab" data-toggle="tab" href="#file1" role="tab"
+                            aria-controls="file1" aria-selected="true">Total Shots</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="first_month-tab" data-toggle="tab" href="#first_month" role="tab" aria-controls="first_month" aria-selected="false">First Month</a>
+                        <a class="nav-link" id="first_month-tab" data-toggle="tab" href="#first_month" role="tab"
+                            aria-controls="first_month" aria-selected="false">First Month</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="second_month-tab" data-toggle="tab" href="#second_month" role="tab"
+                            aria-controls="second_month" aria-selected="false">Second Month</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="third_month-tab" data-toggle="tab" href="#third_month" role="tab"
+                            aria-controls="third_month" aria-selected="false">Third Month</a>
                     </li>
                 </ul>
 
                 <div class="tab-content" id="excelTabContent">
                     <!-- Total Shots Tab -->
+
+
                     <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="totalShots-tab">
                         <div class="card card-gray-dark card-outline">
                             <div id="accounts_table_res1" class="table-responsive"
                                 style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
-                                <table id="header_table1" class="table table-sm table-head-fixed text-nowrap table-hover" style="font-size: 14px;">
+                                <table id="header_table1"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover"
+                                    style="font-size: 14px;">
                                     <thead style="text-align: left;">
                                         <tr>
                                             <th>Car Model</th>
@@ -50,15 +64,50 @@
                         </div>
                     </div>
 
+
+
                     <!-- first_month Tab -->
                     <div class="tab-pane fade" id="first_month" role="tabpanel" aria-labelledby="first_month-tab">
                         <div class="card card-gray-dark card-outline">
                             <div id="first_month_table" class="table-responsive"
                                 style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
-                                <table id="first_month_table_header" class="table table-sm table-head-fixed text-nowrap table-hover" style="font-size: 14px;">
-                                    <thead style="text-align: left;"> 
+                                <table id="first_month_table_header"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover"
+                                    style="font-size: 14px;">
+                                    <thead style="text-align: left;">
                                         <tr>
+                                            <th>Car Modelwt</th>
                                             <th>Process</th>
+                                            <th>Machine Inventory</th>
+                                            <th>Machine Requirements</th>
+                                            <th>JPH</th>
+                                            <th>WT</th>
+                                            <th>OT</th>
+                                            <th>MP Shift</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="first_month_table_body" style="text-align: left;">
+                                        <!-- Rows will be populated here dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- second_month Tab -->
+                    <div class="tab-pane fade" id="second_month" role="tabpanel" aria-labelledby="second_month-tab">
+                        <div class="card card-gray-dark card-outline">
+                            <div id="second_month_table" class="table-responsive"
+                                style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
+                                <table id="first_month_table_header"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover"
+                                    style="font-size: 14px;">
+                                    <thead style="text-align: left;">
+                                        <tr>
+                                            <th>Car Modelwt</th>
+                                            <th>Process</th>
+                                            <th>Machine Inventory</th>
                                             <th>Machine Requirements</th>
                                             <th>JPH</th>
                                             <th>WT</th>
@@ -67,8 +116,37 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody id="first_month_table_body" style="text-align: left;">
-                                        <!-- Populate this section with first_month data -->
+                                    <tbody id="second_month_table_body" style="text-align: left;">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- third_month Tab -->
+                    <div class="tab-pane fade" id="third_month" role="tabpanel" aria-labelledby="third_month-tab">
+                        <div class="card card-gray-dark card-outline">
+                            <div id="third_month_table" class="table-responsive"
+                                style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
+                                <table id="third_month_table_header"
+                                    class="table table-sm table-head-fixed text-nowrap table-hover"
+                                    style="font-size: 14px;">
+                                    <thead style="text-align: left;">
+                                        <tr>
+                                            <th>Car Modelwt</th>
+                                            <th>Process</th>
+                                            <th>Machine Inventory</th>
+                                            <th>Machine Requirements</th>
+                                            <th>JPH</th>
+                                            <th>WT</th>
+                                            <th>OT</th>
+                                            <th>MP Shift</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="third_month_table_body" style="text-align: left;">
+
                                     </tbody>
                                 </table>
                             </div>
@@ -80,38 +158,339 @@
     </div>
 </div>
 
-<!-- jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!--------------------------------------------modal-------------------------------------------------- -->
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Row</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="car_model">Car Model</label>
+                        <input type="text" class="form-control" id="car_model" name="car_model" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="process">Process</label>
+                        <input type="text" class="form-control" id="process" name="process" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="machine_inventory">Machine Inventory</label>
+                        <input type="num" class="form-control" id="machine_inventory" name="machine_inventory"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jph">JPH</label>
+                        <input type="num" class="form-control" id="jph" name="jph" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="wt">WT</label>
+                        <input type="num" class="form-control" id="wt" name="wt" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ot">OT</label>
+                        <input type="num" class="form-control" id="ot" name="ot" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mp">MP Shift</label>
+                        <input type="num" class="form-control" id="mp" name="mp" required>
+                    </div>
+                    <input type="hidden" id="row_index" name="row_index">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
-$(document).ready(function() {
-    // Fetch Total Shots data
-    $.ajax({
-        url: '../../process/fetch_total_shots_section3.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            let tableBody = $('#table_body1');
-            tableBody.empty();
+    $(document).ready(function () {
 
-            data.forEach(function(row) {
-                let newRow = `<tr>
+        $.ajax({
+            url: '../../process/fetch_total_shots_section3.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                let tableBody = $('#table_body1');
+                tableBody.empty();
+
+                data.forEach(function (row) {
+                    let newRow = `<tr>
                                 <td>${row.car_model}</td>
                                 <td>${row.process}</td>
                                 <td>${row.value}</td>
                                 <td>${row.second_value}</td>
                                 <td>${row.third_value}</td>
                               </tr>`;
-                tableBody.append(newRow);
-            });
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error fetching Total Shots data: ' + textStatus, errorThrown);
-        }
+                    tableBody.append(newRow);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error fetching Total Shots data: ' + textStatus, errorThrown);
+            }
+        });
+
     });
 
-});
+
+
+
+
+
+
+
+    // --------------------------------------------First Month --------------------------------------------------------
+
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('../../process/fetch_section_3.php')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('first_month_table_body');
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+
+
+                    const carModelTd = document.createElement('td');
+                    carModelTd.textContent = row.car_model;
+                    tr.appendChild(carModelTd);
+
+                    const processTd = document.createElement('td');
+                    processTd.textContent = row.process;
+                    tr.appendChild(processTd);
+
+                    const machineInventoryTd = document.createElement('td');
+                    machineInventoryTd.textContent = row.machine_inventory;
+                    tr.appendChild(machineInventoryTd);
+
+                    const machineTd = document.createElement('td');
+                    machineTd.textContent = '';
+                    tr.appendChild(machineTd);
+
+                    const jphTd = document.createElement('td');
+                    jphTd.textContent = row.jph1;
+                    tr.appendChild(jphTd);
+
+                    const wtTd = document.createElement('td');
+                    wtTd.textContent = row.wt1;
+                    tr.appendChild(wtTd);
+
+                    const otTd = document.createElement('td');
+                    otTd.textContent = row.ot1;
+                    tr.appendChild(otTd);
+
+                    const mpTd = document.createElement('td');
+                    mpTd.textContent = row.mp1;
+                    tr.appendChild(mpTd);
+
+
+                    tr.addEventListener('click', function () {
+                        document.getElementById('car_model').value = row.car_model;
+                        document.getElementById('process').value = row.process;
+                        document.getElementById('machine_inventory').value = row.machine_inventory;
+                        document.getElementById('jph').value = row.jph1;
+                        document.getElementById('wt').value = row.wt1;
+                        document.getElementById('ot').value = row.ot1;
+                        document.getElementById('mp').value = row.mp1;
+                        document.getElementById('row_index').value = row.id;
+
+
+                        $('#editModal').modal('show');
+                    });
+
+
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+
+        document.getElementById('saveChanges').addEventListener('click', function () {
+            const id = document.getElementById('row_index').value; 
+            const updatedData = {
+                car_model: document.getElementById('car_model').value,
+                process: document.getElementById('process').value,
+                machine_inventory: document.getElementById('machine_inventory').value,
+                jph: document.getElementById('jph').value,
+                wt: document.getElementById('wt').value,
+                ot: document.getElementById('ot').value,
+                mp: document.getElementById('mp').value,
+            };
+
+            console.log('ID:', id);
+            console.log('Updated Data:', updatedData);
+
+
+            fetch('../../process/edit_section3.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ index: id, updatedData: updatedData }),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Response from server:', result);
+                    if (result.success) {
+                        alert('Update successful!');
+                        location.reload();
+                    } else {
+                        alert('Error updating row: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                });
+        });
+    });
+
+
+
+    // --------------------------------------------Second Month --------------------------------------------------------
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        fetch('../../process/fetch_section_3.php')
+            .then(response => response.json())
+            .then(data => {
+
+                const tableBody = document.getElementById('second_month_table_body');
+
+
+                data.forEach(row => {
+
+                    const tr = document.createElement('tr');
+
+
+                    const carModelTd = document.createElement('td');
+                    carModelTd.textContent = row.car_model;
+                    tr.appendChild(carModelTd);
+
+
+                    const processTd = document.createElement('td');
+                    processTd.textContent = row.process;
+                    tr.appendChild(processTd);
+
+
+                    const machineInventoryTd = document.createElement('td');
+                    machineInventoryTd.textContent = row.machine_inventory;
+                    tr.appendChild(machineInventoryTd);
+
+
+                    const machineTd = document.createElement('td');
+                    machineTd.textContent = '';
+                    tr.appendChild(machineTd);
+
+
+                    const jphTd = document.createElement('td');
+                    jphTd.textContent = row.jph2;
+                    tr.appendChild(jphTd);
+
+
+                    const wtTd = document.createElement('td');
+                    wtTd.textContent = row.wt2;
+                    tr.appendChild(wtTd);
+
+
+                    const otTd = document.createElement('td');
+                    otTd.textContent = row.ot2;
+                    tr.appendChild(otTd);
+
+
+                    const mpTd = document.createElement('td');
+                    mpTd.textContent = row.mp2;
+                    tr.appendChild(mpTd);
+
+
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+
+    // --------------------------------------------Third Month --------------------------------------------------------
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        fetch('../../process/fetch_section_3.php')
+            .then(response => response.json())
+            .then(data => {
+
+                const tableBody = document.getElementById('third_month_table_body');
+
+
+                data.forEach(row => {
+
+                    const tr = document.createElement('tr');
+
+
+                    const carModelTd = document.createElement('td');
+                    carModelTd.textContent = row.car_model;
+                    tr.appendChild(carModelTd);
+
+
+                    const processTd = document.createElement('td');
+                    processTd.textContent = row.process;
+                    tr.appendChild(processTd);
+
+
+                    const machineInventoryTd = document.createElement('td');
+                    machineInventoryTd.textContent = row.machine_inventory;
+                    tr.appendChild(machineInventoryTd);
+
+
+                    const machineTd = document.createElement('td');
+                    machineTd.textContent = '';
+                    tr.appendChild(machineTd);
+
+
+                    const jphTd = document.createElement('td');
+                    jphTd.textContent = row.jph3;
+                    tr.appendChild(jphTd);
+
+
+                    const wtTd = document.createElement('td');
+                    wtTd.textContent = row.wt3;
+                    tr.appendChild(wtTd);
+
+
+                    const otTd = document.createElement('td');
+                    otTd.textContent = row.ot3;
+                    tr.appendChild(otTd);
+
+
+                    const mpTd = document.createElement('td');
+                    mpTd.textContent = row.mp3;
+                    tr.appendChild(mpTd);
+
+
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+
+
+
+
+
+
 
 </script>
 

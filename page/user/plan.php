@@ -49,8 +49,6 @@ include 'plugins/sidebar/user_bar.php';
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../../dist/js/xlsx.full.min.js"></script>
 
 <script>
   $(document).ready(function () {
