@@ -143,45 +143,73 @@
 </li>
 
 
-
 <li class="nav-item">
-          <a href="total_shots.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/total_shots.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Total Shots</p>
-          </a>
-        </li>
-
-
-
-
+    <a href="total_shots.php"
+        class="nav-link <?= (  $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/total_shots.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section4.php") ? 'active' : '' ?>">
+        <img src="../../dist/img/calculate.png" alt="Sections Icon" class="nav-icon"
+            style="width: 20px; height: 20px;">
+        <p>Total Shots</p>
+    </a>
+    <ul class="sub-sidebar">
         <li class="nav-item">
-          <a href="section1.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Section 1</p>
-          </a>
+            <a href="section1.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php") ? 'active' : '' ?>">
+                <p>Section 1</p>
+            </a>
         </li>
 
         <li class="nav-item">
-          <a href="section2.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Section 2</p>
-          </a>
+            <a href="section2.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php") ? 'active' : '' ?>">
+                <p>Section 2</p>
+            </a>
         </li>
 
         <li class="nav-item">
-          <a href="section3.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/calculate.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Section 3</p>
-          </a>
+            <a href="section3.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php") ? 'active' : '' ?>">
+                <p>Section 3</p>
+            </a>
         </li>
+        
+        <li class="nav-item">
+            <a href="section4.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section4.php") ? 'active' : '' ?>">
+                <p>Section 4</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="section5.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section5.php") ? 'active' : '' ?>">
+                <p>Section 5</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="section6.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section6.php") ? 'active' : '' ?>">
+                <p>Section 6</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="section7.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section7.php") ? 'active' : '' ?>">
+                <p>Section 7</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="section9.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section9.php") ? 'active' : '' ?>">
+                <p>Section 9</p>
+            </a>
+        </li>
+
+    </ul>
+</li>
+
 
 
         <?php include 'logout.php'; ?>

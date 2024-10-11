@@ -150,6 +150,7 @@ $processes2 = [
 'trd_nwpa_0_13',
 'trd_nwpa_below_2_0_except_0_13',
 'trd_nwpa_2_0_3_0',
+'trd_nwpa_2_0_3_0',
 'trdwpa_below_2_0_except_0_13',
 'trd_aluminum_nwpa_below_2_0',
 'trd_aluminum_wpa_below_2_0',

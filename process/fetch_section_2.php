@@ -4,7 +4,7 @@ include 'conn.php';
 
 
 $sql = "SELECT car_model, process, machine_inventory, machine_requirements1, machine_requirements2, machine_requirements3, jph1, wt1, ot1, mp1, jph2, wt2, ot2, mp2, jph3, wt3, ot3, mp3, id
-        FROM [live_mrcs_db].[dbo].[section_3]";
+        FROM [live_mrcs_db].[dbo].[section_2]";
 
 
 $stmt = sqlsrv_query($conn, $sql);

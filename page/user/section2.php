@@ -336,7 +336,7 @@
     $(document).ready(function () {
 
         $.ajax({
-            url: '../../process/fetch_total_shots_section3.php',
+            url: '../../process/fetch_total_shots_section2.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -371,7 +371,7 @@
     // --------------------------------------------First Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-    fetch('../../process/fetch_section_3.php')
+    fetch('../../process/fetch_section_2.php')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('first_month_table_body');
@@ -434,7 +434,9 @@
                 title: 'Error!',
                 text: 'Error fetching data from server.',
                 icon: 'error',
-                confirmButtonText: false,
+                showconfirmButton: false,
+  timer:1500,
+
             });
         });
 
@@ -454,7 +456,7 @@
         console.log('ID:', id);
         console.log('Updated Data:', updatedData);
 
-        fetch('../../process/edit_section_3_first_month.php', {
+        fetch('../../process/edit_section_2_first_month.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -501,7 +503,7 @@
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-fetch('../../process/fetch_section_3.php')
+fetch('../../process/fetch_section_2.php')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById('second_month_table_body');
@@ -564,7 +566,10 @@ fetch('../../process/fetch_section_3.php')
             title: 'Error!',
             text: 'Error fetching data from server.',
             icon: 'error',
-            confirmButtonText: false,
+            showconfirmButton: false,
+  timer:1500,
+
+            
         });
     });
 
@@ -584,7 +589,7 @@ document.getElementById('saveChanges2').addEventListener('click', function () {
     console.log('ID:', id);
     console.log('Updated Data:', updatedData);
 
-    fetch('../../process/edit_section_3_second_month.php', {
+    fetch('../../process/edit_section_2_second_month.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -633,7 +638,7 @@ document.getElementById('saveChanges2').addEventListener('click', function () {
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-fetch('../../process/fetch_section_3.php')
+fetch('../../process/fetch_section_2.php')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById('third_month_table_body');
@@ -699,7 +704,9 @@ $('#editModalThirdMonth').modal('show');
             title: 'Error!',
             text: 'Error fetching data from server.',
             icon: 'error',
-            confirmButtonText: false,
+            showconfirmButton: false,
+  timer:1500,
+
         });
     });
 
@@ -719,7 +726,7 @@ document.getElementById('saveChanges3').addEventListener('click', function () {
     console.log('ID:', id);
     console.log('Updated Data:', updatedData);
 
-    fetch('../../process/edit_section_3_third_month.php', {
+    fetch('../../process/edit_section_2_third_month.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

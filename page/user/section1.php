@@ -2,7 +2,7 @@
 <?php include 'plugins/sidebar/user_bar.php'; ?>
 
 <div class="content-wrapper">
-    <!-- Sticky header section -->
+   
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
