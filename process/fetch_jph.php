@@ -1,6 +1,6 @@
 <?php
-// fetch_jph_data.php
-include 'conn.php'; // Include your database connection file
+
+include 'conn.php'; 
 
 $query = "SELECT TOP (1000) [process], [first_jph] FROM [live_mrcs_db].[dbo].[jph_masterlist]";
 $result = sqlsrv_query($conn, $query);

@@ -38,7 +38,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
           <a href="dashboard.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/dashboard.php") ? 'active' : '' ?>">
+            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/dashboard.php") ? 'active' : '' ?>">
             <img src="../../dist/img/dashboard.png" alt="Pagination Icon" class="nav-icon"
               style="width: 20px; height: 20px;">
             <p>Dashboard</p>
@@ -54,12 +54,12 @@
         
         <li class="nav-item">
     <a href="plan_from_pc.php"
-        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_from_pc.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_total.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan_from_pc.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan_total.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/non_machine_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/secondary_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/other_process.php") ? 'active' : '' ?>">
         <img src="../../dist/img/summary.png" alt="Masterlist Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>Plan From PC</p>
     </a>
@@ -67,14 +67,14 @@
 
         <li class="nav-item">
             <a href="plan_total.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan_total.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan_total.php") ? 'active' : '' ?>">
                 <p>Plan  Total</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="plan.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/plan.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan.php") ? 'active' : '' ?>">
                 <p>Plan</p>
             </a>
         </li>
@@ -95,47 +95,47 @@
 
         <li class="nav-item">
     <a href="masterlist.php"
-        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/masterlist.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/first_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/unique_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+        class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/masterlist.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/first_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/unique_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/non_machine_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/secondary_process.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/other_process.php") ? 'active' : '' ?>">
         <img src="../../dist/img/masterlist.png" alt="Masterlist Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>Masterlist</p>
     </a>
     <ul class="sub-sidebar">
         <li class="nav-item">
             <a href="first_process.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/first_process.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/first_process.php") ? 'active' : '' ?>">
                 <p>First Process</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="unique_process.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/unique_process.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/unique_process.php") ? 'active' : '' ?>">
                 <p>Unique Process</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="non_machine_process.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/non_machine_process.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/non_machine_process.php") ? 'active' : '' ?>">
                 <p>Non-Machine Process</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="secondary_process.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/secondary_process.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/secondary_process.php") ? 'active' : '' ?>">
                 <p>Secondary Process</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="other_process.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/other_process.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/other_process.php") ? 'active' : '' ?>">
                 <p>Other Process</p>
             </a>
         </li>
@@ -145,11 +145,17 @@
 
 <li class="nav-item">
     <a href="total_shots.php"
-        class="nav-link <?= (  $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/total_shots.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section4.php") ? 'active' : '' ?>">
+        class="nav-link <?= (  $_SERVER['REQUEST_URI'] == "/mrcs/page/user/total_shots.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section1.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section2.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section3.php" || 
+               
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section5.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section6.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section7.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section8.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section9.php" || 
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/section4.php") ? 'active' : '' ?>">
         <img src="../../dist/img/calculate.png" alt="Sections Icon" class="nav-icon"
             style="width: 20px; height: 20px;">
         <p>Total Shots</p>
@@ -157,52 +163,58 @@
     <ul class="sub-sidebar">
         <li class="nav-item">
             <a href="section1.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section1.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section1.php") ? 'active' : '' ?>">
                 <p>Section 1</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="section2.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section2.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section2.php") ? 'active' : '' ?>">
                 <p>Section 2</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="section3.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section3.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section3.php") ? 'active' : '' ?>">
                 <p>Section 3</p>
             </a>
         </li>
         
         <li class="nav-item">
             <a href="section4.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section4.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section4.php") ? 'active' : '' ?>">
                 <p>Section 4</p>
             </a>
         </li>
         <li class="nav-item">
             <a href="section5.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section5.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section5.php") ? 'active' : '' ?>">
                 <p>Section 5</p>
             </a>
         </li>
         <li class="nav-item">
             <a href="section6.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section6.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section6.php") ? 'active' : '' ?>">
                 <p>Section 6</p>
             </a>
         </li>
         <li class="nav-item">
             <a href="section7.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section7.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section7.php") ? 'active' : '' ?>">
                 <p>Section 7</p>
             </a>
         </li>
         <li class="nav-item">
+            <a href="section8.php"
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section8.php") ? 'active' : '' ?>">
+                <p>Section 8</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="section9.php"
-                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs_2/page/user/section9.php") ? 'active' : '' ?>">
+                class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section9.php") ? 'active' : '' ?>">
                 <p>Section 9</p>
             </a>
         </li>

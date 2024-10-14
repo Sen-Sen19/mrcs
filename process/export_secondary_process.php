@@ -1,7 +1,7 @@
 <?php
 include 'conn.php'; // Include your connection file
 
-// Prepare the SQL query to fetch all data from the first_process table
+
 $sql = "SELECT 
     product, base_product, car_model, car_code, block, class, line_no, 
             circuit_qty, joint_crimping_2tons_ps_800_s_2, joint_crimping_2tons_ps_200_m_2, 

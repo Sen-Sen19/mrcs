@@ -1,8 +1,8 @@
 <?php
-// Include database connection
+
 include 'conn.php';
 
-// Prepare your SQL query
+
 $query = "
 WITH CombinedResults AS (
     SELECT 
@@ -4024,9 +4024,9 @@ FROM CombinedResults
 ORDER BY [car_model];
 
 
- "; // Modify as necessary
+ "; 
 
-// Execute the query
+
 $result = sqlsrv_query($conn, $query);
 
 $data = [];
@@ -4038,6 +4038,5 @@ if ($result) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// Encode data as JSON
 echo json_encode($data);
 ?>

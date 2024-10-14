@@ -1,10 +1,7 @@
 <?php
 session_name("mrcs");
 session_start();
-
-
 include 'conn.php';
-
 if (isset($_POST['Login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -36,7 +33,6 @@ if (isset($_POST['Login'])) {
         echo '<script>alert("Sign In Failed. Error in preparing or executing SQL query.")</script>';
     }
 }
-
 if (isset($_POST['Logout'])) {
     session_unset();
     session_destroy();

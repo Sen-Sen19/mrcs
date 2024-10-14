@@ -7,11 +7,7 @@
   </footer>
 <?php
 //MODALS
-include '../../modals/logout_modal.php';
-include '../../modals/new_account.php';
-include '../../modals/update_account.php';
-include '../../modals/import_accounts.php';
-include '../../modals/confirm_delete_account_selected.php';
+
 ?>
 <!-- jQuery -->
 <script src="../../plugins/jquery/dist/jquery.min.js"></script>

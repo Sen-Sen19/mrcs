@@ -4,11 +4,11 @@ ini_set('post_max_size', '256M');
 ini_set('upload_max_filesize', '256M'); 
 
 include 'conn.php'; 
-// Enable error reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Prepare the SQL query to fetch data
+
 $sql = "SELECT 
             [base_product], 
             [manufacturing_location], 
@@ -46,7 +46,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $data[] = $row;
 }
 
-// Return data as JSON
+
 header('Content-Type: application/json; charset=utf-8');
 
 $json = json_encode($data);

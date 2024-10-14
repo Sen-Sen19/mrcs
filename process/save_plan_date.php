@@ -1,30 +1,27 @@
 <?php
-include 'conn.php'; // Include your database connection
+include 'conn.php'; 
 
-// Get the data from POST request
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!empty($data)) {
-    // Start a transaction
+
     sqlsrv_begin_transaction($conn);
 
-    // Prepare the SQL query to delete existing data
     $deleteSql = "DELETE FROM selected_plan_date";
 
-    // Execute the delete query
+
     if (!sqlsrv_query($conn, $deleteSql)) {
         echo json_encode(["status" => "error", "message" => sqlsrv_errors()]);
-        sqlsrv_rollback($conn); // Rollback transaction on error
-        exit; // Exit if delete fails
+        sqlsrv_rollback($conn); 
+        exit; 
     }
 
-    // Set the chunk size to 1000 rows (SQL Server's maximum limit)
     $chunkSize = 1000;
     $chunks = array_chunk($data, $chunkSize);
 
-    // Insert data in chunks
+
     foreach ($chunks as $chunk) {
-        // Prepare the SQL query to insert data
+
         $sql = "INSERT INTO selected_plan_date 
                 (base_product, manufacturing_location, customer_manufacturer, shipping_location, 
                 vehicle_type, vehicle_type_name, wh_type, wh_type_name, assy_group_name, 
@@ -34,7 +31,7 @@ if (!empty($data)) {
 
         $valuesArr = [];
         foreach ($chunk as $row) {
-            // Extract each column value from $row and ensure it's properly escaped
+
             $baseProduct = addslashes($row['base_product']);
             $manufacturingLocation = addslashes($row['manufacturing_location']);
             $customerManufacturer = addslashes($row['customer_manufacturer']);
@@ -58,21 +55,21 @@ if (!empty($data)) {
             $laterProcess = addslashes($row['later_process']);
             $value = addslashes($row['value']);
 
-            // Use DateTime to add one day to the date field
+
             $date = new DateTime($row['date']);
             $date->modify('+1 day');
-            $formattedDate = $date->format('Y-m-d'); // Format date as 'YYYY-MM-DD'
+            $formattedDate = $date->format('Y-m-d'); 
 
-            // Query to get car_model from m_masterlist using base_product
+           
             $carModelSql = "SELECT car_model FROM m_masterlist WHERE base_product = ?";
             $params = [$baseProduct];
             $carModelResult = sqlsrv_query($conn, $carModelSql, $params);
             $carModelRow = sqlsrv_fetch_array($carModelResult, SQLSRV_FETCH_ASSOC);
 
-            // If car_model exists, use it; otherwise, set it to null
+
             $carModel = isset($carModelRow['car_model']) ? addslashes($carModelRow['car_model']) : 'NULL';
 
-            // Prepare values for the insert query, ensuring each value is mapped correctly to its column
+        
             $valuesArr[] = "('$baseProduct', '$manufacturingLocation', '$customerManufacturer', '$shippingLocation', 
                             '$vehicleType', '$vehicleTypeName', '$whType', '$whTypeName', '$assyGroupName', 
                             '$item', '$internalItemNumber', '$line', '$polySize', '$capacity', '$productCategory', 
@@ -80,24 +77,24 @@ if (!empty($data)) {
                             '$laterProcess', '$formattedDate', '$value', '$carModel')";
         }
 
-        // Join all the values and append to the query
+
         $sql .= implode(",", $valuesArr);
 
-        // Execute the insert query
+
         if (!sqlsrv_query($conn, $sql)) {
             echo json_encode(["status" => "error", "message" => sqlsrv_errors()]);
-            sqlsrv_rollback($conn); // Rollback transaction on error
-            exit; // Exit if insert fails
+            sqlsrv_rollback($conn); 
+            exit; 
         }
     }
 
-    // Commit the transaction if all inserts succeed
+
     sqlsrv_commit($conn);
     echo json_encode(["status" => "success"]);
 } else {
     echo json_encode(["status" => "error", "message" => "No data received"]);
 }
 
-// Log the last SQL statement executed for debugging
+
 error_log($sql);
 ?>

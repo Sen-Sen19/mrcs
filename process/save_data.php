@@ -7,32 +7,33 @@
 
 
 
-include 'conn.php'; 
+include 'conn.php';
 
-ini_set('memory_limit', '4096M'); 
-ini_set('post_max_size', '2000M'); 
-ini_set('upload_max_filesize', '2000M'); 
+ini_set('memory_limit', '4096M');
+ini_set('post_max_size', '2000M');
+ini_set('upload_max_filesize', '2000M');
 
 
 
-function formatDate($date) {
+function formatDate($date)
+{
     $d = DateTime::createFromFormat('Y-m-d', $date);
     if ($d && $d->format('Y-m-d') === $date) {
         return $date;
     } else {
-        
+
         $d = DateTime::createFromFormat('Y/m/d', $date);
         if ($d) {
             return $d->format('Y-m-d');
         } else {
-            return null; 
+            return null;
         }
     }
 }
-// Decode the incoming JSON data
+
 
 $data = json_decode(file_get_contents('php://input'), true);
-// Define the SQL query with the remaining fields
+
 $query = "
     INSERT INTO plan_from_pc (
         manufacturing_location, base_product, date, value, 
@@ -45,7 +46,7 @@ $query = "
               ?, ?, ?, ?)
 ";
 
-// Loop through the data and insert each row into the database
+
 foreach ($data as $row) {
     $baseProduct = $row['base_product'];
     $date = formatDate($row['date']);
@@ -70,24 +71,42 @@ foreach ($data as $row) {
     $initialProcess = $row['initial_process'];
     $secondaryProcess = $row['secondary_process'];
     $productionGrp = $row['production_grp'];
-    $later_process = $row['later_process']; // Updated to lowercase
+    $later_process = $row['later_process'];
 
-    // Check for valid date format
+
     if ($date === null) {
         echo "Invalid date format: " . htmlspecialchars($row['date']);
-        continue; 
+        continue;
     }
 
-    // Prepare parameters for the SQL query
+
     $params = [
-        $manufacturingLocationCode, $baseProduct, $date, $value, 
-        $customerManufacturerCode, $vehicleType, $vehicleTypeName, $whType,
-        $whTypeName, $assyGroupName, $item,
-        $internalItemNumber, $line, $polySize, $capacity, $productCategory,
-        $section, $circuit, $initialProcess, $secondaryProcess, $shippingLocation, $productionGrp, $later_process,
+        $manufacturingLocationCode,
+        $baseProduct,
+        $date,
+        $value,
+        $customerManufacturerCode,
+        $vehicleType,
+        $vehicleTypeName,
+        $whType,
+        $whTypeName,
+        $assyGroupName,
+        $item,
+        $internalItemNumber,
+        $line,
+        $polySize,
+        $capacity,
+        $productCategory,
+        $section,
+        $circuit,
+        $initialProcess,
+        $secondaryProcess,
+        $shippingLocation,
+        $productionGrp,
+        $later_process,
     ];
 
-    // Execute the query
+
     $stmt = sqlsrv_query($conn, $query, $params);
 
     if ($stmt === false) {
@@ -136,7 +155,7 @@ echo "Data successfully saved.";
 //     if ($d && $d->format('Y-m-d') === $date) {
 //         return $date;
 //     } else {
-        
+
 //         $d = DateTime::createFromFormat('Y/m/d', $date);
 //         if ($d) {
 //             return $d->format('Y-m-d');

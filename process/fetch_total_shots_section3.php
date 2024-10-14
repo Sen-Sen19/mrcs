@@ -104,28 +104,28 @@ $processes1 = [
 'shieldwire_taping',
 'shikakari_handler',
 'black_taping',
-'completion' //73
+'completion' 
 
 
 ];
 
-// Prepare parameters for the first query
+
 $params1 = array_merge([$carModel1], $processes1);
 
-// Execute the first query
+
 $stmt1 = sqlsrv_query($conn, $sql1, $params1);
 
 if ($stmt1 === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// Fetch results for the first car model
+
 $results1 = array();
 while ($row = sqlsrv_fetch_array($stmt1, SQLSRV_FETCH_ASSOC)) {
     $results1[] = $row;
 }
 
-// Define the second car model and its specific processes
+
 $carModel2 = 'mazda j12';  
 $sql2 = "SELECT [car_model], [process], [first_total_shots] AS value, 
         [second_total_shots] AS second_value, [third_total_shots] AS third_value 

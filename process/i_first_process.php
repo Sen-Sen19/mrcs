@@ -23,10 +23,10 @@ if (isset($data['data']) && !empty($data['data'])) {
 
     foreach ($rows as $row) {
         $product = isset($row[0]) ? trim($row[0]) : '';
-        $car_model = isset($row[1]) ? trim($row[1], '"') : ''; // Trim quotes
+        $car_model = isset($row[1]) ? trim($row[1], '"') : ''; 
         $base_product = isset($row[2]) ? trim($row[2]) : '';
         $car_code = isset($row[3]) ? trim($row[3]) : '';
-        $block = isset($row[4]) ? trim($row[4], '"') : ''; // Trim quotes
+        $block = isset($row[4]) ? trim($row[4], '"') : '';
         $class = isset($row[5]) ? trim($row[5]) : '';
         $line_no = isset($row[6]) ? trim($row[6]) : '';
         $circuit_qty = isset($row[7]) ? trim($row[7]) : '';

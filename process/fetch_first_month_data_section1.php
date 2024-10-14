@@ -21,7 +21,7 @@ $query = "
         ts.[car_model] = '$car_model'
 ";
 
-$result = sqlsrv_query($conn, $query); // Assuming $conn is your database connection
+$result = sqlsrv_query($conn, $query);
 
 $data = array();
 

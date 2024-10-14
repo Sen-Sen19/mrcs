@@ -75,76 +75,49 @@ document.getElementById('searchButton').addEventListener('click', function () {
     });
 
     // ------------------------------- first process --------------------------------------
-    document.getElementById('importButton1').addEventListener('click', function () {
-        document.getElementById('fileImport1').click();
-    });
+    document.getElementById("importButton1").addEventListener("click", function() {
+    // Trigger file input click
+    document.getElementById("fileImport1").click();
+});
 
-    document.getElementById('fileImport1').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
+document.getElementById("fileImport1").addEventListener("change", function() {
+    const fileInput = document.getElementById("fileImport1");
+    const file = fileInput.files[0];  // Get the selected file
 
+    if (file) {
+        const formData = new FormData();
+        formData.append("csv_file", file);  // Append the file to the form data
 
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveFirstProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
-        } else {
-            alert('Please select a file.');
-        }
-    });
+        // Show loading spinner (optional)
+        document.getElementById("loadingSpinner").style.display = 'block';
 
-    function saveFirstProcess(data) {
-        fetch('../../process/i_first_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
+        // Send the form data to the server using fetch API
+        fetch("../../process/first_process_1.php", {
+
+            method: "POST",
+            body: formData,  // Send the file in formData
         })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
+        .then(response => response.json())  // Parse JSON response from the server
+        .then(data => {
+            // Hide loading spinner
+            document.getElementById("loadingSpinner").style.display = 'none';
 
+            if (data.success) {
+                alert("File imported successfully!");
+                // location.reload();  // Reload the page to refresh the table data
+            } else {
+                console.error(data.error);
+                alert("File import failed: " + data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred during file import.");
+        });
+    } else {
+        alert("Please select a CSV file to import.");
+    }
+});
 
     // ---------------------------display data-----------------------------------
     let page = 1;

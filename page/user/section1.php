@@ -111,7 +111,7 @@ $(document).ready(function() {
         }
     });
   $.ajax({
-        url: '../../process/fetch_first_month_data.php', // Adjust the URL to your actual data fetching PHP file
+        url: '../../process/fetch_first_month_data.php',
         type: 'GET',
         dataType: 'json',
         success: function(data) {
@@ -134,7 +134,6 @@ $(document).ready(function() {
             console.error('Error fetching First Month data: ' + textStatus, errorThrown);
         }
     });
-    // Fetch First Month data
     $.ajax({
         url: '../../process/fetch_first_month_data_section1.php',
         type: 'GET',
@@ -160,6 +159,8 @@ $(document).ready(function() {
         }
     });
 });
+
+
 
 </script>
 

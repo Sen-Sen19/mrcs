@@ -189,7 +189,7 @@
                     </div>
                     <div class="form-group">
                         <label for="machine_inventory">Machine Inventory</label>
-                        <input type="number" class="form-control" id="machine_inventory" name="machine_inventory" required>
+                        <input type="number" class="form-control" id="machine_inventory" name="machine_inventory" required readonly>
                     </div>
                     <div class="form-group">
                         <label for="jph">JPH</label>

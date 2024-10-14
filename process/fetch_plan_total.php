@@ -37,6 +37,6 @@ if ($result !== false && sqlsrv_has_rows($result)) {
     echo "<tr><td colspan='7'>No data available</td></tr>";
 }
 
-// Close the database connection
+
 sqlsrv_close($conn);
 ?>

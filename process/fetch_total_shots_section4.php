@@ -136,17 +136,17 @@ $processes1 = [
 
 ];
 
-// Prepare parameters for the first query
+
 $params1 = array_merge([$carModel1], $processes1);
 
-// Execute the first query
+
 $stmt1 = sqlsrv_query($conn, $sql1, $params1);
 
 if ($stmt1 === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// Fetch results for the first car model
+
 $results1 = array();
 while ($row = sqlsrv_fetch_array($stmt1, SQLSRV_FETCH_ASSOC)) {
     $results1[] = $row;

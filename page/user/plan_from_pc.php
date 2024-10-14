@@ -258,13 +258,13 @@ $(document).ready(function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-        // Add event listener to save button
+
         document.getElementById("saveButton").addEventListener("click", function () {
             saveData();
         });
     });
     function saveData() {
-    let table = document.querySelector('#accounts_table_res2 table'); // Corrected line
+    let table = document.querySelector('#accounts_table_res2 table'); 
     if (!table) {
         alert('Table not found');
         return;
@@ -273,35 +273,32 @@ document.addEventListener("DOMContentLoaded", function () {
     let rows = table.getElementsByTagName('tbody')[0].rows;
     let dataToSend = [];
 
-    // Loop through each row
+
     for (let i = 0; i < rows.length; i++) {
         let row = rows[i];
         let baseData = [];
 
-        // Extract the static columns (first 21 columns)
+   
         for (let j = 0; j < 21; j++) {
-            baseData.push(row.cells[j].innerText.trim()); // Trim to remove extra spaces
+            baseData.push(row.cells[j].innerText.trim()); 
         }
 
-        // Extract the dynamic date columns and transform into rows
+        
         for (let j = 21; j < row.cells.length; j++) {
-            let dateValue = table.rows[0].cells[j].innerText.trim(); // Date from header row
-            let value = row.cells[j].innerText.trim(); // Value from the row's cell
+            let dateValue = table.rows[0].cells[j].innerText.trim(); 
+            let value = row.cells[j].innerText.trim();
 
-            // Log the date value for debugging
-            // console.log('Date Value:', dateValue);
 
-            // Validate the date value
+
             let date = new Date(dateValue);
-            if (isNaN(date.getTime())) { // Check if date is valid
+            if (isNaN(date.getTime())) {
                 alert('Invalid date format: ' + dateValue);
                 return;
             }
 
-            // Convert date to YYYY-MM-DD format
             let formattedDate = date.toISOString().split('T')[0];
 
-            // Push the base data + date + value into dataToSend array
+           
             dataToSend.push({
                 base_product: baseData[0],
                 manufacturing_location: baseData[1],
@@ -324,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 initial_process: baseData[18],
                 secondary_process: baseData[19],
                 later_process: baseData[20],
-                date: formattedDate, // Use the formatted date
+                date: formattedDate,
                 value: value
             });
         }

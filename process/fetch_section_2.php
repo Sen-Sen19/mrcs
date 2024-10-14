@@ -22,9 +22,10 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 }
 
 
+
+
 header('Content-Type: application/json');  
 echo json_encode($data);
-
 sqlsrv_free_stmt($stmt);
 sqlsrv_close($conn);
 ?>
