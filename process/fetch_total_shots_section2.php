@@ -8,7 +8,7 @@ if ($conn === false) {
 }
 
 
-$carModel = 'suzuki old'; 
+$carModel = 'toyota'; 
 $sql = "SELECT [car_model], [process], [first_total_shots] AS value, 
         [second_total_shots] AS second_value, [third_total_shots] AS third_value 
         FROM [live_mrcs_db].[dbo].[total_shots] 

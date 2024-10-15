@@ -56,94 +56,50 @@ document.getElementById('searchButton').addEventListener('click', function () {
 
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-
-        function closeModal() {
-            const modalElement = document.getElementById('updateModal');
-            const modalInstance = bootstrap.Modal.getInstance(modalElement);
-            if (modalInstance) {
-                modalInstance.hide();
-            } else {
-
-                const modal = new bootstrap.Modal(modalElement);
-                modal.hide();
-            }
-        }
-
-        document.getElementById('importButton4').addEventListener('click', closeModal);
-        
-    });
-
     // ------------------------------- unique process --------------------------------------
-    document.getElementById('importButton4').addEventListener('click', function () {
-        document.getElementById('fileImport4').click();
-    });
+    document.getElementById("importButton4").addEventListener("click", function() {
 
-    document.getElementById('fileImport4').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            document.getElementById('loadingSpinner').style.display = 'block';
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const rows = text.split('\n').map(row => row.split(','));
+document.getElementById("fileImport4").click();
+});
+
+document.getElementById("fileImport4").addEventListener("change", function() {
+const fileInput = document.getElementById("fileImport4");
+const file = fileInput.files[0];
+
+if (file) {
+    const formData = new FormData();
+    formData.append("csv_file", file); 
 
 
-                const data = rows.slice(1);
-                if (data.length > 0) {
-                    saveFirstProcess(data);
-                } else {
-                    alert('No data found in the selected file.');
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-                document.getElementById('loadingSpinner').style.display = 'none';
-            };
-            reader.readAsText(file);
+    document.getElementById("loadingSpinner").style.display = 'block';
+
+
+    fetch("../../process/i_secondary_process.php", {
+
+        method: "POST",
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById("loadingSpinner").style.display = 'none';
+
+        if (data.success) {
+            alert("File imported successfully!");
+            location.reload();  
         } else {
-            alert('Please select a file.');
+            console.error(data.error);
+            alert("File import failed: " + data.error);
         }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred during file import.");
     });
-
-    function saveFirstProcess(data) {
-        fetch('../../process/i_secondary_process.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: data })
-        })
-            .then(response => response.json())
-            .then(result => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: result.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error saving data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.reload();
-                    }
-                });
-                document.getElementById('loadingSpinner').style.display = 'none';
-            });
-    }
+} else {
+    alert("Please select a CSV file to import.");
+}
+});
 
 
     // ---------------------------display data-----------------------------------

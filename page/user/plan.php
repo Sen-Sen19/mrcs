@@ -51,24 +51,26 @@ include 'plugins/sidebar/user_bar.php';
 
 
 <script>
-  $(document).ready(function () {
+$(document).ready(function () {
     $('#extractPlanBtn').on('click', function () {
         let tableData = [];
 
         $('#accounts_table_res1 tr').each(function () {
             const cells = $(this).find('td');
-            const row = {
-                base_product: cells.eq(4).text(),
-                first_month: cells.eq(-5).text(),
-                second_month: cells.eq(-3).text(),
-                third_month: cells.eq(-1).text()
-            };
-            tableData.push(row);
+            if (cells.length > 0) {
+                const row = {
+                    base_product: cells.eq(1).text().trim(),
+                    first_month: cells.eq(-5).text().trim(),
+                    second_month: cells.eq(-3).text().trim(),
+                    third_month: cells.eq(-1).text().trim()
+                };
+                tableData.push(row);
+            }
         });
 
-        console.log('Total rows to send:', tableData.length); // Log total rows
+        console.log('Total rows to send:', tableData.length);
 
-        const chunkSize = 250; // Reduce chunk size to 250
+        const chunkSize = 250;
         const totalChunks = Math.ceil(tableData.length / chunkSize);
 
         function sendChunk(chunkIndex) {
@@ -88,7 +90,7 @@ include 'plugins/sidebar/user_bar.php';
                         console.error('Error saving data:', response.details);
                     } else {
                         console.log(`Chunk ${chunkIndex + 1} sent successfully`);
-                        sendChunk(chunkIndex + 1); // Send the next chunk
+                        sendChunk(chunkIndex + 1);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -97,9 +99,10 @@ include 'plugins/sidebar/user_bar.php';
             });
         }
 
-        sendChunk(0); // Start sending the first chunk
+        sendChunk(0);
     });
 });
+
 
 </script>
 

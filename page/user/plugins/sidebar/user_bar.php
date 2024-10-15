@@ -56,10 +56,7 @@
     <a href="plan_from_pc.php"
         class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan_from_pc.php" || 
                           $_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan_total.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/non_machine_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/secondary_process.php" || 
-                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/other_process.php") ? 'active' : '' ?>">
+                          $_SERVER['REQUEST_URI'] == "/mrcs/page/user/plan.php") ? 'active' : '' ?>">
         <img src="../../dist/img/summary.png" alt="Masterlist Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>Plan From PC</p>
     </a>

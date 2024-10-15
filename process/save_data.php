@@ -46,39 +46,38 @@ $query = "
               ?, ?, ?, ?)
 ";
 
-
 foreach ($data as $row) {
     $baseProduct = $row['base_product'];
     $date = formatDate($row['date']);
     $value = $row['value'];
 
-    $manufacturingLocationCode = $row['manufacturing_location'];
-    $shippingLocation = $row['shipping_location'];
-    $customerManufacturerCode = $row['customer_manufacturer'];
-    $vehicleType = $row['vehicle_type'];
-    $vehicleTypeName = $row['vehicle_type_name'];
-    $whType = $row['wh_type'];
-    $whTypeName = $row['wh_type_name'];
-    $assyGroupName = $row['assy_group_name'];
-    $item = $row['item'];
-    $internalItemNumber = $row['internal_item_number'];
-    $line = $row['line'];
-    $polySize = $row['poly_size'];
-    $capacity = $row['capacity'];
-    $productCategory = $row['product_category'];
-    $section = $row['section'];
-    $circuit = $row['circuit'];
-    $initialProcess = $row['initial_process'];
-    $secondaryProcess = $row['secondary_process'];
-    $productionGrp = $row['production_grp'];
-    $later_process = $row['later_process'];
+    // Use isset() to check if the keys exist before accessing them
+    $manufacturingLocationCode = $row['manufacturing_location'] ?? null;
+    $shippingLocation = $row['shipping_location'] ?? null;
+    $customerManufacturerCode = $row['customer_manufacturer'] ?? null;
+    $vehicleType = $row['vehicle_type'] ?? null;
+    $vehicleTypeName = $row['vehicle_type_name'] ?? null;
+    $whType = $row['wh_type'] ?? null;
+    $whTypeName = $row['wh_type_name'] ?? null;
+    $assyGroupName = $row['assy_group_name'] ?? null;
+    $item = $row['item'] ?? null;
+    $internalItemNumber = $row['internal_item_number'] ?? null;
+    $line = $row['line'] ?? null; // Check if 'line' exists
+    $polySize = $row['poly_size'] ?? null; // Check if 'poly_size' exists
+    $capacity = $row['capacity'] ?? null;
+    $productCategory = $row['product_category'] ?? null;
+    $section = $row['section'] ?? null;
+    $circuit = $row['circuit'] ?? null;
+    $initialProcess = $row['initial_process'] ?? null;
+    $secondaryProcess = $row['secondary_process'] ?? null;
+    $productionGrp = $row['production_grp'] ?? null;
+    $later_process = $row['later_process'] ?? null;
 
-
+    // Check for valid date format
     if ($date === null) {
         echo "Invalid date format: " . htmlspecialchars($row['date']);
         continue;
     }
-
 
     $params = [
         $manufacturingLocationCode,
@@ -106,7 +105,7 @@ foreach ($data as $row) {
         $later_process,
     ];
 
-
+    // Execute the SQL query
     $stmt = sqlsrv_query($conn, $query, $params);
 
     if ($stmt === false) {

@@ -56,55 +56,38 @@ document.getElementById('searchButton').addEventListener('click', function () {
 
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-
-        function closeModal() {
-            const modalElement = document.getElementById('updateModal');
-            const modalInstance = bootstrap.Modal.getInstance(modalElement);
-            if (modalInstance) {
-                modalInstance.hide();
-            } else {
-
-                const modal = new bootstrap.Modal(modalElement);
-                modal.hide();
-            }
-        }
-
-        document.getElementById('importButton1').addEventListener('click', closeModal);
-        
-    });
 
     // ------------------------------- first process --------------------------------------
     document.getElementById("importButton1").addEventListener("click", function() {
-    // Trigger file input click
+
     document.getElementById("fileImport1").click();
 });
 
 document.getElementById("fileImport1").addEventListener("change", function() {
     const fileInput = document.getElementById("fileImport1");
-    const file = fileInput.files[0];  // Get the selected file
+    const file = fileInput.files[0];
 
     if (file) {
         const formData = new FormData();
-        formData.append("csv_file", file);  // Append the file to the form data
+        formData.append("csv_file", file); 
 
-        // Show loading spinner (optional)
+
         document.getElementById("loadingSpinner").style.display = 'block';
 
-        // Send the form data to the server using fetch API
-        fetch("../../process/first_process_1.php", {
+   
+        fetch("../../process/i_first_process.php", {
 
             method: "POST",
-            body: formData,  // Send the file in formData
+            body: formData,
         })
-        .then(response => response.json())  // Parse JSON response from the server
+        .then(response => response.json())
         .then(data => {
-            // Hide loading spinner
+
             document.getElementById("loadingSpinner").style.display = 'none';
 
             if (data.success) {
                 alert("File imported successfully!");
-                // location.reload();  // Reload the page to refresh the table data
+                location.reload();  
             } else {
                 console.error(data.error);
                 alert("File import failed: " + data.error);

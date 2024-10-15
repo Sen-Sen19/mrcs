@@ -109,10 +109,11 @@ echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
         <thead>
             <tr>
                 <th>Car Model</th>
-                <th>Main Product No</th>
+                              <th>Base Product</th>
                 <th>Car Code</th>
                 <th>Code</th>
-                <th>Base Product</th>
+
+                  <th>Main Product No</th>
                 <th>Line</th>";
 
 

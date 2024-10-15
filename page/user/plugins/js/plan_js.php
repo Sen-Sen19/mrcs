@@ -211,8 +211,8 @@ function handleFileUpload3(event) {
                 wh_type_name: row[6],
                 assy_group_name: row[7],
                 item: row[8],
-                basic_item_number: row[9],
-                internal_item_number: row[10],
+            
+                internal_item_number: row[9],
                 line: row[12],
                 poly_size: row[13],
                 capacity: row[14],

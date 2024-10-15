@@ -125,7 +125,7 @@ function loadData(dateFrom, dateTo) {
             var includedBaseProducts = []; 
             var uniqueDates = new Set();
 
-            // Convert date strings to Date objects for comparison
+    
             const fromDate = dateFrom ? new Date(dateFrom) : null;
             const toDate = dateTo ? new Date(dateTo) : null;
 
@@ -170,7 +170,7 @@ function loadData(dateFrom, dateTo) {
                     aggregatedData[key].dates[formattedDate] = item.value;
                     uniqueDates.add(formattedDate);
 
-                    // Log included base products
+
                   
                 }
             });
@@ -182,19 +182,18 @@ function loadData(dateFrom, dateTo) {
             header.append('<tr><th>Base Product</th><th>Manufacturing Location</th><th>Customer Manufacturer</th><th>Shipping Location</th><th>Vehicle Type</th><th>Vehicle Type Name</th><th>WH Type</th><th>WH Type Name</th><th>Assy Group Name</th><th>Item</th><th>Internal Item Number</th><th>Line</th><th>Poly Size</th><th>Capacity</th><th>Product Category</th><th>Production Group</th><th>Section</th><th>Circuit</th><th>Initial Process</th><th>Secondary Process</th><th>Later Process</th></tr>');
 
             uniqueDates.forEach(date => {
-                header.find('tr').append(`<th>${date}</th>`); // Corrected line
+                header.find('tr').append(`<th>${date}</th>`);
             });
 
             $.each(aggregatedData, function (key, item) {
                 var dateColumns = "";
 
-                // Loop through each date and generate the date columns
+  
                 uniqueDates.forEach(date => {
-                    var value = parseFloat(item.dates[date] || 0.00);  // Parse value as float or use 0 if undefined
-                    dateColumns += `<td>${value.toFixed(2)}</td>`;  // Ensure value is formatted to 2 decimal places
+                    var value = parseFloat(item.dates[date] || 0.00);  
+                    dateColumns += `<td>${value.toFixed(2)}</td>`;  
                 });
 
-                // Append the row without max plan value
                 tableBody.append(
                     `<tr>
                         <td>${item.base_product}</td>
@@ -332,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Send the data to PHP via AJAX
+
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../process/save_plan_date.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
