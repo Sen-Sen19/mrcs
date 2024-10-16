@@ -128,6 +128,36 @@
     </div>
 </div>
 
+
+<div class="tab-pane fade" id="file4" role="tabpanel" aria-labelledby="file4-tab">
+    <div class="card card-gray-dark card-outline">
+
+        <div id="accounts_table_res4" class="table-responsive"
+            style="height: 100vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
+            <table id="header_table4" class="table table-sm table-head-fixed text-nowrap table-hover" style="font-size: 16px;">
+                <thead style="text-align: left;">
+                    <tr>
+                        <th>Car Model</th>
+                        <th>Process</th>
+                        <th>1st Total Shots</th>
+                        <th>2nd Total Shots</th>
+                        <th>3rd Total Shots</th>
+                    </tr>
+                </thead>
+
+                <tbody id="table_body4" style="text-align: left;">
+                    <!-- Data will be dynamically populated here -->
+                </tbody>
+            </table>
+            <div id="loading4" class="text-center" style="display: none;">
+                <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                <p>Loading data, please wait...</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
                 </div>
             </div>
         </div>
@@ -295,6 +325,51 @@ $(document).ready(function() {
                 $('#loading3').hide(); // Hide loading spinner
                 console.error(textStatus, errorThrown); // Log error for debugging
                 $('#table_body3').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
+            }
+        });
+    });
+});
+
+
+$(document).ready(function() {
+    // Function to fetch data when Tab 2 is shown
+    $('#file4-tab').on('click', function() {
+        $('#loading4').show(); // Show loading spinner
+        $('#table_body4').empty(); // Clear previous data
+
+        $.ajax({
+            url: '../../process/fetch_total_shots_section6.php',
+            method: 'POST',
+            data: {
+                action: 'fetch_total_shots_section6' 
+            },
+            dataType: 'json', 
+            success: function(data) {
+                // Hide loading spinner
+                $('#loading3').hide();
+                
+                // Check if data is not empty
+                if (data.length > 0) {
+                    $.each(data, function(index, item) {
+                        // Append new rows to the table
+                        $('#table_body4').append(
+                            '<tr>' +
+                                '<td>' + item.car_model + '</td>' +
+                                '<td>' + item.process + '</td>' +
+                                '<td>' + item.first_total_shots + '</td>' +
+                                '<td>' + item.second_total_shots + '</td>' +
+                                '<td>' + item.third_total_shots + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                } else {
+                    $('#table_body4').append('<tr><td colspan="5" class="text-center">No data available</td></tr>');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $('#loading4').hide(); // Hide loading spinner
+                console.error(textStatus, errorThrown); // Log error for debugging
+                $('#table_body4').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
     });
