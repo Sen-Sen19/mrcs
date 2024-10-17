@@ -38,10 +38,10 @@
                             </button>
                         </div>
                         <div class="col-12 col-sm-2">
-                            <button id="emptyPlan" class="btn btn-success btn-sm btn-block"
-                                style="background-color: #dd1100; border-color: #dd1100; color: white; padding: 5px 10px;  margin-top: 9%;">
-                                <i class="fas fa-trash"></i> Empty Plan
-                            </button>
+                        <button id="saveButton" class="btn btn-primary btn-sm btn-block"
+        style="background-color:#009425; border-color:#009425; color: white; padding: 5px 10px; margin-top: 9%;">
+        <i class="fas fa-save"></i> Save
+    </button>
                         </div>
                     </div>
                     <div class="card card-gray-dark card-outline">
@@ -86,12 +86,7 @@
                            
                             <div class="col-12 d-flex justify-content-end">
 
-                           <div class="col-12 col-sm-2">
-    <button id="saveButton" class="btn btn-primary btn-sm btn-block"
-        style="background-color:#009425; border-color:#009425; color: white; padding: 5px 10px; margin-top: 4%;">
-        <i class="fas fa-save"></i> Save
-    </button>
-</div>
+                          
 
                                 </div>
                             </div>

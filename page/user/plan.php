@@ -11,10 +11,19 @@ include 'plugins/sidebar/user_bar.php';
                 <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
                     <div class="row mb-2">
                         <div class="col-sm-12">
+
+
+                        <button id="emptyPlanBtn" class="btn btn-primary mt-3"
+                                style="background-color: #ec0100; border-color: #ec0100; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
+                                <i class="fas fa-trash"></i>Empty Plan
+                            </button>
+
                             <button id="extractPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #008dff; border-color: #008dff; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
                                 <i class="fas fa-layer-group"></i>Extract Plan
                             </button>
+                            
+
                             <input type="file" id="fileImport1" class="form-control" accept=".xlsx, .xls"
                                 style="display: none;" />
                             <button id="exportButton1" class="btn btn-primary mt-3"
@@ -76,6 +85,8 @@ $(document).ready(function () {
         function sendChunk(chunkIndex) {
             if (chunkIndex >= totalChunks) {
                 console.log('All data sent successfully!');
+                alert("All data saved successfully!"); // Alert user that data is saved
+                location.reload(); // Reload the page after all data is saved
                 return;
             }
 
@@ -102,6 +113,39 @@ $(document).ready(function () {
         sendChunk(0);
     });
 });
+
+document.getElementById("emptyPlanBtn").addEventListener("click", function() {
+    if (confirm("Are you sure you want to empty the plan?")) {
+        fetch("../../process/empty_plan.php", {
+            method: "POST"
+        }).then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert("Plan emptied successfully!");
+                  location.reload(); // Reload the page
+              } else {
+                  alert("Error: " + data.message);
+              }
+          }).catch(error => {
+              console.error("Error:", error);
+          });
+    }
+});
+// Function to check if the plan_2 table is empty
+function checkPlanData() {
+    fetch("../../process/check_plan_data.php")
+        .then(response => response.json())
+        .then(data => {
+            const extractBtn = document.getElementById("extractPlanBtn");
+            extractBtn.disabled = !data.isEmpty; // Disable if data exists
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
+// Call the function on page load
+window.onload = checkPlanData;
 
 
 </script>

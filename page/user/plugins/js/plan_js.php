@@ -345,80 +345,80 @@ $(document).ready(function () {
     // ----------------------------------- Disabled import button---------------------------
     
 
-$(document).ready(function() {
-    // Function to check data in plan_from_pc table
-    function checkData() {
-        $.ajax({
-            url: '../../process/check_data.php',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // Enable or disable the save button based on the count
-                    if (response.count > 0) {
-                        $('#importButton3').prop('disabled', true); // Disable if data exists
-                    } else {
-                        $('#importButton3').prop('disabled', false); // Enable if no data
-                    }
-                } else {
-                    console.error("Error checking data: ", response.message);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
-            }
-        });
-    }
+// $(document).ready(function() {
+//     // Function to check data in plan_from_pc table
+//     function checkData() {
+//         $.ajax({
+//             url: '../../process/check_data.php',
+//             type: 'GET',
+//             dataType: 'json',
+//             success: function(response) {
+//                 if (response.status === 'success') {
+//                     // Enable or disable the save button based on the count
+//                     if (response.count > 0) {
+//                         $('#importButton3').prop('disabled', true); // Disable if data exists
+//                     } else {
+//                         $('#importButton3').prop('disabled', false); // Enable if no data
+//                     }
+//                 } else {
+//                     console.error("Error checking data: ", response.message);
+//                 }
+//             },
+//             error: function(jqXHR, textStatus, errorThrown) {
+//                 console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
+//             }
+//         });
+//     }
 
-    // Call the function on document ready
-    checkData();
+//     // Call the function on document ready
+//     checkData();
 
-    $('#emptyPlan').click(function() {
-        // Show confirmation dialog using SweetAlert
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "Do you want to empty the table?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, empty it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Make AJAX call to empty_plan.php
-                $.ajax({
-                    url: '../../process/empty_plan.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            Swal.fire(
-                                'Emptied!',
-                                response.message,
-                                'success'
-                            );
-                            checkData(); // Re-check data after emptying
-                        } else {
-                            Swal.fire(
-                                'Error!',
-                                response.message,
-                                'error'
-                            );
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
-                        Swal.fire(
-                            'Error!',
-                            'An error occurred while processing your request. ' + errorThrown,
-                            'error'
-                        );
-                    }
-                });
-            }
-        });
-    });
-});
+//     $('#emptyPlan').click(function() {
+//         // Show confirmation dialog using SweetAlert
+//         Swal.fire({
+//             title: 'Are you sure?',
+//             text: "Do you want to empty the table?",
+//             icon: 'warning',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Yes, empty it!'
+//         }).then((result) => {
+//             if (result.isConfirmed) {
+//                 // Make AJAX call to empty_plan.php
+//                 $.ajax({
+//                     url: '../../process/empty_plan.php',
+//                     type: 'POST',
+//                     dataType: 'json',
+//                     success: function(response) {
+//                         if (response.status === 'success') {
+//                             Swal.fire(
+//                                 'Emptied!',
+//                                 response.message,
+//                                 'success'
+//                             );
+//                             checkData(); // Re-check data after emptying
+//                         } else {
+//                             Swal.fire(
+//                                 'Error!',
+//                                 response.message,
+//                                 'error'
+//                             );
+//                         }
+//                     },
+//                     error: function(jqXHR, textStatus, errorThrown) {
+//                         console.error("AJAX Error: ", textStatus, errorThrown); // Log any error details
+//                         Swal.fire(
+//                             'Error!',
+//                             'An error occurred while processing your request. ' + errorThrown,
+//                             'error'
+//                         );
+//                     }
+//                 });
+//             }
+//         });
+//     });
+// });
 
 // ---------------------------------------save button --------------------------------------------------
 

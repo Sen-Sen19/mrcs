@@ -351,9 +351,9 @@
                     let newRow = `<tr>
                                 <td>${row.car_model}</td>
                                 <td>${row.process}</td>
-                                <td>${row.value}</td>
-                                <td>${row.second_value}</td>
-                                <td>${row.third_value}</td>
+                                <td>${row.first_total_shots}</td>
+                                <td>${row.second_total_shots}</td>
+                                <td>${row.third_total_shots}</td>
                               </tr>`;
                     tableBody.append(newRow);
                 });

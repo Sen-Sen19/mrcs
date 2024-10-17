@@ -1,8 +1,7 @@
 <?php
-// Include your connection file
+
 include 'conn.php';
 
-// Set header to indicate that we're returning JSON
 header('Content-Type: application/json');
 
 try {

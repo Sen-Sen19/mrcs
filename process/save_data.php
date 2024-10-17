@@ -1,27 +1,18 @@
 <?php
 
-
-
-
-
-
-
-
 include 'conn.php';
 
 ini_set('memory_limit', '4096M');
 ini_set('post_max_size', '2000M');
 ini_set('upload_max_filesize', '2000M');
 
-
-
+// Function to format date
 function formatDate($date)
 {
     $d = DateTime::createFromFormat('Y-m-d', $date);
     if ($d && $d->format('Y-m-d') === $date) {
         return $date;
     } else {
-
         $d = DateTime::createFromFormat('Y/m/d', $date);
         if ($d) {
             return $d->format('Y-m-d');
@@ -31,21 +22,29 @@ function formatDate($date)
     }
 }
 
-
+// Decode JSON data
 $data = json_decode(file_get_contents('php://input'), true);
 
+// Delete existing data from the table
+$deleteQuery = "DELETE FROM plan_from_pc";
+$deleteStmt = sqlsrv_query($conn, $deleteQuery);
+
+if ($deleteStmt === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+
+// Prepare the insert query
 $query = "
     INSERT INTO plan_from_pc (
         manufacturing_location, base_product, date, value, 
         customer_manufacturer, vehicle_type, vehicle_type_name, wh_type,
         wh_type_name, assy_group_name, item,
         internal_item_number, line, poly_size, capacity, product_category,
-        section, circuit, initial_process, secondary_process,shipping_location, production_grp, later_process
-    ) VALUES (?, ?, ?,  ?, ?, ?, ?, ?, ?,
-              ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-              ?, ?, ?, ?)
+        section, circuit, initial_process, secondary_process, shipping_location, production_grp, later_process
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ";
 
+// Insert new data
 foreach ($data as $row) {
     $baseProduct = $row['base_product'];
     $date = formatDate($row['date']);
@@ -105,7 +104,7 @@ foreach ($data as $row) {
         $later_process,
     ];
 
-    // Execute the SQL query
+    // Execute the SQL insert query
     $stmt = sqlsrv_query($conn, $query, $params);
 
     if ($stmt === false) {
@@ -114,7 +113,6 @@ foreach ($data as $row) {
 }
 
 echo "Data successfully saved.";
-
 
 
 

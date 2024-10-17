@@ -203,12 +203,12 @@
                 <p>Section 7</p>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="section8.php"
                 class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section8.php") ? 'active' : '' ?>">
                 <p>Section 8</p>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a href="section9.php"
                 class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/section9.php") ? 'active' : '' ?>">

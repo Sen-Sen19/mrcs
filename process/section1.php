@@ -369,7 +369,7 @@ $(document).ready(function() {
     // --------------------------------------------First Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-    fetch('../../process/fetch_section_1.php')
+    fetch('../../process/fetch_section_2.php')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('first_month_table_body');
@@ -454,7 +454,7 @@ $(document).ready(function() {
         console.log('ID:', id);
         console.log('Updated Data:', updatedData);
 
-        fetch('../../process/edit_section_1_first_month.php', {
+        fetch('../../process/edit_section_2_first_month.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -501,7 +501,7 @@ $(document).ready(function() {
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-fetch('../../process/fetch_section_1.php')
+fetch('../../process/fetch_section_2.php')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById('second_month_table_body');
@@ -587,7 +587,7 @@ document.getElementById('saveChanges2').addEventListener('click', function () {
     console.log('ID:', id);
     console.log('Updated Data:', updatedData);
 
-    fetch('../../process/edit_section_1_second_month.php', {
+    fetch('../../process/edit_section_2_second_month.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -636,7 +636,7 @@ document.getElementById('saveChanges2').addEventListener('click', function () {
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-fetch('../../process/fetch_section_1.php')
+fetch('../../process/fetch_section_2.php')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById('third_month_table_body');
@@ -724,7 +724,7 @@ document.getElementById('saveChanges3').addEventListener('click', function () {
     console.log('ID:', id);
     console.log('Updated Data:', updatedData);
 
-    fetch('../../process/edit_section_1_third_month.php', {
+    fetch('../../process/edit_section_2_third_month.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

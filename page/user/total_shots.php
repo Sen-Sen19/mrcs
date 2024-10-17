@@ -192,77 +192,85 @@ $(document).ready(function() {
         }
     });
     $(document).ready(function() {
-
     $('#extractPlanBtn').on('click', function() {
-        let shotsData = [];
+        let allShotsData = [];
 
-        $('#header_table1 tbody tr').each(function() {
-            let carModel = $(this).find('td:nth-child(1)').text().trim();
-            let process = $(this).find('td:nth-child(2)').text().trim();
-            let firstTotalShots = $(this).find('td:nth-child(3)').text().trim();
-            let secondTotalShots = $(this).find('td:nth-child(4)').text().trim();
-            let thirdTotalShots = $(this).find('td:nth-child(5)').text().trim();
+        // Function to collect data from a table body
+        function collectTableData(tableBodyId) {
+            let tableData = [];
+            $(tableBodyId).find('tr').each(function() {
+                let carModel = $(this).find('td:nth-child(1)').text().trim();
+                let process = $(this).find('td:nth-child(2)').text().trim();
+                let firstTotalShots = $(this).find('td:nth-child(3)').text().trim();
+                let secondTotalShots = $(this).find('td:nth-child(4)').text().trim();
+                let thirdTotalShots = $(this).find('td:nth-child(5)').text().trim();
 
- 
-            if(carModel && process) {
-                shotsData.push({
-                    car_model: carModel,
-                    process: process,
-                    first_total_shots: firstTotalShots,
-                    second_total_shots: secondTotalShots,
-                    third_total_shots: thirdTotalShots
-                });
-            }
-        });
+                if (carModel && process) {
+                    tableData.push({
+                        car_model: carModel,
+                        process: process,
+                        first_total_shots: firstTotalShots,
+                        second_total_shots: secondTotalShots,
+                        third_total_shots: thirdTotalShots
+                    });
+                }
+            });
+            return tableData;
+        }
 
-  
-        console.log("Collected shots data:", shotsData);
+        // Collect data from all four tables
+        allShotsData = allShotsData.concat(collectTableData('#table_body1'));
+        allShotsData = allShotsData.concat(collectTableData('#table_body2'));
+        allShotsData = allShotsData.concat(collectTableData('#table_body3'));
+        allShotsData = allShotsData.concat(collectTableData('#table_body4'));
 
-        if (shotsData.length > 0) {  
-        
+        console.log("Collected shots data from all tables:", allShotsData);
+
+        if (allShotsData.length > 0) {
+            // Send all collected data to the server
             $.ajax({
-    url: '../../process/save_total_shots.php',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ shots_data: shotsData }), 
-    success: function(response) {
-        console.log("Data saved successfully", response);
-        alert("Data saved successfully");
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error saving data: ' + textStatus, errorThrown);
-        alert('Error saving data. Please try again.');
-    }
-});
-
+                url: '../../process/save_total_shots.php',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ shots_data: allShotsData }),
+                success: function(response) {
+                    console.log("Data saved successfully", response);
+                    alert("Data saved successfully for all tables.");
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error saving data: ' + textStatus, errorThrown);
+                    alert('Error saving data. Please try again.');
+                }
+            });
         } else {
-            alert("No data found in the table to send.");
+            alert("No data found in the tables to send.");
         }
     });
 });
 
+
 });
 $(document).ready(function() {
-    // Function to fetch data when Tab 2 is shown
+ 
     $('#file2-tab').on('click', function() {
-        $('#loading2').show(); // Show loading spinner
-        $('#table_body2').empty(); // Clear previous data
+        $('#loading2').show();
+        $('#table_body2').empty(); 
 
         $.ajax({
-            url: '../../process/fetch_total_shots_section1.php', // Replace with the actual path to your PHP file
+            url: '../../process/fetch_total_shots_section1.php', 
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section1' // Use this to determine what action to take in PHP
+                action: 'fetch_total_shots_section1' 
             },
-            dataType: 'json', // Expect JSON response
+            dataType: 'json',
             success: function(data) {
-                // Hide loading spinner
+            
                 $('#loading2').hide();
                 
-                // Check if data is not empty
+              
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                        // Append new rows to the table
+                      
                         $('#table_body2').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -278,8 +286,8 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $('#loading2').hide(); // Hide loading spinner
-                console.error(textStatus, errorThrown); // Log error for debugging
+                $('#loading2').hide();
+                console.error(textStatus, errorThrown); 
                 $('#table_body2').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
@@ -287,10 +295,10 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    // Function to fetch data when Tab 2 is shown
+
     $('#file3-tab').on('click', function() {
-        $('#loading3').show(); // Show loading spinner
-        $('#table_body3').empty(); // Clear previous data
+        $('#loading3').show();
+        $('#table_body3').empty(); 
 
         $.ajax({
             url: '../../process/fetch_total_shots_section9.php',
@@ -300,13 +308,13 @@ $(document).ready(function() {
             },
             dataType: 'json', 
             success: function(data) {
-                // Hide loading spinner
+              
                 $('#loading3').hide();
                 
-                // Check if data is not empty
+          
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                        // Append new rows to the table
+                 
                         $('#table_body3').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -322,8 +330,8 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $('#loading3').hide(); // Hide loading spinner
-                console.error(textStatus, errorThrown); // Log error for debugging
+                $('#loading3').hide();
+                console.error(textStatus, errorThrown); 
                 $('#table_body3').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
@@ -332,10 +340,10 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    // Function to fetch data when Tab 2 is shown
+
     $('#file4-tab').on('click', function() {
-        $('#loading4').show(); // Show loading spinner
-        $('#table_body4').empty(); // Clear previous data
+        $('#loading4').show(); 
+        $('#table_body4').empty(); 
 
         $.ajax({
             url: '../../process/fetch_total_shots_section6.php',
@@ -345,13 +353,13 @@ $(document).ready(function() {
             },
             dataType: 'json', 
             success: function(data) {
-                // Hide loading spinner
+                
                 $('#loading3').hide();
                 
-                // Check if data is not empty
+             
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                        // Append new rows to the table
+                    
                         $('#table_body4').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -367,9 +375,9 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $('#loading4').hide(); // Hide loading spinner
-                console.error(textStatus, errorThrown); // Log error for debugging
-                $('#table_body4').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
+                $('#loading4').hide(); 
+                console.error(textStatus, errorThrown); 
+                $('#table_body46+.').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
     });
