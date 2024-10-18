@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
   header('location:../../');
   exit;
 } else if ($_SESSION['type'] == 'user') {
-  header('location: ../../page/user/dashboard.php');
+  header('location: ../../page/user/plan_from_pc.php');
   exit;
 }
 

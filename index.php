@@ -3,7 +3,7 @@ require 'process/login.php';
 
 if (isset($_SESSION['username'])) {
     if ($_SESSION['type'] == 'user') {
-        header('location: page/user/dashboard.php');
+        header('location: page/user/plan_from_pc.php');
         exit;
     } elseif ($_SESSION['type'] == 'admin') { 
         header('location: page/admin/admin.php');
@@ -24,7 +24,7 @@ if (isset($_SESSION['username'])) {
   <link rel="stylesheet" href="dist/css/font.min.css">
 
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
+  
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
   <style>

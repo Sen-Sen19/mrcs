@@ -13,7 +13,7 @@ try {
 
 
     $sql = "UPDATE [live_mrcs_db].[dbo].[section_4]
-            SET car_model = ?, process = ?, machine_inventory = ?, jph2 = ?, wt2 = ?, ot2 = ?, mp2 = ?
+            SET car_model = ?, process = ?, machine_inventory = ?, jph2 = ?, wt2 = ?, ot2 = ?
             WHERE id = ?";
 
     $params = [
@@ -23,7 +23,7 @@ try {
         $updatedData['jph'],
         $updatedData['wt'],
         $updatedData['ot'],
-        $updatedData['mp'],
+    
         $id 
     ];
 

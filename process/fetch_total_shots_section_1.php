@@ -86,10 +86,10 @@ SELECT
         WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
         ELSE 'Suzuki old'  
     END AS car_model,
-    'trd_wpa_2_0_3_0' AS process,
-    SUM(f.[trd_wpa_2_0_3_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_wpa_2_0_3_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_wpa_2_0_3_0]* p.[third_month]) AS third_total_shots
+    'trd_nwpa_2_0_3_0' AS process,
+    SUM(f.[trd_nwpa_2_0_3_0]* p.[first_month]) AS first_total_shots,
+    SUM(f.[trd_nwpa_2_0_3_0]* p.[second_month]) AS second_total_shots,
+    SUM(f.[trd_nwpa_2_0_3_0]* p.[third_month]) AS third_total_shots
 
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]

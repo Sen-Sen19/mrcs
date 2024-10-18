@@ -218,7 +218,7 @@ $(document).ready(function() {
             return tableData;
         }
 
-        // Collect data from all four tables
+        // Collect data from all table bodies
         allShotsData = allShotsData.concat(collectTableData('#table_body1'));
         allShotsData = allShotsData.concat(collectTableData('#table_body2'));
         allShotsData = allShotsData.concat(collectTableData('#table_body3'));
@@ -227,7 +227,6 @@ $(document).ready(function() {
         console.log("Collected shots data from all tables:", allShotsData);
 
         if (allShotsData.length > 0) {
-            // Send all collected data to the server
             $.ajax({
                 url: '../../process/save_total_shots.php',
                 type: 'POST',
@@ -235,16 +234,85 @@ $(document).ready(function() {
                 data: JSON.stringify({ shots_data: allShotsData }),
                 success: function(response) {
                     console.log("Data saved successfully", response);
-                    alert("Data saved successfully for all tables.");
+
+                    // SweetAlert for success message
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Data saved successfully for all tables.',
+                        timer: 1000, 
+                        showConfirmButton: false
+                    }).then(function() {
+                        location.reload(); // Auto-reload the page after the alert
+                    });
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error('Error saving data: ' + textStatus, errorThrown);
-                    alert('Error saving data. Please try again.');
+
+                    // SweetAlert for error message
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Error saving data. Please try again.',
+                        timer: 1000, 
+                        showConfirmButton: false
+                    }).then(function() {
+                        location.reload(); // Auto-reload the page after the alert
+                    });
                 }
             });
         } else {
-            alert("No data found in the tables to send.");
+            // SweetAlert for no data message
+            Swal.fire({
+                icon: 'warning',
+                title: 'No Data Found',
+                text: 'No data found in the tables to send.',
+                timer: 1000, 
+                showConfirmButton: false
+            }).then(function() {
+                location.reload(); // Auto-reload the page after the alert
+            });
         }
+    });
+});
+
+$(document).ready(function() {
+    $('#file2-tab').on('click', function() {
+        $('#loading2').show();
+        $('#table_body2').empty(); 
+
+        $.ajax({
+            url: '../../process/fetch_total_shots_section_1.php', 
+            method: 'POST',
+            data: {
+                action: 'fetch_total_shots_section_1' 
+            },
+            dataType: 'json',
+            success: function(data) {
+                $('#loading2').hide();
+
+                if (data.length > 0) {
+                    $.each(data, function(index, item) {
+                        $('#table_body2').append(
+                            '<tr>' +
+                                '<td>' + item.car_model + '</td>' +
+                                '<td>' + item.process + '</td>' +
+                                '<td>' + item.first_total_shots + '</td>' +
+                                '<td>' + item.second_total_shots + '</td>' +
+                                '<td>' + item.third_total_shots + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                } else {
+                    $('#table_body2').append('<tr><td colspan="5" class="text-center">No data available</td></tr>');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $('#loading2').hide();
+                console.error(textStatus, errorThrown); 
+                $('#table_body2').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
+            }
+        });
     });
 });
 
@@ -257,10 +325,10 @@ $(document).ready(function() {
         $('#table_body2').empty(); 
 
         $.ajax({
-            url: '../../process/fetch_total_shots_section1.php', 
+            url: '../../process/fetch_total_shots_section_1.php', 
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section1' 
+                action: 'fetch_total_shots_section_1' 
             },
             dataType: 'json',
             success: function(data) {
@@ -301,10 +369,10 @@ $(document).ready(function() {
         $('#table_body3').empty(); 
 
         $.ajax({
-            url: '../../process/fetch_total_shots_section9.php',
+            url: '../../process/fetch_total_shots_section_9.php',
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section9' 
+                action: 'fetch_total_shots_section_9' 
             },
             dataType: 'json', 
             success: function(data) {
@@ -346,10 +414,10 @@ $(document).ready(function() {
         $('#table_body4').empty(); 
 
         $.ajax({
-            url: '../../process/fetch_total_shots_section6.php',
+            url: '../../process/fetch_total_shots_section_6.php',
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section6' 
+                action: 'fetch_total_shots_section_6' 
             },
             dataType: 'json', 
             success: function(data) {

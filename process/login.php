@@ -19,7 +19,7 @@ if (isset($_POST['Login'])) {
             $_SESSION['type'] = $type;
 
             if ($type == 'user') {
-                header('location: page/user/dashboard.php');
+                header('location: page/user/plan_from_pc.php');
                 exit;
           
             } elseif ($type == 'admin') { 

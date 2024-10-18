@@ -58,49 +58,68 @@ document.getElementById('searchButton').addEventListener('click', function () {
 
 
     // ------------------------------- first process --------------------------------------
-    document.getElementById("importButton1").addEventListener("click", function() {
-
+    document.getElementById("importButton1").addEventListener("click", function () {
     document.getElementById("fileImport1").click();
 });
 
-document.getElementById("fileImport1").addEventListener("change", function() {
+document.getElementById("fileImport1").addEventListener("change", function () {
     const fileInput = document.getElementById("fileImport1");
     const file = fileInput.files[0];
 
     if (file) {
         const formData = new FormData();
-        formData.append("csv_file", file); 
+        formData.append("csv_file", file);
 
-
+        
         document.getElementById("loadingSpinner").style.display = 'block';
 
-   
         fetch("../../process/i_first_process.php", {
-
             method: "POST",
             body: formData,
         })
         .then(response => response.json())
         .then(data => {
-
+            
             document.getElementById("loadingSpinner").style.display = 'none';
 
             if (data.success) {
-                alert("File imported successfully!");
-                location.reload();  
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'File imported successfully!',
+                    timer: 1000, 
+                    showConfirmButton: false 
+                }).then(() => {
+                    location.reload();  
+                });
             } else {
                 console.error(data.error);
-                alert("File import failed: " + data.error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Import Failed',
+                    text: 'File import failed: ' + data.error
+
+                });
             }
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("An error occurred during file import.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'An error occurred during file import.'
+            });
         });
     } else {
-        alert("Please select a CSV file to import.");
+        Swal.fire({
+            icon: 'warning',
+            title: 'No File Selected',
+            text: 'Please select a CSV file to import.',
+            confirmButtonText: 'OK'
+        });
     }
 });
+
 
     // ---------------------------display data-----------------------------------
     let page = 1;

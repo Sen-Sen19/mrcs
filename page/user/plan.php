@@ -85,8 +85,15 @@ $(document).ready(function () {
         function sendChunk(chunkIndex) {
             if (chunkIndex >= totalChunks) {
                 console.log('All data sent successfully!');
-                alert("All data saved successfully!"); // Alert user that data is saved
-                location.reload(); // Reload the page after all data is saved
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'All data saved successfully!',
+                    timer: 1000, 
+                    showConfirmButton: false 
+                }).then(() => {
+                    location.reload(); 
+                });
                 return;
             }
 
@@ -106,6 +113,11 @@ $(document).ready(function () {
                 },
                 error: function (xhr, status, error) {
                     console.error('AJAX error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong while saving data!'
+                    });
                 }
             });
         }
@@ -115,38 +127,67 @@ $(document).ready(function () {
 });
 
 document.getElementById("emptyPlanBtn").addEventListener("click", function() {
-    if (confirm("Are you sure you want to empty the plan?")) {
-        fetch("../../process/empty_plan.php", {
-            method: "POST"
-        }).then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  alert("Plan emptied successfully!");
-                  location.reload(); // Reload the page
-              } else {
-                  alert("Error: " + data.message);
-              }
-          }).catch(error => {
-              console.error("Error:", error);
-          });
-    }
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you really want to empty the plan?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, empty it!',
+        cancelButtonText: 'No, cancel!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch("../../process/empty_plan.php", {
+                method: "POST"
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Emptied!',
+                          text: 'Plan emptied successfully!',
+                          timer: 1000, 
+                          showConfirmButton: false 
+                      }).then(() => {
+                          location.reload(); 
+                      });
+                  } else {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Error',
+                          text: 'Error: ' + data.message
+                      });
+                  }
+              }).catch(error => {
+                  console.error("Error:", error);
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Something went wrong!'
+                  });
+              });
+        }
+    });
 });
-// Function to check if the plan_2 table is empty
+
 function checkPlanData() {
     fetch("../../process/check_plan_data.php")
         .then(response => response.json())
         .then(data => {
             const extractBtn = document.getElementById("extractPlanBtn");
-            extractBtn.disabled = !data.isEmpty; // Disable if data exists
+            extractBtn.disabled = !data.isEmpty; 
         })
         .catch(error => {
             console.error("Error:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Failed to check plan data!'
+            });
         });
 }
 
-// Call the function on page load
-window.onload = checkPlanData;
 
+window.onload = checkPlanData;
 
 </script>
 

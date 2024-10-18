@@ -82,25 +82,46 @@ if (file) {
         body: formData,
     })
     .then(response => response.json())
-    .then(data => {
+        .then(data => {
+            
+            document.getElementById("loadingSpinner").style.display = 'none';
 
-        document.getElementById("loadingSpinner").style.display = 'none';
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'File imported successfully!',
+                    timer: 1000, 
+                    showConfirmButton: false 
+                }).then(() => {
+                    location.reload();  
+                });
+            } else {
+                console.error(data.error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Import Failed',
+                    text: 'File import failed: ' + data.error
 
-        if (data.success) {
-            alert("File imported successfully!");
-            location.reload();  
-        } else {
-            console.error(data.error);
-            alert("File import failed: " + data.error);
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("An error occurred during file import.");
-    });
-} else {
-    alert("Please select a CSV file to import.");
-}
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'An error occurred during file import.'
+            });
+        });
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'No File Selected',
+            text: 'Please select a CSV file to import.',
+            confirmButtonText: 'OK'
+        });
+    }
 });
 
     // ---------------------------display data-----------------------------------

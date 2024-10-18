@@ -1,10 +1,8 @@
 <?php
 include 'plugins/navbar.php';
 include 'plugins/sidebar/user_bar.php';
-
-
-
 ?>
+
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -38,6 +36,10 @@ include 'plugins/sidebar/user_bar.php';
                             </div>
                         </div>
                         <div class="card-body">
+                            <div id="loading2" style="display: none; text-align: center; margin-bottom: 20px;">
+                                <img src="../../dist/img/6.gif" alt="Loading..." style="max-width: 100px;">
+                                <p style="margin-top: 10px;">Loading. Please wait.</p>
+                            </div>
                             <div id="accounts_table_res1" class="table-responsive"
                                 style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; padding: 15px; border-radius: 10px;">
                                 <table id="header_table1"
@@ -90,6 +92,7 @@ include 'plugins/sidebar/user_bar.php';
 <script>
     let import1Data = null;
     let firstMonthMap = new Map();
+
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('importButton1').addEventListener('click', function () {
             document.getElementById('fileImport1').click();
@@ -102,13 +105,20 @@ include 'plugins/sidebar/user_bar.php';
         const file = event.target.files[0];
         if (!file) return;
 
+        // Show loading spinner
+        document.getElementById('loading2').style.display = 'block';
+
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
             const workbook = XLSX.read(data, { type: 'array' });
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-            if (jsonData.length === 0) return;
+            if (jsonData.length === 0) {
+                // Hide loading spinner if no data
+                document.getElementById('loading2').style.display = 'none';
+                return;
+            }
 
             const headerRow = jsonData[0];
             const monthColumns = headerRow.slice(1);
@@ -123,7 +133,6 @@ include 'plugins/sidebar/user_bar.php';
                 return { maxDate, maxValue: maxValue === -Infinity ? '' : maxValue };
             }
 
-            // Process data without rendering it in a table
             const formattedData = jsonData.map((row, rowIndex) => {
                 if (rowIndex === 0) {
                     return [...row, '1st month', 'Max. Plan 1', '2nd month', 'Max. Plan 2', '3rd month', 'Max. Plan 3'];
@@ -139,7 +148,7 @@ include 'plugins/sidebar/user_bar.php';
                     maxValuesAndDates.push(maxDate, maxValue);
                     startIndex += monthLength;
                 }
-                firstMonthMap.set(row[0], maxValuesAndDates[0]);  // Store in the Map
+                firstMonthMap.set(row[0], maxValuesAndDates[0]);  
                 return [...row, ...maxValuesAndDates];
             });
 
@@ -150,34 +159,46 @@ include 'plugins/sidebar/user_bar.php';
         reader.readAsArrayBuffer(file);
     }
 
-    
     function saveToDatabase(formattedData) {
-        // Prepare the data to be sent
-        const dataToSend = formattedData.slice(1).map(row => ({
-            car_code: row[0],
-            first_month: row[row.length - 6] || "Null",
-            max_plan_1: row[row.length - 5] ? parseFloat(row[row.length - 5]) : 0, 
-            second_month: row[row.length - 4] || "Null",
-            max_plan_2: row[row.length - 3] ? parseFloat(row[row.length - 3]) : 0,
-            third_month: row[row.length - 2] || "Null", 
-            max_plan_3: row[row.length - 1] ? parseFloat(row[row.length - 1]) : 0 
-        }));
+    const dataToSend = formattedData.slice(1).map(row => ({
+        car_code: row[0],
+        first_month: row[row.length - 6] || "Null",
+        max_plan_1: row[row.length - 5] ? parseFloat(row[row.length - 5]) : 0, 
+        second_month: row[row.length - 4] || "Null",
+        max_plan_2: row[row.length - 3] ? parseFloat(row[row.length - 3]) : 0,
+        third_month: row[row.length - 2] || "Null", 
+        max_plan_3: row[row.length - 1] ? parseFloat(row[row.length - 1]) : 0 
+    }));
 
+    $.ajax({
+        url: '../../process/save_total_plan.php', 
+        type: 'POST',
+        data: { plans: dataToSend },
+        success: function (response) {
+            console.log('Data saved successfully:', response);
+            
 
-        $.ajax({
-            url: '../../process/save_total_plan.php', // Change this to your PHP script path
-            type: 'POST',
-            data: { plans: dataToSend }, // Send the full data object
-            success: function (response) {
-                console.log('Data saved successfully:', response);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error('Error saving data:', textStatus, errorThrown);
-            }
-        });
-    }
+            document.getElementById('loading2').style.display = 'none';
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Plan data imported successfully!',
+                timer: 2000, 
+                showConfirmButton: false 
+            }).then(() => {
+            
+                window.location.reload();
+            });
+        },
+        error: function (error) {
+            console.error('Error saving data:', error);
+            
+
+            document.getElementById('loading2').style.display = 'none';
+        }
+    });
+}
+
 </script>
-
-
-
 <?php include 'plugins/footer.php'; ?>
