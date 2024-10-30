@@ -15,783 +15,706 @@ if ($conn === false) {
 
 // SQL query to fetch data
 $sql = "
-   SELECT 
+SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_nwpa_0_13' AS process,
-    SUM(f.[trd_nwpa_0_13] * p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_nwpa_0_13] * p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_nwpa_0_13] * p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_nwpa_0_13 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_nwpa_0_13 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_nwpa_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
-
 UNION ALL
-
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_nwpa_below_2_0_except_0_13' AS process,
-    SUM(f.[trd_nwpa_below_2_0_except_0_13] * p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_nwpa_below_2_0_except_0_13] * p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_nwpa_below_2_0_except_0_13] * p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_nwpa_below_2_0_except_0_13 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_nwpa_below_2_0_except_0_13 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_nwpa_below_2_0_except_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
-    END
-	UNION ALL
-SELECT 
-    CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
-    END AS car_model,
-    'trd_wpa_below_2_0_except_0_13' AS process,
-    SUM(f.[trd_wpa_below_2_0_except_0_13]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_wpa_below_2_0_except_0_13]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_wpa_below_2_0_except_0_13]* p.[third_month]) AS third_total_shots
-
-FROM [live_mrcs_db].[dbo].[first_process] f
-JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
-GROUP BY 
-    CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_nwpa_2_0_3_0' AS process,
-    SUM(f.[trd_nwpa_2_0_3_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_nwpa_2_0_3_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_nwpa_2_0_3_0]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_nwpa_2_0_3_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_nwpa_2_0_3_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_nwpa_2_0_3_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END AS car_model,
+    'trd_wpa_0_13' AS process,
+    SUM(f.trd_wpa_0_13 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_wpa_0_13 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_wpa_0_13 * p.[third_month]) AS third_total_shots
+FROM [live_mrcs_db].[dbo].[first_process] f
+JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
+WHERE f.[car_model] = 'suzuki old'
+GROUP BY 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END
+UNION ALL
+SELECT 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END AS car_model,
+    'trd_wpa_below_2_0_except_0_13' AS process,
+    SUM(f.trd_wpa_below_2_0_except_0_13 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_wpa_below_2_0_except_0_13 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_wpa_below_2_0_except_0_13 * p.[third_month]) AS third_total_shots
+FROM [live_mrcs_db].[dbo].[first_process] f
+JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
+WHERE f.[car_model] = 'suzuki old'
+GROUP BY 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END
+UNION ALL
+SELECT 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END AS car_model,
+    'trd_wpa_2_0_3_0' AS process,
+    SUM(f.trd_wpa_2_0_3_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_wpa_2_0_3_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_wpa_2_0_3_0 * p.[third_month]) AS third_total_shots
+FROM [live_mrcs_db].[dbo].[first_process] f
+JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
+WHERE f.[car_model] = 'suzuki old'
+GROUP BY 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
+    END
+UNION ALL
+SELECT 
+    CASE 
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'tr327' AS process,
-    SUM(f.[tr327]* p.[first_month]) AS first_total_shots,
-    SUM(f.[tr327]* p.[second_month]) AS second_total_shots,
-    SUM(f.[tr327]* p.[third_month]) AS third_total_shots
-
+    SUM(f.tr327 * p.[first_month]) AS first_total_shots,
+    SUM(f.tr327 * p.[second_month]) AS second_total_shots,
+    SUM(f.tr327 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'tr328' AS process,
-    SUM(f.[tr328]* p.[first_month]) AS first_total_shots,
-    SUM(f.[tr328]* p.[second_month]) AS second_total_shots,
-    SUM(f.[tr328]* p.[third_month]) AS third_total_shots
-
+    SUM(f.tr328 * p.[first_month]) AS first_total_shots,
+    SUM(f.tr328 * p.[second_month]) AS second_total_shots,
+    SUM(f.tr328 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_aluminum_nwpa_2_0' AS process,
-    SUM(f.[trd_aluminum_nwpa_2_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_aluminum_nwpa_2_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_aluminum_nwpa_2_0]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_aluminum_nwpa_2_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_aluminum_nwpa_2_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_aluminum_nwpa_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_aluminum_nwpa_below_2_0' AS process,
-    SUM(f.[trd_aluminum_nwpa_below_2_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_aluminum_nwpa_below_2_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_aluminum_nwpa_below_2_0]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_aluminum_nwpa_below_2_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_aluminum_nwpa_below_2_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_aluminum_nwpa_below_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_aluminum_wpa_2_0' AS process,
-    SUM(f.[trd_aluminum_wpa_2_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_aluminum_wpa_2_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_aluminum_wpa_2_0]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_aluminum_wpa_2_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_aluminum_wpa_2_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_aluminum_wpa_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_aluminum_wpa_below_2_0' AS process,
-    SUM(f.[trd_aluminum_wpa_below_2_0]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_aluminum_wpa_below_2_0]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_aluminum_wpa_below_2_0]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_aluminum_wpa_below_2_0 * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_aluminum_wpa_below_2_0 * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_aluminum_wpa_below_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_dimension_check_aluminum_terminal_inspection' AS process,
-    SUM(f.[aluminum_dimension_check_aluminum_terminal_inspection]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_dimension_check_aluminum_terminal_inspection]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_dimension_check_aluminum_terminal_inspection]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_dimension_check_aluminum_terminal_inspection * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_dimension_check_aluminum_terminal_inspection * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_dimension_check_aluminum_terminal_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_visual_inspection' AS process,
-    SUM(f.[aluminum_visual_inspection]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_visual_inspection]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_visual_inspection]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_visual_inspection * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_visual_inspection * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_visual_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_coating_uv_ii' AS process,
-    SUM(f.[aluminum_coating_uv_ii]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_coating_uv_ii]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_coating_uv_ii]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_coating_uv_ii * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_coating_uv_ii * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_coating_uv_ii * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_image_inspection' AS process,
-    SUM(f.[aluminum_image_inspection]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_image_inspection]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_image_inspection]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_image_inspection * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_image_inspection * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_image_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_uv_iii' AS process,
-    SUM(f.[aluminum_uv_iii]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_uv_iii]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_uv_iii]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_uv_iii * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_uv_iii * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_uv_iii * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_alpha_aluminum_nwpa' AS process,
-    SUM(f.[trd_alpha_aluminum_nwpa]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_alpha_aluminum_nwpa]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_alpha_aluminum_nwpa]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_alpha_aluminum_nwpa * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_alpha_aluminum_nwpa * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_alpha_aluminum_nwpa * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_alpha_aluminum_wpa' AS process,
-    SUM(f.[trd_alpha_aluminum_wpa]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_alpha_aluminum_wpa]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_alpha_aluminum_wpa]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_alpha_aluminum_wpa * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_alpha_aluminum_wpa * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_alpha_aluminum_wpa * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'aluminum_visual_inspection_for_alpha' AS process,
-    SUM(f.[aluminum_visual_inspection_for_alpha]* p.[first_month]) AS first_total_shots,
-    SUM(f.[aluminum_visual_inspection_for_alpha]* p.[second_month]) AS second_total_shots,
-    SUM(f.[aluminum_visual_inspection_for_alpha]* p.[third_month]) AS third_total_shots
-
+    SUM(f.aluminum_visual_inspection_for_alpha * p.[first_month]) AS first_total_shots,
+    SUM(f.aluminum_visual_inspection_for_alpha * p.[second_month]) AS second_total_shots,
+    SUM(f.aluminum_visual_inspection_for_alpha * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'enlarged_terminal_check_for_alpha' AS process,
-    SUM(f.[enlarged_terminal_check_for_alpha]* p.[first_month]) AS first_total_shots,
-    SUM(f.[enlarged_terminal_check_for_alpha]* p.[second_month]) AS second_total_shots,
-    SUM(f.[enlarged_terminal_check_for_alpha]* p.[third_month]) AS third_total_shots
-
+    SUM(f.enlarged_terminal_check_for_alpha * p.[first_month]) AS first_total_shots,
+    SUM(f.enlarged_terminal_check_for_alpha * p.[second_month]) AS second_total_shots,
+    SUM(f.enlarged_terminal_check_for_alpha * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'air_water_leak_test' AS process,
-    SUM(f.[air_water_leak_test]* p.[first_month]) AS first_total_shots,
-    SUM(f.[air_water_leak_test]* p.[second_month]) AS second_total_shots,
-    SUM(f.[air_water_leak_test]* p.[third_month]) AS third_total_shots
-
+    SUM(f.air_water_leak_test * p.[first_month]) AS first_total_shots,
+    SUM(f.air_water_leak_test * p.[second_month]) AS second_total_shots,
+    SUM(f.air_water_leak_test * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'sam_sub_no_airbag' AS process,
-    SUM(f.[sam_sub_no_airbag]* p.[first_month]) AS first_total_shots,
-    SUM(f.[sam_sub_no_airbag]* p.[second_month]) AS second_total_shots,
-    SUM(f.[sam_sub_no_airbag]* p.[third_month]) AS third_total_shots
-
+    SUM(f.sam_sub_no_airbag * p.[first_month]) AS first_total_shots,
+    SUM(f.sam_sub_no_airbag * p.[second_month]) AS second_total_shots,
+    SUM(f.sam_sub_no_airbag * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'sam_sub_no_normal' AS process,
-    SUM(f.[sam_sub_no_normal]* p.[first_month]) AS first_total_shots,
-    SUM(f.[sam_sub_no_normal]* p.[second_month]) AS second_total_shots,
-    SUM(f.[sam_sub_no_normal]* p.[third_month]) AS third_total_shots
-
+    SUM(f.sam_sub_no_normal * p.[first_month]) AS first_total_shots,
+    SUM(f.sam_sub_no_normal * p.[second_month]) AS second_total_shots,
+    SUM(f.sam_sub_no_normal * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'jam_auto_crimping_and_twisting' AS process,
-    SUM(f.[jam_auto_crimping_and_twisting]* p.[first_month]) AS first_total_shots,
-    SUM(f.[jam_auto_crimping_and_twisting]* p.[second_month]) AS second_total_shots,
-    SUM(f.[jam_auto_crimping_and_twisting]* p.[third_month]) AS third_total_shots
-
+    SUM(f.jam_auto_crimping_and_twisting * p.[first_month]) AS first_total_shots,
+    SUM(f.jam_auto_crimping_and_twisting * p.[second_month]) AS second_total_shots,
+    SUM(f.jam_auto_crimping_and_twisting * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'trd_alpha_aluminum_5_0_above' AS process,
-    SUM(f.[trd_alpha_aluminum_5_0_above]* p.[first_month]) AS first_total_shots,
-    SUM(f.[trd_alpha_aluminum_5_0_above]* p.[second_month]) AS second_total_shots,
-    SUM(f.[trd_alpha_aluminum_5_0_above]* p.[third_month]) AS third_total_shots
-
+    SUM(f.trd_alpha_aluminum_5_0_above * p.[first_month]) AS first_total_shots,
+    SUM(f.trd_alpha_aluminum_5_0_above * p.[second_month]) AS second_total_shots,
+    SUM(f.trd_alpha_aluminum_5_0_above * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'point_marking_nsc' AS process,
-    SUM(f.[point_marking_nsc]* p.[first_month]) AS first_total_shots,
-    SUM(f.[point_marking_nsc]* p.[second_month]) AS second_total_shots,
-    SUM(f.[point_marking_nsc]* p.[third_month]) AS third_total_shots
-
+    SUM(f.point_marking_nsc * p.[first_month]) AS first_total_shots,
+    SUM(f.point_marking_nsc * p.[second_month]) AS second_total_shots,
+    SUM(f.point_marking_nsc * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'point_marking_sam' AS process,
-    SUM(f.[point_marking_sam]* p.[first_month]) AS first_total_shots,
-    SUM(f.[point_marking_sam]* p.[second_month]) AS second_total_shots,
-    SUM(f.[point_marking_sam]* p.[third_month]) AS third_total_shots
-
+    SUM(f.point_marking_sam * p.[first_month]) AS first_total_shots,
+    SUM(f.point_marking_sam * p.[second_month]) AS second_total_shots,
+    SUM(f.point_marking_sam * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'enlarged_terminal_check_aluminum' AS process,
-    SUM(f.[enlarged_terminal_check_aluminum]* p.[first_month]) AS first_total_shots,
-    SUM(f.[enlarged_terminal_check_aluminum]* p.[second_month]) AS second_total_shots,
-    SUM(f.[enlarged_terminal_check_aluminum]* p.[third_month]) AS third_total_shots
-
+    SUM(f.enlarged_terminal_check_aluminum * p.[first_month]) AS first_total_shots,
+    SUM(f.enlarged_terminal_check_aluminum * p.[second_month]) AS second_total_shots,
+    SUM(f.enlarged_terminal_check_aluminum * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_1' AS process,
-    SUM(f.[nsc_1]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_1]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_1]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_1 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_1 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_1 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_2' AS process,
-    SUM(f.[nsc_2]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_2]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_2]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_2 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_2 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_2 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_3' AS process,
-    SUM(f.[nsc_3]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_3]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_3]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_3 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_3 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_3 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_4' AS process,
-    SUM(f.[nsc_4]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_4]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_4]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_4 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_4 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_4 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_5' AS process,
-    SUM(f.[nsc_5]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_5]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_5]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_5 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_5 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_5 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_6' AS process,
-    SUM(f.[nsc_6]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_6]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_6]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_6 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_6 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_6 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_7' AS process,
-    SUM(f.[nsc_7]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_7]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_7]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_7 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_7 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_7 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_8' AS process,
-    SUM(f.[nsc_8]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_8]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_8]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_8 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_8 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_8 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_9' AS process,
-    SUM(f.[nsc_9]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_9]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_9]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_9 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_9 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_9 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END AS car_model,
     'nsc_10' AS process,
-    SUM(f.[nsc_10]* p.[first_month]) AS first_total_shots,
-    SUM(f.[nsc_10]* p.[second_month]) AS second_total_shots,
-    SUM(f.[nsc_10]* p.[third_month]) AS third_total_shots
-
+    SUM(f.nsc_10 * p.[first_month]) AS first_total_shots,
+    SUM(f.nsc_10 * p.[second_month]) AS second_total_shots,
+    SUM(f.nsc_10 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
 WHERE f.[car_model] = 'suzuki old'
 GROUP BY 
     CASE 
-        WHEN f.[block] = 'Y3J Block' THEN 'Y3J Block'
-        WHEN f.[block] = 'YV7 Block' THEN 'YV7 Block'
-        ELSE 'Suzuki old'  
+        WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
+        ELSE 'Other' 
     END
 UNION ALL
 SELECT 

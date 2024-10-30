@@ -1,59 +1,51 @@
 <script>
 
 document.getElementById('searchButton').addEventListener('click', function () {
-        var baseProduct = document.getElementById('searchBaseProduct').value;
-        var rowCount = 0; 
-     
-        document.getElementById('loadingSpinner').style.display = 'block';
+    var baseProduct = document.getElementById('searchBaseProduct').value;
+    var rowCount = 0; 
 
-       
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '../../process/search.php?base_product=' + encodeURIComponent(baseProduct), true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-            
-                document.getElementById('loadingSpinner').style.display = 'none';
+    document.getElementById('loadingSpinner').style.display = 'block';
 
-                var response = JSON.parse(xhr.responseText);
-                var tableBody = document.getElementById('table_body1');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../../process/search.php?base_product=' + encodeURIComponent(baseProduct), true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('loadingSpinner').style.display = 'none';
 
-              
-                tableBody.innerHTML = '';
+            var response = JSON.parse(xhr.responseText);
+            var tableBody = document.getElementById('table_body1');
 
-                if (response.message) {
-                  
-                    var noResultsRow = document.createElement('tr');
-                    var noResultsCell = document.createElement('td');
-                    noResultsCell.colSpan = 21; 
-                    noResultsCell.textContent = response.message;
-                    noResultsRow.appendChild(noResultsCell);
-                    tableBody.appendChild(noResultsRow);
-                } else {
-                
-                    var tr = document.createElement('tr');
-                    tr.classList.add('highlight-row');
 
-                 
-                    var countTd = document.createElement('td');
-                    countTd.textContent = ++rowCount; 
-                    tr.appendChild(countTd);
+            tableBody.innerHTML = '';
 
-                   
-                    for (var key in response) {
-                        var td = document.createElement('td');
-                        td.textContent = response[key];
-                        tr.appendChild(td);
-                    }
-                    tableBody.appendChild(tr);
+            if (response.message) {
+                var noResultsRow = document.createElement('tr');
+                var noResultsCell = document.createElement('td');
+                noResultsCell.colSpan = 21; 
+                noResultsCell.textContent = response.message;
+                noResultsRow.appendChild(noResultsCell);
+                tableBody.appendChild(noResultsRow);
+            } else {
+                // Create a new row without an ID
+                var tr = document.createElement('tr');
+                tr.classList.add('highlight-row');
 
-                    // Update data count
-                    document.getElementById('dataCount1').textContent = 'Data Count: ' + rowCount; 
+             
+
+                for (var key in response) {
+                    var td = document.createElement('td');
+                    td.textContent = response[key];
+                    tr.appendChild(td);
                 }
-            }
-        };
-        xhr.send();
-    });
 
+                tableBody.appendChild(tr);
+
+                document.getElementById('dataCount1').textContent = 'Data Count: ' + rowCount; 
+            }
+        }
+    };
+    xhr.send();
+});
 
 
 
@@ -74,7 +66,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
                 let rows = '';
                 data.data.forEach(row => {
                     rows += `<tr>`;
-                    rows += `<td>${++rowCount}</td>`; 
+                    
                  
                     rows += `<td>${row.base_product || '0'}</td>`;
                     rows += `<td>${row.car_model || '0'}</td>`;

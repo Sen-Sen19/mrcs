@@ -101,11 +101,11 @@ if (isset($_SESSION['username'])) {
   </div>
 </body>
 
-<!-- jQuery -->
+
 <script src="plugins/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
+
 <script src="dist/js/adminlte.min.js"></script>
 
 <noscript>

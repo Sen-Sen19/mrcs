@@ -13,10 +13,10 @@ include 'plugins/sidebar/user_bar.php';
                         <div class="col-sm-12">
 
 
-                        <button id="emptyPlanBtn" class="btn btn-primary mt-3"
+                        <!-- <button id="emptyPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #ec0100; border-color: #ec0100; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
                                 <i class="fas fa-trash"></i>Empty Plan
-                            </button>
+                            </button> -->
 
                             <button id="extractPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #008dff; border-color: #008dff; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
@@ -71,7 +71,8 @@ $(document).ready(function () {
                     base_product: cells.eq(1).text().trim(),
                     first_month: cells.eq(-5).text().trim(),
                     second_month: cells.eq(-3).text().trim(),
-                    third_month: cells.eq(-1).text().trim()
+                    third_month: cells.eq(-1).text().trim(),
+                    added_by: $('#full_name').val().trim()
                 };
                 tableData.push(row);
             }
@@ -79,7 +80,7 @@ $(document).ready(function () {
 
         console.log('Total rows to send:', tableData.length);
 
-        const chunkSize = 250;
+        const chunkSize = 50;  // Try reducing this size
         const totalChunks = Math.ceil(tableData.length / chunkSize);
 
         function sendChunk(chunkIndex) {
@@ -89,10 +90,10 @@ $(document).ready(function () {
                     icon: 'success',
                     title: 'Success',
                     text: 'All data saved successfully!',
-                    timer: 1000, 
-                    showConfirmButton: false 
+                    timer: 1000,
+                    showConfirmButton: false
                 }).then(() => {
-                    location.reload(); 
+                    location.reload();
                 });
                 return;
             }
@@ -106,6 +107,11 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response.error) {
                         console.error('Error saving data:', response.details);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.details || 'Unknown error occurred.'
+                        });
                     } else {
                         console.log(`Chunk ${chunkIndex + 1} sent successfully`);
                         sendChunk(chunkIndex + 1);
@@ -126,68 +132,68 @@ $(document).ready(function () {
     });
 });
 
-document.getElementById("emptyPlanBtn").addEventListener("click", function() {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Do you really want to empty the plan?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, empty it!',
-        cancelButtonText: 'No, cancel!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch("../../process/empty_plan.php", {
-                method: "POST"
-            }).then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      Swal.fire({
-                          icon: 'success',
-                          title: 'Emptied!',
-                          text: 'Plan emptied successfully!',
-                          timer: 1000, 
-                          showConfirmButton: false 
-                      }).then(() => {
-                          location.reload(); 
-                      });
-                  } else {
-                      Swal.fire({
-                          icon: 'error',
-                          title: 'Error',
-                          text: 'Error: ' + data.message
-                      });
-                  }
-              }).catch(error => {
-                  console.error("Error:", error);
-                  Swal.fire({
-                      icon: 'error',
-                      title: 'Oops...',
-                      text: 'Something went wrong!'
-                  });
-              });
-        }
-    });
-});
+// document.getElementById("emptyPlanBtn").addEventListener("click", function() {
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         text: "Do you really want to empty the plan?",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonText: 'Yes, empty it!',
+//         cancelButtonText: 'No, cancel!'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             fetch("../../process/empty_plan.php", {
+//                 method: "POST"
+//             }).then(response => response.json())
+//               .then(data => {
+//                   if (data.success) {
+//                       Swal.fire({
+//                           icon: 'success',
+//                           title: 'Emptied!',
+//                           text: 'Plan emptied successfully!',
+//                           timer: 1000, 
+//                           showConfirmButton: false 
+//                       }).then(() => {
+//                           location.reload(); 
+//                       });
+//                   } else {
+//                       Swal.fire({
+//                           icon: 'error',
+//                           title: 'Error',
+//                           text: 'Error: ' + data.message
+//                       });
+//                   }
+//               }).catch(error => {
+//                   console.error("Error:", error);
+//                   Swal.fire({
+//                       icon: 'error',
+//                       title: 'Oops...',
+//                       text: 'Something went wrong!'
+//                   });
+//               });
+//         }
+//     });
+// });
 
-function checkPlanData() {
-    fetch("../../process/check_plan_data.php")
-        .then(response => response.json())
-        .then(data => {
-            const extractBtn = document.getElementById("extractPlanBtn");
-            extractBtn.disabled = !data.isEmpty; 
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Failed to check plan data!'
-            });
-        });
-}
+// function checkPlanData() {
+//     fetch("../../process/check_plan_data.php")
+//         .then(response => response.json())
+//         .then(data => {
+//             const extractBtn = document.getElementById("extractPlanBtn");
+//             extractBtn.disabled = !data.isEmpty; 
+//         })
+//         .catch(error => {
+//             console.error("Error:", error);
+//             Swal.fire({
+//                 icon: 'error',
+//                 title: 'Oops...',
+//                 text: 'Failed to check plan data!'
+//             });
+//         });
+// }
 
 
-window.onload = checkPlanData;
+// window.onload = checkPlanData;
 
 </script>
 

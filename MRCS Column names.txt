@@ -131,9 +131,7 @@
     base_product
     car_model
     product
-    car_code
-    block
-    class
+    
     line_no
     circuit_qty
     joint_crimping_2tons_ps_800_s_2

@@ -7,7 +7,6 @@ include 'conn.php';
 if (isset($_GET['base_product'])) {
     $base_product = $_GET['base_product'];
 
-    
     $tables = [
         'first_process',
         'unique_process',
@@ -16,8 +15,7 @@ if (isset($_GET['base_product'])) {
         'other_process'
     ];
 
-
-    $mergedResult = []; 
+    $mergedResult = []; // Array to hold all results
 
     foreach ($tables as $table) {
         $sql = "SELECT * FROM $table WHERE base_product = ?";
@@ -29,16 +27,13 @@ if (isset($_GET['base_product'])) {
             exit; 
         }
 
-      
+        // Fetch all rows from the current table and append to mergedResult
         while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-         
-            foreach ($row as $key => $value) {
-                $mergedResult[$key] = $value; 
-            }
+            $mergedResult[$table][] = $row; // Store rows under the table name
         }
     }
 
-
+    // Return the results
     if (empty($mergedResult)) {
         echo json_encode(['message' => 'No results found']);
     } else {

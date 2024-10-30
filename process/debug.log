@@ -1,0 +1,102 @@
+Array
+(
+    [0] => Array
+        (
+            [car_code] => Honda Old
+            [first_month] => 12307
+            [max_plan_1] => 2024-10-31
+            [second_month] => 12874
+            [max_plan_2] => 2024-11-28
+            [third_month] => 12984
+            [max_plan_3] => 2024-12-09
+        )
+
+    [1] => Array
+        (
+            [car_code] => Daihatsu D01L
+            [first_month] => 11724
+            [max_plan_1] => 2024-10-23
+            [second_month] => 10719
+            [max_plan_2] => 2024-11-04
+            [third_month] => 8674
+            [max_plan_3] => 2024-12-02
+        )
+
+    [2] => Array
+        (
+            [car_code] => Honda T20
+            [first_month] => 2190
+            [max_plan_1] => 2024-10-14
+            [second_month] => 2580
+            [max_plan_2] => 2024-11-25
+            [third_month] => 2830
+            [max_plan_3] => 2024-12-16
+        )
+
+    [3] => Array
+        (
+            [car_code] => Honda TKRA
+            [first_month] => 10082
+            [max_plan_1] => 2024-10-23
+            [second_month] => 9715
+            [max_plan_2] => 2024-11-19
+            [third_month] => 9739
+            [max_plan_3] => 2024-12-02
+        )
+
+    [4] => Array
+        (
+            [car_code] => Suzuki Old
+            [first_month] => 88936
+            [max_plan_1] => 2024-10-07
+            [second_month] => 88715
+            [max_plan_2] => 2024-11-04
+            [third_month] => 87950
+            [max_plan_3] => 2024-12-02
+        )
+
+    [5] => Array
+        (
+            [car_code] => Subaru
+            [first_month] => 12404
+            [max_plan_1] => 2024-10-07
+            [second_month] => 11793
+            [max_plan_2] => 2024-11-12
+            [third_month] => 12306
+            [max_plan_3] => 2024-12-02
+        )
+
+    [6] => Array
+        (
+            [car_code] => Toyota
+            [first_month] => 1057
+            [max_plan_1] => 2024-10-14
+            [second_month] => 657
+            [max_plan_2] => 2024-11-18
+            [third_month] => 710
+            [max_plan_3] => 2024-12-02
+        )
+
+    [7] => Array
+        (
+            [car_code] => Mazda Merge
+            [first_month] => 19028
+            [max_plan_1] => 2024-10-28
+            [second_month] => 17981
+            [max_plan_2] => 2024-11-09
+            [third_month] => 16616
+            [max_plan_3] => 2024-12-05
+        )
+
+    [8] => Array
+        (
+            [car_code] => Mazda J12
+            [first_month] => 19028
+            [max_plan_1] => 2024-10-28
+            [second_month] => 17981
+            [max_plan_2] => 2024-11-09
+            [third_month] => 16616
+            [max_plan_3] => 2024-12-05
+        )
+
+)

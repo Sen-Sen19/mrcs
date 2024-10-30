@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/user_bar.php'; ?>
+<?php include 'plugins/sidebar/user_bar.php';?>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -7,6 +7,8 @@
                 <div class="tab-pane fade show active" id="file3" role="tabpanel" aria-labelledby="file3-tab">
                     <div class="row mb-2">
 
+
+                        
                         <div class="col-12 col-sm-2">
                             <label style="font-weight:normal;margin:0;padding:0;color:#000;">Date From</label>
                             <input type="date" name="date_from" class="form-control" id="date_from_search_defect"
@@ -38,10 +40,10 @@
                             </button>
                         </div>
                         <div class="col-12 col-sm-2">
-                        <button id="saveButton" class="btn btn-primary btn-sm btn-block"
-        style="background-color:#009425; border-color:#009425; color: white; padding: 5px 10px; margin-top: 9%;">
-        <i class="fas fa-save"></i> Save
-    </button>
+                            <button id="saveButton" class="btn btn-primary btn-sm btn-block"
+                                style="background-color:#009425; border-color:#009425; color: white; padding: 5px 10px; margin-top: 9%;">
+                                <i class="fas fa-save"></i> Save
+                            </button>
                         </div>
                     </div>
                     <div class="card card-gray-dark card-outline">
@@ -60,10 +62,10 @@
                             style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white; border-radius: 10px;">
                             <table id="header_table3" class="table table-sm table-head-fixed text-nowrap table-hover">
                                 <thead style="text-align: center;">
-                                
+
                                 </thead>
                                 <tbody id="table_body3" style="text-align: center; padding:20px;">
-                        
+
                                 </tbody>
                             </table>
                         </div>
@@ -83,23 +85,25 @@
                         </div>
 
                         <div class="row align-items-center" style="padding: 10px;">
-                           
+
                             <div class="col-12 d-flex justify-content-end">
 
-                          
 
-                                </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 
 <script>
+var fullName = "<?php echo isset($_SESSION['full_name']) ? htmlspecialchars($_SESSION['full_name']) : ''; ?>";
 
 function loadData(dateFrom, dateTo) {
     $('#loading2').show();
@@ -108,19 +112,21 @@ function loadData(dateFrom, dateTo) {
         url: '../../process/fetch_data.php',
         type: 'GET',
         dataType: 'json',
+        data: {
+            full_name: fullName,
+            date_from: dateFrom,
+            date_to: dateTo
+        },
         success: function (response) {
-        
+            // Success handling
             var tableBody = $('#table_body3');
             var header = $('#header_table3 thead');
             tableBody.empty();
             header.empty();
 
             var aggregatedData = {};
-            var excludedBaseProducts = [];  
-            var includedBaseProducts = []; 
             var uniqueDates = new Set();
 
-    
             const fromDate = dateFrom ? new Date(dateFrom) : null;
             const toDate = dateTo ? new Date(dateTo) : null;
 
@@ -134,7 +140,7 @@ function loadData(dateFrom, dateTo) {
 
                 if (itemDate >= fromDate && itemDate <= toDate) {
                     var key = item.base_product + "|" + item.manufacturing_location;
-                    
+
                     if (!aggregatedData[key]) {
                         aggregatedData[key] = {
                             base_product: item.base_product,
@@ -164,13 +170,8 @@ function loadData(dateFrom, dateTo) {
 
                     aggregatedData[key].dates[formattedDate] = item.value;
                     uniqueDates.add(formattedDate);
-
-
-                  
                 }
             });
-
-        
 
             uniqueDates = Array.from(uniqueDates).sort((a, b) => new Date(a) - new Date(b));
 
@@ -183,10 +184,9 @@ function loadData(dateFrom, dateTo) {
             $.each(aggregatedData, function (key, item) {
                 var dateColumns = "";
 
-  
                 uniqueDates.forEach(date => {
-                    var value = parseFloat(item.dates[date] || 0.00);  
-                    dateColumns += `<td>${value.toFixed(2)}</td>`;  
+                    var value = parseFloat(item.dates[date] || 0.00);
+                    dateColumns += `<td>${value.toFixed(2)}</td>`;
                 });
 
                 tableBody.append(
@@ -217,12 +217,10 @@ function loadData(dateFrom, dateTo) {
                 );
             });
 
-            $('#dataCount3').text('Data Count: ' + includedBaseProducts.length); 
+            $('#dataCount3').text('Data Count: ' + Object.keys(aggregatedData).length);
         },
         error: function (xhr, status, error) {
             console.error('Error fetching data:', error);
-  
-        
         },
         complete: function () {
             $('#loading2').hide();
@@ -230,7 +228,6 @@ function loadData(dateFrom, dateTo) {
     });
 }
 
-// Add event listener to the search button
 $('#searchButton').on('click', function () {
     const dateFrom = $('#date_from_search_defect').val();
     const dateTo = $('#date_to_search_defect').val();
@@ -243,46 +240,35 @@ $('#searchButton').on('click', function () {
 });
 
 $(document).ready(function () {
-    loadData(); // Initial load without filters
-}); 
-
-
-
-
-
+    loadData();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
-
-        document.getElementById("saveButton").addEventListener("click", function () {
-            saveData();
-        });
+    document.getElementById("saveButton").addEventListener("click", function () {
+        saveData();
     });
-    function saveData() {
-    let table = document.querySelector('#accounts_table_res2 table'); 
+});
+
+function saveData() {
+    let table = document.querySelector('#accounts_table_res2 table');
     if (!table) {
         alert('Table not found');
         return;
     }
 
-    let rows = table.getElementsByTagName('tbody')[0].rows;
+    let rows = document.querySelectorAll('#table_body3 tr');
     let dataToSend = [];
 
+    // Retrieve the value from the hidden input field
+    let addedBy = document.getElementById("full_name").value;
 
-    for (let i = 0; i < rows.length; i++) {
-        let row = rows[i];
-        let baseData = [];
+    rows.forEach(row => {
+        let cells = row.querySelectorAll('td');
+        let baseData = Array.from(cells).slice(0, 21).map(cell => cell.innerText.trim());
 
-   
-        for (let j = 0; j < 21; j++) {
-            baseData.push(row.cells[j].innerText.trim()); 
-        }
-
-        
-        for (let j = 21; j < row.cells.length; j++) {
-            let dateValue = table.rows[0].cells[j].innerText.trim(); 
-            let value = row.cells[j].innerText.trim();
-
-
+        Array.from(cells).slice(21).forEach((cell, index) => {
+            let dateValue = document.querySelector(`#header_table3 thead tr th:nth-child(${index + 22})`).innerText;
+            let value = cell.innerText.trim();
 
             let date = new Date(dateValue);
             if (isNaN(date.getTime())) {
@@ -292,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let formattedDate = date.toISOString().split('T')[0];
 
-           
             dataToSend.push({
                 base_product: baseData[0],
                 manufacturing_location: baseData[1],
@@ -316,16 +301,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 secondary_process: baseData[19],
                 later_process: baseData[20],
                 date: formattedDate,
-                value: value
+                value: value,
+                added_by: addedBy 
             });
-        }
-    }
+        });
+    });
 
     if (dataToSend.length === 0) {
         alert('No data to save');
         return;
     }
-
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../process/save_plan_date.php', true);

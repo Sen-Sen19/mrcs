@@ -15,21 +15,23 @@ if ($conn === false) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['planData']) && is_array($_POST['planData'])) {
     $planData = $_POST['planData'];
 
-    $insertQuery = "INSERT INTO plan_2 (base_product, first_month, second_month, third_month) VALUES (?, ?, ?, ?)";
+    $insertQuery = "INSERT INTO plan_2 (base_product, first_month, second_month, third_month, added_by) VALUES (?, ?, ?, ?, ?)";
 
     foreach ($planData as $row) {
-        if (isset($row['base_product'], $row['first_month'], $row['second_month'], $row['third_month'])) {
+        if (isset($row['base_product'], $row['first_month'], $row['second_month'], $row['third_month'], $row['added_by'])) {
             $params = [
                 $row['base_product'],
                 $row['first_month'],
                 $row['second_month'],
-                $row['third_month']
+                $row['third_month'],
+                $row['added_by']
             ];
 
             $stmt = sqlsrv_prepare($conn, $insertQuery, $params);
 
             if (!$stmt || !sqlsrv_execute($stmt)) {
                 $errors = sqlsrv_errors();
+                error_log(print_r($errors, true)); 
                 echo json_encode(['error' => 'SQL error', 'details' => $errors]);
                 exit();
             }

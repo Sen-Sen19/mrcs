@@ -325,18 +325,13 @@
 
     // --------------------------------------------First Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_6.php')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById('first_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
 
-            data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+        fetch('../../process/fetch_section_6.php')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('first_month_table_body');
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
-
+                data.forEach(row => {
                     const tr = document.createElement('tr');
 
                     const carModelTd = document.createElement('td');
@@ -344,13 +339,14 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
                     totalShotsTd.textContent = row.first_total_shots;
                     totalShotsTd.style.color = 'blue';
                     tr.appendChild(totalShotsTd);
+                    
 
                     const machineInventoryTd = document.createElement('td');
                     machineInventoryTd.textContent = row.machine_inventory;
@@ -384,98 +380,94 @@
                         document.getElementById('jph').value = row.jph1;
                         document.getElementById('wt').value = row.wt1;
                         document.getElementById('ot').value = row.ot1;
-
+                     
                         document.getElementById('row_index').value = row.id;
 
                         $('#editModalFirstMonth').modal('show');
                     });
 
                     tableBody.appendChild(tr);
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error fetching data from server.',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        });
-
-    document.getElementById('saveChanges1').addEventListener('click', function () {
-        const id = document.getElementById('row_index').value;
-        const updatedData = {
-            car_model: document.getElementById('car_model').value,
-            process: document.getElementById('process').value,
-            machine_inventory: document.getElementById('machine_inventory').value,
-            jph: document.getElementById('jph').value,
-            wt: document.getElementById('wt').value,
-            ot: document.getElementById('ot').value,
-        };
-
-        console.log('ID:', id);
-        console.log('Updated Data:', updatedData);
-
-        fetch('../../process/edit_section_6_first_month.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Response from server:', result);
-                if (result.success) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Update successful!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(() => {
-                        location.reload();
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Error updating row: ' + result.message,
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
+                });
             })
             .catch(error => {
-                console.error('Error updating data:', error);
+                console.error('Error fetching data:', error);
                 Swal.fire({
                     title: 'Error!',
-                    text: 'An error occurred while updating data.',
+                    text: 'Error fetching data from server.',
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 1500,
                 });
             });
+
+        document.getElementById('saveChanges1').addEventListener('click', function () {
+            const id = document.getElementById('row_index').value;
+            const updatedData = {
+                car_model: document.getElementById('car_model').value,
+                process: document.getElementById('process').value,
+                machine_inventory: document.getElementById('machine_inventory').value,
+                jph: document.getElementById('jph').value,
+                wt: document.getElementById('wt').value,
+                ot: document.getElementById('ot').value,
+            
+            };
+
+            console.log('ID:', id);
+            console.log('Updated Data:', updatedData);
+
+            fetch('../../process/edit_section_6_first_month.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ index: id, updatedData: updatedData }),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Response from server:', result);
+                    if (result.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Update successful!',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Error updating row: ' + result.message,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while updating data.',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                });
+        });
     });
-});
+
 
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_6.php')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById('second_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
 
-            data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+        fetch('../../process/fetch_section_6.php')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('second_month_table_body');
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
-
+                data.forEach(row => {
                     const tr = document.createElement('tr');
 
                     const carModelTd = document.createElement('td');
@@ -483,7 +475,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -516,6 +508,7 @@
                     mpTd.textContent = row.mp2;
                     tr.appendChild(mpTd);
 
+
                     tr.addEventListener('click', function () {
                         document.getElementById('car_model2').value = row.car_model;
                         document.getElementById('process2').value = row.process;
@@ -529,93 +522,92 @@
                     });
 
                     tableBody.appendChild(tr);
-                }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error fetching data from server.',
+                    icon: 'error',
+                    showconfirmButton: false,
+                    timer: 1500,
+
+
+                });
             });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error fetching data from server.',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        });
 
-    document.getElementById('saveChanges2').addEventListener('click', function () {
-        const id = document.getElementById('row_index').value;
-        const updatedData = {
-            car_model: document.getElementById('car_model2').value,
-            process: document.getElementById('process2').value,
-            machine_inventory: document.getElementById('machine_inventory2').value,
-            jph: document.getElementById('jph2').value,
-            wt: document.getElementById('wt2').value,
-            ot: document.getElementById('ot2').value,
-        };
 
-        console.log('ID:', id);
-        console.log('Updated Data:', updatedData);
+        document.getElementById('saveChanges2').addEventListener('click', function () {
+            const id = document.getElementById('row_index').value;
+            const updatedData = {
+                car_model: document.getElementById('car_model2').value,
+                process: document.getElementById('process2').value,
+                machine_inventory: document.getElementById('machine_inventory2').value,
+                jph: document.getElementById('jph2').value,
+                wt: document.getElementById('wt2').value,
+                ot: document.getElementById('ot2').value,
+             
+            };
 
-        fetch('../../process/edit_section_6_second_month.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Response from server:', result);
-                if (result.success) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Update successful!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(() => {
-                        location.reload();
-                    });
-                } else {
+            console.log('ID:', id);
+            console.log('Updated Data:', updatedData);
+
+            fetch('../../process/edit_section_6_second_month.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ index: id, updatedData: updatedData }),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Response from server:', result);
+                    if (result.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Update successful!',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Error updating row: ' + result.message,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Error updating row: ' + result.message,
+                        text: 'An error occurred while updating data.',
                         icon: 'error',
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                }
-            })
-            .catch(error => {
-                console.error('Error updating data:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'An error occurred while updating data.',
-                    icon: 'error',
-                    showConfirmButton: false,
-                    timer: 1500,
                 });
-            });
+        });
     });
-});
+
 
 
 
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_6.php')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById('third_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
 
-            data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+        fetch('../../process/fetch_section_6.php')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('third_month_table_body');
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
-
+                data.forEach(row => {
                     const tr = document.createElement('tr');
 
                     const carModelTd = document.createElement('td');
@@ -623,7 +615,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -656,6 +648,7 @@
                     mpTd.textContent = row.mp3;
                     tr.appendChild(mpTd);
 
+
                     tr.addEventListener('click', function () {
                         document.getElementById('car_model3').value = row.car_model;
                         document.getElementById('process3').value = row.process;
@@ -663,84 +656,90 @@
                         document.getElementById('jph3').value = row.jph3;
                         document.getElementById('wt3').value = row.wt3;
                         document.getElementById('ot3').value = row.ot3;
+                      
 
                         document.getElementById('row_index').value = row.id;
 
                         console.log('Row clicked, showing modal for:', row.car_model);
                         $('#editModalThirdMonth').modal('show');
+                        ;
                     });
 
                     tableBody.appendChild(tr);
-                }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error fetching data from server.',
+                    icon: 'error',
+                    showconfirmButton: false,
+                    timer: 1500,
+
+                });
             });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error fetching data from server.',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        });
 
-    document.getElementById('saveChanges3').addEventListener('click', function () {
-        const id = document.getElementById('row_index').value;
-        const updatedData = {
-            car_model: document.getElementById('car_model3').value,
-            process: document.getElementById('process3').value,
-            machine_inventory: document.getElementById('machine_inventory3').value,
-            jph: document.getElementById('jph3').value,
-            wt: document.getElementById('wt3').value,
-            ot: document.getElementById('ot3').value,
-        };
 
-        console.log('ID:', id);
-        console.log('Updated Data:', updatedData);
+        document.getElementById('saveChanges3').addEventListener('click', function () {
+            const id = document.getElementById('row_index').value;
+            const updatedData = {
+                car_model: document.getElementById('car_model3').value,
+                process: document.getElementById('process3').value,
+                machine_inventory: document.getElementById('machine_inventory2').value,
+                jph: document.getElementById('jph3').value,
+                wt: document.getElementById('wt3').value,
+                ot: document.getElementById('ot3').value,
+             
+            };
 
-        fetch('../../process/edit_section_6_third_month.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Response from server:', result);
-                if (result.success) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Update successful!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(() => {
-                        location.reload();
-                    });
-                } else {
+            console.log('ID:', id);
+            console.log('Updated Data:', updatedData);
+
+            fetch('../../process/edit_section_6_third_month.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ index: id, updatedData: updatedData }),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Response from server:', result);
+                    if (result.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Update successful!',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Error updating row: ' + result.message,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Error updating row: ' + result.message,
+                        text: 'An error occurred while updating data.',
                         icon: 'error',
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                }
-            })
-            .catch(error => {
-                console.error('Error updating data:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'An error occurred while updating data.',
-                    icon: 'error',
-                    showConfirmButton: false,
-                    timer: 1500,
                 });
-            });
+        });
     });
-});
+
+
 
 
 

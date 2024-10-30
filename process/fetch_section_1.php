@@ -4,7 +4,8 @@ include 'conn.php';
 
 $sql = "SELECT s.id, 
                s.car_model, 
-               s.process, 
+               s.process,
+               s.process_name,
                s.machine_inventory, 
                s.machine_requirements1, 
                s.machine_requirements2, 
@@ -51,16 +52,31 @@ foreach ($data as $entry) {
         die(print_r(sqlsrv_errors(), true));
     }
 
-    while ($shotsRow = sqlsrv_fetch_array($shotsStmt, SQLSRV_FETCH_ASSOC)) {
-        $totalShots[] = array_merge($entry, $shotsRow);
+
+    $first_total_shots = 0;
+    $second_total_shots = 0;
+    $third_total_shots = 0;
+
+
+    if ($shotsRow = sqlsrv_fetch_array($shotsStmt, SQLSRV_FETCH_ASSOC)) {
+        $first_total_shots = $shotsRow['first_total_shots'];
+        $second_total_shots = $shotsRow['second_total_shots'];
+        $third_total_shots = $shotsRow['third_total_shots'];
     }
+
+
+    $totalShots[] = array_merge($entry, [
+        'first_total_shots' => $first_total_shots,
+        'second_total_shots' => $second_total_shots,
+        'third_total_shots' => $third_total_shots,
+    ]);
 
     sqlsrv_free_stmt($shotsStmt);
 }
 
- 
+
 usort($totalShots, function ($a, $b) {
-    return strcmp($a['car_model'], $b['car_model']);
+    return $a['id'] <=> $b['id'];
 });
 
 header('Content-Type: application/json');  

@@ -58,9 +58,10 @@
                                         </div>
                                         <tr>
 
-                                            <th>ID</th>
+                                            <th>Emplo ID</th>
+                                            <th>Full Name</th>
                                             <th>Username</th>
-                                            <th>Password</th>
+                                            <th>Department</th>
                                             <th>Role</th>
                                             <th>Action</th>
                                         </tr>
@@ -106,11 +107,19 @@
                         <label for="editID">ID</label>
                         <input type="text" class="form-control" id="editID" name="ID" readonly>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="editUsername">Username</label>
+                        <input type="text" class="form-control" id="editUsername" name="Username">
+                    </div>
 
                     <div class="form-group">
                         <label for="editUsername">Username</label>
                         <input type="text" class="form-control" id="editUsername" name="Username">
                     </div>
+
+
+
                     <div class="form-group">
                         <label for="editPassword">Password</label>
                         <input type="text" class="form-control" id="editPassword" name="Password">
@@ -152,8 +161,10 @@
                 data.forEach(row => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                    <td>${row.id}</td>
+                    <td>${row.emp_id}</td>
+                    <td>${row.full_name}</td>
                     <td>${row.username}</td>
+                    <td>${row.department}</td>
                     <td>${row.password}</td>
                     <td>${row.type}</td>
                    <td class="action-column"><input type="checkbox" class="employee-checkbox" data-employee-no="${row.EmployeeNo}"></td>

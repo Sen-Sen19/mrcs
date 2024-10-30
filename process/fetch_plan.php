@@ -2,18 +2,23 @@
 
 include 'conn.php';
 
+$addedBy = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : '';
 
 $sql = "SELECT 
             [base_product],
             [line],
             [date],
             [value]
-        FROM [live_mrcs_db].[dbo].[selected_plan_date]";
+        FROM [live_mrcs_db].[dbo].[selected_plan_date]
+        WHERE [added_by] = ?";
 
-$result = sqlsrv_query($conn, $sql);
+$params = array($addedBy);
+$result = sqlsrv_query($conn, $sql, $params);
+
 if (!$result) {
     die(print_r(sqlsrv_errors(), true));
 }
+
 $data = [];
 $dates = [];
 
@@ -75,9 +80,9 @@ while ($row = sqlsrv_fetch_array($resultMasterlist, SQLSRV_FETCH_ASSOC)) {
 
 $sqlTotalPlan = "SELECT 
                     [car_code], 
-                    [first_month],
-                    [second_month], 
-                    [third_month] 
+                    [max_plan_1],
+                    [max_plan_2], 
+                    [max_plan_3] 
                 FROM [live_mrcs_db].[dbo].[total_plan]"; 
 $resultTotalPlan = sqlsrv_query($conn, $sqlTotalPlan);
 if (!$resultTotalPlan) {
@@ -88,9 +93,9 @@ if (!$resultTotalPlan) {
 $totalPlanData = [];
 while ($row = sqlsrv_fetch_array($resultTotalPlan, SQLSRV_FETCH_ASSOC)) {
     $totalPlanData[$row['car_code']] = [
-        'first_month' => $row['first_month'],
-        'second_month' => $row['second_month'],
-        'third_month' => $row['third_month'],
+        'max_plan_1' => $row['max_plan_1'],
+        'max_plan_2' => $row['max_plan_2'],
+        'max_plan_3' => $row['max_plan_3'],
     ];
 }
 
@@ -154,9 +159,9 @@ foreach ($data as $baseProduct => $rowData) {
     $secondMonthValue = '';
     $thirdMonthValue = '';
 
-    $maxPlan1Date = isset($matchingResults[$baseProduct]['first_month']) ? $matchingResults[$baseProduct]['first_month'] : '';
-    $maxPlan2Date = isset($matchingResults[$baseProduct]['second_month']) ? $matchingResults[$baseProduct]['second_month'] : '';
-    $maxPlan3Date = isset($matchingResults[$baseProduct]['third_month']) ? $matchingResults[$baseProduct]['third_month'] : '';
+    $maxPlan1Date = isset($matchingResults[$baseProduct]['max_plan_1']) ? $matchingResults[$baseProduct]['max_plan_1'] : '';
+    $maxPlan2Date = isset($matchingResults[$baseProduct]['max_plan_2']) ? $matchingResults[$baseProduct]['max_plan_2'] : '';
+    $maxPlan3Date = isset($matchingResults[$baseProduct]['max_plan_3']) ? $matchingResults[$baseProduct]['max_plan_3'] : '';
 
    
     if ($maxPlan1Date) {

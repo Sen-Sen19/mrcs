@@ -1,12 +1,7 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/user_bar.php'; ?>
+<?php include 'plugins/sidebar/admin_bar.php'; ?>
 
 <div class="content-wrapper">
-    <div id="loadingSpinner"
-        style="display: none; background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);">
-        <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
-        <p style="margin-top: 10px;">Please wait. Do not reload the page</p>
-    </div>
 
     <div class="row">
         <div class="col-sm-2">
@@ -81,10 +76,12 @@
                 </thead>
                 <tbody id="table_body1" style="text-align: center; padding: 20px;"></tbody>
             </table>
-            <div id="loading" class="text-center" style="display: none;">
-                <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
-                <p>Loading data, please wait...</p>
-            </div>
+             <div id="loadingSpinner"
+     style="display: none; background-color: white; padding: 10px; border-radius: 5px; 
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
+   
+</div>
         </div>
         <div id="dataCount1" class="data-count" style="text-align: left; padding: 10px; font-size: 16px;">Data Count: 0
         </div>

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file'])) {
         fgetcsv($handle); 
 
 
-        $deleteSql = "DELETE FROM [live_mrcs_db].[dbo].[first_process]";
+        $deleteSql = "DELETE FROM [live_mrcs_db].[dbo].[secondary_process]";
         $deleteStmt = sqlsrv_query($conn, $deleteSql);
         
         if ($deleteStmt === false) {

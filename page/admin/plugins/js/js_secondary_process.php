@@ -157,7 +157,7 @@ text: 'File imported successfully!',
 timer: 1000, 
 showConfirmButton: false 
 }).then(() => {
-location.reload();  
+<!-- location.reload();   -->
 });
 } else {
 console.error(data.error);

@@ -2,7 +2,7 @@
 <?php include 'plugins/sidebar/admin_bar.php'; ?>
 
 <div class="content-wrapper">
-    
+ 
 
     <div class="row">
         <div class="col-sm-2">
@@ -31,11 +31,11 @@
         </div>
 
         <div class="col-md-2 mt-3">
-            <button id="importButton1" class="btn btn-primary"
+            <button id="importButton2" class="btn btn-primary"
                 style="background-color: #F0D018; border-color: #F0D018; color: black; width: 100%; margin-top: 33px;">
                 <i class="fas fa-upload"></i> Import
             </button>
-            <input type="file" id="fileImport1" class="form-control" accept=".csv" style="display: none;" />
+            <input type="file" id="fileImport2" class="form-control" accept=".csv" style="display: none;" />
         </div>
         <div class="col-md-2 mt-3">
             <button id="exportbtn" class="btn btn-primary"
@@ -48,7 +48,7 @@
 
     <div class="card card-gray-dark card-outline" style="margin-top: 50px;">
         <div class="card-header">
-            <h3 class="card-title">First Process</h3>
+            <h3 class="card-title">unique Process</h3>
             <div class="card-tools"></div>
         </div>
         <div id="accounts_table_res1" class="table-responsive"
@@ -64,50 +64,54 @@
                         <th>CLASS</th>
                         <th>LINE NO</th>
                         <th>CIRCUIT QTY</th>
-                        <th>TRD NWPA 0 13</th>
-                        <th>TRD NWPA BELOW 2 0 EXCEPT 0 13</th>
-                        <th>TRD NWPA 2 0 3 0</th>
-                        <th>TRD WPA 0 13</th>
-                        <th>TRD WPA BELOW 2 0 EXCEPT 0 13</th>
-                        <th>TRD WPA 2 0 3 0</th>
-                        <th>TR327</th>
-                        <th>TR328</th>
-                        <th>TRD ALUMINUM NWPA 2 0</th>
-                        <th>TRD ALUMINUM NWPA BELOW 2 0</th>
-                        <th>TRD ALUMINUM WPA 2 0</th>
-                        <th>TRD ALUMINUM WPA BELOW 2 0</th>
-                        <th>ALUMINUM DIMENSION CHECK ALUMINUM TERMINAL INSPECTION</th>
-                        <th>ALUMINUM VISUAL INSPECTION</th>
-                        <th>ALUMINUM COATING UV II</th>
-                        <th>ALUMINUM IMAGE INSPECTION</th>
-                        <th>ALUMINUM UV III</th>
-                        <th>TRD ALPHA ALUMINUM NWPA</th>
-                        <th>TRD ALPHA ALUMINUM WPA</th>
-                        <th>ALUMINUM VISUAL INSPECTION FOR ALPHA</th>
-                        <th>ENLARGED TERMINAL CHECK FOR ALPHA</th>
+                        <th>JOINT CRIMPING 20TONS PS 115 2 3L 2</th>
+                        <th>ULTRASONIC WELDING</th>
+                        <th>SERVO PRESS CRIMPING</th>
+                        <th>LOW VISCOSITY</th>
                         <th>AIR WATER LEAK TEST</th>
-                        <th>SAM SUB NO AIRBAG</th>
-                        <th>SAM SUB NO NORMAL</th>
-                        <th>JAM AUTO CRIMPING AND TWISTING</th>
-                        <th>TRD ALPHA ALUMINUM 5 0 ABOVE</th>
-                        <th>POINT MARKING NSC</th>
-                        <th>POINT MARKING SAM</th>
-                        <th>ENLARGED TERMINAL CHECK ALUMINUM</th>
-                        <th>NSC 1</th>
-                        <th>NSC 2</th>
-                        <th>NSC 3</th>
-                        <th>NSC 4</th>
-                        <th>NSC 5</th>
-                        <th>NSC 6</th>
-                        <th>NSC 7</th>
-                        <th>NSC 8</th>
-                        <th>NSC 9</th>
-                        <th>NSC 10</th>
+                        <th>HEATSHRINK LOW VISCOSITY</th>
+                        <th>STMAC SHIELDWIRE J12</th>
+                        <th>HIROSE SHEATH STRIPPING 927R</th>
+                        <th>HIROSE UNISTRIP</th>
+                        <th>HIROSE ACETATE TAPING</th>
+                        <th>HIROSE MANUAL CRIMPING 2 TONS</th>
+                        <th>HIROSE COPPER TAPING</th>
+                        <th>HIROSE HGT17AP CRIMPING</th>
+                        <th>STMAC ALUMINUM</th>
+                        <th>MANUAL CRIMPING 20TONS</th>
+                        <th>DIP SOLDERING BATTERY</th>
+                        <th>ULTRASONIC DIP SOLDERING ALUMINUM</th>
+                        <th>LA MOLDING</th>
+                        <th>PRESSURE WELDING SUN VISOR</th>
+                        <th>PRESSURE WELDING DOME LAMP</th>
+                        <th>CASTING C377A</th>
+                        <th>COAXSTRIP 6580</th>
+                        <th>MANUAL CRIMPING 2T FERRULE</th>
+                        <th>FERRULE AUTO CRIMPING</th>
+                        <th>ENLARGE TERMINAL INSPECTION</th>
+                        <th>WATERPROOF PAD PRESS</th>
+                        <th>PARTS INSERTION</th>
+                        <th>BRAIDED WIRE FOLDING</th>
+                        <th>OUTSIDE FERRULE INSERTION</th>
+                        <th>JOINT CRIMPING 2T</th>
+                        <th>WELDING AT HEAD</th>
+                        <th>WELDING TAPING</th>
+                        <th>UV III 1</th>
+                        <th>UV III 2</th>
+                        <th>UV III 4</th>
+                        <th>UV III 5</th>
+                        <th>UV III 7</th>
+                        <th>UV III 8</th>
+                        <th>DRAINWIRE TIP</th>
+                        <th>ARC WELDING</th>
+                        <th>C373A YAMAHA</th>
+                        <th>COCRIPPER</th>
+                        <th>QUICKSTRIPPING</th>
                     </tr>
                 </thead>
                 <tbody id="table_body1" style="text-align: center; padding: 20px;"></tbody>
             </table>
-            <div id="loadingSpinner"
+             <div id="loadingSpinner"
      style="display: none; background-color: white; padding: 10px; border-radius: 5px; 
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <img src="../../dist/img/6.gif" alt="Loading..." style="width: 50px; height: 50px;">
@@ -121,27 +125,27 @@
 
 <script>
     document.getElementById("exportbtn").addEventListener("click", function () {
-        window.location.href = "../../process/export_first_process.php";
+        window.location.href = "../../process/export_unique_process.php";
     });
 
     document.getElementById("carModelSelect").addEventListener("change", function () {
-        fetchData(this.value); // Pass the selected value to fetchData
+        fetchData(this.value);
     });
 
     function fetchData(selectedCarModel = '') {
         const loadingSpinner = document.getElementById('loadingSpinner');
         loadingSpinner.style.display = 'block';
 
-        fetch('../../process/fetch_first_process.php')
+        fetch('../../process/fetch_unique_process.php')
             .then(response => response.json())
             .then(data => {
                 const dataBody = document.getElementById('table_body1');
                 dataBody.innerHTML = '';
 
-                // Filter the data based on the selected car model
+
                 const filteredData = selectedCarModel
                     ? data.filter(row => row.car_model === selectedCarModel)
-                    : data; // If no model is selected, show all data
+                    : data; 
 
                 filteredData.forEach(row => {
                     const tr = document.createElement('tr');
@@ -154,45 +158,49 @@
                         <td>${row.class}</td>
                         <td>${row.line_no}</td>
                         <td>${row.circuit_qty}</td>
-                        <td>${row.trd_nwpa_0_13}</td>
-                        <td>${row.trd_nwpa_below_2_0_except_0_13}</td>
-                        <td>${row.trd_nwpa_2_0_3_0}</td>
-                        <td>${row.trd_wpa_0_13}</td>
-                        <td>${row.trd_wpa_below_2_0_except_0_13}</td>
-                        <td>${row.trd_wpa_2_0_3_0}</td>
-                        <td>${row.tr327}</td>
-                        <td>${row.tr328}</td>
-                        <td>${row.trd_aluminum_nwpa_2_0}</td>
-                        <td>${row.trd_aluminum_nwpa_below_2_0}</td>
-                        <td>${row.trd_aluminum_wpa_2_0}</td>
-                        <td>${row.trd_aluminum_wpa_below_2_0}</td>
-                        <td>${row.aluminum_dimension_check_aluminum_terminal_inspection}</td>
-                        <td>${row.aluminum_visual_inspection}</td>
-                        <td>${row.aluminum_coating_uv_ii}</td>
-                        <td>${row.aluminum_image_inspection}</td>
-                        <td>${row.aluminum_uv_iii}</td>
-                        <td>${row.trd_alpha_aluminum_nwpa}</td>
-                        <td>${row.trd_alpha_aluminum_wpa}</td>
-                        <td>${row.aluminum_visual_inspection_for_alpha}</td>
-                        <td>${row.enlarged_terminal_check_for_alpha}</td>
-                        <td>${row.air_water_leak_test}</td>
-                        <td>${row.sam_sub_no_airbag}</td>
-                        <td>${row.sam_sub_no_normal}</td>
-                        <td>${row.jam_auto_crimping_and_twisting}</td>
-                        <td>${row.trd_alpha_aluminum_5_0_above}</td>
-                        <td>${row.point_marking_nsc}</td>
-                        <td>${row.point_marking_sam}</td>
-                        <td>${row.enlarged_terminal_check_aluminum}</td>
-                        <td>${row.nsc_1}</td>
-                        <td>${row.nsc_2}</td>
-                        <td>${row.nsc_3}</td>
-                        <td>${row.nsc_4}</td>
-                        <td>${row.nsc_5}</td>
-                        <td>${row.nsc_6}</td>
-                        <td>${row.nsc_7}</td>
-                        <td>${row.nsc_8}</td>
-                        <td>${row.nsc_9}</td>
-                        <td>${row.nsc_10}</td>
+                   <td>${row.joint_crimping_20tons_ps_115_2_3l_2}</td>
+                    <td>${row.ultrasonic_welding}</td>
+                    <td>${row.servo_press_crimping}</td>
+                    <td>${row.low_viscosity}</td>
+                    <td>${row.air_water_leak_test}</td>
+                    <td>${row.heatshrink_low_viscosity}</td>
+                    <td>${row.stmac_shieldwire_j12}</td>
+                    <td>${row.hirose_sheath_stripping_927r}</td>
+                    <td>${row.hirose_unistrip}</td>
+                    <td>${row.hirose_acetate_taping}</td>
+                    <td>${row.hirose_manual_crimping_2_tons}</td>
+                    <td>${row.hirose_copper_taping}</td>
+                    <td>${row.hirose_hgt17ap_crimping}</td>
+                    <td>${row.stmac_aluminum}</td>
+                    <td>${row.manual_crimping_20tons}</td>
+                    <td>${row.dip_soldering_battery}</td>
+                    <td>${row.ultrasonic_dip_soldering_aluminum}</td>
+                    <td>${row.la_molding}</td>
+                    <td>${row.pressure_welding_sun_visor}</td>
+                    <td>${row.pressure_welding_dome_lamp}</td>
+                    <td>${row.casting_c377a}</td>
+                    <td>${row.coaxstrip_6580}</td>
+                    <td>${row.manual_crimping_2t_ferrule}</td>
+                    <td>${row.ferrule_auto_crimping}</td>
+                    <td>${row.enlarge_terminal_inspection}</td>
+                    <td>${row.waterproof_pad_press}</td>
+                    <td>${row.parts_insertion}</td>
+                    <td>${row.braided_wire_folding}</td>
+                    <td>${row.outside_ferrule_insertion}</td>
+                    <td>${row.joint_crimping_2t}</td>
+                    <td>${row.welding_at_head}</td>
+                    <td>${row.welding_taping}</td>
+                    <td>${row.uv_iii_1}</td>
+                    <td>${row.uv_iii_2}</td>
+                    <td>${row.uv_iii_4}</td>
+                    <td>${row.uv_iii_5}</td>
+                    <td>${row.uv_iii_7}</td>
+                    <td>${row.uv_iii_8}</td>
+                    <td>${row.drainwire_tip}</td>
+                    <td>${row.arc_welding}</td>
+                    <td>${row.c373a_yamaha}</td>
+                    <td>${row.cocripper}</td>
+                    <td>${row.quickstripping}</td>
                     `;
                     dataBody.appendChild(tr);
                 });
@@ -212,5 +220,5 @@
     fetchData();
 </script>
 
-<?php include 'plugins/js/js_first_process.php'; ?>
+<?php include 'plugins/js/js_unique_process.php'; ?>
 <?php include 'plugins/footer.php'; ?>

@@ -326,137 +326,138 @@
     // --------------------------------------------First Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
 
-        fetch('../../process/fetch_section_2.php')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.getElementById('first_month_table_body');
+fetch('../../process/fetch_section_2.php')
+    .then(response => response.json())
+    .then(data => {
+        const tableBody = document.getElementById('first_month_table_body');
 
-                data.forEach(row => {
-                    const tr = document.createElement('tr');
+        data.forEach(row => {
+            const tr = document.createElement('tr');
 
-                    const carModelTd = document.createElement('td');
-                    carModelTd.textContent = row.car_model;
-                    tr.appendChild(carModelTd);
+            const carModelTd = document.createElement('td');
+            carModelTd.textContent = row.car_model;
+            tr.appendChild(carModelTd);
 
-                    const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
-                    tr.appendChild(processTd);
+            const processTd = document.createElement('td');
+            processTd.textContent = row.process_name;
+            tr.appendChild(processTd);
 
-                    const totalShotsTd = document.createElement('td');
-                    totalShotsTd.textContent = row.first_total_shots;
-                    totalShotsTd.style.color = 'blue';
-                    tr.appendChild(totalShotsTd);
-                    
+            const totalShotsTd = document.createElement('td');
+            totalShotsTd.textContent = row.first_total_shots;
+            totalShotsTd.style.color = 'blue';
+            tr.appendChild(totalShotsTd);
+            
 
-                    const machineInventoryTd = document.createElement('td');
-                    machineInventoryTd.textContent = row.machine_inventory;
-                    tr.appendChild(machineInventoryTd);
+            const machineInventoryTd = document.createElement('td');
+            machineInventoryTd.textContent = row.machine_inventory;
+            tr.appendChild(machineInventoryTd);
 
-                    const machineTd = document.createElement('td');
-                    machineTd.textContent = row.machine_requirements1;
-                    machineTd.style.color = 'red';
-                    tr.appendChild(machineTd);
+            const machineTd = document.createElement('td');
+            machineTd.textContent = row.machine_requirements1;
+            machineTd.style.color = 'red';
+            tr.appendChild(machineTd);
 
-                    const jphTd = document.createElement('td');
-                    jphTd.textContent = row.jph1;
-                    tr.appendChild(jphTd);
+            const jphTd = document.createElement('td');
+            jphTd.textContent = row.jph1;
+            tr.appendChild(jphTd);
 
-                    const wtTd = document.createElement('td');
-                    wtTd.textContent = row.wt1;
-                    tr.appendChild(wtTd);
+            const wtTd = document.createElement('td');
+            wtTd.textContent = row.wt1;
+            tr.appendChild(wtTd);
 
-                    const otTd = document.createElement('td');
-                    otTd.textContent = row.ot1;
-                    tr.appendChild(otTd);
+            const otTd = document.createElement('td');
+            otTd.textContent = row.ot1;
+            tr.appendChild(otTd);
 
-                    const mpTd = document.createElement('td');
-                    mpTd.textContent = row.mp1;
-                    tr.appendChild(mpTd);
+            const mpTd = document.createElement('td');
+            mpTd.textContent = row.mp1;
+            tr.appendChild(mpTd);
 
-                    tr.addEventListener('click', function () {
-                        document.getElementById('car_model').value = row.car_model;
-                        document.getElementById('process').value = row.process;
-                        document.getElementById('machine_inventory').value = row.machine_inventory;
-                        document.getElementById('jph').value = row.jph1;
-                        document.getElementById('wt').value = row.wt1;
-                        document.getElementById('ot').value = row.ot1;
-                     
-                        document.getElementById('row_index').value = row.id;
+            tr.addEventListener('click', function () {
+                document.getElementById('car_model').value = row.car_model;
+                document.getElementById('process').value = row.process;
+                document.getElementById('machine_inventory').value = row.machine_inventory;
+                document.getElementById('jph').value = row.jph1;
+                document.getElementById('wt').value = row.wt1;
+                document.getElementById('ot').value = row.ot1;
+             
+                document.getElementById('row_index').value = row.id;
 
-                        $('#editModalFirstMonth').modal('show');
-                    });
+                $('#editModalFirstMonth').modal('show');
+            });
 
-                    tableBody.appendChild(tr);
+            tableBody.appendChild(tr);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Error fetching data from server.',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    });
+
+document.getElementById('saveChanges1').addEventListener('click', function () {
+    const id = document.getElementById('row_index').value;
+    const updatedData = {
+        car_model: document.getElementById('car_model').value,
+        process: document.getElementById('process').value,
+        machine_inventory: document.getElementById('machine_inventory').value,
+        jph: document.getElementById('jph').value,
+        wt: document.getElementById('wt').value,
+        ot: document.getElementById('ot').value,
+    
+    };
+
+    console.log('ID:', id);
+    console.log('Updated Data:', updatedData);
+
+    fetch('../../process/edit_section_2_first_month.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ index: id, updatedData: updatedData }),
+    })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Response from server:', result);
+            if (result.success) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Update successful!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500,
+                }).then(() => {
+                    location.reload();
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
+            } else {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Error fetching data from server.',
+                    text: 'Error updating row: ' + result.message,
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 1500,
                 });
+            }
+        })
+        .catch(error => {
+            console.error('Error updating data:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred while updating data.',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
             });
-
-        document.getElementById('saveChanges1').addEventListener('click', function () {
-            const id = document.getElementById('row_index').value;
-            const updatedData = {
-                car_model: document.getElementById('car_model').value,
-                process: document.getElementById('process').value,
-                machine_inventory: document.getElementById('machine_inventory').value,
-                jph: document.getElementById('jph').value,
-                wt: document.getElementById('wt').value,
-                ot: document.getElementById('ot').value,
-            
-            };
-
-            console.log('ID:', id);
-            console.log('Updated Data:', updatedData);
-
-            fetch('../../process/edit_section_2_first_month.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ index: id, updatedData: updatedData }),
-            })
-                .then(response => response.json())
-                .then(result => {
-                    console.log('Response from server:', result);
-                    if (result.success) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Update successful!',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1500,
-                        }).then(() => {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Error updating row: ' + result.message,
-                            icon: 'error',
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error updating data:', error);
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'An error occurred while updating data.',
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                });
         });
-    });
+});
+});
+
 
 
     // --------------------------------------------Second Month --------------------------------------------------------
@@ -475,7 +476,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -615,7 +616,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');

@@ -1,3 +1,8 @@
+
+<input type="hidden"
+    value="<?php echo isset($_SESSION['full_name']) ? htmlspecialchars($_SESSION['full_name']) : ''; ?>"
+    class="form-control" id="full_name">
+
 <style>
   .nav-link.active .nav-icon {
     filter: brightness(0) invert(1);
@@ -37,12 +42,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="dashboard.php"
-            class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/dashboard.php") ? 'active' : '' ?>">
-            <img src="../../dist/img/dashboard.png" alt="Pagination Icon" class="nav-icon"
-              style="width: 20px; height: 20px;">
-            <p>Dashboard</p>
-          </a>
+      
         </li>
 
 
@@ -90,7 +90,7 @@
 
 
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
     <a href="masterlist.php"
         class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/user/masterlist.php" || 
                           $_SERVER['REQUEST_URI'] == "/mrcs/page/user/first_process.php" || 
@@ -137,7 +137,7 @@
             </a>
         </li>
     </ul>
-</li>
+</li> -->
 
 
 <li class="nav-item">

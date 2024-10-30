@@ -82,10 +82,10 @@ document.getElementById('searchButton').addEventListener('click', function () {
 
                 ];
 
-=
+
                 columns.forEach(function (column) {
                     var td = document.createElement('td');
-                    td.textContent = response[column] !== undefined ? response[column] : ''; =
+                    td.textContent = response[column] !== undefined ? response[column] : ''; 
                     tr.appendChild(td);
                 });
 

@@ -29,7 +29,7 @@ try {
 
     $stmt = sqlsrv_query($conn, $sql, $params);
 
-   
+
     if ($stmt === false) {
      
         $errors = sqlsrv_errors();

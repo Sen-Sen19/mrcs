@@ -3,7 +3,7 @@ include 'conn.php'; // Include your connection file
 
 
 $sql = "SELECT 
-    product, base_product, car_model, car_code, block, class, line_no, 
+    product, car_model,base_product,  car_code, block, class, line_no, 
             circuit_qty, joint_crimping_2tons_ps_800_s_2, joint_crimping_2tons_ps_200_m_2, 
             joint_crimping_2tons_ps_017_ss_2, joint_crimping_2tons_ps_126_sst2, 
             joint_crimping_4tons_ps_700_l_2, joint_crimping_5tons_ps_150_ll, 

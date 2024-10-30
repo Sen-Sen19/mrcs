@@ -329,13 +329,15 @@
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('first_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
+            const uniqueEntries = new Set(); // To keep track of unique car_model and process combinations
 
             data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+                // Create a unique key based on car_model and process
+                const uniqueKey = `${row.car_model}-${row.process}`;
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
+                // Check if the combination is already added
+                if (!uniqueEntries.has(uniqueKey)) {
+                    uniqueEntries.add(uniqueKey); // Add to set to track it
 
                     const tr = document.createElement('tr');
 
@@ -344,7 +346,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -384,13 +386,13 @@
                         document.getElementById('jph').value = row.jph1;
                         document.getElementById('wt').value = row.wt1;
                         document.getElementById('ot').value = row.ot1;
-
+                        
                         document.getElementById('row_index').value = row.id;
 
                         $('#editModalFirstMonth').modal('show');
                     });
 
-                    tableBody.appendChild(tr);
+                    tableBody.appendChild(tr); // Append the row to the table body
                 }
             });
         })
@@ -462,19 +464,23 @@
     });
 });
 
+
+
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
     fetch('../../process/fetch_section_1.php')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('second_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
+            const uniqueEntries = new Set(); // To keep track of unique car_model and process combinations
 
             data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+                // Create a unique key based on car_model and process
+                const uniqueKey = `${row.car_model}-${row.process}`;
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
+                // Check if the combination is already added
+                if (!uniqueEntries.has(uniqueKey)) {
+                    uniqueEntries.add(uniqueKey); // Add to set to track it
 
                     const tr = document.createElement('tr');
 
@@ -483,7 +489,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -528,7 +534,7 @@
                         $('#editModalSecondMonth').modal('show');
                     });
 
-                    tableBody.appendChild(tr);
+                    tableBody.appendChild(tr); // Append the row to the table body
                 }
             });
         })
@@ -601,20 +607,21 @@
 });
 
 
-
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
     fetch('../../process/fetch_section_1.php')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('third_month_table_body');
-            const uniqueRows = new Set(); // Set to track unique rows
+            const uniqueEntries = new Set(); // Track unique car_model-process combinations
 
             data.forEach(row => {
-                const rowIdentifier = `${row.car_model}_${row.process}`; // Change this identifier as needed
+                // Create a unique identifier using car_model and process
+                const uniqueKey = `${row.car_model}-${row.process}`;
 
-                if (!uniqueRows.has(rowIdentifier)) { // Check for uniqueness
-                    uniqueRows.add(rowIdentifier); // Add identifier to the set
+                // Check if this unique key is already in the set
+                if (!uniqueEntries.has(uniqueKey)) {
+                    uniqueEntries.add(uniqueKey); // Add the unique key to the set
 
                     const tr = document.createElement('tr');
 
@@ -623,7 +630,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -690,7 +697,7 @@
         const updatedData = {
             car_model: document.getElementById('car_model3').value,
             process: document.getElementById('process3').value,
-            machine_inventory: document.getElementById('machine_inventory3').value,
+            machine_inventory: document.getElementById('machine_inventory2').value,
             jph: document.getElementById('jph3').value,
             wt: document.getElementById('wt3').value,
             ot: document.getElementById('ot3').value,

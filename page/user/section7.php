@@ -339,7 +339,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -475,7 +475,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');
@@ -615,7 +615,7 @@
                     tr.appendChild(carModelTd);
 
                     const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
+                    processTd.textContent = row.process_name;
                     tr.appendChild(processTd);
 
                     const totalShotsTd = document.createElement('td');

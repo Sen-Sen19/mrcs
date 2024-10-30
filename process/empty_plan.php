@@ -1,7 +1,7 @@
 <?php
-include 'conn.php'; // Use your connection file
+include 'conn.php'; 
 
-$sql = "TRUNCATE TABLE plan_2"; // SQL statement to empty the table
+$sql = "TRUNCATE TABLE plan_2";
 
 $stmt = sqlsrv_query($conn, $sql);
 

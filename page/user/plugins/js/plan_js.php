@@ -1,3 +1,7 @@
+<!-- Include SweetAlert CSS and JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
 <script>
 
     function exportToExcel(tableBodyId, fileName) {
@@ -197,7 +201,7 @@ function handleFileUpload3(event) {
         const filteredData = dataRows.filter(row => row[10] !== '' && row[10] !== undefined && row[10] !== null); // Filtering valid rows
         const dataToSave = [];
         const dates = header.slice(22); // Assuming dates start from column 22
-        
+        const addedBy = document.getElementById('full_name').value; 
         filteredData.forEach(row => {
             // Mapping each relevant column to its header
             const entry = {
@@ -222,7 +226,8 @@ function handleFileUpload3(event) {
                 circuit: row[18],
                 initial_process: row[19],
                 secondary_process: row[20],
-                later_process: row[21]
+                later_process: row[21],
+                added_by: addedBy
             };
 
             // Loop through date columns and store the values
@@ -249,9 +254,13 @@ function handleFileUpload3(event) {
         .then(response => response.text())
         .then(result => {
             console.log("Data saved successfully:", result);
+            // Show SweetAlert on successful import
+            swal("Success!", "Import completed successfully!", "success");
         })
         .catch(error => {
             console.error("Error saving data:", error);
+            // Show SweetAlert on error
+            swal("Error!", "There was an error saving the data.", "error");
         })
         .finally(() => {
             document.getElementById('loading').style.display = 'none'; // Hide loading indicator
