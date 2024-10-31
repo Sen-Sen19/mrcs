@@ -1,19 +1,11 @@
 <?php
-// Database connection
-$serverName = "172.25.115.167\SQLEXPRESS";
-$connectionOptions = array(
-    "Database" => "live_mrcs_db",
-    "Uid" => "sa",
-    "PWD" => '#Sy$temGr0^p|115167'
-);
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+include 'conn.php';
 
-if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
 
-// SQL query to fetch data
+$addedBy = isset($_POST['added_by']) ? $_POST['added_by'] : '';
+$numParams = 199;
+$params = array_fill(0, $numParams, $addedBy);
 $sql = "
 SELECT 
     CASE 
@@ -26,7 +18,7 @@ SELECT
     SUM(f.trd_nwpa_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -44,7 +36,7 @@ SELECT
     SUM(f.trd_nwpa_below_2_0_except_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -62,7 +54,7 @@ SELECT
     SUM(f.trd_nwpa_2_0_3_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -80,7 +72,7 @@ SELECT
     SUM(f.trd_wpa_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -98,7 +90,7 @@ SELECT
     SUM(f.trd_wpa_below_2_0_except_0_13 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -116,7 +108,7 @@ SELECT
     SUM(f.trd_wpa_2_0_3_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -134,7 +126,7 @@ SELECT
     SUM(f.tr327 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -152,7 +144,7 @@ SELECT
     SUM(f.tr328 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -170,7 +162,7 @@ SELECT
     SUM(f.trd_aluminum_nwpa_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -188,7 +180,7 @@ SELECT
     SUM(f.trd_aluminum_nwpa_below_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -206,7 +198,7 @@ SELECT
     SUM(f.trd_aluminum_wpa_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -224,7 +216,7 @@ SELECT
     SUM(f.trd_aluminum_wpa_below_2_0 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -242,7 +234,7 @@ SELECT
     SUM(f.aluminum_dimension_check_aluminum_terminal_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -260,7 +252,7 @@ SELECT
     SUM(f.aluminum_visual_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -278,7 +270,7 @@ SELECT
     SUM(f.aluminum_coating_uv_ii * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -296,7 +288,7 @@ SELECT
     SUM(f.aluminum_image_inspection * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -314,7 +306,7 @@ SELECT
     SUM(f.aluminum_uv_iii * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -332,7 +324,7 @@ SELECT
     SUM(f.trd_alpha_aluminum_nwpa * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -350,7 +342,7 @@ SELECT
     SUM(f.trd_alpha_aluminum_wpa * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -368,7 +360,7 @@ SELECT
     SUM(f.aluminum_visual_inspection_for_alpha * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -386,7 +378,7 @@ SELECT
     SUM(f.enlarged_terminal_check_for_alpha * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -404,7 +396,7 @@ SELECT
     SUM(f.air_water_leak_test * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -422,7 +414,7 @@ SELECT
     SUM(f.sam_sub_no_airbag * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -440,7 +432,7 @@ SELECT
     SUM(f.sam_sub_no_normal * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -458,7 +450,7 @@ SELECT
     SUM(f.jam_auto_crimping_and_twisting * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -476,7 +468,7 @@ SELECT
     SUM(f.trd_alpha_aluminum_5_0_above * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -494,7 +486,7 @@ SELECT
     SUM(f.point_marking_nsc * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -512,7 +504,7 @@ SELECT
     SUM(f.point_marking_sam * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -530,7 +522,7 @@ SELECT
     SUM(f.enlarged_terminal_check_aluminum * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -548,7 +540,7 @@ SELECT
     SUM(f.nsc_1 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -566,7 +558,7 @@ SELECT
     SUM(f.nsc_2 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -584,7 +576,7 @@ SELECT
     SUM(f.nsc_3 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -602,7 +594,7 @@ SELECT
     SUM(f.nsc_4 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -620,7 +612,7 @@ SELECT
     SUM(f.nsc_5 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -638,7 +630,7 @@ SELECT
     SUM(f.nsc_6 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -656,7 +648,7 @@ SELECT
     SUM(f.nsc_7 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -674,7 +666,7 @@ SELECT
     SUM(f.nsc_8 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -692,7 +684,7 @@ SELECT
     SUM(f.nsc_9 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -710,7 +702,7 @@ SELECT
     SUM(f.nsc_10 * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'suzuki old'
+WHERE f.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -4078,19 +4070,19 @@ GROUP BY
         ELSE 'Suzuki old'  
     END
 
-
-
 ORDER BY car_model;
+
 
 ";
 
-$result = sqlsrv_query($conn, $sql);
+
+$result = sqlsrv_query($conn, $sql, $params);
 
 if ($result === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// Prepare the data for JSON response
+
 $data = [];
 while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     $data[] = $row;

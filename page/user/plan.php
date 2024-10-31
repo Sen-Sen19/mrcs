@@ -13,10 +13,10 @@ include 'plugins/sidebar/user_bar.php';
                         <div class="col-sm-12">
 
 
-                        <!-- <button id="emptyPlanBtn" class="btn btn-primary mt-3"
+                        <button id="emptyPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #ec0100; border-color: #ec0100; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
                                 <i class="fas fa-trash"></i>Empty Plan
-                            </button> -->
+                            </button>
 
                             <button id="extractPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #008dff; border-color: #008dff; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
@@ -60,7 +60,30 @@ include 'plugins/sidebar/user_bar.php';
 
 
 <script>
+
 $(document).ready(function () {
+    const hiddenFullName = $('#full_name').val().trim();
+    let addedByValues = [];
+
+    // Fetch added_by values from the database
+    $.ajax({
+        url: '../../process/check_plan_data.php', // This should return the added_by values
+        type: 'GET',
+        success: function (response) {
+            // Assuming response is an array of added_by values
+            addedByValues = response; // Store the values
+            
+            // Check if the hidden input value matches any added_by values
+            if (addedByValues.includes(hiddenFullName)) {
+                $('#extractPlanBtn').prop('disabled', true); // Disable the button
+                console.log('Button disabled because the user is already added.');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching added_by values:', error);
+        }
+    });
+
     $('#extractPlanBtn').on('click', function () {
         let tableData = [];
 
@@ -72,7 +95,7 @@ $(document).ready(function () {
                     first_month: cells.eq(-5).text().trim(),
                     second_month: cells.eq(-3).text().trim(),
                     third_month: cells.eq(-1).text().trim(),
-                    added_by: $('#full_name').val().trim()
+                    added_by: hiddenFullName
                 };
                 tableData.push(row);
             }
@@ -113,6 +136,7 @@ $(document).ready(function () {
                             text: response.details || 'Unknown error occurred.'
                         });
                     } else {
+                        console.log('Added by:', hiddenFullName); // Log added_by value
                         console.log(`Chunk ${chunkIndex + 1} sent successfully`);
                         sendChunk(chunkIndex + 1);
                     }
@@ -132,68 +156,56 @@ $(document).ready(function () {
     });
 });
 
-// document.getElementById("emptyPlanBtn").addEventListener("click", function() {
-//     Swal.fire({
-//         title: 'Are you sure?',
-//         text: "Do you really want to empty the plan?",
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonText: 'Yes, empty it!',
-//         cancelButtonText: 'No, cancel!'
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             fetch("../../process/empty_plan.php", {
-//                 method: "POST"
-//             }).then(response => response.json())
-//               .then(data => {
-//                   if (data.success) {
-//                       Swal.fire({
-//                           icon: 'success',
-//                           title: 'Emptied!',
-//                           text: 'Plan emptied successfully!',
-//                           timer: 1000, 
-//                           showConfirmButton: false 
-//                       }).then(() => {
-//                           location.reload(); 
-//                       });
-//                   } else {
-//                       Swal.fire({
-//                           icon: 'error',
-//                           title: 'Error',
-//                           text: 'Error: ' + data.message
-//                       });
-//                   }
-//               }).catch(error => {
-//                   console.error("Error:", error);
-//                   Swal.fire({
-//                       icon: 'error',
-//                       title: 'Oops...',
-//                       text: 'Something went wrong!'
-//                   });
-//               });
-//         }
-//     });
-// });
 
-// function checkPlanData() {
-//     fetch("../../process/check_plan_data.php")
-//         .then(response => response.json())
-//         .then(data => {
-//             const extractBtn = document.getElementById("extractPlanBtn");
-//             extractBtn.disabled = !data.isEmpty; 
-//         })
-//         .catch(error => {
-//             console.error("Error:", error);
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: 'Failed to check plan data!'
-//             });
-//         });
-// }
+document.getElementById("emptyPlanBtn").addEventListener("click", function() {
+    const fullName = document.getElementById("full_name").value;
 
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you really want to empty your plan?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, empty it!',
+        cancelButtonText: 'No, cancel!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch("../../process/empty_plan.php", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ added_by: fullName })
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Emptied!',
+                          text: 'Plan emptied successfully!',
+                          timer: 1000,
+                          showConfirmButton: false
+                      }).then(() => {
+                          location.reload(); 
+                      });
+                  } else {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Error',
+                          text: 'Error: ' + data.message
+                      });
+                  }
+              }).catch(error => {
+                  console.error("Error:", error);
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Something went wrong!'
+                  });
+              });
+        }
+    });
+});
 
-// window.onload = checkPlanData;
 
 </script>
 

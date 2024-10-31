@@ -2,6 +2,10 @@
 
 include 'conn.php';
 
+
+$fullName = isset($_GET['full_name']) ? $_GET['full_name'] : '';
+$numParams = 199;
+$params = array_fill(0, $numParams, $fullName);
 $query = "
 WITH CombinedResults AS (
     SELECT 
@@ -18,8 +22,9 @@ WITH CombinedResults AS (
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -42,8 +47,9 @@ WITH CombinedResults AS (
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -66,8 +72,9 @@ WITH CombinedResults AS (
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -88,8 +95,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -110,8 +118,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -132,8 +141,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -154,8 +164,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -176,8 +187,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -198,8 +210,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -220,8 +233,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -242,8 +256,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -264,8 +279,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -286,8 +302,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -308,8 +325,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -330,8 +348,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -352,8 +371,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -374,8 +394,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -396,8 +417,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -418,8 +440,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -440,8 +463,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -462,8 +486,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -484,8 +509,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -506,8 +532,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -528,8 +555,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -550,8 +578,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -572,8 +601,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -594,8 +624,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -616,8 +647,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -638,8 +670,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -660,8 +693,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -682,8 +716,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -704,8 +739,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -726,8 +762,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -748,8 +785,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -770,8 +808,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -792,8 +831,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -814,8 +854,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -836,8 +877,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -858,8 +900,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON fp.[base_product] = p.[base_product]
     WHERE 
         fp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')    
@@ -880,8 +923,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -902,8 +946,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -924,8 +969,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -946,8 +992,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -968,8 +1015,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -990,8 +1038,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1012,8 +1061,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1034,8 +1084,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1056,8 +1107,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1078,8 +1130,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1100,8 +1153,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1122,8 +1176,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1144,8 +1199,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1166,8 +1222,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1188,8 +1245,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1210,8 +1268,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1232,8 +1291,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1254,8 +1314,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1276,8 +1337,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1298,8 +1360,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1320,8 +1383,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1342,8 +1406,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1364,8 +1429,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1386,8 +1452,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1408,8 +1475,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1430,8 +1498,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1452,8 +1521,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1474,8 +1544,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1496,8 +1567,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1518,8 +1590,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1540,8 +1613,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1562,8 +1636,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1584,8 +1659,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1606,8 +1682,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1628,8 +1705,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1650,8 +1728,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1672,8 +1751,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1694,8 +1774,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1716,8 +1797,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1738,8 +1820,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1760,8 +1843,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1782,8 +1866,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1804,8 +1889,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON up.[base_product] = p.[base_product]
     WHERE 
         up.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1826,8 +1912,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1848,8 +1935,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1870,8 +1958,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1892,8 +1981,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1914,8 +2004,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1936,8 +2027,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1958,8 +2050,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -1980,8 +2073,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2002,8 +2096,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON np.[base_product] = p.[base_product]
     WHERE 
         np.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2025,8 +2120,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2047,8 +2143,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2069,8 +2166,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2091,8 +2189,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2113,8 +2212,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2135,8 +2235,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2157,8 +2258,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2179,8 +2281,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2201,8 +2304,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2223,8 +2327,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2245,8 +2350,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2267,8 +2373,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2289,8 +2396,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2311,8 +2419,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2333,8 +2442,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2355,8 +2465,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2377,8 +2488,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2399,8 +2511,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2421,8 +2534,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2443,8 +2557,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2465,8 +2580,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2487,8 +2603,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2509,8 +2626,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2531,8 +2649,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2553,8 +2672,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2575,8 +2695,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2597,8 +2718,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2619,8 +2741,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2641,8 +2764,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2663,8 +2787,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2685,8 +2810,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2707,8 +2833,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2729,8 +2856,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2751,8 +2879,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2773,8 +2902,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2795,8 +2925,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2817,8 +2948,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2839,8 +2971,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2861,8 +2994,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2883,8 +3017,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2905,8 +3040,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2927,8 +3063,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2949,8 +3086,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2971,8 +3109,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -2993,8 +3132,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3015,8 +3155,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3037,8 +3178,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3059,8 +3201,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3081,8 +3224,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3103,8 +3247,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3125,8 +3270,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3147,8 +3293,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3169,8 +3316,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3191,8 +3339,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3213,8 +3362,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3235,8 +3385,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3257,8 +3408,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3279,8 +3431,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3301,8 +3454,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3323,8 +3477,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON sp.[base_product] = p.[base_product]
     WHERE 
         sp.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3345,8 +3500,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3367,8 +3523,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3389,8 +3546,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3411,8 +3569,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3433,8 +3592,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3455,8 +3615,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3477,8 +3638,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3499,8 +3661,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3521,8 +3684,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3543,8 +3707,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3565,8 +3730,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3587,8 +3753,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3609,8 +3776,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3631,8 +3799,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3653,8 +3822,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3675,8 +3845,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3697,8 +3868,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3719,8 +3891,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3741,8 +3914,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3763,8 +3937,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3785,8 +3960,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3807,8 +3983,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3829,8 +4006,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3851,8 +4029,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3873,8 +4052,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3895,8 +4075,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3917,8 +4098,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3939,8 +4121,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3961,8 +4144,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -3983,8 +4167,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4005,8 +4190,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4027,8 +4213,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4049,8 +4236,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4071,8 +4259,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4093,8 +4282,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4115,8 +4305,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4137,8 +4328,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4159,8 +4351,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4181,8 +4374,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4203,8 +4397,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4225,8 +4420,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4247,8 +4443,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4269,8 +4466,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4291,8 +4489,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4313,8 +4512,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4335,8 +4535,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4357,8 +4558,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4379,8 +4581,9 @@ SELECT
              [first_month],
              [second_month],
              [third_month]
-         FROM 
+          FROM 
              [live_mrcs_db].[dbo].[plan_2]
+         WHERE [added_by] = ?
          ) AS p ON op.[base_product] = p.[base_product]
     WHERE 
         op.[car_model] NOT IN ('Suzuki Old', 'Honda Tkra', 'Subaru')
@@ -4394,7 +4597,8 @@ FROM CombinedResults
 ORDER BY [car_model];
 "; 
 
-$result = sqlsrv_query($conn, $query);
+
+$result = sqlsrv_query($conn, $query, $params);
 
 $data = [];
 if ($result) {
@@ -4402,8 +4606,10 @@ if ($result) {
         $data[] = $row;
     }
 } else {
-    die(print_r(sqlsrv_errors(), true));
+    die(json_encode(['error' => 'Query failed: ' . print_r(sqlsrv_errors(), true)]));
 }
 
+// Set the content type to application/json
+header('Content-Type: application/json');
 echo json_encode($data);
 ?>

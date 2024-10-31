@@ -167,10 +167,13 @@
 
 <script>
 $(document).ready(function() {
+    const fullName = $('#full_name').val();
+    console.log('Full Name:', fullName);
 
     $.ajax({
         url: '../../process/fetch_total_shots.php', 
         type: 'GET',
+        data: { full_name: fullName }, // Pass full_name as a parameter
         dataType: 'json',
         success: function(data) {
             let tableBody = $('#table_body1'); 
@@ -191,11 +194,12 @@ $(document).ready(function() {
             console.error('Error fetching data: ' + textStatus, errorThrown);
         }
     });
+
     $(document).ready(function() {
     $('#extractPlanBtn').on('click', function() {
         let allShotsData = [];
+        let addedBy = $('#full_name').val(); // Get the value of the hidden input
 
-        // Function to collect data from a table body
         function collectTableData(tableBodyId) {
             let tableData = [];
             $(tableBodyId).find('tr').each(function() {
@@ -211,14 +215,14 @@ $(document).ready(function() {
                         process: process,
                         first_total_shots: firstTotalShots,
                         second_total_shots: secondTotalShots,
-                        third_total_shots: thirdTotalShots
+                        third_total_shots: thirdTotalShots,
+                        added_by: addedBy // Add the added_by field
                     });
                 }
             });
             return tableData;
         }
 
-        // Collect data from all table bodies
         allShotsData = allShotsData.concat(collectTableData('#table_body1'));
         allShotsData = allShotsData.concat(collectTableData('#table_body2'));
         allShotsData = allShotsData.concat(collectTableData('#table_body3'));
@@ -234,8 +238,6 @@ $(document).ready(function() {
                 data: JSON.stringify({ shots_data: allShotsData }),
                 success: function(response) {
                     console.log("Data saved successfully", response);
-
-                    // SweetAlert for success message
                     Swal.fire({
                         icon: 'success',
                         title: 'Success!',
@@ -243,13 +245,11 @@ $(document).ready(function() {
                         timer: 1000, 
                         showConfirmButton: false
                     }).then(function() {
-                        location.reload(); // Auto-reload the page after the alert
+                        location.reload();
                     });
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error('Error saving data: ' + textStatus, errorThrown);
-
-                    // SweetAlert for error message
                     Swal.fire({
                         icon: 'error',
                         title: 'Error!',
@@ -257,12 +257,11 @@ $(document).ready(function() {
                         timer: 1000, 
                         showConfirmButton: false
                     }).then(function() {
-                        location.reload(); // Auto-reload the page after the alert
+                        location.reload(); 
                     });
                 }
             });
         } else {
-            // SweetAlert for no data message
             Swal.fire({
                 icon: 'warning',
                 title: 'No Data Found',
@@ -270,75 +269,35 @@ $(document).ready(function() {
                 timer: 1000, 
                 showConfirmButton: false
             }).then(function() {
-                location.reload(); // Auto-reload the page after the alert
+                location.reload(); 
             });
         }
     });
 });
 
+});
 $(document).ready(function() {
+    console.log($('#full_name').val());
+
     $('#file2-tab').on('click', function() {
         $('#loading2').show();
         $('#table_body2').empty(); 
+
+        const fullName = $('#full_name').val(); // Get the full name value
 
         $.ajax({
             url: '../../process/fetch_total_shots_section_1.php', 
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section_1' 
+                action: 'fetch_total_shots_section_1',
+                added_by: fullName // Send it in the request
             },
             dataType: 'json',
             success: function(data) {
-                $('#loading2').hide();
-
-                if (data.length > 0) {
-                    $.each(data, function(index, item) {
-                        $('#table_body2').append(
-                            '<tr>' +
-                                '<td>' + item.car_model + '</td>' +
-                                '<td>' + item.process + '</td>' +
-                                '<td>' + item.first_total_shots + '</td>' +
-                                '<td>' + item.second_total_shots + '</td>' +
-                                '<td>' + item.third_total_shots + '</td>' +
-                            '</tr>'
-                        );
-                    });
-                } else {
-                    $('#table_body2').append('<tr><td colspan="5" class="text-center">No data available</td></tr>');
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                $('#loading2').hide();
-                console.error(textStatus, errorThrown); 
-                $('#table_body2').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
-            }
-        });
-    });
-});
-
-
-});
-$(document).ready(function() {
- 
-    $('#file2-tab').on('click', function() {
-        $('#loading2').show();
-        $('#table_body2').empty(); 
-
-        $.ajax({
-            url: '../../process/fetch_total_shots_section_1.php', 
-            method: 'POST',
-            data: {
-                action: 'fetch_total_shots_section_1' 
-            },
-            dataType: 'json',
-            success: function(data) {
-            
                 $('#loading2').hide();
                 
-              
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                      
                         $('#table_body2').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -361,28 +320,27 @@ $(document).ready(function() {
         });
     });
 });
-
 $(document).ready(function() {
+    console.log($('#full_name').val());
 
     $('#file3-tab').on('click', function() {
         $('#loading3').show();
         $('#table_body3').empty(); 
 
+        const fullName = $('#full_name').val(); 
         $.ajax({
-            url: '../../process/fetch_total_shots_section_9.php',
+            url: '../../process/fetch_total_shots_section_9.php', 
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section_9' 
+                action: 'fetch_total_shots_section_9',
+                added_by: fullName 
             },
-            dataType: 'json', 
+            dataType: 'json',
             success: function(data) {
-              
                 $('#loading3').hide();
                 
-          
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                 
                         $('#table_body3').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -407,12 +365,17 @@ $(document).ready(function() {
 });
 
 
+
 $(document).ready(function() {
+    console.log($('#full_name').val());
 
     $('#file4-tab').on('click', function() {
         $('#loading4').show(); 
         $('#table_body4').empty(); 
 
+
+        
+        const fullName = $('#full_name').val(); 
         $.ajax({
             url: '../../process/fetch_total_shots_section_6.php',
             method: 'POST',

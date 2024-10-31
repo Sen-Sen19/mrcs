@@ -1,27 +1,37 @@
 <?php
-include 'conn.php'; // Use your connection file
+// Database connection parameters
+$serverName = "172.25.115.167\SQLEXPRESS";
+$connectionOptions = array(
+    "Database" => "live_mrcs_db",
+    "Uid" => "sa",
+    "PWD" => '#Sy$temGr0^p|115167'
+);
 
-// Get the full name from the session
-$full_name = isset($_SESSION['full_name']) ? htmlspecialchars($_SESSION['full_name']) : '';
+// Establish the connection
+$conn = sqlsrv_connect($serverName, $connectionOptions);
 
-// Prepare the SQL statement to count records matching the added_by column
-$sql = "SELECT COUNT(*) AS count FROM plan_2 WHERE added_by = ?";
-
-// Prepare the statement
-$params = array($full_name);
-$stmt = sqlsrv_query($conn, $sql, $params);
-
-if ($stmt === false) {
-    $error = print_r(sqlsrv_errors(), true);
-    echo json_encode(['success' => false, 'message' => $error]);
-    die();
+if ($conn === false) {
+    die(json_encode(['error' => 'Connection failed: ' . print_r(sqlsrv_errors(), true)]));
 }
 
-$row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-$isEmpty = $row['count'] == 0; // true if no records found, false if found
+// SQL query to get added_by values
+$sql = "SELECT DISTINCT added_by FROM plan_2";
+$stmt = sqlsrv_query($conn, $sql);
 
-echo json_encode(['isEmpty' => $isEmpty]);
+if ($stmt === false) {
+    die(json_encode(['error' => 'Database query failed: ' . print_r(sqlsrv_errors(), true)]));
+}
 
+$added_by_values = [];
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    $added_by_values[] = $row['added_by'];
+}
+
+// Free the statement and close the connection
 sqlsrv_free_stmt($stmt);
 sqlsrv_close($conn);
+
+// Return the result as a JSON array
+header('Content-Type: application/json');
+echo json_encode($added_by_values);
 ?>

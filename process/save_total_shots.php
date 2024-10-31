@@ -20,9 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         sqlsrv_begin_transaction($conn);
 
         try {
-            // SQL query to delete all data from the total_shots table
-            $deleteSql = "DELETE FROM total_shots";
-            $deleteStmt = sqlsrv_query($conn, $deleteSql);
+            // Delete existing data matching added_by
+            $added_by = htmlspecialchars($shots_data[0]['added_by']); // Get the added_by value from the first data row
+            $deleteSql = "DELETE FROM total_shots WHERE added_by = ?";
+            $deleteStmt = sqlsrv_query($conn, $deleteSql, array($added_by));
 
             // Check for query execution failure
             if ($deleteStmt === false) {
@@ -37,13 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $first_total_shots = (int) $row['first_total_shots'];
                 $second_total_shots = (int) $row['second_total_shots'];
                 $third_total_shots = (int) $row['third_total_shots'];
+                $added_by = htmlspecialchars($row['added_by']); // Get added_by value
 
                 // SQL query to insert data into the total_shots table
-                $sql = "INSERT INTO total_shots (car_model, process, first_total_shots, second_total_shots, third_total_shots)
-                        VALUES (?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO total_shots (car_model, process, first_total_shots, second_total_shots, third_total_shots, added_by)
+                        VALUES (?, ?, ?, ?, ?, ?)";
 
                 // Prepare and execute the query
-                $params = array($car_model, $process, $first_total_shots, $second_total_shots, $third_total_shots);
+                $params = array($car_model, $process, $first_total_shots, $second_total_shots, $third_total_shots, $added_by);
                 $stmt = sqlsrv_query($conn, $sql, $params);
 
                 // Check for query execution failure
