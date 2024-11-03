@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $deleteSql = "DELETE FROM total_shots WHERE added_by = ?";
             $deleteStmt = sqlsrv_query($conn, $deleteSql, array($added_by));
 
-            // Check for query execution failure
+           
             if ($deleteStmt === false) {
                 throw new Exception(print_r(sqlsrv_errors(), true));
             }
 
-            // Now insert the new data
+
             foreach ($shots_data as $row) {
                 // Extract and sanitize values from the current row
                 $car_model = htmlspecialchars($row['car_model']);
@@ -40,11 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $third_total_shots = (int) $row['third_total_shots'];
                 $added_by = htmlspecialchars($row['added_by']); // Get added_by value
 
-                // SQL query to insert data into the total_shots table
                 $sql = "INSERT INTO total_shots (car_model, process, first_total_shots, second_total_shots, third_total_shots, added_by)
                         VALUES (?, ?, ?, ?, ?, ?)";
 
-                // Prepare and execute the query
                 $params = array($car_model, $process, $first_total_shots, $second_total_shots, $third_total_shots, $added_by);
                 $stmt = sqlsrv_query($conn, $sql, $params);
 
@@ -54,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
 
-            // Commit the transaction if everything is successful
+         
             sqlsrv_commit($conn);
             echo json_encode(['status' => 'success', 'message' => 'Data inserted successfully']);
         } catch (Exception $e) {

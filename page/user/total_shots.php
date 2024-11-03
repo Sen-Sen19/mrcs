@@ -98,8 +98,7 @@
 
     </div>
 </div>
-
-<div class="tab-pane fade" id="file3" role="tabpanel" aria-labelledby="file3-tab">
+<div class="tab-pane fade" id="file3" role="tabpanel" aria-labelledby="file4-tab">
     <div class="card card-gray-dark card-outline">
 
         <div id="accounts_table_res3" class="table-responsive"
@@ -127,7 +126,6 @@
 
     </div>
 </div>
-
 
 <div class="tab-pane fade" id="file4" role="tabpanel" aria-labelledby="file4-tab">
     <div class="card card-gray-dark card-outline">
@@ -320,27 +318,34 @@ $(document).ready(function() {
         });
     });
 });
+
+
+
 $(document).ready(function() {
     console.log($('#full_name').val());
 
     $('#file3-tab').on('click', function() {
-        $('#loading3').show();
+        $('#loading3').show(); 
         $('#table_body3').empty(); 
 
+
+        
         const fullName = $('#full_name').val(); 
         $.ajax({
-            url: '../../process/fetch_total_shots_section_9.php', 
+            url: '../../process/fetch_total_shots_section_9.php',
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section_9',
-                added_by: fullName 
+                action: 'fetch_total_shots_section_9' 
             },
-            dataType: 'json',
+            dataType: 'json', 
             success: function(data) {
+                
                 $('#loading3').hide();
                 
+             
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
+                    
                         $('#table_body3').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -356,14 +361,13 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $('#loading3').hide();
+                $('#loading3').hide(); 
                 console.error(textStatus, errorThrown); 
                 $('#table_body3').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
     });
 });
-
 
 
 $(document).ready(function() {
