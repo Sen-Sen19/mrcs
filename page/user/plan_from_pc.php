@@ -175,7 +175,7 @@ function loadData(dateFrom, dateTo) {
 
             uniqueDates = Array.from(uniqueDates).sort((a, b) => new Date(a) - new Date(b));
 
-            header.append('<tr><th>Base Product</th><th>Manufacturing Location</th><th>Customer Manufacturer</th><th>Shipping Location</th><th>Vehicle Type</th><th>Vehicle Type Name</th><th>WH Type</th><th>WH Type Name</th><th>Assy Group Name</th><th>Item</th><th>Internal Item Number</th><th>Line</th><th>Poly Size</th><th>Capacity</th><th>Product Category</th><th>Production Group</th><th>Section</th><th>Circuit</th><th>Initial Process</th><th>Secondary Process</th><th>Later Process</th></tr>');
+            header.append('<tr><th>Product</th><th>Manufacturing Location</th><th>Customer Manufacturer</th><th>Shipping Location</th><th>Vehicle Type</th><th>Vehicle Type Name</th><th>WH Type</th><th>WH Type Name</th><th>Assy Group Name</th><th>Item</th><th>Internal Item Number</th><th>Line</th><th>Poly Size</th><th>Capacity</th><th>Product Category</th><th>Production Group</th><th>Section</th><th>Circuit</th><th>Initial Process</th><th>Secondary Process</th><th>Later Process</th></tr>');
 
             uniqueDates.forEach(date => {
                 header.find('tr').append(`<th>${date}</th>`);
@@ -312,10 +312,16 @@ function saveData() {
         return;
     }
 
+    // Show loading indicator
+    document.getElementById("loading").style.display = 'block';
+
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../process/save_plan_date.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
+        // Hide loading indicator
+        document.getElementById("loading").style.display = 'none';
+
         if (xhr.status === 200) {
             alert('Data saved successfully!');
         } else {
@@ -325,6 +331,7 @@ function saveData() {
     console.log('Total records to be saved:', dataToSend.length);
     xhr.send(JSON.stringify(dataToSend));
 }
+
 
 </script>
 

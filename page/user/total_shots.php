@@ -326,26 +326,23 @@ $(document).ready(function() {
 
     $('#file3-tab').on('click', function() {
         $('#loading3').show(); 
-        $('#table_body3').empty(); 
+        $('#table_body3').empty();
 
+        const fullName = $('#full_name').val(); // Get the full name value
 
-        
-        const fullName = $('#full_name').val(); 
         $.ajax({
             url: '../../process/fetch_total_shots_section_9.php',
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section_9' 
+                action: 'fetch_total_shots_section_9',
+                added_by: fullName // Pass full name as added_by
             },
             dataType: 'json', 
             success: function(data) {
-                
                 $('#loading3').hide();
-                
-             
+
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                    
                         $('#table_body3').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -370,31 +367,30 @@ $(document).ready(function() {
 });
 
 
+
+
 $(document).ready(function() {
     console.log($('#full_name').val());
 
     $('#file4-tab').on('click', function() {
         $('#loading4').show(); 
-        $('#table_body4').empty(); 
+        $('#table_body4').empty();
 
+        const fullName = $('#full_name').val(); // Get the full name value
 
-        
-        const fullName = $('#full_name').val(); 
         $.ajax({
             url: '../../process/fetch_total_shots_section_6.php',
             method: 'POST',
             data: {
-                action: 'fetch_total_shots_section_6' 
+                action: 'fetch_total_shots_section_6',
+                added_by: fullName // Pass full name as added_by
             },
             dataType: 'json', 
             success: function(data) {
-                
-                $('#loading3').hide();
-                
-             
+                $('#loading4').hide();
+
                 if (data.length > 0) {
                     $.each(data, function(index, item) {
-                    
                         $('#table_body4').append(
                             '<tr>' +
                                 '<td>' + item.car_model + '</td>' +
@@ -412,7 +408,7 @@ $(document).ready(function() {
             error: function(jqXHR, textStatus, errorThrown) {
                 $('#loading4').hide(); 
                 console.error(textStatus, errorThrown); 
-                $('#table_body46+.').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
+                $('#table_body4').append('<tr><td colspan="5" class="text-center">Error fetching data</td></tr>');
             }
         });
     });

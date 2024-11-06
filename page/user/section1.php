@@ -324,12 +324,15 @@
 
 
     // --------------------------------------------First Month --------------------------------------------------------
-    document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_1.php')
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const fullName = document.getElementById('full_name').value;
+    console.log('Full Name:', fullName); 
+    fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`) 
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('first_month_table_body');
-            const uniqueEntries = new Set(); // To keep track of unique car_model and process combinations
+            const uniqueEntries = new Set(); 
 
             data.forEach(row => {
                 // Create a unique key based on car_model and process
@@ -409,6 +412,7 @@
 
     document.getElementById('saveChanges1').addEventListener('click', function () {
         const id = document.getElementById('row_index').value;
+        const fullName = document.getElementById('full_name').value; 
         const updatedData = {
             car_model: document.getElementById('car_model').value,
             process: document.getElementById('process').value,
@@ -426,7 +430,8 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
+            body: JSON.stringify({ index: id, updatedData: updatedData, fullName: fullName }),  // Include full name in request
+
         })
             .then(response => response.json())
             .then(result => {
@@ -468,7 +473,9 @@
 
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_1.php')
+        const fullName = document.getElementById('full_name').value;
+    console.log('Full Name:', fullName); 
+    fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`) 
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('second_month_table_body');
@@ -609,7 +616,9 @@
 
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-    fetch('../../process/fetch_section_1.php')
+        const fullName = document.getElementById('full_name').value;
+    console.log('Full Name:', fullName); 
+    fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`) 
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('third_month_table_body');
@@ -758,51 +767,61 @@
 
     // ----------------------------------------- Update Button-----------------------
     $(document).ready(function () {
-        $('#updateBtn').click(function () {
-            $.ajax({
-                url: '../../process/update_query.php',
-                type: 'POST',
-                success: function (response) {
-                    if (response.includes("successful")) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Update Successful',
-                            text: response,
-                            showConfirmButton: false,
-                            timer: 1500,
-                        }).then(() => {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Update Failed',
-                            text: response,
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
-                    }
-                },
-                error: function (xhr, status, error) {
+    $('#updateBtn').click(function () {
+        // Retrieve the value of the hidden input
+        const fullName = $('#full_name').val();
+        
+        // Log the value to the console (optional, for debugging)
+        console.log('Full Name:', fullName);
+
+        $.ajax({
+            url: '../../process/update_query.php',
+            type: 'POST',
+            data: {
+                full_name: fullName // Sending the full name as part of the data
+            },
+            success: function (response) {
+                if (response.includes("successful")) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Update Successful',
+                        text: response,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Update Failed',
-                        text: 'Update failed: ' + error,
+                        text: response,
                         showConfirmButton: false,
                         timer: 1500,
                     });
                 }
-            });
-        });
-
-        $('#editModalFirstMonth .close').click(function () {
-            $('#editModalFirstMonth').modal('hide');
-        });
-
-        $('#closeBtn').click(function () {
-            $('#editModalFirstMonth').modal('hide');
+            },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Update Failed',
+                    text: 'Update failed: ' + error,
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
         });
     });
+
+    $('#editModalFirstMonth .close').click(function () {
+        $('#editModalFirstMonth').modal('hide');
+    });
+
+    $('#closeBtn').click(function () {
+        $('#editModalFirstMonth').modal('hide');
+    });
+});
+
 
 
 </script>

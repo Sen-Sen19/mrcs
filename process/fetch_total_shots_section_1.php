@@ -7,6 +7,7 @@ $addedBy = isset($_POST['added_by']) ? $_POST['added_by'] : '';
 $numParams = 199;
 $params = array_fill(0, $numParams, $addedBy);
 $sql = "
+
 SELECT 
     CASE 
         WHEN f.[car_model] = 'suzuki old' THEN 'Suzuki Old'
@@ -722,7 +723,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -743,7 +744,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -764,7 +765,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -785,7 +786,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -806,7 +807,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -827,7 +828,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -848,7 +849,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -869,7 +870,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -890,7 +891,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -911,7 +912,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -932,7 +933,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -953,7 +954,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -974,7 +975,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -995,7 +996,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1016,7 +1017,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1037,7 +1038,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1058,7 +1059,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1079,7 +1080,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1100,7 +1101,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1121,7 +1122,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1142,7 +1143,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1163,7 +1164,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1184,7 +1185,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1205,7 +1206,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1226,7 +1227,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1247,7 +1248,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1268,7 +1269,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1289,7 +1290,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1310,7 +1311,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1331,7 +1332,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1352,7 +1353,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1373,7 +1374,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1394,7 +1395,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1415,7 +1416,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1436,7 +1437,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1457,7 +1458,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1478,7 +1479,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1499,7 +1500,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1520,7 +1521,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1541,7 +1542,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1562,7 +1563,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1583,7 +1584,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1604,7 +1605,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'suzuki old'
+WHERE u.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1626,7 +1627,7 @@ GROUP BY
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1647,7 +1648,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1668,7 +1669,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1689,7 +1690,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1710,7 +1711,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1731,7 +1732,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1752,7 +1753,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1773,7 +1774,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1794,7 +1795,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'suzuki old'
+WHERE n.[car_model] = 'suzuki old'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1815,7 +1816,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1836,7 +1837,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1857,7 +1858,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1878,7 +1879,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1899,7 +1900,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1920,7 +1921,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1941,7 +1942,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1962,7 +1963,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -1983,7 +1984,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2004,7 +2005,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2025,7 +2026,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2046,7 +2047,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2067,7 +2068,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2088,7 +2089,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2109,7 +2110,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2130,7 +2131,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2151,7 +2152,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2172,7 +2173,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2193,7 +2194,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2214,7 +2215,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2235,7 +2236,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2256,7 +2257,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2277,7 +2278,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2298,7 +2299,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2319,7 +2320,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2340,7 +2341,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2361,7 +2362,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2382,7 +2383,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2403,7 +2404,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2424,7 +2425,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2445,7 +2446,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2466,7 +2467,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2487,7 +2488,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2508,7 +2509,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2529,7 +2530,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2550,7 +2551,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2571,7 +2572,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ? AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2592,7 +2593,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2613,7 +2614,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2634,7 +2635,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2655,7 +2656,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2676,7 +2677,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2697,7 +2698,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2718,7 +2719,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2739,7 +2740,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2760,7 +2761,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2781,7 +2782,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2802,7 +2803,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2823,7 +2824,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2844,7 +2845,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2865,7 +2866,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2886,7 +2887,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2907,7 +2908,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2928,7 +2929,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2949,7 +2950,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2970,7 +2971,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -2991,7 +2992,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3012,7 +3013,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3033,7 +3034,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3054,7 +3055,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'suzuki old'
+WHERE s.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3075,7 +3076,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3096,7 +3097,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3117,7 +3118,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3138,7 +3139,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3159,7 +3160,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3180,7 +3181,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3201,7 +3202,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3222,7 +3223,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3243,7 +3244,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old'AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3264,7 +3265,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old'AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3285,7 +3286,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3306,7 +3307,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3327,7 +3328,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3348,7 +3349,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3369,7 +3370,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3390,7 +3391,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3411,7 +3412,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3432,7 +3433,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old'AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3453,7 +3454,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?' 
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3474,7 +3475,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3495,7 +3496,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3516,7 +3517,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3537,7 +3538,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3558,7 +3559,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3579,7 +3580,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3600,7 +3601,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3621,7 +3622,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3642,7 +3643,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3663,7 +3664,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3684,7 +3685,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3705,7 +3706,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3726,7 +3727,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3747,7 +3748,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3768,7 +3769,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3789,7 +3790,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3810,7 +3811,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3831,7 +3832,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3852,7 +3853,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3873,7 +3874,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3894,7 +3895,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3915,7 +3916,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+WHERE o.[car_model] = 'suzuki old' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3936,7 +3937,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3957,7 +3958,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3978,7 +3979,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -3999,7 +4000,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -4020,7 +4021,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -4041,7 +4042,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -4062,7 +4063,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'suzuki old'
+ WHERE o.[car_model] = 'suzuki old AND p.added_by = ?'
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Y3J Block' THEN 'Y3J Block'
@@ -4071,6 +4072,7 @@ GROUP BY
     END
 
 ORDER BY car_model;
+
 
 
 ";

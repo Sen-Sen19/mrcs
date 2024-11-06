@@ -1,4 +1,4 @@
-<!-- 
+
 
 <?php
 
@@ -132,7 +132,7 @@ function saveData() {
     }
 
     // Adjusted fetch request to point to the correct PHP script for MS SQL Server
-    fetch('../../process/admin_save.php', {
+    fetch('../../process/add_account.php', {
         method: 'POST',
         body: formData
     })
@@ -197,16 +197,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Search button event
-    document.getElementById('searchReqBtn').addEventListener('click', () => {
-        offset = 0; // Reset offset for new search
-        loadTableData(offset, limit, document.getElementById('searchBox').value.trim());
-    });
+    // document.getElementById('searchReqBtn').addEventListener('click', () => {
+    //     offset = 0; // Reset offset for new search
+    //     loadTableData(offset, limit, document.getElementById('searchBox').value.trim());
+    // });
 });
 
 
 
 function loadTableData(offset, limit, search = '') {
-    fetch(`../../process/admin_get_data.php?offset=${offset}&limit=${limit}&search=${encodeURIComponent(search)}`)
+    fetch(`../../process/accounts.php?offset=${offset}&limit=${limit}&search=${encodeURIComponent(search)}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -232,8 +232,41 @@ function loadTableData(offset, limit, search = '') {
         .catch(error => console.error('Error fetching data:', error));
 }
 // -----------------------------populate table-------------------
+let allData = []; // Array to hold all fetched data
+
+function loadTableData(offset, limit, search = '') {
+    fetch(`../../process/accounts.php?offset=${offset}&limit=${limit}&search=${encodeURIComponent(search)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Sort data by 'id'
+            data.sort((a, b) => a.id - b.id);
+            
+            // Append new data to allData
+            allData = allData.concat(data);
+
+            // Populate table with the updated allData
+            populateTable(allData);
+
+            // Hide 'Load more' button if all data is loaded
+            if (data.length < limit) {
+                document.getElementById('btnLoadMore').style.display = 'none';
+            } else {
+                document.getElementById('btnLoadMore').style.display = 'block';
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
 function populateTable(data) {
     const tbody = document.getElementById('admin_body');
+
+    // Clear existing rows
+    tbody.innerHTML = '';
 
     // Loop through each row of data
     data.forEach(row => {
@@ -241,15 +274,21 @@ function populateTable(data) {
         const newRow = tbody.insertRow();
 
         // Insert cells for each column
+        const empIdCell = newRow.insertCell();
+        const fullNameCell = newRow.insertCell();
         const usernameCell = newRow.insertCell();
+        const departmentCell = newRow.insertCell();
         const passwordCell = newRow.insertCell();
         const typeCell = newRow.insertCell();
         const deleteCell = newRow.insertCell(); // Cell for Delete checkbox
 
         // Populate cell contents with data from the row object
-        usernameCell.textContent = row.username;
-        passwordCell.textContent = row.password;
-        typeCell.textContent = row.type;
+        empIdCell.textContent = row.emp_id; // Employee ID
+        fullNameCell.textContent = row.full_name; // Full Name
+        usernameCell.textContent = row.username; // Username
+        departmentCell.textContent = row.department; // Department
+        passwordCell.textContent = row.password; // Password
+        typeCell.textContent = row.type; // Type
 
         // Create a checkbox element for the Delete column
         const checkbox = document.createElement('input');
@@ -299,6 +338,33 @@ document.getElementById('deleteBtn').addEventListener('click', function() {
         }
     });
 });
+$(document).ready(function() {
+    // Add event listener to table rows to open modal with data
+    $('#admin_body').on('click', 'tr', function(e) {
+        const cells = $(this).find('td');
+
+        // Get data from cells
+        const emp_id = cells[0].textContent.trim(); // Employee ID from the first column
+        const fullName = cells[1].textContent.trim(); // Full Name from the second column
+        const username = cells[2].textContent.trim(); // Username from the third column
+        const department = cells[3].textContent.trim(); // Department from the fourth column
+        const password = cells[4].textContent.trim(); // Password from the fifth column
+        const type = cells[5].textContent.trim(); // Type from the sixth column
+
+        // Populate modal fields
+        $('#editEmp_id').val(emp_id); // Assuming you have an input for empId in the modal
+        $('#editFullName').val(fullName); // Assuming you have an input for fullName in the modal
+        $('#editUsername').val(username);
+        $('#editDepartment').val(department); // Assuming you have an input for department in the modal
+        $('#editPassword').val(password);
+        $('#editType').val(type);
+
+        // Show modal using jQuery
+        $('#editRecordModal').modal('show');
+    });
+});
+
+
 
 function deleteData(usernames) {
     // AJAX request to delete data
@@ -319,9 +385,17 @@ function deleteData(usernames) {
         // Handle success response if needed
         console.log('Data deleted successfully:', data);
         // Show success message with SweetAlert
-        Swal.fire("Success!", "Data has been deleted successfully!", "success");
-        // Reload the table or update UI as needed
-        loadTableData(0, 10); // Example function to reload table data after deletion
+        Swal.fire({
+            title: "Success!",
+            text: "Data has been deleted successfully!",
+            icon: "success",
+            confirmButtonText: "OK"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Reload the page when OK is clicked
+                location.reload();
+            }
+        });
     })
     .catch(error => {
         console.error('Error deleting data:', error);
@@ -330,33 +404,7 @@ function deleteData(usernames) {
     });
 }
 
-// --------------------------------------------refresh button -----------------------------------------------------
-function refreshPage() {
-        window.location.reload(); 
-    }
 
 
 
-
- // Add event listener to table rows to open modal with data
-document.getElementById('admin_body').addEventListener('click', function(e) {
-    const target = e.target.closest('tr');
-    if (!target) return; // Exit if clicked outside a row
-    const cells = target.getElementsByTagName('td');
-    const username = cells[0].textContent.trim(); // Username from the first column
-    const password = cells[1].textContent.trim(); // Password from the second column
-    const type = cells[2].textContent.trim(); // Type from the third column
-
-    // Populate modal fields
-    document.getElementById('editUsername').value = username;
-    document.getElementById('editPassword').value = password;
-    document.getElementById('editType').value = type;
-
-    // Show modal using jQuery
-    $('#editRecordModal').modal('show');
-});
-
-
-
-
-    </script> -->
+    </script>

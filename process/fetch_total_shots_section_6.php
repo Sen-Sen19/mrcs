@@ -1,10 +1,8 @@
 <?php
-
 include 'conn.php';
 
-
 $addedBy = isset($_POST['added_by']) ? $_POST['added_by'] : '';
-$numParams = 199;
+$numParams = 299;
 $params = array_fill(0, $numParams, $addedBy);
 $sql = "
 
@@ -16,7 +14,7 @@ SELECT
     SUM(f.[trd_nwpa_0_13] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -27,7 +25,7 @@ SELECT
     SUM(f.[trd_nwpa_below_2_0_except_0_13] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -38,7 +36,7 @@ SELECT
     SUM(f.[trd_nwpa_2_0_3_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -49,7 +47,7 @@ SELECT
     SUM(f.[trd_wpa_0_13] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -60,7 +58,7 @@ SELECT
     SUM(f.[trd_wpa_below_2_0_except_0_13] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -71,7 +69,7 @@ SELECT
     SUM(f.[trd_wpa_2_0_3_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -82,7 +80,7 @@ SELECT
     SUM(f.[tr327] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -93,7 +91,7 @@ SELECT
     SUM(f.[tr328] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -104,7 +102,7 @@ SELECT
     SUM(f.[trd_aluminum_nwpa_2_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -115,7 +113,7 @@ SELECT
     SUM(f.[trd_aluminum_nwpa_below_2_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -126,7 +124,7 @@ SELECT
     SUM(f.[trd_aluminum_wpa_2_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -137,7 +135,7 @@ SELECT
     SUM(f.[trd_aluminum_wpa_below_2_0] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -148,7 +146,7 @@ SELECT
     SUM(f.[aluminum_dimension_check_aluminum_terminal_inspection] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -159,7 +157,7 @@ SELECT
     SUM(f.[aluminum_visual_inspection] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -170,7 +168,7 @@ SELECT
     SUM(f.[aluminum_coating_uv_ii] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -181,7 +179,7 @@ SELECT
     SUM(f.[aluminum_image_inspection] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -192,7 +190,7 @@ SELECT
     SUM(f.[aluminum_uv_iii] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -203,7 +201,7 @@ SELECT
     SUM(f.[trd_alpha_aluminum_nwpa] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -214,7 +212,7 @@ SELECT
     SUM(f.[trd_alpha_aluminum_wpa] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -225,7 +223,7 @@ SELECT
     SUM(f.[aluminum_visual_inspection_for_alpha] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -236,7 +234,7 @@ SELECT
     SUM(f.[enlarged_terminal_check_for_alpha] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -247,7 +245,7 @@ SELECT
     SUM(f.[air_water_leak_test] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -258,7 +256,7 @@ SELECT
     SUM(f.[sam_sub_no_airbag] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -269,7 +267,7 @@ SELECT
     SUM(f.[sam_sub_no_normal] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -280,7 +278,7 @@ SELECT
     SUM(f.[jam_auto_crimping_and_twisting] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -291,7 +289,7 @@ SELECT
     SUM(f.[trd_alpha_aluminum_5_0_above] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -302,7 +300,7 @@ SELECT
     SUM(f.[point_marking_nsc] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -313,7 +311,7 @@ SELECT
     SUM(f.[point_marking_sam] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -324,7 +322,7 @@ SELECT
     SUM(f.[enlarged_terminal_check_aluminum] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -335,7 +333,7 @@ SELECT
     SUM(f.[nsc_1] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -346,7 +344,7 @@ SELECT
     SUM(f.[nsc_2] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -357,7 +355,7 @@ SELECT
     SUM(f.[nsc_3] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -368,7 +366,7 @@ SELECT
     SUM(f.[nsc_4] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -379,7 +377,7 @@ SELECT
     SUM(f.[nsc_5] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -390,7 +388,7 @@ SELECT
     SUM(f.[nsc_6] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -401,7 +399,7 @@ SELECT
     SUM(f.[nsc_7] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -412,7 +410,7 @@ SELECT
     SUM(f.[nsc_8] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -423,7 +421,7 @@ SELECT
     SUM(f.[nsc_9] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
 SELECT 
@@ -434,7 +432,7 @@ SELECT
     SUM(f.[nsc_10] * p.[third_month]) AS third_total_shots
 FROM [live_mrcs_db].[dbo].[first_process] f
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
-WHERE f.[car_model] = 'Honda TKRA'
+WHERE f.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY f.[car_model]
 UNION ALL
    SELECT 
@@ -451,7 +449,7 @@ UNION ALL
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -474,7 +472,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -497,7 +495,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -520,7 +518,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -543,7 +541,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -566,7 +564,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -589,7 +587,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -612,7 +610,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -635,7 +633,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -658,7 +656,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -681,7 +679,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -704,7 +702,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -727,7 +725,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -750,7 +748,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -773,7 +771,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -796,7 +794,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -819,7 +817,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -842,7 +840,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -865,7 +863,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -888,7 +886,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -911,7 +909,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -934,7 +932,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -957,7 +955,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -980,7 +978,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1003,7 +1001,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1026,7 +1024,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1049,7 +1047,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1072,7 +1070,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1095,7 +1093,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1118,7 +1116,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1141,7 +1139,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1164,7 +1162,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1187,7 +1185,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1210,7 +1208,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1233,7 +1231,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1256,7 +1254,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1279,7 +1277,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1302,7 +1300,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1325,7 +1323,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1348,7 +1346,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1371,7 +1369,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1394,7 +1392,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1417,7 +1415,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Honda TKRA'
+WHERE u.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN u.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1441,7 +1439,7 @@ GROUP BY
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1464,7 +1462,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1487,7 +1485,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1510,7 +1508,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1533,7 +1531,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1556,7 +1554,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1579,7 +1577,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1602,7 +1600,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1625,7 +1623,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Honda TKRA'
+WHERE n.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
          WHEN n.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1648,7 +1646,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1671,7 +1669,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1694,7 +1692,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1717,7 +1715,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1740,7 +1738,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1763,7 +1761,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1786,7 +1784,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1809,7 +1807,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1832,7 +1830,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1855,7 +1853,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1878,7 +1876,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1901,7 +1899,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1924,7 +1922,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1947,7 +1945,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1970,7 +1968,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -1993,7 +1991,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2016,7 +2014,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2039,7 +2037,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2062,7 +2060,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2085,7 +2083,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2108,7 +2106,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2131,7 +2129,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2154,7 +2152,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2177,7 +2175,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2200,7 +2198,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2223,7 +2221,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2246,7 +2244,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2269,7 +2267,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2292,7 +2290,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2315,7 +2313,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2338,7 +2336,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2361,7 +2359,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2384,7 +2382,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2407,7 +2405,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2430,7 +2428,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2453,7 +2451,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2476,7 +2474,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2499,7 +2497,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2522,7 +2520,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2545,7 +2543,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2568,7 +2566,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2591,7 +2589,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2614,7 +2612,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2637,7 +2635,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2660,7 +2658,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2683,7 +2681,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2706,7 +2704,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2729,7 +2727,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2752,7 +2750,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2775,7 +2773,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2798,7 +2796,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2821,7 +2819,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2844,7 +2842,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2867,7 +2865,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2890,7 +2888,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2913,7 +2911,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2936,7 +2934,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2959,7 +2957,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -2982,7 +2980,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3005,7 +3003,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Honda TKRA'
+WHERE s.[car_model] = 'Honda TKRA ' And Added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3028,7 +3026,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3051,7 +3049,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3074,7 +3072,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3097,7 +3095,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3120,7 +3118,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3143,7 +3141,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3166,7 +3164,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3189,7 +3187,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3212,7 +3210,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3235,7 +3233,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3258,7 +3256,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3281,7 +3279,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3304,7 +3302,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3327,7 +3325,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3350,7 +3348,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3373,7 +3371,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3396,7 +3394,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3419,7 +3417,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3442,7 +3440,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3465,7 +3463,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3488,7 +3486,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3511,7 +3509,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3534,7 +3532,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3557,7 +3555,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3580,7 +3578,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3603,7 +3601,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3626,7 +3624,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3649,7 +3647,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3672,7 +3670,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3695,7 +3693,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3718,7 +3716,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3741,7 +3739,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3764,7 +3762,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3787,7 +3785,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3810,7 +3808,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3833,7 +3831,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3856,7 +3854,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3879,7 +3877,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3902,7 +3900,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3925,7 +3923,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3948,7 +3946,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3971,7 +3969,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -3994,7 +3992,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4017,7 +4015,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4040,7 +4038,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4063,7 +4061,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4086,7 +4084,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4109,7 +4107,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA' OR o.[class] = 'battery'   AND p.added_by = ?
+WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
 GROUP BY 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
@@ -4126,12 +4124,13 @@ ORDER BY car_model;
 ";
 
 
+
+
 $result = sqlsrv_query($conn, $sql, $params);
 
 if ($result === false) {
     die(print_r(sqlsrv_errors(), true));
 }
-
 
 $data = [];
 while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {

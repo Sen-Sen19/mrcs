@@ -452,7 +452,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -473,7 +473,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru' AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -494,7 +494,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -515,7 +515,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -536,7 +536,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -557,7 +557,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -578,7 +578,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -599,7 +599,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -620,7 +620,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -641,7 +641,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -662,7 +662,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -683,7 +683,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -704,7 +704,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -725,7 +725,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -746,7 +746,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -767,7 +767,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -788,7 +788,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -809,7 +809,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -830,7 +830,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -851,7 +851,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -872,7 +872,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -893,7 +893,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -914,7 +914,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -935,7 +935,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -956,7 +956,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -977,7 +977,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -998,7 +998,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1019,7 +1019,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1040,7 +1040,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1061,7 +1061,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1082,7 +1082,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1103,7 +1103,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1124,7 +1124,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1145,7 +1145,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1166,7 +1166,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1187,7 +1187,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1208,7 +1208,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1229,7 +1229,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1250,7 +1250,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1271,7 +1271,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1292,7 +1292,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1313,7 +1313,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1334,7 +1334,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[unique_process] u
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON u.[base_product] = p.[base_product]
-WHERE u.[car_model] = 'Subaru'
+WHERE u.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN u.[block] = 'Others Block' THEN 'Others Block'
@@ -1356,7 +1356,7 @@ GROUP BY
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1377,7 +1377,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1398,7 +1398,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1419,7 +1419,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1440,7 +1440,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1461,7 +1461,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1482,7 +1482,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1503,7 +1503,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1524,7 +1524,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[non_machine_process] n
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON n.[base_product] = p.[base_product]
-WHERE n.[car_model] = 'Subaru'
+WHERE n.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN n.[block] = 'Others Block' THEN 'Others Block'
@@ -1545,7 +1545,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1566,7 +1566,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1587,7 +1587,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1608,7 +1608,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1629,7 +1629,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1650,7 +1650,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1671,7 +1671,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1692,7 +1692,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1713,7 +1713,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1734,7 +1734,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1755,7 +1755,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1776,7 +1776,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1797,7 +1797,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1818,7 +1818,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1839,7 +1839,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1860,7 +1860,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1881,7 +1881,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1902,7 +1902,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1923,7 +1923,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1944,7 +1944,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1965,7 +1965,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -1986,7 +1986,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2007,7 +2007,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2028,7 +2028,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2049,7 +2049,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2070,7 +2070,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2091,7 +2091,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2112,7 +2112,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2133,7 +2133,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2154,7 +2154,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2175,7 +2175,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2196,7 +2196,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2217,7 +2217,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2238,7 +2238,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2259,7 +2259,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2280,7 +2280,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2301,7 +2301,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2322,7 +2322,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2343,7 +2343,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2364,7 +2364,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2385,7 +2385,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2406,7 +2406,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2427,7 +2427,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2448,7 +2448,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2469,7 +2469,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2490,7 +2490,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2511,7 +2511,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2532,7 +2532,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2553,7 +2553,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2574,7 +2574,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2595,7 +2595,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2616,7 +2616,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2637,7 +2637,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2658,7 +2658,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2679,7 +2679,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2700,7 +2700,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2721,7 +2721,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2742,7 +2742,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2763,7 +2763,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2784,7 +2784,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[secondary_process] s
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON s.[base_product] = p.[base_product]
-WHERE s.[car_model] = 'Subaru'
+WHERE s.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN s.[block] = 'Others Block' THEN 'Others Block'
@@ -2805,7 +2805,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2826,7 +2826,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2847,7 +2847,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2868,7 +2868,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2889,7 +2889,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2910,7 +2910,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2931,7 +2931,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2952,7 +2952,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2973,7 +2973,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -2994,7 +2994,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3015,7 +3015,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3036,7 +3036,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3057,7 +3057,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3078,7 +3078,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3099,7 +3099,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3120,7 +3120,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3141,7 +3141,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3162,7 +3162,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3183,7 +3183,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3204,7 +3204,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3225,7 +3225,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3246,7 +3246,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3267,7 +3267,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3288,7 +3288,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3309,7 +3309,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3330,7 +3330,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3351,7 +3351,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3372,7 +3372,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3393,7 +3393,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3414,7 +3414,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3435,7 +3435,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3456,7 +3456,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3477,7 +3477,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3498,7 +3498,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3519,7 +3519,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3540,7 +3540,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3561,7 +3561,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3582,7 +3582,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3603,7 +3603,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3624,7 +3624,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3645,7 +3645,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3666,7 +3666,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3687,7 +3687,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3708,7 +3708,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3729,7 +3729,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3750,7 +3750,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3771,7 +3771,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'
@@ -3792,7 +3792,7 @@ SELECT
 
 FROM [live_mrcs_db].[dbo].[other_process] o
 JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Subaru'
+WHERE o.[car_model] = 'Subaru'  AND p.added_by = ?
 GROUP BY 
     CASE 
         WHEN o.[block] = 'Others Block' THEN 'Others Block'

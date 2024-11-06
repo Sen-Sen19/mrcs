@@ -2,6 +2,9 @@
 
 include 'conn.php';
 
+// Retrieve the full_name from the request
+$fullName = $_GET['full_name'] ?? ''; // Get the full_name from query parameters
+
 $sql = "SELECT s.id, 
                s.car_model, 
                s.process,
@@ -21,10 +24,13 @@ $sql = "SELECT s.id,
                s.jph3, 
                s.wt3, 
                s.ot3, 
-               s.mp3
-        FROM [live_mrcs_db].[dbo].[section_4] s";
+               s.mp3,
+               s.added_by
+        FROM [live_mrcs_db].[dbo].[section_4] s
+        WHERE s.added_by = ?"; 
 
-$stmt = sqlsrv_query($conn, $sql);
+$params = [$fullName];
+$stmt = sqlsrv_query($conn, $sql, $params);
 
 if ($stmt === false) {
     die(print_r(sqlsrv_errors(), true));

@@ -77,18 +77,21 @@ while ($row = sqlsrv_fetch_array($resultMasterlist, SQLSRV_FETCH_ASSOC)) {
     ];
 }
 
-
+// Query to retrieve data from the total_plan table based on the added_by value
 $sqlTotalPlan = "SELECT 
                     [car_code], 
                     [max_plan_1],
                     [max_plan_2], 
                     [max_plan_3] 
-                FROM [live_mrcs_db].[dbo].[total_plan]"; 
-$resultTotalPlan = sqlsrv_query($conn, $sqlTotalPlan);
+                 FROM [live_mrcs_db].[dbo].[total_plan] 
+                 WHERE [added_by] = ?"; // Ensure to filter by added_by
+
+$paramsTotalPlan = array($addedBy);
+$resultTotalPlan = sqlsrv_query($conn, $sqlTotalPlan, $paramsTotalPlan);
+
 if (!$resultTotalPlan) {
     die(print_r(sqlsrv_errors(), true));
 }
-
 
 $totalPlanData = [];
 while ($row = sqlsrv_fetch_array($resultTotalPlan, SQLSRV_FETCH_ASSOC)) {
@@ -98,7 +101,6 @@ while ($row = sqlsrv_fetch_array($resultTotalPlan, SQLSRV_FETCH_ASSOC)) {
         'max_plan_3' => $row['max_plan_3'],
     ];
 }
-
 
 $matchingResults = [];
 
@@ -207,5 +209,4 @@ echo "  </tbody>
     </table>";
 
 ?>
-
 

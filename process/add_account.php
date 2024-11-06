@@ -1,52 +1,85 @@
 <?php
-include 'conn.php'; // Include your database connection
 
-header('Content-Type: application/json');
+require_once 'conn.php';
 
-if (!$conn) {
-    echo json_encode(['success' => false, 'error' => 'Database connection failed']);
-    exit();
-}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $emp_id = $_POST['emp_id'];
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+    $department = $_POST['department'];
+    $password = $_POST['password'];
+    $type = $_POST['type'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Fetch the next available ID
-    $sql = "SELECT MAX(ID) AS maxID FROM [live_mrcs_db].[dbo].[account]";
-    $stmt = sqlsrv_query($conn, $sql);
+    // Insert the new account
+    $sql = "INSERT INTO account (emp_id, full_name, username, department, password, type) VALUES (?, ?, ?, ?, ?, ?)";
+    $params = array($emp_id, $full_name, $username, $department, $password, $type);
 
-    if ($stmt === false) {
-        echo json_encode(['success' => false, 'error' => sqlsrv_errors()]);
-        exit();
-    }
-
-    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-    $nextID = ($row['maxID'] ?? 0) + 1; // Calculate the next ID, default to 1 if no records
-
-    echo json_encode(['success' => true, 'nextID' => $nextID]);
-
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
-} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle adding a new account
-    $username = $_POST['Username'];
-    $password = $_POST['Password'];
-    $type = $_POST['Type'];
-
-    // Assuming auto-increment ID, you don't need to include the ID in the insert query
-    $sql = "INSERT INTO [live_mrcs_db].[dbo].[account] ([Username], [Password], [Type]) 
-            VALUES (?, ?, ?)";
-
-    $params = array($username, $password, $type);
-    $stmt = sqlsrv_query($conn, $sql, $params);
+    $stmt = sqlsrv_prepare($conn, $sql, $params);
 
     if ($stmt === false) {
-        echo json_encode(['success' => false, 'error' => sqlsrv_errors()]);
+        echo "Statement preparation error: " . print_r(sqlsrv_errors(), true);
     } else {
-        echo json_encode(['success' => true]);
-    }
+        if (sqlsrv_execute($stmt) === false) {
+            echo "Execution error: " . print_r(sqlsrv_errors(), true);
+        } else {
+            echo "Account saved successfully. ";
+            
+            // Define a function to duplicate rows in a specified table
+            function duplicateRows($conn, $table, $full_name) {
+                $selectSQL = "SELECT car_model, process, process_name, machine_inventory, jph1, wt1, ot1, mp1, 
+                                     jph2, wt2, ot2, mp2, jph3, wt3, ot3, mp3, 
+                                     machine_requirements1, machine_requirements2, machine_requirements3
+                              FROM $table 
+                              WHERE added_by = 'original'";
+                $selectStmt = sqlsrv_query($conn, $selectSQL);
 
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
-} else {
-    echo json_encode(['success' => false, 'error' => 'Invalid request method']);
+                if ($selectStmt === false) {
+                    echo "Error retrieving data from $table: " . print_r(sqlsrv_errors(), true);
+                    return;
+                }
+
+                $insertSQL = "INSERT INTO $table 
+                              (car_model, process, process_name, machine_inventory, jph1, wt1, ot1, mp1, 
+                               jph2, wt2, ot2, mp2, jph3, wt3, ot3, mp3, 
+                               machine_requirements1, machine_requirements2, machine_requirements3, added_by)
+                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                
+                while ($row = sqlsrv_fetch_array($selectStmt, SQLSRV_FETCH_ASSOC)) {
+                    $insertParams = array(
+                        $row['car_model'], $row['process'], $row['process_name'], $row['machine_inventory'],
+                        $row['jph1'], $row['wt1'], $row['ot1'], $row['mp1'],
+                        $row['jph2'], $row['wt2'], $row['ot2'], $row['mp2'],
+                        $row['jph3'], $row['wt3'], $row['ot3'], $row['mp3'],
+                        $row['machine_requirements1'], $row['machine_requirements2'], $row['machine_requirements3'],
+                        $full_name // Set `added_by` to the new account's full name
+                    );
+
+                    $insertStmt = sqlsrv_prepare($conn, $insertSQL, $insertParams);
+                    if ($insertStmt === false || sqlsrv_execute($insertStmt) === false) {
+                        echo "Error duplicating row in $table: " . print_r(sqlsrv_errors(), true);
+                        break;
+                    }
+                }
+                echo "Data duplicated successfully in $table. ";
+            }
+
+            duplicateRows($conn, "section_1", $full_name);
+
+            duplicateRows($conn, "section_2", $full_name);
+
+            duplicateRows($conn, "section_3", $full_name);
+
+            duplicateRows($conn, "section_4", $full_name);
+
+            duplicateRows($conn, "section_5", $full_name);
+
+            duplicateRows($conn, "section_6", $full_name);
+
+            duplicateRows($conn, "section_7", $full_name);
+
+            duplicateRows($conn, "section_9", $full_name);
+
+        }
+    }
 }
 ?>
