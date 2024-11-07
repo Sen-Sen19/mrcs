@@ -20,16 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         sqlsrv_begin_transaction($conn);
 
         try {
-            // Delete existing data matching added_by
-            $added_by = htmlspecialchars($shots_data[0]['added_by']); // Get the added_by value from the first data row
-            $deleteSql = "DELETE FROM total_shots WHERE added_by = ?";
-            $deleteStmt = sqlsrv_query($conn, $deleteSql, array($added_by));
+            // Delete all existing data in total_shots
+            $deleteSql = "DELETE FROM total_shots";
+            $deleteStmt = sqlsrv_query($conn, $deleteSql);
 
-           
             if ($deleteStmt === false) {
                 throw new Exception(print_r(sqlsrv_errors(), true));
             }
-
 
             foreach ($shots_data as $row) {
                 // Extract and sanitize values from the current row
@@ -52,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
 
-         
+            // Commit the transaction
             sqlsrv_commit($conn);
             echo json_encode(['status' => 'success', 'message' => 'Data inserted successfully']);
         } catch (Exception $e) {

@@ -39,6 +39,11 @@
                             style="background-color: #155efe; border-color:#155efe; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 10px;">
                             <i class="fas fa-wrench"></i> Update
                         </button>
+                    
+                        <button id="updateBtn" class="btn btn-primary mt-3"
+                            style="background-color:#7a7a79; border-color: #7a7a79; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 10px;">
+                            <i class="fas fa-upload"></i> Export
+                        </button>
                     </div>
 
                
@@ -290,34 +295,36 @@
 
 
 <script>
-    $(document).ready(function () {
-        $.ajax({
-            url: '../../process/fetch_total_shots_section_1.php',
-            method: 'GET',
-            success: function (data) {
-                var tbody = $('#table_body1');
-                tbody.empty();
+$(document).ready(function () {
+
+    var fullName = $('#full_name').val();
 
 
-                $.each(data, function (index, item) {
-                    var row = '<tr>' +
-                        '<td>' + item.car_model + '</td>' +
-                        '<td>' + item.process + '</td>' +
-                        '<td>' + item.first_total_shots + '</td>' +
-                        '<td>' + item.second_total_shots + '</td>' +
-                        '<td>' + item.third_total_shots + '</td>' +
-                        '</tr>';
-                    tbody.append(row);
-                });
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching data:', error);
-                $('#loading').show();
-            }
-        });
+    $.ajax({
+        url: '../../process/fetch_total_shots_section_1.php',
+        method: 'GET',
+        data: { full_name: fullName }, 
+        success: function (data) {
+            var tbody = $('#table_body1');
+            tbody.empty();
+
+            $.each(data, function (index, item) {
+                var row = '<tr>' +
+                    '<td>' + item.car_model + '</td>' +
+                    '<td>' + item.process + '</td>' +
+                    '<td>' + item.first_total_shots + '</td>' +
+                    '<td>' + item.second_total_shots + '</td>' +
+                    '<td>' + item.third_total_shots + '</td>' +
+                    '</tr>';
+                tbody.append(row);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching data:', error);
+            $('#loading').show();
+        }
     });
-
-
+});
 
 
 
@@ -338,7 +345,7 @@
                 // Create a unique key based on car_model and process
                 const uniqueKey = `${row.car_model}-${row.process}`;
 
-                // Check if the combination is already added
+ 
                 if (!uniqueEntries.has(uniqueKey)) {
                     uniqueEntries.add(uniqueKey); // Add to set to track it
 
@@ -395,7 +402,7 @@
                         $('#editModalFirstMonth').modal('show');
                     });
 
-                    tableBody.appendChild(tr); // Append the row to the table body
+                    tableBody.appendChild(tr);
                 }
             });
         })
@@ -473,13 +480,13 @@
 
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-        const fullName = document.getElementById('full_name').value;
+    const fullName = document.getElementById('full_name').value;
     console.log('Full Name:', fullName); 
     fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`) 
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('second_month_table_body');
-            const uniqueEntries = new Set(); // To keep track of unique car_model and process combinations
+            const uniqueEntries = new Set(); 
 
             data.forEach(row => {
                 // Create a unique key based on car_model and process
@@ -558,6 +565,7 @@
 
     document.getElementById('saveChanges2').addEventListener('click', function () {
         const id = document.getElementById('row_index').value;
+        const fullName = document.getElementById('full_name').value; 
         const updatedData = {
             car_model: document.getElementById('car_model2').value,
             process: document.getElementById('process2').value,
@@ -575,7 +583,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
+            body: JSON.stringify({ index: id, updatedData: updatedData,  fullName: fullName }),
         })
             .then(response => response.json())
             .then(result => {
@@ -720,7 +728,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ index: id, updatedData: updatedData }),
+            body: JSON.stringify({ index: id, updatedData: updatedData, fullName: fullName  }),
         })
             .then(response => response.json())
             .then(result => {

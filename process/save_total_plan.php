@@ -1,10 +1,5 @@
 <?php
-$serverName = "172.25.115.167\SQLEXPRESS";
-$connectionOptions = array(
-    "Database" => "live_mrcs_db",
-    "Uid" => "sa",
-    "PWD" => '#Sy$temGr0^p|115167'
-);
+include 'conn.php';
 
 
 $conn = sqlsrv_connect($serverName, $connectionOptions);

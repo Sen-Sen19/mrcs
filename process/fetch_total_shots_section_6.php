@@ -3012,29 +3012,34 @@ GROUP BY
         ELSE 'Honda TKRA'  
     END
 UNION ALL
+
+
+
+
+
+
 SELECT 
     CASE 
-       WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
-        WHEN o.[block] = 'TKRA Block' THEN 'TKRA Block'
-        WHEN o.[class] = 'battery' THEN 'Battery'
-        ELSE 'Honda TKRA'  
+        WHEN f.[car_model] = 'honda tkra' THEN 'Honda TKRA'
+        ELSE 'Other' 
     END AS car_model,
     'v_type_twisting' AS process,
-    SUM(o.[v_type_twisting]* p.[first_month]) AS first_total_shots,
-    SUM(o.[v_type_twisting]* p.[second_month]) AS second_total_shots,
-    SUM(o.[v_type_twisting]* p.[third_month]) AS third_total_shots
-
-FROM [live_mrcs_db].[dbo].[other_process] o
-JOIN [live_mrcs_db].[dbo].[plan_2] p ON o.[base_product] = p.[base_product]
-WHERE o.[car_model] = 'Honda TKRA ' And Added_by = ? OR o.[class] = 'battery'   AND p.added_by = ?
+    SUM(f.v_type_twisting * p.[first_month]) AS first_total_shots,
+    SUM(f.v_type_twisting * p.[second_month]) AS second_total_shots,
+    SUM(f.v_type_twisting * p.[third_month]) AS third_total_shots
+FROM [live_mrcs_db].[dbo].[other_process] f
+JOIN [live_mrcs_db].[dbo].[plan_2] p ON f.[base_product] = p.[base_product]
+WHERE f.[car_model] = 'honda tkra' AND p.added_by = ?
 GROUP BY 
     CASE 
-       WHEN o.[block] = '3M0A Block' THEN '3M0A Block'
-        WHEN o.[block] = 'TKRA Block' THEN 'TKRA Block'
-        WHEN o.[class] = 'battery' THEN 'Battery'
-        ELSE 'Honda TKRA'  
+        WHEN f.[car_model] = 'honda tkra' THEN 'Honda TKRA'
+        ELSE 'Other' 
     END
-UNION ALL
+
+
+
+
+
 SELECT 
     CASE 
        WHEN o.[block] = '3M0A Block' THEN '3M0A Block'

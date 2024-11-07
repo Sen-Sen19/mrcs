@@ -52,7 +52,6 @@ usort($dates, function($a, $b) {
     return strtotime($a) - strtotime($b); 
 });
 
-
 $sqlMasterlist = "SELECT 
                         [car_model],
                         [main_product_no],
@@ -75,55 +74,25 @@ while ($row = sqlsrv_fetch_array($resultMasterlist, SQLSRV_FETCH_ASSOC)) {
     ];
 }
 
-$sqlTotalPlan = "SELECT 
-                    [car_code], 
-                    [first_month],
-                    [second_month], 
-                    [third_month] 
-                FROM [live_mrcs_db].[dbo].[total_plan]"; 
-$resultTotalPlan = sqlsrv_query($conn, $sqlTotalPlan);
-if (!$resultTotalPlan) {
-    die(print_r(sqlsrv_errors(), true));
-}
-
-$totalPlanData = [];
-while ($row = sqlsrv_fetch_array($resultTotalPlan, SQLSRV_FETCH_ASSOC)) {
-    $totalPlanData[$row['car_code']] = [
-        'first_month' => $row['first_month'],
-        'second_month' => $row['second_month'],
-        'third_month' => $row['third_month'],
-    ];
-}
-
-$matchingResults = [];
-foreach ($masterlistData as $baseProduct => $masterlist) {
-    if (isset($totalPlanData[$masterlist['car_model']])) {
-        $matchingResults[$baseProduct] = $totalPlanData[$masterlist['car_model']];
-    }
-}
-
-// ... (your existing code)
-
-// Group data by car_model
 $groupedData = [];
 foreach ($data as $baseProduct => $rowData) {
-    $carModel = $masterlistData[$baseProduct]['car_model'] ?? 'Unknown';
+    // Check if the base_product exists in the master list
+    $carModel = isset($masterlistData[$baseProduct]) ? $masterlistData[$baseProduct]['car_model'] : null;
+    
+    // If car_model is not found, log it to the console
+    if ($carModel === null) {
+        echo "<script>console.log('Unknown base_product: {$baseProduct}');</script>";
+        continue;  // Skip processing this base_product for the table
+    }
     
     if (!isset($groupedData[$carModel])) {
         $groupedData[$carModel] = [
             'base_product' => $baseProduct,
             'line' => $rowData['line'],
             'values' => [],
-            'first_month_max' => 0, // Initialize max value for first month
-            'first_month_date' => '', // Store date for max value
-            'second_month_max' => 0, // Initialize max value for second month
-            'second_month_date' => '', // Store date for max value
-            'third_month_max' => 0, // Initialize max value for third month
-            'third_month_date' => '', // Store date for max value
         ];
     }
 
-    // Sum values for each date
     foreach ($rowData['values'] as $date => $value) {
         if (!isset($groupedData[$carModel]['values'][$date])) {
             $groupedData[$carModel]['values'][$date] = 0;
@@ -132,61 +101,11 @@ foreach ($data as $baseProduct => $rowData) {
     }
 }
 
-// Determine the first month and subsequent months
-$firstMonthDateKey = $dates[0]; // First date in $dates is the first month
-$firstMonthEndDate = date('Y-m-t', strtotime($firstMonthDateKey)); // Last date of the first month
-$secondMonthDateKey = date('Y-m-01', strtotime('+1 month', strtotime($firstMonthDateKey))); // First date of the second month
-$secondMonthEndDate = date('Y-m-t', strtotime($secondMonthDateKey)); // Last date of the second month
-$thirdMonthDateKey = date('Y-m-01', strtotime('+2 months', strtotime($firstMonthDateKey))); // First date of the third month
-$thirdMonthEndDate = date('Y-m-t', strtotime($thirdMonthDateKey)); // Last date of the third month
+// Identify the first, second, and third months based on the available dates
+$firstMonth = date('Y-m', strtotime($dates[0])); // Get the year-month from the earliest date
+$secondMonth = date('Y-m', strtotime("+1 month", strtotime($firstMonth . "-01"))); // One month after the first month
+$thirdMonth = date('Y-m', strtotime("+1 month", strtotime($secondMonth . "-01"))); // One month after the second month
 
-// Iterate through grouped data to find max values for each month
-foreach ($groupedData as $carModel => &$rowData) {
-    // Initialize variables for highest values and their dates
-    $highestValueFirst = 0;
-    $highestDateFirst = '';
-    $highestValueSecond = 0;
-    $highestDateSecond = '';
-    $highestValueThird = 0;
-    $highestDateThird = '';
-
-    // Iterate through the values to find highest values for each month
-    foreach ($rowData['values'] as $date => $value) {
-        // Check for first month
-        if ($date >= $firstMonthDateKey && $date <= $firstMonthEndDate) {
-            if ($value > $highestValueFirst) {
-                $highestValueFirst = $value; // Update highest value for first month
-                $highestDateFirst = $date; // Update the date of the highest value
-            }
-        }
-
-        // Check for second month
-        if ($date >= $secondMonthDateKey && $date <= $secondMonthEndDate) {
-            if ($value > $highestValueSecond) {
-                $highestValueSecond = $value; // Update highest value for second month
-                $highestDateSecond = $date; // Update the date of the highest value
-            }
-        }
-
-        // Check for third month
-        if ($date >= $thirdMonthDateKey && $date <= $thirdMonthEndDate) {
-            if ($value > $highestValueThird) {
-                $highestValueThird = $value; // Update highest value for third month
-                $highestDateThird = $date; // Update the date of the highest value
-            }
-        }
-    }
-
-    // Store the highest values and their dates
-    $rowData['first_month_max'] = $highestValueFirst;
-    $rowData['first_month_date'] = $highestDateFirst ?: 'N/A'; // Set to 'N/A' if no date found
-    $rowData['second_month_max'] = $highestValueSecond;
-    $rowData['second_month_date'] = $highestDateSecond ?: 'N/A'; // Set to 'N/A' if no date found
-    $rowData['third_month_max'] = $highestValueThird;
-    $rowData['third_month_date'] = $highestDateThird ?: 'N/A'; // Set to 'N/A' if no date found
-}
-
-// Display the table
 echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
         <thead>
             <tr>
@@ -195,13 +114,16 @@ echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
 foreach ($dates as $date) {
     echo "<th>$date</th>";
 }
-echo "       <th style='color: red;'>Total</th> 
-            <th style='color: blue;'>Max Plan 1</th>
-            <th style='color: blue;'>First Month</th>
-            <th style='color: green;'>Max Plan 2</th>
-            <th style='color: green;'>Second Month</th>
-            <th style='color: purple;'>Max Plan 3</th>
-            <th style='color: purple;'>Third Month</th>
+
+// Adding new columns without any dynamic calculations
+echo "
+<th style='color: red;'>Total</th>
+<th>Max Plan 1</th>
+<th>First Month</th>
+<th>Max Plan 2</th>
+<th>Second Month</th>
+<th>Max Plan 3</th>
+<th>Third Month</th>
             </tr>
         </thead>
         <tbody>";
@@ -210,26 +132,62 @@ foreach ($groupedData as $carModel => $rowData) {
     echo "<tr>";
     echo "<td>{$carModel}</td>";
 
-    $total = 0; // Initialize total for the row
+    $total = 0;
+    $maxPlan1 = 0; // Variable to store max value for the first month
+    $maxPlan1Date = ''; // Variable to store the date for the max value in the first month
+
+    $maxPlan2 = 0; // Variable to store max value for the second month
+    $maxPlan2Date = ''; // Variable to store the date for the max value in the second month
+
+    $maxPlan3 = 0; // Variable to store max value for the third month
+    $maxPlan3Date = ''; // Variable to store the date for the max value in the third month
+
     foreach ($dates as $date) {
         $value = isset($rowData['values'][$date]) ? $rowData['values'][$date] : 0;
-        echo "<td>{$value}</td>"; // Display the summed value
-        $total += $value; // Update total
+        echo "<td>{$value}</td>";
+        $total += $value;
+
+        // Check if the date belongs to the first month
+        if (date('Y-m', strtotime($date)) === $firstMonth) {
+            // Update maxPlan1 and store the corresponding date if a higher value is found
+            if ($value > $maxPlan1) {
+                $maxPlan1 = $value;
+                $maxPlan1Date = $date; // Store the date for the max value in the first month
+            }
+        }
+
+        // Check if the date belongs to the second month
+        if (date('Y-m', strtotime($date)) === $secondMonth) {
+            // Update maxPlan2 and store the corresponding date if a higher value is found
+            if ($value > $maxPlan2) {
+                $maxPlan2 = $value;
+                $maxPlan2Date = $date; // Store the date for the max value in the second month
+            }
+        }
+
+        // Check if the date belongs to the third month
+        if (date('Y-m', strtotime($date)) === $thirdMonth) {
+            // Update maxPlan3 and store the corresponding date if a higher value is found
+            if ($value > $maxPlan3) {
+                $maxPlan3 = $value;
+                $maxPlan3Date = $date; // Store the date for the max value in the third month
+            }
+        }
     }
 
-    // Display values for Max Plan 1, Max Plan 2, Max Plan 3, and other columns
-    echo "<td style='color: red;'>{$total}</td>
-          <td style='color: blue;'>{$rowData['first_month_max']}</td>
-          <td style='color: blue;'>{$rowData['first_month_date']}</td>
-          <td style='color: green;'>{$rowData['second_month_max']}</td>
-          <td style='color: green;'>{$rowData['second_month_date']}</td>
-          <td style='color: purple;'>{$rowData['third_month_max']}</td>
-          <td style='color: purple;'>{$rowData['third_month_date']}</td>
-          </tr>";
+    // Adding placeholder values for the new columns
+    echo "
+      <td style='color: red;'>{$total}</td>
+      <td>{$maxPlan1}</td>
+      <td>{$maxPlan1Date}</td> <!-- Display the date for the max value in the first month -->
+      <td>{$maxPlan2}</td>
+      <td>{$maxPlan2Date}</td> <!-- Display the date for the max value in the second month -->
+      <td>{$maxPlan3}</td>
+      <td>{$maxPlan3Date}</td> <!-- Display the date for the max value in the third month -->
+      </tr>";
 }
 
 echo "  </tbody>
       </table>";
-
 
 ?>

@@ -13,6 +13,10 @@ if (is_array($data) && isset($data['fullName'], $data['tableData'])) {
     $deleteSql = "DELETE FROM total_plan WHERE added_by = ?";
     $deleteStmt = sqlsrv_query($conn, $deleteSql, [$addedBy]);
 
+    $deleteplan = "DELETE FROM plan_2 WHERE added_by = ?";
+    $deleteplanStmt = sqlsrv_query($conn, $deleteplan, [$addedBy]);
+    
+
     if ($deleteStmt === false) {
         die(json_encode(['message' => 'Error deleting existing data: ' . print_r(sqlsrv_errors(), true)]));
     }

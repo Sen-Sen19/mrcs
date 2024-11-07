@@ -22,23 +22,19 @@ if (!$result) {
 $data = [];
 $dates = [];
 
-
 while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     $baseProduct = $row['base_product'];
 
     if ($row['date'] !== null) {
         $date = $row['date']->format('Y-m-d');
     } else {
-
         continue;
     }
     $value = $row['value'];
 
-
     if (!in_array($date, $dates)) {
         $dates[] = $date;
     }
-
 
     if (!isset($data[$baseProduct])) {
         $data[$baseProduct] = [
@@ -49,11 +45,9 @@ while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
     $data[$baseProduct][$date] = $value;
 }
 
-
 usort($dates, function($a, $b) {
     return strtotime($a) - strtotime($b); 
 });
-
 
 $sqlMasterlist = "SELECT 
                         [car_model],
@@ -104,47 +98,53 @@ while ($row = sqlsrv_fetch_array($resultTotalPlan, SQLSRV_FETCH_ASSOC)) {
 
 $matchingResults = [];
 
-
 foreach ($masterlistData as $baseProduct => $masterlist) {
     if (isset($totalPlanData[$masterlist['car_model']])) {
-
         $matchingResults[$baseProduct] = $totalPlanData[$masterlist['car_model']];
     }
 }
+
+// Sort data so that rows without car_model come first
+uksort($data, function($a, $b) use ($masterlistData) {
+    $hasCarModelA = isset($masterlistData[$a]['car_model']) && !empty($masterlistData[$a]['car_model']);
+    $hasCarModelB = isset($masterlistData[$b]['car_model']) && !empty($masterlistData[$b]['car_model']);
+    // Put rows without car_model first
+    if (!$hasCarModelA && $hasCarModelB) {
+        return -1;
+    } elseif ($hasCarModelA && !$hasCarModelB) {
+        return 1;
+    }
+    return 0;
+});
 
 echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
         <thead>
             <tr>
                 <th>Car Model</th>
-                              <th>Base Product</th>
+                <th>Base Product</th>
                 <th>Car Code</th>
                 <th>Code</th>
-
-                  <th>Main Product No</th>
+                <th>Main Product No</th>
                 <th>Line</th>";
-
 
 foreach ($dates as $date) {
     echo "<th>$date</th>";
 }
-echo "       <th style='color: red;'>Total</th> 
-            <th style='color: blue;'>Max Plan 1</th>
-            <th style='color: blue;'>First Month</th>
-            <th style='color: green;'>Max Plan 2</th>
-            <th style='color: green;'>Second Month</th>
-            <th style='color: purple;'>Max Plan 3</th>
-            <th style='color: purple;'>Third Month</th>
+echo "<th style='color: red;'>Total</th> 
+      <th style='color: blue;'>Max Plan 1</th>
+      <th style='color: blue;'>First Month</th>
+      <th style='color: green;'>Max Plan 2</th>
+      <th style='color: green;'>Second Month</th>
+      <th style='color: purple;'>Max Plan 3</th>
+      <th style='color: purple;'>Third Month</th>
             </tr>
         </thead>
         <tbody>";
 
-
 foreach ($data as $baseProduct => $rowData) {
     echo "<tr>";
 
-
     $total = 0; 
-
 
     if (isset($masterlistData[$baseProduct])) {
         $masterlist = $masterlistData[$baseProduct];
@@ -155,8 +155,10 @@ foreach ($data as $baseProduct => $rowData) {
     } else {
         echo "<td colspan='4'></td>"; 
     }
+
     echo "<td>{$baseProduct}</td>
           <td>{$rowData['line']}</td>";
+    
     $firstMonthValue = ''; 
     $secondMonthValue = '';
     $thirdMonthValue = '';
@@ -165,7 +167,6 @@ foreach ($data as $baseProduct => $rowData) {
     $maxPlan2Date = isset($matchingResults[$baseProduct]['max_plan_2']) ? $matchingResults[$baseProduct]['max_plan_2'] : '';
     $maxPlan3Date = isset($matchingResults[$baseProduct]['max_plan_3']) ? $matchingResults[$baseProduct]['max_plan_3'] : '';
 
-   
     if ($maxPlan1Date) {
         $maxPlan1DateFormatted = date('Y-m-d', strtotime($maxPlan1Date)); 
         $firstMonthValue = isset($rowData[$maxPlan1DateFormatted]) ? $rowData[$maxPlan1DateFormatted] : '';
@@ -191,9 +192,7 @@ foreach ($data as $baseProduct => $rowData) {
         echo "</td>";
     }
 
-    // Display the total value in red font color
     echo "<td style='color: red;'>" . ($total !== 0 ? $total : '') . "</td>";
-
 
     echo "<td style='color: blue;'>{$maxPlan1Date}</td>"; 
     echo "<td style='color: blue;'>{$firstMonthValue}</td>"; 
@@ -202,11 +201,8 @@ foreach ($data as $baseProduct => $rowData) {
     echo "<td style='color: purple;'>{$maxPlan3Date}</td>"; 
     echo "<td style='color: purple;'>{$thirdMonthValue}</td>"; 
 
-    echo "</tr>"; // End of table row
+    echo "</tr>";
 }
 
-echo "  </tbody>
-    </table>";
-
+echo "</tbody></table>";
 ?>
-
