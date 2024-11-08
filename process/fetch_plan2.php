@@ -101,10 +101,9 @@ foreach ($data as $baseProduct => $rowData) {
     }
 }
 
-// Identify the first, second, and third months based on the available dates
-$firstMonth = date('Y-m', strtotime($dates[0])); // Get the year-month from the earliest date
-$secondMonth = date('Y-m', strtotime("+1 month", strtotime($firstMonth . "-01"))); // One month after the first month
-$thirdMonth = date('Y-m', strtotime("+1 month", strtotime($secondMonth . "-01"))); // One month after the second month
+$firstMonth = date('Y-m', strtotime($dates[0]));
+$secondMonth = date('Y-m', strtotime("+1 month", strtotime($firstMonth . "-01"))); 
+$thirdMonth = date('Y-m', strtotime("+1 month", strtotime($secondMonth . "-01")));
 
 echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
         <thead>
@@ -115,15 +114,15 @@ foreach ($dates as $date) {
     echo "<th>$date</th>";
 }
 
-// Adding new columns without any dynamic calculations
+
 echo "
 <th style='color: red;'>Total</th>
-<th>Max Plan 1</th>
-<th>First Month</th>
-<th>Max Plan 2</th>
-<th>Second Month</th>
-<th>Max Plan 3</th>
-<th>Third Month</th>
+<th style='color: blue;'>Max Plan 1</th>
+<th style='color: blue;'>First Month</th>
+<th style='color: green;'>Max Plan 2</th>
+<th style='color: green;'>Second Month</th>
+<th style='color: purple;'>Max Plan 3</th>
+<th style='color: purple;'>Third Month</th>
             </tr>
         </thead>
         <tbody>";
@@ -133,8 +132,8 @@ foreach ($groupedData as $carModel => $rowData) {
     echo "<td>{$carModel}</td>";
 
     $total = 0;
-    $maxPlan1 = 0; // Variable to store max value for the first month
-    $maxPlan1Date = ''; // Variable to store the date for the max value in the first month
+    $maxPlan1 = 0; 
+    $maxPlan1Date = ''; 
 
     $maxPlan2 = 0; // Variable to store max value for the second month
     $maxPlan2Date = ''; // Variable to store the date for the max value in the second month
@@ -178,12 +177,12 @@ foreach ($groupedData as $carModel => $rowData) {
     // Adding placeholder values for the new columns
     echo "
       <td style='color: red;'>{$total}</td>
-      <td>{$maxPlan1}</td>
-      <td>{$maxPlan1Date}</td> <!-- Display the date for the max value in the first month -->
-      <td>{$maxPlan2}</td>
-      <td>{$maxPlan2Date}</td> <!-- Display the date for the max value in the second month -->
-      <td>{$maxPlan3}</td>
-      <td>{$maxPlan3Date}</td> <!-- Display the date for the max value in the third month -->
+      <td style='color: blue;'>{$maxPlan1}</td>
+      <td style='color: blue;'>{$maxPlan1Date}</td> <!-- Display the date for the max value in the first month -->
+      <td style='color: green;'>{$maxPlan2}</td>
+      <td style='color: green;'>{$maxPlan2Date}</td> <!-- Display the date for the max value in the second month -->
+      <td style='color: purple;'>{$maxPlan3}</td>
+      <td style='color: purple;'>{$maxPlan3Date}</td> <!-- Display the date for the max value in the third month -->
       </tr>";
 }
 

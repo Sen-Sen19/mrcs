@@ -13,11 +13,6 @@
                 </div>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <!-- Remove this tab -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" id="totalShots-tab" data-toggle="tab" href="#file1" role="tab"
-                            aria-controls="file1" aria-selected="true">Total Shots</a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link active" id="first_month-tab" data-toggle="tab" href="#first_month" role="tab"
                             aria-controls="first_month" aria-selected="true">First Month</a>
@@ -39,11 +34,17 @@
                             style="background-color: #155efe; border-color:#155efe; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 10px;">
                             <i class="fas fa-wrench"></i> Update
                         </button>
+
+                        <button id="importBtn" class="btn btn-primary mt-3"
+                            style="background-color:#7a7a79; border-color: #7a7a79; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 10px;">
+                            <i class="fas fa-upload"></i> Export
+                        </button>
                     </div>
 
-               
-                    <div class="tab-pane fade show active" id="first_month" role="tabpanel" aria-labelledby="first_month-tab">
-                        
+
+                    <div class="tab-pane fade show active" id="first_month" role="tabpanel"
+                        aria-labelledby="first_month-tab">
+
                         <div class="card card-gray-dark card-outline">
 
                             <div id="first_month_table" class="table-responsive"
@@ -68,7 +69,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -156,21 +157,31 @@
                     </div>
                     <div class="form-group">
                         <label for="machine_inventory">Machine Inventory</label>
-                        <input type="number" class="form-control" id="machine_inventory" name="machine_inventory" required readonly>
+                        <input type="number" class="form-control" id="machine_inventory" name="machine_inventory"
+                            required readonly>
                     </div>
                     <div class="form-group">
                         <label for="jph">JPH</label>
                         <input type="number" class="form-control" id="jph" name="jph" required>
                     </div>
+                  
                     <div class="form-group">
                         <label for="wt">WT</label>
-                        <input type="number" class="form-control" id="wt" name="wt" required>
+                        <select class="form-control" id="wt" name="wt" required>
+                            <option value="7.5">7.5</option>
+                            <option value="15">15</option>
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label for="ot">OT</label>
-                        <input type="number" class="form-control" id="ot" name="ot" required>
-                    </div>
-                   
+                        <select class="form-control" id="ot" name="ot" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        </div>
                     <input type="hidden" id="row_index" name="row_index">
                 </form>
             </div>
@@ -210,23 +221,38 @@
                     </div>
                     <div class="form-group">
                         <label for="machine_inventory">Machine Inventory</label>
-                        <input type="num" class="form-control" id="machine_inventory2" name="machine_inventory" required readonly >
+                        <input type="num" class="form-control" id="machine_inventory2" name="machine_inventory" required
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="jph">JPH</label>
                         <input type="num" class="form-control" id="jph2" name="jph" required>
                     </div>
+
                     <div class="form-group">
                         <label for="wt">WT</label>
-                        <input type="num" class="form-control" id="wt2" name="wt" required>
+                        <select class="form-control" id="wt2" name="wt" required>
+                            <option value="7.5">7.5</option>
+                            <option value="15">15</option>
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label for="ot">OT</label>
-                        <input type="num" class="form-control" id="ot2" name="ot" required>
+                        <select class="form-control" id="ot2" name="ot" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
+
+
                     <input type="hidden" id="row_index" name="row_index">
                 </form>
             </div>
+
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="saveChanges2">Save changes</button>
@@ -237,7 +263,7 @@
 
 
 <!--------------------------------------------Third Month-------------------------------------------------- -->
-<!-- Edit Modal -->
+
 <div class="modal fade" id="editModalThirdMonth" tabindex="-1" role="dialog" aria-labelledby="editModalThirdMonthLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -260,7 +286,8 @@
                     </div>
                     <div class="form-group">
                         <label for="machine_inventory">Machine Inventory</label>
-                        <input type="num" class="form-control" id="machine_inventory3" name="machine_inventory" required readonly>
+                        <input type="num" class="form-control" id="machine_inventory3" name="machine_inventory" required
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="jph">JPH</label>
@@ -268,11 +295,20 @@
                     </div>
                     <div class="form-group">
                         <label for="wt">WT</label>
-                        <input type="num" class="form-control" id="wt3" name="wt" required>
+                        <select class="form-control" id="wt3" name="wt" required>
+                            <option value="7.5">7.5</option>
+                            <option value="15">15</option>
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label for="ot">OT</label>
-                        <input type="num" class="form-control" id="ot3" name="ot" required>
+                        <select class="form-control" id="ot3" name="ot" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
                     
                     <input type="hidden" id="row_index" name="row_index">
@@ -291,13 +327,17 @@
 
 <script>
     $(document).ready(function () {
+
+        var fullName = $('#full_name').val();
+
+
         $.ajax({
-            url: '../../process/fetch_total_shots_section_8.php',
+            url: '../../process/fetch_total_shots_section_1.php',
             method: 'GET',
+            data: { full_name: fullName },
             success: function (data) {
                 var tbody = $('#table_body1');
                 tbody.empty();
-
 
                 $.each(data, function (index, item) {
                     var row = '<tr>' +
@@ -321,72 +361,80 @@
 
 
 
-
-
     // --------------------------------------------First Month --------------------------------------------------------
-    document.addEventListener('DOMContentLoaded', function () {
 
-        fetch('../../process/fetch_section_8.php')
+    document.addEventListener('DOMContentLoaded', function () {
+        const fullName = document.getElementById('full_name').value;
+        console.log('Full Name:', fullName);
+        fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`)
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('first_month_table_body');
+                const uniqueEntries = new Set();
 
                 data.forEach(row => {
-                    const tr = document.createElement('tr');
 
-                    const carModelTd = document.createElement('td');
-                    carModelTd.textContent = row.car_model;
-                    tr.appendChild(carModelTd);
+                    const uniqueKey = `${row.car_model}-${row.process}`;
 
-                    const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
-                    tr.appendChild(processTd);
 
-                    const totalShotsTd = document.createElement('td');
-                    totalShotsTd.textContent = row.first_total_shots;
-                    totalShotsTd.style.color = 'blue';
-                    tr.appendChild(totalShotsTd);
-                    
+                    if (!uniqueEntries.has(uniqueKey)) {
+                        uniqueEntries.add(uniqueKey); 
 
-                    const machineInventoryTd = document.createElement('td');
-                    machineInventoryTd.textContent = row.machine_inventory;
-                    tr.appendChild(machineInventoryTd);
+                        const tr = document.createElement('tr');
 
-                    const machineTd = document.createElement('td');
-                    machineTd.textContent = row.machine_requirements1;
-                    machineTd.style.color = 'red';
-                    tr.appendChild(machineTd);
+                        const carModelTd = document.createElement('td');
+                        carModelTd.textContent = row.car_model;
+                        tr.appendChild(carModelTd);
 
-                    const jphTd = document.createElement('td');
-                    jphTd.textContent = row.jph1;
-                    tr.appendChild(jphTd);
+                        const processTd = document.createElement('td');
+                        processTd.textContent = row.process_name;
+                        tr.appendChild(processTd);
 
-                    const wtTd = document.createElement('td');
-                    wtTd.textContent = row.wt1;
-                    tr.appendChild(wtTd);
+                        const totalShotsTd = document.createElement('td');
+                        totalShotsTd.textContent = row.first_total_shots;
+                        totalShotsTd.style.color = 'blue';
+                        tr.appendChild(totalShotsTd);
 
-                    const otTd = document.createElement('td');
-                    otTd.textContent = row.ot1;
-                    tr.appendChild(otTd);
+                        const machineInventoryTd = document.createElement('td');
+                        machineInventoryTd.textContent = row.machine_inventory;
+                        tr.appendChild(machineInventoryTd);
 
-                    const mpTd = document.createElement('td');
-                    mpTd.textContent = row.mp1;
-                    tr.appendChild(mpTd);
+                        const machineTd = document.createElement('td');
+                        machineTd.textContent = row.machine_requirements1;
+                        machineTd.style.color = 'red';
+                        tr.appendChild(machineTd);
 
-                    tr.addEventListener('click', function () {
-                        document.getElementById('car_model').value = row.car_model;
-                        document.getElementById('process').value = row.process;
-                        document.getElementById('machine_inventory').value = row.machine_inventory;
-                        document.getElementById('jph').value = row.jph1;
-                        document.getElementById('wt').value = row.wt1;
-                        document.getElementById('ot').value = row.ot1;
-                     
-                        document.getElementById('row_index').value = row.id;
+                        const jphTd = document.createElement('td');
+                        jphTd.textContent = row.jph1;
+                        tr.appendChild(jphTd);
 
-                        $('#editModalFirstMonth').modal('show');
-                    });
+                        const wtTd = document.createElement('td');
+                        wtTd.textContent = row.wt1;
+                        tr.appendChild(wtTd);
 
-                    tableBody.appendChild(tr);
+                        const otTd = document.createElement('td');
+                        otTd.textContent = row.ot1;
+                        tr.appendChild(otTd);
+
+                        const mpTd = document.createElement('td');
+                        mpTd.textContent = row.mp1;
+                        tr.appendChild(mpTd);
+
+                        tr.addEventListener('click', function () {
+                            document.getElementById('car_model').value = row.car_model;
+                            document.getElementById('process').value = row.process;
+                            document.getElementById('machine_inventory').value = row.machine_inventory;
+                            document.getElementById('jph').value = row.jph1;
+                            document.getElementById('wt').value = row.wt1;
+                            document.getElementById('ot').value = row.ot1;
+
+                            document.getElementById('row_index').value = row.id;
+
+                            $('#editModalFirstMonth').modal('show');
+                        });
+
+                        tableBody.appendChild(tr);
+                    }
                 });
             })
             .catch(error => {
@@ -402,6 +450,7 @@
 
         document.getElementById('saveChanges1').addEventListener('click', function () {
             const id = document.getElementById('row_index').value;
+            const fullName = document.getElementById('full_name').value;
             const updatedData = {
                 car_model: document.getElementById('car_model').value,
                 process: document.getElementById('process').value,
@@ -409,18 +458,18 @@
                 jph: document.getElementById('jph').value,
                 wt: document.getElementById('wt').value,
                 ot: document.getElementById('ot').value,
-            
             };
 
             console.log('ID:', id);
             console.log('Updated Data:', updatedData);
 
-            fetch('../../process/edit_section_8_first_month.php', {
+            fetch('../../process/edit_section_1_first_month.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ index: id, updatedData: updatedData }),
+                body: JSON.stringify({ index: id, updatedData: updatedData, fullName: fullName }),
+
             })
                 .then(response => response.json())
                 .then(result => {
@@ -459,69 +508,79 @@
     });
 
 
+
     // --------------------------------------------Second Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-
-        fetch('../../process/fetch_section_8.php')
+        const fullName = document.getElementById('full_name').value;
+        console.log('Full Name:', fullName);
+        fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`)
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('second_month_table_body');
+                const uniqueEntries = new Set();
 
                 data.forEach(row => {
-                    const tr = document.createElement('tr');
 
-                    const carModelTd = document.createElement('td');
-                    carModelTd.textContent = row.car_model;
-                    tr.appendChild(carModelTd);
+                    const uniqueKey = `${row.car_model}-${row.process}`;
 
-                    const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
-                    tr.appendChild(processTd);
+      
+                    if (!uniqueEntries.has(uniqueKey)) {
+                        uniqueEntries.add(uniqueKey);
 
-                    const totalShotsTd = document.createElement('td');
-                    totalShotsTd.textContent = row.second_total_shots;
-                    totalShotsTd.style.color = 'blue';
-                    tr.appendChild(totalShotsTd);
+                        const tr = document.createElement('tr');
 
-                    const machineInventoryTd = document.createElement('td');
-                    machineInventoryTd.textContent = row.machine_inventory;
-                    tr.appendChild(machineInventoryTd);
+                        const carModelTd = document.createElement('td');
+                        carModelTd.textContent = row.car_model;
+                        tr.appendChild(carModelTd);
 
-                    const machineTd = document.createElement('td');
-                    machineTd.textContent = row.machine_requirements2;
-                    machineTd.style.color = 'red';
-                    tr.appendChild(machineTd);
+                        const processTd = document.createElement('td');
+                        processTd.textContent = row.process_name;
+                        tr.appendChild(processTd);
 
-                    const jphTd = document.createElement('td');
-                    jphTd.textContent = row.jph2;
-                    tr.appendChild(jphTd);
+                        const totalShotsTd = document.createElement('td');
+                        totalShotsTd.textContent = row.second_total_shots;
+                        totalShotsTd.style.color = 'blue';
+                        tr.appendChild(totalShotsTd);
 
-                    const wtTd = document.createElement('td');
-                    wtTd.textContent = row.wt2;
-                    tr.appendChild(wtTd);
+                        const machineInventoryTd = document.createElement('td');
+                        machineInventoryTd.textContent = row.machine_inventory;
+                        tr.appendChild(machineInventoryTd);
 
-                    const otTd = document.createElement('td');
-                    otTd.textContent = row.ot2;
-                    tr.appendChild(otTd);
+                        const machineTd = document.createElement('td');
+                        machineTd.textContent = row.machine_requirements2;
+                        machineTd.style.color = 'red';
+                        tr.appendChild(machineTd);
 
-                    const mpTd = document.createElement('td');
-                    mpTd.textContent = row.mp2;
-                    tr.appendChild(mpTd);
+                        const jphTd = document.createElement('td');
+                        jphTd.textContent = row.jph2;
+                        tr.appendChild(jphTd);
 
+                        const wtTd = document.createElement('td');
+                        wtTd.textContent = row.wt2;
+                        tr.appendChild(wtTd);
 
-                    tr.addEventListener('click', function () {
-                        document.getElementById('car_model2').value = row.car_model;
-                        document.getElementById('process2').value = row.process;
-                        document.getElementById('machine_inventory2').value = row.machine_inventory;
-                        document.getElementById('jph2').value = row.jph2;
-                        document.getElementById('wt2').value = row.wt2;
-                        document.getElementById('ot2').value = row.ot2;
-                        document.getElementById('row_index').value = row.id;
+                        const otTd = document.createElement('td');
+                        otTd.textContent = row.ot2;
+                        tr.appendChild(otTd);
 
-                        $('#editModalSecondMonth').modal('show');
-                    });
+                        const mpTd = document.createElement('td');
+                        mpTd.textContent = row.mp2;
+                        tr.appendChild(mpTd);
 
-                    tableBody.appendChild(tr);
+                        tr.addEventListener('click', function () {
+                            document.getElementById('car_model2').value = row.car_model;
+                            document.getElementById('process2').value = row.process;
+                            document.getElementById('machine_inventory2').value = row.machine_inventory;
+                            document.getElementById('jph2').value = row.jph2;
+                            document.getElementById('wt2').value = row.wt2;
+                            document.getElementById('ot2').value = row.ot2;
+                            document.getElementById('row_index').value = row.id;
+
+                            $('#editModalSecondMonth').modal('show');
+                        });
+
+                        tableBody.appendChild(tr);
+                    }
                 });
             })
             .catch(error => {
@@ -530,16 +589,14 @@
                     title: 'Error!',
                     text: 'Error fetching data from server.',
                     icon: 'error',
-                    showconfirmButton: false,
+                    showConfirmButton: false,
                     timer: 1500,
-
-
                 });
             });
 
-
         document.getElementById('saveChanges2').addEventListener('click', function () {
             const id = document.getElementById('row_index').value;
+            const fullName = document.getElementById('full_name').value;
             const updatedData = {
                 car_model: document.getElementById('car_model2').value,
                 process: document.getElementById('process2').value,
@@ -547,18 +604,17 @@
                 jph: document.getElementById('jph2').value,
                 wt: document.getElementById('wt2').value,
                 ot: document.getElementById('ot2').value,
-             
             };
 
             console.log('ID:', id);
             console.log('Updated Data:', updatedData);
 
-            fetch('../../process/edit_section_8_second_month.php', {
+            fetch('../../process/edit_section_1_second_month.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ index: id, updatedData: updatedData }),
+                body: JSON.stringify({ index: id, updatedData: updatedData, fullName: fullName }),
             })
                 .then(response => response.json())
                 .then(result => {
@@ -597,75 +653,80 @@
     });
 
 
-
-
     // --------------------------------------------Third Month --------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
-
-        fetch('../../process/fetch_section_8.php')
+        const fullName = document.getElementById('full_name').value;
+        console.log('Full Name:', fullName);
+        fetch(`../../process/fetch_section_1.php?full_name=${encodeURIComponent(fullName)}`)
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('third_month_table_body');
+                const uniqueEntries = new Set(); 
 
                 data.forEach(row => {
-                    const tr = document.createElement('tr');
 
-                    const carModelTd = document.createElement('td');
-                    carModelTd.textContent = row.car_model;
-                    tr.appendChild(carModelTd);
+                    const uniqueKey = `${row.car_model}-${row.process}`;
 
-                    const processTd = document.createElement('td');
-                    processTd.textContent = row.process;
-                    tr.appendChild(processTd);
+             
+                    if (!uniqueEntries.has(uniqueKey)) {
+                        uniqueEntries.add(uniqueKey); 
 
-                    const totalShotsTd = document.createElement('td');
-                    totalShotsTd.textContent = row.third_total_shots;
-                    totalShotsTd.style.color = 'blue';
-                    tr.appendChild(totalShotsTd);
+                        const tr = document.createElement('tr');
 
-                    const machineInventoryTd = document.createElement('td');
-                    machineInventoryTd.textContent = row.machine_inventory;
-                    tr.appendChild(machineInventoryTd);
+                        const carModelTd = document.createElement('td');
+                        carModelTd.textContent = row.car_model;
+                        tr.appendChild(carModelTd);
 
-                    const machineTd = document.createElement('td');
-                    machineTd.textContent = row.machine_requirements3;
-                    machineTd.style.color = 'red';
-                    tr.appendChild(machineTd);
+                        const processTd = document.createElement('td');
+                        processTd.textContent = row.process_name;
+                        tr.appendChild(processTd);
 
-                    const jphTd = document.createElement('td');
-                    jphTd.textContent = row.jph3;
-                    tr.appendChild(jphTd);
+                        const totalShotsTd = document.createElement('td');
+                        totalShotsTd.textContent = row.third_total_shots;
+                        totalShotsTd.style.color = 'blue';
+                        tr.appendChild(totalShotsTd);
 
-                    const wtTd = document.createElement('td');
-                    wtTd.textContent = row.wt3;
-                    tr.appendChild(wtTd);
+                        const machineInventoryTd = document.createElement('td');
+                        machineInventoryTd.textContent = row.machine_inventory;
+                        tr.appendChild(machineInventoryTd);
 
-                    const otTd = document.createElement('td');
-                    otTd.textContent = row.ot3;
-                    tr.appendChild(otTd);
+                        const machineTd = document.createElement('td');
+                        machineTd.textContent = row.machine_requirements3;
+                        machineTd.style.color = 'red';
+                        tr.appendChild(machineTd);
 
-                    const mpTd = document.createElement('td');
-                    mpTd.textContent = row.mp3;
-                    tr.appendChild(mpTd);
+                        const jphTd = document.createElement('td');
+                        jphTd.textContent = row.jph3;
+                        tr.appendChild(jphTd);
 
+                        const wtTd = document.createElement('td');
+                        wtTd.textContent = row.wt3;
+                        tr.appendChild(wtTd);
 
-                    tr.addEventListener('click', function () {
-                        document.getElementById('car_model3').value = row.car_model;
-                        document.getElementById('process3').value = row.process;
-                        document.getElementById('machine_inventory3').value = row.machine_inventory;
-                        document.getElementById('jph3').value = row.jph3;
-                        document.getElementById('wt3').value = row.wt3;
-                        document.getElementById('ot3').value = row.ot3;
-                      
+                        const otTd = document.createElement('td');
+                        otTd.textContent = row.ot3;
+                        tr.appendChild(otTd);
 
-                        document.getElementById('row_index').value = row.id;
+                        const mpTd = document.createElement('td');
+                        mpTd.textContent = row.mp3;
+                        tr.appendChild(mpTd);
 
-                        console.log('Row clicked, showing modal for:', row.car_model);
-                        $('#editModalThirdMonth').modal('show');
-                        ;
-                    });
+                        tr.addEventListener('click', function () {
+                            document.getElementById('car_model3').value = row.car_model;
+                            document.getElementById('process3').value = row.process;
+                            document.getElementById('machine_inventory3').value = row.machine_inventory;
+                            document.getElementById('jph3').value = row.jph3;
+                            document.getElementById('wt3').value = row.wt3;
+                            document.getElementById('ot3').value = row.ot3;
 
-                    tableBody.appendChild(tr);
+                            document.getElementById('row_index').value = row.id;
+
+                            console.log('Row clicked, showing modal for:', row.car_model);
+                            $('#editModalThirdMonth').modal('show');
+                        });
+
+                        tableBody.appendChild(tr);
+                    }
                 });
             })
             .catch(error => {
@@ -674,12 +735,10 @@
                     title: 'Error!',
                     text: 'Error fetching data from server.',
                     icon: 'error',
-                    showconfirmButton: false,
+                    showConfirmButton: false,
                     timer: 1500,
-
                 });
             });
-
 
         document.getElementById('saveChanges3').addEventListener('click', function () {
             const id = document.getElementById('row_index').value;
@@ -690,18 +749,17 @@
                 jph: document.getElementById('jph3').value,
                 wt: document.getElementById('wt3').value,
                 ot: document.getElementById('ot3').value,
-             
             };
 
             console.log('ID:', id);
             console.log('Updated Data:', updatedData);
 
-            fetch('../../process/edit_section_8_third_month.php', {
+            fetch('../../process/edit_section_1_third_month.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ index: id, updatedData: updatedData }),
+                body: JSON.stringify({ index: id, updatedData: updatedData, fullName: fullName }),
             })
                 .then(response => response.json())
                 .then(result => {
@@ -740,20 +798,20 @@
     });
 
 
-
-
-
-
-
-
-
-
     // ----------------------------------------- Update Button-----------------------
     $(document).ready(function () {
         $('#updateBtn').click(function () {
+        
+            const fullName = $('#full_name').val();
+
+            console.log('Full Name:', fullName);
+
             $.ajax({
                 url: '../../process/update_query.php',
                 type: 'POST',
+                data: {
+                    full_name: fullName 
+                },
                 success: function (response) {
                     if (response.includes("successful")) {
                         Swal.fire({
@@ -795,8 +853,46 @@
             $('#editModalFirstMonth').modal('hide');
         });
     });
+   
+    document.getElementById("importBtn").addEventListener("click", function() {
+    const tableIds = [
+        { bodyId: "first_month_table_body", label: "1" },
+        { bodyId: "second_month_table_body", label: "2" },
+        { bodyId: "third_month_table_body", label: "3" }
+    ];
 
+    let csvContent = "";
+    csvContent += '"Car Model","Process","Machine Inventory","","Total Shots1","Total Shots2","Total Shots3","","Machine Requirements1","JPH1","WT1","OT1","MP1","","Machine Requirements2","JPH2","WT2","OT2","MP2","","Machine Requirements3","JPH3","WT3","OT3","MP3"\n';
+    csvContent += "\n";
 
+    const rows1 = document.querySelector(`#${tableIds[0].bodyId}`).querySelectorAll("tr");
+    const rows2 = document.querySelector(`#${tableIds[1].bodyId}`).querySelectorAll("tr");
+    const rows3 = document.querySelector(`#${tableIds[2].bodyId}`).querySelectorAll("tr");
+
+    rows1.forEach((row1, index) => {
+        const row2 = rows2[index] || {};
+        const row3 = rows3[index] || {};
+
+        const data1 = Array.from(row1.querySelectorAll("td")).map(cell => cell.innerText);
+        const data2 = row2 ? Array.from(row2.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
+        const data3 = row3 ? Array.from(row3.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
+
+        csvContent += `"${data1[0]}","${data1[1]}","${data1[3]}","","${data1[2]}","${data2[2]}","${data3[2]}","","${data1[4]}","${data1[5]}","${data1[6]}","${data1[7]}","${data1[8]}","","${data2[4]}","${data2[5]}","${data2[6]}","${data2[7]}","${data2[8]}","","${data3[4]}","${data3[5]}","${data3[6]}","${data3[7]}","${data3[8]}"\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "Section 8.csv";
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});
 </script>
 
 <?php include 'plugins/footer.php'; ?>
