@@ -13,10 +13,7 @@ include 'plugins/sidebar/user_bar.php';
                         <div class="col-sm-12">
 
 
-                        <!-- <button id="emptyPlanBtn" class="btn btn-primary mt-3"
-                                style="background-color: #ec0100; border-color: #ec0100; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
-                                <i class="fas fa-trash"></i>Empty Plan
-                            </button> -->
+                            
 
                             <button id="extractPlanBtn" class="btn btn-primary mt-3"
                                 style="background-color: #008dff; border-color: #008dff; color: white; margin-right: 20px; width: 100%; max-width: 200px;margin-bottom: 30px;">
@@ -64,24 +61,29 @@ $(document).ready(function () {
     const hiddenFullName = $('#full_name').val().trim();
     let addedByValues = [];
 
-    // Fetch added_by values from the database
+
     $.ajax({
-        url: '../../process/check_plan_data.php', // This should return the added_by values
+        url: '../../process/check_plan_data.php', 
         type: 'GET',
         success: function (response) {
-            // Assuming response is an array of added_by values
-            addedByValues = response; // Store the values
+
+            addedByValues = response;
             
-            // Removed the logic that disables the button
+
         },
         error: function (xhr, status, error) {
             console.error('Error fetching added_by values:', error);
         }
     });
 
+    
     $('#extractPlanBtn').on('click', function () {
         let tableData = [];
 
+        // Disable the button for 5 seconds
+        $(this).prop('disabled', true);
+
+        // Get the table data
         $('#accounts_table_res1 tr').each(function () {
             const cells = $(this).find('td');
             if (cells.length > 0) {
@@ -98,7 +100,7 @@ $(document).ready(function () {
 
         console.log('Total rows to send:', tableData.length);
 
-        const chunkSize = 50;  // Try reducing this size
+        const chunkSize = 50;
         const totalChunks = Math.ceil(tableData.length / chunkSize);
 
         function sendChunk(chunkIndex) {
@@ -131,7 +133,7 @@ $(document).ready(function () {
                             text: response.details || 'Unknown error occurred.'
                         });
                     } else {
-                        console.log('Added by:', hiddenFullName); // Log added_by value
+                        console.log('Added by:', hiddenFullName);
                         console.log(`Chunk ${chunkIndex + 1} sent successfully`);
                         sendChunk(chunkIndex + 1);
                     }
@@ -148,6 +150,11 @@ $(document).ready(function () {
         }
 
         sendChunk(0);
+
+        // Re-enable the button after 5 seconds
+        setTimeout(function () {
+            $('#extractPlanBtn').prop('disabled', false);
+        }, 5000);
     });
 });
 

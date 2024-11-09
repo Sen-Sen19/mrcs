@@ -1,5 +1,5 @@
 <footer class="main-footer" style="background-color:#F2F2F2; color:black;padding:10px; position: fixed; bottom: 0; width: 100%;">
-    <strong>© 2024. All rights reserved </strong>| Furukawa Automotive System, Lima Philippines Inc.
+    <strong>© 2024. All rights reserved </strong>| MN Omabtang, Furukawa Automotive System, Lima Philippines Inc.
 
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0

@@ -4,7 +4,7 @@ include 'conn.php';
 
 
 $fullName = isset($_GET['full_name']) ? $_GET['full_name'] : '';
-$numParams = 199;
+$numParams = 205;
 $params = array_fill(0, $numParams, $fullName);
 $query = "
 WITH CombinedResults AS (
@@ -4590,13 +4590,33 @@ SELECT
     GROUP BY 
         op.[car_model]
 
+),
+
+QCInspectorResults AS (
+    SELECT 
+        [car_model],
+        'qc_inspector' AS [qc_inspector],
+        SUM([first_total_shots]) AS [sum_first_total_shots],
+        SUM([second_total_shots]) AS [sum_second_total_shots],
+        SUM([third_total_shots]) AS [sum_third_total_shots]
+    FROM 
+        [live_mrcs_db].[dbo].[total_shots]
+    WHERE 
+        [added_by] = ?
+        AND [process] IN ('trd_nwpa_0_13', 'trd_nwpa_below_2_0_except_0_13', 'trd_nwpa_2_0_3_0', 'trd_wpa_below_2_0_except_0_13')
+    GROUP BY 
+        [car_model]
+
+
+
+
 )
 
-SELECT *
-FROM CombinedResults
+SELECT * FROM CombinedResults
+UNION ALL
+SELECT * FROM QCInspectorResults
 ORDER BY [car_model];
-"; 
-
+";
 
 $result = sqlsrv_query($conn, $query, $params);
 
