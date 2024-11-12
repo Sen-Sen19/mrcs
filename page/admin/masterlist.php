@@ -8,31 +8,8 @@
         <div class="tab-pane fade show active" id="file1" role="tabpanel" aria-labelledby="file1-tab">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <input type="text" id="searchBaseProduct" class="form-control" placeholder="Base Product"
-                            style="height: 35px; font-size: 14px; margin-top: 50px;" />
-                    </div>
-                    <div class="col-sm-2">
-                        <select id="carModelSelect" class="form-control"
-                            style="height: 35px; font-size: 14px; margin-top: 50px;">
-                            <option value="" disabled selected>Car Model</option>
-                            <option value="subaru">Subaru</option>
-                            <option value="toyota">Toyota</option>
-                            <option value="mazda merge">Mazda Merge</option>
-                            <option value="suzuki old">Suzuki Old</option>
-                            <option value="honda tkra">Honda TKRA</option>
-                            <option value="mazda j12">Mazda J12</option>
-                            <option value="honda t20">Honda T20</option>
-                            <option value="honda old">Honda Old</option>
-                            <option value="daihatsu d01l">Daihatsu D01L</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" id="searchButton" class="btn btn-primary w-100"
-                            style="height: 35px; font-size: 14px; margin-top: 50px;">
-                            <i class="fas fa-search mr-2"></i>Search
-                        </button>
-                    </div>
+
+            
                    
                 </div>
             </div>
@@ -52,8 +29,8 @@
                     style="height: 50vh; overflow: auto; margin-top: 20px; border-top: 1px solid white; background-color: white;  border-radius: 10px;">
                     <table id="header_table1" class="table table-sm table-head-fixed text-nowrap table-hover">
                         <thead style="text-align: center;">
-                            <tr>
-                                <th>BASE PRODUCT</th>
+                        <tr>
+                        <th>BASE PRODUCT</th>
                                 <th>CAR MODEL</th>
                                 <th>PRODUCT</th>
                                 <th>CAR CODE</th>
@@ -265,6 +242,8 @@
                                 <th>SAM SET NORMAL</th>
                                 <th>TOTAL CIRCUIT</th>
                                 <th>NEW AIRBAG</th>
+
+                    
                             </tr>
                         </thead>
                         <tbody id="dataBody" style="text-align: center;"></tbody>
@@ -278,255 +257,67 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
+$(document).ready(function() {
+    var limit = 100;  // Number of records per request
+    var offset = 0;   // Starting point for the first request
+    var isLoading = false;  // To prevent multiple simultaneous AJAX requests
+
+    // Function to fetch data and append to the table
     function fetchData() {
-        const loadingSpinner = document.getElementById('loadingSpinner');
+        if (isLoading) return;  // Prevent fetching if already loading
+        isLoading = true;
 
-
-        loadingSpinner.style.display = 'block';
-
-       
-        fetch('../../process/combine.php')
-            .then(response => response.json())
-            .then(data => {
-                const dataBody = document.getElementById('dataBody');
-                dataBody.innerHTML = '';
-
-                data.forEach(row => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${row.base_product}</td>
-                        <td>${row.car_model}</td>
-                        <td>${row.product}</td>
-                        <td>${row.car_code}</td>
-                        <td>${row.block}</td>
-                        <td>${row.class}</td>
-                        <td>${row.line_no}</td>
-                        <td>${row.circuit_qty}</td>
-                        <td>${row.trd_nwpa_0_13}</td>
-                        <td>${row.trd_nwpa_below_2_0_except_0_13}</td>
-                        <td>${row.trd_nwpa_2_0_3_0}</td>
-                        <td>${row.trd_wpa_0_13}</td>
-                        <td>${row.trd_wpa_below_2_0_except_0_13}</td>
-                        <td>${row.trd_wpa_2_0_3_0}</td>
-                        <td>${row.tr327}</td>
-                        <td>${row.tr328}</td>
-                        <td>${row.trd_aluminum_nwpa_2_0}</td>
-                        <td>${row.trd_aluminum_nwpa_below_2_0}</td>
-                        <td>${row.trd_aluminum_wpa_2_0}</td>
-                        <td>${row.trd_aluminum_wpa_below_2_0}</td>
-                        <td>${row.aluminum_dimension_check_aluminum_terminal_inspection}</td>
-                        <td>${row.aluminum_visual_inspection}</td>
-                        <td>${row.aluminum_coating_uv_ii}</td>
-                        <td>${row.aluminum_image_inspection}</td>
-                        <td>${row.aluminum_uv_iii}</td>
-                        <td>${row.trd_alpha_aluminum_nwpa}</td>
-                        <td>${row.trd_alpha_aluminum_wpa}</td>
-                        <td>${row.aluminum_visual_inspection_for_alpha}</td>
-                        <td>${row.enlarged_terminal_check_for_alpha}</td>
-                        <td>${row.air_water_leak_test}</td>
-                        <td>${row.sam_sub_no_airbag}</td>
-                        <td>${row.sam_sub_no_normal}</td>
-                        <td>${row.jam_auto_crimping_and_twisting}</td>
-                        <td>${row.trd_alpha_aluminum_5_0_above}</td>
-                        <td>${row.point_marking_nsc}</td>
-                        <td>${row.point_marking_sam}</td>
-                        <td>${row.enlarged_terminal_check_aluminum}</td>
-                        <td>${row.nsc_1}</td>
-                        <td>${row.nsc_2}</td>
-                        <td>${row.nsc_3}</td>
-                        <td>${row.nsc_4}</td>
-                        <td>${row.nsc_5}</td>
-                        <td>${row.nsc_6}</td>
-                        <td>${row.nsc_7}</td>
-                        <td>${row.nsc_8}</td>
-                        <td>${row.nsc_9}</td>
-                        <td>${row.nsc_10}</td>
-                     
-
-                        <td>${row.joint_crimping_20tons_ps_115_2_3l_2}</td>
-                    <td>${row.ultrasonic_welding}</td>
-                    <td>${row.servo_press_crimping}</td>
-                    <td>${row.low_viscosity}</td>
-                    <td>${row.air_water_leak_test}</td>
-                    <td>${row.heatshrink_low_viscosity}</td>
-                    <td>${row.stmac_shieldwire_j12}</td>
-                    <td>${row.hirose_sheath_stripping_927r}</td>
-                    <td>${row.hirose_unistrip}</td>
-                    <td>${row.hirose_acetate_taping}</td>
-                    <td>${row.hirose_manual_crimping_2_tons}</td>
-                    <td>${row.hirose_copper_taping}</td>
-                    <td>${row.hirose_hgt17ap_crimping}</td>
-                    <td>${row.stmac_aluminum}</td>
-                    <td>${row.manual_crimping_20tons}</td>
-                    <td>${row.dip_soldering_battery}</td>
-                    <td>${row.ultrasonic_dip_soldering_aluminum}</td>
-                    <td>${row.la_molding}</td>
-                    <td>${row.pressure_welding_sun_visor}</td>
-                    <td>${row.pressure_welding_dome_lamp}</td>
-                    <td>${row.casting_c377a}</td>
-                    <td>${row.coaxstrip_6580}</td>
-                    <td>${row.manual_crimping_2t_ferrule}</td>
-                    <td>${row.ferrule_auto_crimping}</td>
-                    <td>${row.enlarge_terminal_inspection}</td>
-                    <td>${row.waterproof_pad_press}</td>
-                    <td>${row.parts_insertion}</td>
-                    <td>${row.braided_wire_folding}</td>
-                    <td>${row.outside_ferrule_insertion}</td>
-                    <td>${row.joint_crimping_2t}</td>
-                    <td>${row.welding_at_head}</td>
-                    <td>${row.welding_taping}</td>
-                    <td>${row.uv_iii_1}</td>
-                    <td>${row.uv_iii_2}</td>
-                    <td>${row.uv_iii_4}</td>
-                    <td>${row.uv_iii_5}</td>
-                    <td>${row.uv_iii_7}</td>
-                    <td>${row.uv_iii_8}</td>
-                    <td>${row.drainwire_tip}</td>
-                    <td>${row.arc_welding}</td>
-                    <td>${row.c373a_yamaha}</td>
-                    <td>${row.cocripper}</td>
-                    <td>${row.quickstripping}</td>
-
-
-                     <td>${row.airbag_housing}</td>
-                    <td>${row.cap_insertion}</td>
-                    <td>${row.shieldwire_taping}</td>
-                    <td>${row.gomusen_insertion}</td>
-                    <td>${row.point_marking}</td>
-                    <td>${row.looping}</td>
-                    <td>${row.shikakari_handler}</td>
-                    <td>${row.black_taping}</td>
-                    <td>${row.components_insertion}</td>
-
-
-
-                    <td>${row.joint_crimping_2tons_ps_800_s_2}</td>
-                   <td>${row.joint_crimping_2tons_ps_200_m_2}</td>
-                   <td>${row.joint_crimping_2tons_ps_017_ss_2}</td>
-                   <td>${row.joint_crimping_2tons_ps_126_sst2}</td>
-                   <td>${row.joint_crimping_4tons_ps_700_l_2}</td>
-                   <td>${row.joint_crimping_5tons_ps_150_ll}</td>
-                   <td>${row.manual_crimping_shieldwire_2t}</td>
-                   <td>${row.manual_crimping_shieldwire_4t}</td>
-                   <td>${row.joint_crimping_2tons_ps_800_s_2_sw}</td>
-                   <td>${row.joint_crimping_2tons_ps_126_sst2_sw}</td>
-                   <td>${row.joint_crimping_2tons_ps_017_ss_2_sw}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_1500mm}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_3000mm}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_4500mm}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_6000mm}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_7500mm}</td>
-                   <td>${row.twisting_primary_normal_wires_l_less_than_9000mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_1500mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_3000mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_4500mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_6000mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_7500mm}</td>
-                   <td>${row.twisting_secondary_normal_wires_l_less_than_9000mm}</td>
-                   <td>${row.twisting_primary_aluminum_wires_l_less_than_1500mm}</td>
-                   <td>${row.twisting_primary_aluminum_wires_l_less_than_3000mm}</td>
-                   <td>${row.twisting_primary_aluminum_wires_l_less_than_4500mm}</td>
-                   <td>${row.twisting_primary_aluminum_wires_l_less_than_6000mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_1500mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_3000mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_4500mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_6000mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_7500mm}</td>
-                   <td>${row.twisting_secondary_aluminum_wires_l_less_than_9000mm}</td>
-                   <td>${row.manual_crimping_2tons_normal_single_crimp}</td>
-                   <td>${row.manual_crimping_2tons_normal_double_crimp}</td>
-                   <td>${row.manual_crimping_2tons_double_crimp_twisted}</td>
-                   <td>${row.manual_crimping_2tons_la_terminal}</td>
-                   <td>${row.manual_crimping_2tons_double_crimp_la_terminal}</td>
-                   <td>${row.manual_crimping_2tons_w_gomusen}</td>
-                   <td>${row.manual_crimping_4tons_double_crimp_twisted}</td>
-                   <td>${row.manual_crimping_4tons_normal_single_crimp}</td>
-                   <td>${row.manual_crimping_4tons_normal_double_crimp}</td>
-                   <td>${row.manual_crimping_4tons_la_terminal}</td>
-                   <td>${row.manual_crimping_4tons_double_crimp_la_terminal}</td>
-                   <td>${row.manual_crimping_4tons_w_gomusen}</td>
-                   <td>${row.manual_crimping_5tons}</td>
-                   <td>${row.intermediate_butt_welding_except_0_13_electrode_1}</td>
-                   <td>${row.intermediate_butt_welding_except_0_13_electrode_2}</td>
-                   <td>${row.intermediate_butt_welding_except_0_13_electrode_3}</td>
-                   <td>${row.intermediate_butt_welding_except_0_13_electrode_4}</td>
-                   <td>${row.intermediate_butt_welding_except_0_13_electrode_5}</td>
-                   <td>${row.welding_at_head_except_0_13_electrode_1}</td>
-                   <td>${row.welding_at_head_except_0_13_electrode_2}</td>
-                   <td>${row.welding_at_head_except_0_13_electrode_3}</td>
-                   <td>${row.welding_at_head_except_0_13_electrode_4}</td>
-                   <td>${row.welding_at_head_except_0_13_electrode_5}</td>
-                   <td>${row.intermediate_butt_welding_0_13_electrode_1}</td>
-                   <td>${row.welding_at_head_0_13_electrode_1}</td>
-                   <td>${row.intermediate_butt_welding_0_13_electrode_2}</td>
-                   <td>${row.welding_at_head_0_13_electrode_2}</td>
-
-
-
-                   <td>${row.v_type_twisting}</td>
-<td>${row.manual_crimping_2tons_to_be_joint_on_sw}</td>
-<td>${row.airbag}</td>
-<td>${row.a_b_sub_pc}</td>
-<td>${row.intermediate_ripping_uas_manual_nf_f}</td>
-<td>${row.manual_crimping_4tons_nf_f}</td>
-<td>${row.intermediate_ripping_uas_joint}</td>
-<td>${row.intermediate_stripping_kb10}</td>
-<td>${row.manual_taping_dispenser_8_0_5_0_8_0_8_0_ps_115_2_chfus_0_22_civus_0_22}</td>
-<td>${row.joint_taping_11mm_ps_150_ll_2}</td>
-<td>${row.joint_taping_12mm_ps_700_l_2_ps_200_m_2}</td>
-<td>${row.joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2}</td>
-<td>${row.heat_shrink_joint_crimping}</td>
-<td>${row.heat_shrink_la_terminal}</td>
-<td>${row.manual_crimping_2tons_nsc_weld}</td>
-<td>${row.intermediate_stripping_kb10_nsc_weld}</td>
-<td>${row.joint_crimping_2tons_ps_017_ss_2_nsc_weld}</td>
-<td>${row.joint_taping_13mm_ps_800_s_2_ps_017_ss_2_ps_126_2_sst2_nsc_weld}</td>
-<td>${row.silicon_injection}</td>
-<td>${row.welding_taping_13mm}</td>
-<td>${row.heat_shrink_welding}</td>
-<td>${row.casting_c385_shieldwire}</td>
-<td>${row.quick_stripping_927_auto}</td>
-<td>${row.mira_quick_stripping}</td>
-<td>${row.quick_stripping_311_manual}</td>
-<td>${row.manual_heat_shrink_blower_sumitube}</td>
-<td>${row.manual_taping_dispenser_sw}</td>
-<td>${row.heat_shrink_joint_crimping_sw}</td>
-<td>${row.casting_c373}</td>
-<td>${row.casting_c377}</td>
-<td>${row.casting_c371}</td>
-<td>${row.manual_heat_shrink_blower_battery}</td>
-<td>${row.casting_c373_normal}</td>
-<td>${row.casting_c371_normal}</td>
-<td>${row.manual_2tons_bending}</td>
-<td>${row.manual_5tons_battery}</td>
-<td>${row.al_looping}</td>
-<td>${row.soldering}</td>
-<td>${row.waterproof_agent_injection}</td>
-<td>${row.thermosetting}</td>
-<td>${row.completion}</td>
-<td>${row.picking_looping}</td>
-<td>${row.welding_end}</td>
-<td>${row.intermediate_welding}</td>
-<td>${row.sam_set_a_b}</td>
-<td>${row.sam_set_normal}</td>
-<td>${row.total_circuit}</td>
-<td>${row.new_airbag}</td>
-                    `;
-                    dataBody.appendChild(tr);
+        $.ajax({
+            url: '../../process/combine.php',  // The PHP file that runs the query
+            type: 'GET',
+            data: {
+                limit: limit,
+                offset: offset
+            },
+            dataType: 'json',
+            success: function(data) {
+                var tableBody = $('#dataBody');
+                // Check if data is empty to stop further loading
+                if (data.length === 0) {
+                    return; // No more data to load
+                }
+                // Iterate over the data and create table rows
+                $.each(data, function(index, item) {
+                    var row = '<tr>';
+                    $.each(item, function(key, value) {
+                        row += '<td>' + value + '</td>';
+                    });
+                    row += '</tr>';
+                    tableBody.append(row);
                 });
 
- 
-                loadingSpinner.style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                loadingSpinner.style.display = 'none';
-            });
+                // Update offset for the next batch of records
+                offset += limit;
+                isLoading = false;  // Allow next fetch
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data: ' + error);
+                isLoading = false;
+            }
+        });
     }
 
- 
-    document.addEventListener('DOMContentLoaded', fetchData);
+    // Call fetchData initially to populate the table
+    fetchData();
+
+    // Detect when user reaches the bottom of the table to fetch more data
+    $('#accounts_table_res1').on('scroll', function() {
+        var table = $(this);
+        if (table.scrollTop() + table.innerHeight() >= table[0].scrollHeight) {
+            // If scrolled to the bottom, load more data
+            fetchData();
+        }
+    });
+});
+
 
 </script>
 

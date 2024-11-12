@@ -75,29 +75,53 @@ while ($row = sqlsrv_fetch_array($resultMasterlist, SQLSRV_FETCH_ASSOC)) {
 }
 
 $groupedData = [];
+
 foreach ($data as $baseProduct => $rowData) {
     // Check if the base_product exists in the master list
     $carModel = isset($masterlistData[$baseProduct]) ? $masterlistData[$baseProduct]['car_model'] : null;
-    
+    $carCode = isset($masterlistData[$baseProduct]) ? $masterlistData[$baseProduct]['car_code'] : null;
+
     // If car_model is not found, log it to the console
     if ($carModel === null) {
         echo "<script>console.log('Unknown base_product: {$baseProduct}');</script>";
         continue;  // Skip processing this base_product for the table
     }
-    
-    if (!isset($groupedData[$carModel])) {
-        $groupedData[$carModel] = [
-            'base_product' => $baseProduct,
-            'line' => $rowData['line'],
-            'values' => [],
-        ];
-    }
 
-    foreach ($rowData['values'] as $date => $value) {
-        if (!isset($groupedData[$carModel]['values'][$date])) {
-            $groupedData[$carModel]['values'][$date] = 0;
+    // Special case for Subaru Others, keep it as a separate car_model
+    if ($carModel === 'Subaru' && $carCode === 'Subaru Others') {
+        // Treat "Subaru Others" as a separate car_model
+        $newCarModel = 'Subaru Others';
+
+        if (!isset($groupedData[$newCarModel])) {
+            $groupedData[$newCarModel] = [
+                'base_product' => $baseProduct,
+                'line' => $rowData['line'],
+                'values' => [],
+            ];
         }
-        $groupedData[$carModel]['values'][$date] += $value;
+
+        // Add values to "Subaru Others"
+        foreach ($rowData['values'] as $date => $value) {
+            $groupedData[$newCarModel]['values'][$date] = isset($groupedData[$newCarModel]['values'][$date]) 
+                ? $groupedData[$newCarModel]['values'][$date] + $value 
+                : $value;
+        }
+    } else {
+        // Add normal car_model (including regular Subaru without "Others")
+        if (!isset($groupedData[$carModel])) {
+            $groupedData[$carModel] = [
+                'base_product' => $baseProduct,
+                'line' => $rowData['line'],
+                'values' => [],
+            ];
+        }
+
+        // Add values for normal car_model
+        foreach ($rowData['values'] as $date => $value) {
+            $groupedData[$carModel]['values'][$date] = isset($groupedData[$carModel]['values'][$date]) 
+                ? $groupedData[$carModel]['values'][$date] + $value 
+                : $value;
+        }
     }
 }
 
@@ -113,7 +137,6 @@ echo "<table class='table table-sm table-head-fixed text-nowrap table-hover'>
 foreach ($dates as $date) {
     echo "<th>$date</th>";
 }
-
 
 echo "
 <th style='color: red;'>Total</th>
@@ -135,11 +158,11 @@ foreach ($groupedData as $carModel => $rowData) {
     $maxPlan1 = 0; 
     $maxPlan1Date = ''; 
 
-    $maxPlan2 = 0; // Variable to store max value for the second month
-    $maxPlan2Date = ''; // Variable to store the date for the max value in the second month
+    $maxPlan2 = 0; 
+    $maxPlan2Date = ''; 
 
-    $maxPlan3 = 0; // Variable to store max value for the third month
-    $maxPlan3Date = ''; // Variable to store the date for the max value in the third month
+    $maxPlan3 = 0; 
+    $maxPlan3Date = ''; 
 
     foreach ($dates as $date) {
         $value = isset($rowData['values'][$date]) ? $rowData['values'][$date] : 0;
@@ -148,41 +171,37 @@ foreach ($groupedData as $carModel => $rowData) {
 
         // Check if the date belongs to the first month
         if (date('Y-m', strtotime($date)) === $firstMonth) {
-            // Update maxPlan1 and store the corresponding date if a higher value is found
             if ($value > $maxPlan1) {
                 $maxPlan1 = $value;
-                $maxPlan1Date = $date; // Store the date for the max value in the first month
+                $maxPlan1Date = $date;
             }
         }
 
         // Check if the date belongs to the second month
         if (date('Y-m', strtotime($date)) === $secondMonth) {
-            // Update maxPlan2 and store the corresponding date if a higher value is found
             if ($value > $maxPlan2) {
                 $maxPlan2 = $value;
-                $maxPlan2Date = $date; // Store the date for the max value in the second month
+                $maxPlan2Date = $date;
             }
         }
 
         // Check if the date belongs to the third month
         if (date('Y-m', strtotime($date)) === $thirdMonth) {
-            // Update maxPlan3 and store the corresponding date if a higher value is found
             if ($value > $maxPlan3) {
                 $maxPlan3 = $value;
-                $maxPlan3Date = $date; // Store the date for the max value in the third month
+                $maxPlan3Date = $date;
             }
         }
     }
 
-    // Adding placeholder values for the new columns
     echo "
       <td style='color: red;'>{$total}</td>
       <td style='color: blue;'>{$maxPlan1}</td>
-      <td style='color: blue;'>{$maxPlan1Date}</td> <!-- Display the date for the max value in the first month -->
+      <td style='color: blue;'>{$maxPlan1Date}</td>
       <td style='color: green;'>{$maxPlan2}</td>
-      <td style='color: green;'>{$maxPlan2Date}</td> <!-- Display the date for the max value in the second month -->
+      <td style='color: green;'>{$maxPlan2Date}</td>
       <td style='color: purple;'>{$maxPlan3}</td>
-      <td style='color: purple;'>{$maxPlan3Date}</td> <!-- Display the date for the max value in the third month -->
+      <td style='color: purple;'>{$maxPlan3Date}</td>
       </tr>";
 }
 
