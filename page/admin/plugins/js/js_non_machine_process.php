@@ -78,6 +78,8 @@ document.getElementById("fileImport3").addEventListener("change", function() {
 const fileInput = document.getElementById("fileImport3");
 const file = fileInput.files[0];
 
+
+
 if (file) {
     const formData = new FormData();
     formData.append("csv_file", file); 
