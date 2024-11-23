@@ -83,6 +83,8 @@ if (file) {
     formData.append("csv_file", file); 
 
 
+
+
     document.getElementById("loadingSpinner").style.display = 'block';
 
 
