@@ -50,6 +50,16 @@
         <p>Accounts </p>
       </a>
     </li>
+
+
+
+    <li class="nav-item">
+      <a href="no_car_model.php" class="nav-link <?= ($_SERVER['REQUEST_URI'] == "/mrcs/page/admin/no_car_model.php") ? 'active' : '' ?>">
+        <img src="../../dist/img/no-car.png" alt="Pagination Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <p>No Car Model </p>
+      </a>
+    </li>
+
       
 
         <li class="nav-item">

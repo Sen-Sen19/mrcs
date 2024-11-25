@@ -1,5 +1,5 @@
 <?php
-// Existing code
+
 include 'plugins/navbar.php';
 include 'plugins/sidebar/user_bar.php';
 ?>
@@ -76,89 +76,130 @@ $(document).ready(function () {
         }
     });
 
-    
     $('#extractPlanBtn').on('click', function () {
-        let tableData = [];
+    let tableData = [];
 
-        // Disable the button for 5 seconds
-        $(this).prop('disabled', true);
+    // Disable the button for 5 seconds
+    $(this).prop('disabled', true);
 
-        // Get the table data
-        $('#accounts_table_res1 tr').each(function () {
-            const cells = $(this).find('td');
-            if (cells.length > 0) {
-                const row = {
-                    base_product: cells.eq(1).text().trim(),
-                    first_month: cells.eq(-5).text().trim(),
-                    second_month: cells.eq(-3).text().trim(),
-                    third_month: cells.eq(-1).text().trim(),
-                    added_by: hiddenFullName
-                };
-                tableData.push(row);
-            }
-        });
+    // Get the table data
+    $('#accounts_table_res1 tr').each(function () {
+        const cells = $(this).find('td');
+        if (cells.length > 0) {
+            const row = {
+                base_product: cells.eq(1).text().trim(),
+                first_month: cells.eq(-5).text().trim(),
+                second_month: cells.eq(-3).text().trim(),
+                third_month: cells.eq(-1).text().trim(),
+                added_by: hiddenFullName
+            };
+            tableData.push(row);
+        }
+    });
 
-        console.log('Total rows to send:', tableData.length);
+    console.log('Total rows to send:', tableData.length);
 
-        const chunkSize = 50;
-        const totalChunks = Math.ceil(tableData.length / chunkSize);
+    // Show the loading spinner
+    Swal.fire({
+        icon: 'info',
+        title: 'In Progress...',
+        html: 'Just a moment, we\'re loading your data...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        }
+    });
 
-        function sendChunk(chunkIndex) {
-            if (chunkIndex >= totalChunks) {
-                console.log('All data sent successfully!');
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'All data saved successfully!',
-                    timer: 1000,
-                    showConfirmButton: false
-                }).then(() => {
-                    location.reload();
-                });
-                return;
-            }
+    const chunkSize = 50;
+    const totalChunks = Math.ceil(tableData.length / chunkSize);
 
-            const chunkData = tableData.slice(chunkIndex * chunkSize, (chunkIndex + 1) * chunkSize);
+    function sendChunk(chunkIndex) {
+        if (chunkIndex >= totalChunks) {
+            console.log('All data sent successfully!');
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'All data saved successfully!',
+                timer: 1000,
+                showConfirmButton: false
+            }).then(() => {
+                location.reload();
+            });
+            return;
+        }
 
-            $.ajax({
-                url: '../../process/save_plan.php',
-                type: 'POST',
-                data: { planData: chunkData },
-                success: function (response) {
-                    if (response.error) {
-                        console.error('Error saving data:', response.details);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: response.details || 'Unknown error occurred.'
-                        });
-                    } else {
-                        console.log('Added by:', hiddenFullName);
-                        console.log(`Chunk ${chunkIndex + 1} sent successfully`);
-                        sendChunk(chunkIndex + 1);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX error:', error);
+        const chunkData = tableData.slice(chunkIndex * chunkSize, (chunkIndex + 1) * chunkSize);
+
+        $.ajax({
+            url: '../../process/save_plan.php',
+            type: 'POST',
+            data: { planData: chunkData },
+            success: function (response) {
+                if (response.error) {
+                    console.error('Error saving data:', response.details);
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Something went wrong while saving data!'
+                        text: response.details || 'Unknown error occurred.'
+                    }).then(() => {
+                        Swal.close();
                     });
+                } else {
+                    console.log('Added by:', hiddenFullName);
+                    console.log(`Chunk ${chunkIndex + 1} sent successfully`);
+                    sendChunk(chunkIndex + 1);
                 }
-            });
-        }
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong while saving data!'
+                }).then(() => {
+                    Swal.close();
+                });
+            }
+        });
+    }
 
-        sendChunk(0);
+    sendChunk(0);
 
-        // Re-enable the button after 5 seconds
-        setTimeout(function () {
-            $('#extractPlanBtn').prop('disabled', false);
-        }, 5000);
-    });
+    // Re-enable the button after 5 seconds
+    setTimeout(function () {
+        $('#extractPlanBtn').prop('disabled', false);
+    }, 5000);
 });
 
+});
 
+document.getElementById('exportButton1').addEventListener('click', function() {
+    // Get the table data from the table container (ensure your table has an ID)
+    var table = document.querySelector("#accounts_table_res1 table"); // Assuming your table is inside this container
+    var rows = table.querySelectorAll("tr");
+
+    // Initialize CSV content
+    var csvContent = "";
+
+    // Iterate through each row in the table
+    rows.forEach(function(row, index) {
+        var rowData = [];
+        var cells = row.querySelectorAll("th, td"); // Get both th (headers) and td (data cells)
+        cells.forEach(function(cell) {
+            rowData.push(cell.innerText); // Extract cell text content
+        });
+
+        // Join the row data with commas and add to CSV content
+        csvContent += rowData.join(",") + "\n";
+    });
+
+    // Create a temporary link to download the CSV
+    var link = document.createElement("a");
+    link.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
+    link.download = "Plan.csv"; // Set the filename
+    link.click(); // Trigger the download
+});
 
 // document.getElementById("emptyPlanBtn").addEventListener("click", function() {
 //     const fullName = document.getElementById("full_name").value;

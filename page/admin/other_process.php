@@ -131,8 +131,37 @@
 
 <script>
     document.getElementById("exportbtn").addEventListener("click", function () {
-        window.location.href = "../../process/export_other_process.php";
+    exportTableToCSV();
+});
+
+    function exportTableToCSV() {
+    const table = document.getElementById("header_table1");
+    const tableBody = document.getElementById("table_body1");
+
+
+    let csvContent = "";
+
+
+    const headers = table.querySelectorAll("th");
+    const headerArray = Array.from(headers).map(header => header.textContent.trim());
+    csvContent += headerArray.join(",") + "\n";
+
+    // Get table rows
+    const rows = tableBody.querySelectorAll("tr");
+    rows.forEach(row => {
+        const columns = row.querySelectorAll("td");
+        const rowArray = Array.from(columns).map(col => col.textContent.trim());
+        csvContent += rowArray.join(",") + "\n";
     });
+
+    // Create a Blob from the CSV string and trigger the download
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Other Process.csv';
+    link.click();
+}
+
 
     document.getElementById("carModelSelect").addEventListener("change", function () {
         fetchData(this.value); // Pass the selected value to fetchData

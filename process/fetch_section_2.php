@@ -2,8 +2,8 @@
 
 include 'conn.php';
 
-// Retrieve the full_name from the request
-$fullName = $_GET['full_name'] ?? ''; // Get the full_name from query parameters
+
+$fullName = $_GET['full_name'] ?? ''; 
 
 $sql = "SELECT s.id, 
                s.car_model, 

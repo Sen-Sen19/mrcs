@@ -85,6 +85,7 @@ usort($totalShots, function ($a, $b) {
     return $a['id'] <=> $b['id'];
 });
 
+
 header('Content-Type: application/json');  
 echo json_encode($totalShots);
 

@@ -157,32 +157,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file'])) {
 
     ];
 
-    while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
-        // Log the data to understand which row is being processed
-        error_log("Attempting to insert row: " . json_encode($data));
+      // Read each row of the CSV file and insert into the database
+      while (($data = fgetcsv($handle)) !== FALSE) {
+        // Ensure all values are set to 0 if they are empty
+        $data = array_map(function($value) {
+            return empty($value) ? 0 : $value;
+        }, $data);
 
-        // Prepare the SQL statement
-        $stmt = sqlsrv_prepare($conn, $sql, $data);
+        $stmt = sqlsrv_query($conn, $sql, $data);
 
-        // If the statement fails to prepare or execute, log the row and column causing the failure
-        if (!$stmt || !sqlsrv_execute($stmt)) {
-            foreach ($data as $index => $value) {
-                // Check if column exists in the columnNames array before trying to access it
-                if (isset($columnNames[$index])) {
-                    $column = $columnNames[$index];
-                    error_log("Failed at column: $column with value: '$value'");
-                } else {
-                    error_log("Failed with value: '$value' at index $index");
-                }
-            }
-
-            echo json_encode([
-                'success' => false, 
-                'error' => sqlsrv_errors(), 
-                'failed_row' => $data, 
-                'failed_column' => isset($columnNames[$index]) ? $columnNames[$index] : 'Unknown', 
-                'failed_value' => $value
-            ]);
+        if ($stmt === false) {
+            echo json_encode(['success' => false, 'error' => sqlsrv_errors()]);
             exit;
         }
     }
@@ -190,11 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file'])) {
     fclose($handle);
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'error' => 'Could not open the CSV file.']);
+    echo json_encode(['success' => false, 'error' => 'File could not be opened.']);
 }
-} else {
-echo json_encode(['success' => false, 'error' => 'Invalid request.']);
 }
-
-sqlsrv_close($conn);
 ?>

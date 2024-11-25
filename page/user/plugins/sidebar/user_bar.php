@@ -34,7 +34,7 @@
         <img src="../../dist/img/user (1).png" class="img-circle " alt="User Image">
       </div>
       <div class="info">
-        <a href="dashboard.php" class="d-block"><?= htmlspecialchars(strtoupper($_SESSION['username'])); ?></a>
+        <a href="dashboard.php" class="d-block"><?= htmlspecialchars(strtoupper($_SESSION['full_name'])); ?></a>
       </div>
     </div>
 

@@ -4,8 +4,6 @@ include 'conn.php';
 
 header('Content-Type: application/json');
 
-$offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 try {
@@ -13,30 +11,13 @@ try {
     $sql = "SELECT emp_id, full_name, username, department, password, type FROM account";
 
     if (!empty($search)) {
-        // Prepare search term for SQL LIKE
+        // Add a WHERE clause for the search term
         $sql .= " WHERE username LIKE ?";
         $searchTerm = "%$search%";
         $params = array($searchTerm);
     } else {
         $params = array();
     }
-
-    // Implement pagination using ROW_NUMBER()
-    $sql = "
-        SELECT * FROM (
-            SELECT ROW_NUMBER() OVER (ORDER BY username) AS RowNum, emp_id, full_name, username, department, password, type
-            FROM ($sql) AS SubQuery";
-
-    if (!empty($search)) {
-        $sql .= " WHERE username LIKE ?";
-        $params[] = $searchTerm;
-    }
-
-    $sql .= ") AS RowConstrainedResult WHERE RowNum > ? AND RowNum <= ?";
-
-    // Add offset and limit to parameters
-    $params[] = $offset;
-    $params[] = $offset + $limit;
 
     // Execute the query
     $stmt = sqlsrv_query($conn, $sql, $params);

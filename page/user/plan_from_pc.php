@@ -332,6 +332,43 @@ function saveData() {
     xhr.send(JSON.stringify(dataToSend));
 }
 
+document.getElementById("exportPlan").addEventListener("click", function () {
+    exportTableToCSV('Plan From PC.csv');
+});
+
+function exportTableToCSV(filename) {
+    var table = document.querySelector('#accounts_table_res2 table');
+    if (!table) {
+        alert('Table not found');
+        return;
+    }
+
+    var rows = table.querySelectorAll('tr');
+    var csvContent = "";
+    
+    // Loop through each row
+    rows.forEach(function (row, index) {
+        var rowData = [];
+        var cells = row.querySelectorAll('td, th');
+        
+        // Loop through each cell in the row
+        cells.forEach(function (cell) {
+            rowData.push(cell.innerText.trim()); // Get text content from each cell
+        });
+
+        // Join the row data with commas and add to CSV content
+        csvContent += rowData.join(",") + "\n";
+    });
+
+    // Create a temporary link to trigger the CSV download
+    var link = document.createElement('a');
+    link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+    link.target = '_blank';
+    link.download = filename;
+
+    // Trigger the download by clicking the link
+    link.click();
+}
 
 </script>
 

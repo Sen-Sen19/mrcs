@@ -329,8 +329,6 @@
     $(document).ready(function () {
 
         var fullName = $('#full_name').val();
-
-
         $.ajax({
             url: '../../process/fetch_total_shots_section_1.php',
             method: 'GET',
@@ -578,7 +576,6 @@
 
                             $('#editModalSecondMonth').modal('show');
                         });
-
                         tableBody.appendChild(tr);
                     }
                 });
@@ -672,7 +669,6 @@
                         uniqueEntries.add(uniqueKey); 
 
                         const tr = document.createElement('tr');
-
                         const carModelTd = document.createElement('td');
                         carModelTd.textContent = row.car_model;
                         tr.appendChild(carModelTd);

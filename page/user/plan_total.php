@@ -61,9 +61,56 @@ include 'plugins/sidebar/user_bar.php';
 <?php include 'plugins/footer.php'; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script>
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const extractPlanBtn = document.getElementById('extractPlanBtn');
+    const exportButton1 = document.getElementById('exportButton1'); // Export button
 
+    // Function to convert table data to CSV with headers
+    function tableToCSV() {
+        const rows = document.querySelectorAll('#accounts_table_res1 table tbody tr');
+        let csvContent = '';
+
+        // Add table headers (assuming the headers are in the first row of the table)
+        const headers = document.querySelectorAll('#accounts_table_res1 table thead tr th');
+        const headerData = [];
+        headers.forEach(header => {
+            headerData.push(header.textContent.trim());
+        });
+        csvContent += headerData.join(',') + '\n'; // Join the header cells with commas and add a new line
+
+        // Loop through the rows and cells to build the CSV
+        rows.forEach(row => {
+            const rowData = [];
+            const cells = row.cells;
+            for (let i = 0; i < cells.length; i++) {
+                rowData.push(cells[i].textContent.trim());
+            }
+            csvContent += rowData.join(',') + '\n'; // Join the cells with commas and add a new line for each row
+        });
+
+        return csvContent;
+    }
+
+    // Event listener for exporting data
+    exportButton1.addEventListener('click', () => {
+        const csvData = tableToCSV();
+
+        if (csvData) {
+            // Create a Blob with the CSV data
+            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+
+            // Create a link element to trigger the download
+            const link = document.createElement('a');
+            const date = new Date().toISOString().slice(0, 10); // Get today's date in YYYY-MM-DD format
+            link.href = URL.createObjectURL(blob);
+            link.download = `Plan Total_${date}.csv`; // Set the file name as Plan Total_<today's date>.csv
+            link.click(); // Trigger the download
+        } else {
+            swal("Error!", "No data available to export.", "error");
+        }
+    });
+
+    // Existing code for 'Extract Plan' button
     extractPlanBtn.addEventListener('click', () => {
         // Select all rows in the table body
         const rows = document.querySelectorAll('#accounts_table_res1 table tbody tr');
@@ -117,7 +164,4 @@ include 'plugins/sidebar/user_bar.php';
         });
     });
 });
-
-
 </script>
-

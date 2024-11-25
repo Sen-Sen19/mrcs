@@ -181,20 +181,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load initial table data
     loadTableData(offset, limit);
 
-    // Load more button event
-    document.getElementById('btnLoadMore').addEventListener('click', () => {
-        offset += limit;
-        loadTableData(offset, limit);
-    });
-
-    // Infinite scroll event
-    document.getElementById('accounts_table_res').addEventListener('scroll', () => {
-        const container = document.getElementById('accounts_table_res');
-        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-            offset += limit;
-            loadTableData(offset, limit, document.getElementById('searchBox').value.trim());
-        }
-    });
+    
+    // // Infinite scroll event
+    // document.getElementById('accounts_table_res').addEventListener('scroll', () => {
+    //     const container = document.getElementById('accounts_table_res');
+    //     if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+    //         offset += limit;
+    //         loadTableData(offset, limit, document.getElementById('searchBox').value.trim());
+    //     }
+    // });
 
     // Search button event
     // document.getElementById('searchReqBtn').addEventListener('click', () => {
@@ -214,15 +209,14 @@ function loadTableData(offset, limit, search = '') {
             return response.json();
         })
         .then(data => {
-            // Sort data by 'id'
+
             data.sort((a, b) => a.id - b.id);
 
             if (offset === 0) {
-                document.getElementById('admin_body').innerHTML = ''; // Clear table for new search results
+                document.getElementById('admin_body').innerHTML = ''; 
             }
             populateTable(data);
 
-            // Hide 'Load more' button if all data is loaded
             if (data.length < limit) {
                 document.getElementById('btnLoadMore').style.display = 'none';
             } else {
@@ -232,10 +226,10 @@ function loadTableData(offset, limit, search = '') {
         .catch(error => console.error('Error fetching data:', error));
 }
 // -----------------------------populate table-------------------
-let allData = []; // Array to hold all fetched data
+let allData = [];
 
-function loadTableData(offset, limit, search = '') {
-    fetch(`../../process/accounts.php?offset=${offset}&limit=${limit}&search=${encodeURIComponent(search)}`)
+function loadTableData(search = '') {
+    fetch(`../../process/accounts.php?search=${encodeURIComponent(search)}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -243,21 +237,14 @@ function loadTableData(offset, limit, search = '') {
             return response.json();
         })
         .then(data => {
-            // Sort data by 'id'
+            // Sort data by ID
             data.sort((a, b) => a.id - b.id);
-            
-            // Append new data to allData
-            allData = allData.concat(data);
 
-            // Populate table with the updated allData
+            // Store the data in allData
+            allData = data;
+
+            // Populate the table
             populateTable(allData);
-
-            // Hide 'Load more' button if all data is loaded
-            if (data.length < limit) {
-                document.getElementById('btnLoadMore').style.display = 'none';
-            } else {
-                document.getElementById('btnLoadMore').style.display = 'block';
-            }
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -265,54 +252,51 @@ function loadTableData(offset, limit, search = '') {
 function populateTable(data) {
     const tbody = document.getElementById('admin_body');
 
-    // Clear existing rows
+    // Clear the existing table rows
     tbody.innerHTML = '';
 
-    // Loop through each row of data
+    // Populate table rows
     data.forEach(row => {
-        // Create a new row in the table body
         const newRow = tbody.insertRow();
 
-        // Insert cells for each column
         const empIdCell = newRow.insertCell();
         const fullNameCell = newRow.insertCell();
         const usernameCell = newRow.insertCell();
         const departmentCell = newRow.insertCell();
         const passwordCell = newRow.insertCell();
         const typeCell = newRow.insertCell();
-        const deleteCell = newRow.insertCell(); // Cell for Delete checkbox
+        const deleteCell = newRow.insertCell();
 
-        // Populate cell contents with data from the row object
-        empIdCell.textContent = row.emp_id; // Employee ID
-        fullNameCell.textContent = row.full_name; // Full Name
-        usernameCell.textContent = row.username; // Username
-        departmentCell.textContent = row.department; // Department
-        passwordCell.textContent = row.password; // Password
-        typeCell.textContent = row.type; // Type
+        empIdCell.textContent = row.emp_id;
+        fullNameCell.textContent = row.full_name;
+        usernameCell.textContent = row.username;
+        departmentCell.textContent = row.department;
+        passwordCell.textContent = row.password;
+        typeCell.textContent = row.type;
 
-        // Create a checkbox element for the Delete column
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.className = 'larger-checkbox'; // Add a class for styling
-        checkbox.name = 'deleteRow[]'; // Use array syntax for PHP form handling if multiple checkboxes
-        checkbox.value = row.username; // Use a unique identifier from your data (e.g., username) as the value
+        checkbox.className = 'larger-checkbox';
+        checkbox.name = 'deleteRow[]';
+        checkbox.value = row.username;
 
-        // Disable checkbox for 'admin' type
         if (row.type === 'admin') {
             checkbox.disabled = true;
         }
 
-        // Append checkbox to the Delete cell
         deleteCell.appendChild(checkbox);
 
-        // Add event listener to the checkbox
         checkbox.addEventListener('click', function(event) {
-            event.stopPropagation(); // Stop propagation of the click event
+            event.stopPropagation();
         });
     });
 }
 
-// Assuming there's a delete button in your HTML with id 'deleteBtn'
+// Initial data load
+loadTableData();
+
+
+
 document.getElementById('deleteBtn').addEventListener('click', function() {
     // Get all checkboxes named 'deleteRow[]'
     const checkboxes = document.querySelectorAll('input[name="deleteRow[]"]:checked');

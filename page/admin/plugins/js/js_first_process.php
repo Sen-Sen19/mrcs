@@ -26,7 +26,6 @@ document.getElementById('searchButton').addEventListener('click', function () {
                 var tr = document.createElement('tr');
                 tr.classList.add('highlight-row');
 
-                // Define the order of columns to be displayed
                 const columns = [
                     'base_product',
                     'car_model',
@@ -77,7 +76,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
                     'nsc_10'
                 ];
 
-                // Loop through the columns in the specified order
+
                 columns.forEach(function (column) {
                     var td = document.createElement('td');
                     td.textContent = response[column] !== undefined ? response[column] : ''; // Handle undefined

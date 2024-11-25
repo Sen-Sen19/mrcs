@@ -3,6 +3,13 @@
 include 'conn.php';
 
 $addedBy = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : '';
+$deleteSql = "DELETE FROM [live_mrcs_db].[dbo].[no_car_model] WHERE [added_by] = ?";
+$deleteParams = array($addedBy);
+$deleteResult = sqlsrv_query($conn, $deleteSql, $deleteParams);
+
+if (!$deleteResult) {
+    die(print_r(sqlsrv_errors(), true)); // Handle error if delete fails
+}
 
 $sql = "SELECT 
             [base_product],
@@ -81,10 +88,19 @@ foreach ($data as $baseProduct => $rowData) {
     $carModel = isset($masterlistData[$baseProduct]) ? $masterlistData[$baseProduct]['car_model'] : null;
     $carCode = isset($masterlistData[$baseProduct]) ? $masterlistData[$baseProduct]['car_code'] : null;
 
-    // If car_model is not found, log it to the console
+    // If car_model is not found, log it to the database and continue processing
     if ($carModel === null) {
-        echo "<script>console.log('Unknown base_product: {$baseProduct}');</script>";
-        continue;  // Skip processing this base_product for the table
+        // Insert the missing base_product into the no_car_model table
+        $insertSql = "INSERT INTO [live_mrcs_db].[dbo].[no_car_model] ([base_product], [added_by]) VALUES (?, ?)";
+        $insertParams = array($baseProduct, $addedBy);
+        $insertResult = sqlsrv_query($conn, $insertSql, $insertParams);
+
+        if (!$insertResult) {
+            die(print_r(sqlsrv_errors(), true)); // Handle error if insert fails
+        }
+
+        // Continue with the next base_product
+        continue;
     }
 
     // Special case for Subaru Others, keep it as a separate car_model
@@ -207,5 +223,4 @@ foreach ($groupedData as $carModel => $rowData) {
 
 echo "  </tbody>
       </table>";
-
 ?>
