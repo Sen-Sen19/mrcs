@@ -28,6 +28,7 @@ var tr = document.createElement('tr');
 tr.classList.add('highlight-row');
 
 
+
 const columns = [
 'base_product',
 'car_model',

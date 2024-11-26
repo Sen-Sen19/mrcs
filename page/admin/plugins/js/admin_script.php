@@ -290,21 +290,18 @@ function populateTable(data) {
             event.stopPropagation();
         });
     });
-}
+}118250
 
-// Initial data load
 loadTableData();
 
 
 
 document.getElementById('deleteBtn').addEventListener('click', function() {
-    // Get all checkboxes named 'deleteRow[]'
+
     const checkboxes = document.querySelectorAll('input[name="deleteRow[]"]:checked');
 
-    // Create an array to store usernames of rows to delete
     const usernamesToDelete = Array.from(checkboxes).map(checkbox => checkbox.value);
 
-    // Show SweetAlert confirmation dialog
     Swal.fire({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover this data!",
@@ -317,25 +314,24 @@ document.getElementById('deleteBtn').addEventListener('click', function() {
     })
     .then((result) => {
         if (result.isConfirmed) {
-            // Perform AJAX request to delete data
+
             deleteData(usernamesToDelete);
         }
     });
 });
 $(document).ready(function() {
-    // Add event listener to table rows to open modal with data
+
     $('#admin_body').on('click', 'tr', function(e) {
         const cells = $(this).find('td');
 
-        // Get data from cells
-        const emp_id = cells[0].textContent.trim(); // Employee ID from the first column
-        const fullName = cells[1].textContent.trim(); // Full Name from the second column
-        const username = cells[2].textContent.trim(); // Username from the third column
-        const department = cells[3].textContent.trim(); // Department from the fourth column
-        const password = cells[4].textContent.trim(); // Password from the fifth column
-        const type = cells[5].textContent.trim(); // Type from the sixth column
+        const emp_id = cells[0].textContent.trim(); 
+        const fullName = cells[1].textContent.trim(); 
+        const username = cells[2].textContent.trim();
+        const department = cells[3].textContent.trim(); 
+        const password = cells[4].textContent.trim(); 
+        const type = cells[5].textContent.trim(); 
 
-        // Populate modal fields
+
         $('#editEmp_id').val(emp_id); // Assuming you have an input for empId in the modal
         $('#editFullName').val(fullName); // Assuming you have an input for fullName in the modal
         $('#editUsername').val(username);

@@ -164,7 +164,7 @@
                         <label for="jph">JPH</label>
                         <input type="number" class="form-control" id="jph" name="jph" required>
                     </div>
-                  
+
                     <div class="form-group">
                         <label for="wt">WT</label>
                         <select class="form-control" id="wt" name="wt" required>
@@ -180,8 +180,12 @@
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
-                        </div>
+                    </div>
+
                     <input type="hidden" id="row_index" name="row_index">
                 </form>
             </div>
@@ -244,8 +248,12 @@
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                     </div>
+
 
 
                     <input type="hidden" id="row_index" name="row_index">
@@ -308,9 +316,13 @@
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                     </div>
-                    
+
+
                     <input type="hidden" id="row_index" name="row_index">
                 </form>
             </div>
@@ -329,8 +341,6 @@
     $(document).ready(function () {
 
         var fullName = $('#full_name').val();
-
-
         $.ajax({
             url: '../../process/fetch_total_shots_section_6.php',
             method: 'GET',
@@ -378,7 +388,7 @@
 
 
                     if (!uniqueEntries.has(uniqueKey)) {
-                        uniqueEntries.add(uniqueKey); 
+                        uniqueEntries.add(uniqueKey);
 
                         const tr = document.createElement('tr');
 
@@ -523,7 +533,7 @@
 
                     const uniqueKey = `${row.car_model}-${row.process}`;
 
-      
+
                     if (!uniqueEntries.has(uniqueKey)) {
                         uniqueEntries.add(uniqueKey);
 
@@ -578,7 +588,6 @@
 
                             $('#editModalSecondMonth').modal('show');
                         });
-
                         tableBody.appendChild(tr);
                     }
                 });
@@ -661,18 +670,17 @@
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('third_month_table_body');
-                const uniqueEntries = new Set(); 
+                const uniqueEntries = new Set();
 
                 data.forEach(row => {
 
                     const uniqueKey = `${row.car_model}-${row.process}`;
 
-             
+
                     if (!uniqueEntries.has(uniqueKey)) {
-                        uniqueEntries.add(uniqueKey); 
+                        uniqueEntries.add(uniqueKey);
 
                         const tr = document.createElement('tr');
-
                         const carModelTd = document.createElement('td');
                         carModelTd.textContent = row.car_model;
                         tr.appendChild(carModelTd);
@@ -801,7 +809,7 @@
     // ----------------------------------------- Update Button-----------------------
     $(document).ready(function () {
         $('#updateBtn').click(function () {
-        
+
             const fullName = $('#full_name').val();
 
             console.log('Full Name:', fullName);
@@ -810,7 +818,7 @@
                 url: '../../process/update_query.php',
                 type: 'POST',
                 data: {
-                    full_name: fullName 
+                    full_name: fullName
                 },
                 success: function (response) {
                     if (response.includes("successful")) {
@@ -853,46 +861,46 @@
             $('#editModalFirstMonth').modal('hide');
         });
     });
-   
-    document.getElementById("importBtn").addEventListener("click", function() {
-    const tableIds = [
-        { bodyId: "first_month_table_body", label: "1" },
-        { bodyId: "second_month_table_body", label: "2" },
-        { bodyId: "third_month_table_body", label: "3" }
-    ];
 
-    let csvContent = "";
-    csvContent += '"Car Model","Process","Machine Inventory","","Total Shots1","Total Shots2","Total Shots3","","Machine Requirements1","JPH1","WT1","OT1","MP1","","Machine Requirements2","JPH2","WT2","OT2","MP2","","Machine Requirements3","JPH3","WT3","OT3","MP3"\n';
-    csvContent += "\n";
+    document.getElementById("importBtn").addEventListener("click", function () {
+        const tableIds = [
+            { bodyId: "first_month_table_body", label: "1" },
+            { bodyId: "second_month_table_body", label: "2" },
+            { bodyId: "third_month_table_body", label: "3" }
+        ];
 
-    const rows1 = document.querySelector(`#${tableIds[0].bodyId}`).querySelectorAll("tr");
-    const rows2 = document.querySelector(`#${tableIds[1].bodyId}`).querySelectorAll("tr");
-    const rows3 = document.querySelector(`#${tableIds[2].bodyId}`).querySelectorAll("tr");
+        let csvContent = "";
+        csvContent += '"Car Model","Process","Machine Inventory","","Total Shots1","Total Shots2","Total Shots3","","Machine Requirements1","JPH1","WT1","OT1","MP1","","Machine Requirements2","JPH2","WT2","OT2","MP2","","Machine Requirements3","JPH3","WT3","OT3","MP3"\n';
+        csvContent += "\n";
 
-    rows1.forEach((row1, index) => {
-        const row2 = rows2[index] || {};
-        const row3 = rows3[index] || {};
+        const rows1 = document.querySelector(`#${tableIds[0].bodyId}`).querySelectorAll("tr");
+        const rows2 = document.querySelector(`#${tableIds[1].bodyId}`).querySelectorAll("tr");
+        const rows3 = document.querySelector(`#${tableIds[2].bodyId}`).querySelectorAll("tr");
 
-        const data1 = Array.from(row1.querySelectorAll("td")).map(cell => cell.innerText);
-        const data2 = row2 ? Array.from(row2.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
-        const data3 = row3 ? Array.from(row3.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
+        rows1.forEach((row1, index) => {
+            const row2 = rows2[index] || {};
+            const row3 = rows3[index] || {};
 
-        csvContent += `"${data1[0]}","${data1[1]}","${data1[3]}","","${data1[2]}","${data2[2]}","${data3[2]}","","${data1[4]}","${data1[5]}","${data1[6]}","${data1[7]}","${data1[8]}","","${data2[4]}","${data2[5]}","${data2[6]}","${data2[7]}","${data2[8]}","","${data3[4]}","${data3[5]}","${data3[6]}","${data3[7]}","${data3[8]}"\n`;
+            const data1 = Array.from(row1.querySelectorAll("td")).map(cell => cell.innerText);
+            const data2 = row2 ? Array.from(row2.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
+            const data3 = row3 ? Array.from(row3.querySelectorAll("td")).map(cell => cell.innerText) : ["", "", "", "", ""];
+
+            csvContent += `"${data1[0]}","${data1[1]}","${data1[3]}","","${data1[2]}","${data2[2]}","${data3[2]}","","${data1[4]}","${data1[5]}","${data1[6]}","${data1[7]}","${data1[8]}","","${data2[4]}","${data2[5]}","${data2[6]}","${data2[7]}","${data2[8]}","","${data3[4]}","${data3[5]}","${data3[6]}","${data3[7]}","${data3[8]}"\n`;
+        });
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+
+        a.href = url;
+        a.download = "Section 6.csv";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     });
-
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-
-    a.href = url;
-    a.download = "Section 6.csv";
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-});
 </script>
 
 <?php include 'plugins/footer.php'; ?>

@@ -68,24 +68,24 @@
                         <div id="accounts_table_res" class="table-responsive"
                             style="height: 45vh; overflow: auto; display: inline-block; margin-top: 20px; border-top: 1px solid gray;">
                             <table id="account" class="table table-sm table-head-fixed text-nowrap table-hover">
-                            <thead style="text-align: center;">
-    <tr>
-        <th onclick="sortTable(0)">Employee ID</th>
-        <th onclick="sortTable(1)">Full Name</th>
-        <th onclick="sortTable(2)">User Name</th>
-        <th onclick="sortTable(3)">Department</th>
-        <th onclick="sortTable(4)">Password</th>
-        <th onclick="sortTable(5)">Type</th>
-        <th>Select</th>
-    </tr>
-</thead>
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th onclick="sortTable(0)">Employee ID</th>
+                                        <th onclick="sortTable(1)">Full Name</th>
+                                        <th onclick="sortTable(2)">User Name</th>
+                                        <th onclick="sortTable(3)">Department</th>
+                                        <th onclick="sortTable(4)">Password</th>
+                                        <th onclick="sortTable(5)">Type</th>
+                                        <th>Select</th>
+                                    </tr>
+                                </thead>
 
                                 <tbody id="admin_body" style="text-align: center; padding:10px;">
 
                                 </tbody>
                             </table>
                         </div>
-                     
+
                     </div>
                 </div>
             </div>
@@ -219,37 +219,37 @@
 
 
     function sortTable(columnIndex) {
-    var table = document.getElementById("account");
-    var tbody = table.querySelector("tbody");
-    var rows = Array.from(tbody.rows);
+        var table = document.getElementById("account");
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.rows);
 
-    // Determine the current sort direction
-    var currentDirection = tbody.getAttribute("data-sort-dir") || "asc";
-    var newDirection = currentDirection === "asc" ? "desc" : "asc";
-    tbody.setAttribute("data-sort-dir", newDirection);
+        // Determine the current sort direction
+        var currentDirection = tbody.getAttribute("data-sort-dir") || "asc";
+        var newDirection = currentDirection === "asc" ? "desc" : "asc";
+        tbody.setAttribute("data-sort-dir", newDirection);
 
-    // Sort rows
-    rows.sort(function (rowA, rowB) {
-        var cellA = rowA.cells[columnIndex].innerText.trim().toLowerCase();
-        var cellB = rowB.cells[columnIndex].innerText.trim().toLowerCase();
+        // Sort rows
+        rows.sort(function (rowA, rowB) {
+            var cellA = rowA.cells[columnIndex].innerText.trim().toLowerCase();
+            var cellB = rowB.cells[columnIndex].innerText.trim().toLowerCase();
 
-        if (!isNaN(cellA) && !isNaN(cellB)) {
-            // Sort numerically if the content is numeric
-            cellA = parseFloat(cellA);
-            cellB = parseFloat(cellB);
-        }
+            if (!isNaN(cellA) && !isNaN(cellB)) {
+                // Sort numerically if the content is numeric
+                cellA = parseFloat(cellA);
+                cellB = parseFloat(cellB);
+            }
 
-        if (newDirection === "asc") {
-            return cellA > cellB ? 1 : cellA < cellB ? -1 : 0;
-        } else {
-            return cellA < cellB ? 1 : cellA > cellB ? -1 : 0;
-        }
-    });
+            if (newDirection === "asc") {
+                return cellA > cellB ? 1 : cellA < cellB ? -1 : 0;
+            } else {
+                return cellA < cellB ? 1 : cellA > cellB ? -1 : 0;
+            }
+        });
 
-    // Rebuild table body with sorted rows
-    tbody.innerHTML = "";
-    rows.forEach(row => tbody.appendChild(row));
-}
+        // Rebuild table body with sorted rows
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+    }
 </script>
 
 <?php include 'plugins/admin_footer.php'; ?>
